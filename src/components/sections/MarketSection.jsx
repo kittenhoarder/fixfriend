@@ -25,11 +25,13 @@ export default function MarketSection({ theme }) {
             <button
               type="button"
               onClick={() => setViewMode('interactive')}
-              className="font-mono text-xs px-3 py-1.5 rounded border transition-colors"
+              className="font-mono text-xs px-3 py-2 border transition-colors"
               style={{
-                borderColor: viewMode === 'interactive' ? 'var(--accent)' : 'var(--border-subtle)',
+                borderColor: viewMode === 'interactive' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
                 color: viewMode === 'interactive' ? 'var(--accent)' : 'var(--text-secondary)',
-                backgroundColor: viewMode === 'interactive' ? 'var(--accent-soft)' : 'transparent',
+                background: viewMode === 'interactive'
+                  ? 'linear-gradient(90deg, rgba(59,130,246,0.12), rgba(249,115,22,0.08) 80%, transparent)'
+                  : 'transparent',
               }}
             >
               Interactive map
@@ -37,11 +39,13 @@ export default function MarketSection({ theme }) {
             <button
               type="button"
               onClick={() => setViewMode('fullgraph')}
-              className="font-mono text-xs px-3 py-1.5 rounded border transition-colors"
+              className="font-mono text-xs px-3 py-2 border transition-colors"
               style={{
-                borderColor: viewMode === 'fullgraph' ? 'var(--accent)' : 'var(--border-subtle)',
+                borderColor: viewMode === 'fullgraph' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
                 color: viewMode === 'fullgraph' ? 'var(--accent)' : 'var(--text-secondary)',
-                backgroundColor: viewMode === 'fullgraph' ? 'var(--accent-soft)' : 'transparent',
+                background: viewMode === 'fullgraph'
+                  ? 'linear-gradient(90deg, rgba(59,130,246,0.12), rgba(249,115,22,0.08) 80%, transparent)'
+                  : 'transparent',
               }}
             >
               Full graph

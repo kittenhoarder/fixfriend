@@ -36,7 +36,7 @@ function PanelHeading({ node, label, titleColor = 'var(--text-primary)' }) {
       </div>
       <div className="flex items-center gap-3 mb-3">
         <BrandLogo logoKey={node.id} label={node.title} size={24} />
-        <h3 className="font-semibold text-base" style={{ color: titleColor }}>
+        <h3 className="font-serif text-[1.7rem] leading-none" style={{ color: titleColor }}>
           {node.title}
         </h3>
       </div>
@@ -55,7 +55,7 @@ function DefaultPanel() {
         OVERVIEW
       </div>
       <h3
-        className="font-semibold text-base mb-3"
+        className="font-serif text-[1.8rem] leading-none mb-3"
         style={{ color: 'var(--text-primary)' }}
       >
         {d.title}
@@ -64,7 +64,7 @@ function DefaultPanel() {
         {d.body}
       </p>
       <p
-        className="font-mono text-xs px-3 py-2 rounded border"
+        className="font-mono text-xs px-3 py-2 border"
         style={{
           color: 'var(--text-secondary)',
           borderColor: 'var(--border-subtle)',
@@ -86,7 +86,7 @@ function RegulatoryPanel({ node }) {
       </div>
       {node.risk && (
         <div
-          className="text-xs px-3 py-2 rounded border mb-4"
+          className="text-xs px-3 py-2 border mb-4"
           style={{
             color: 'var(--status-warning)',
             borderColor: 'var(--status-warning-border)',
@@ -98,7 +98,7 @@ function RegulatoryPanel({ node }) {
       )}
       {node.note && (
         <div
-          className="text-xs px-3 py-2 rounded border mb-4"
+          className="text-xs px-3 py-2 border mb-4"
           style={{
             color: 'var(--status-info)',
             borderColor: 'var(--status-info-border)',

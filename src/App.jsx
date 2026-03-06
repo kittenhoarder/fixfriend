@@ -37,7 +37,7 @@ export default function App() {
   const ActiveSection = SECTIONS[activeTab]
 
   return (
-    <div className="flex h-screen w-full overflow-hidden" style={{ backgroundColor: 'var(--bg-base)' }}>
+    <div className="app-shell flex h-screen w-full overflow-hidden" style={{ backgroundColor: 'var(--bg-base)' }}>
       <Sidebar
         activeTab={activeTab}
         onTabChange={(tab) => setActiveTab(tab)}
@@ -46,7 +46,7 @@ export default function App() {
         onThemeToggle={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
       />
 
-      <main className="flex-1 overflow-y-auto overflow-x-hidden">
+      <main className="app-main-shell flex-1 overflow-y-auto overflow-x-hidden">
         <div key={activeTab} className="animate-fade-in-section h-full">
           <ActiveSection onNavigate={(tab) => setActiveTab(tab)} theme={theme} />
         </div>

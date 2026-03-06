@@ -27,7 +27,7 @@ function ProcessStep({ step, tint, isLast }) {
 
       {/* Step number circle */}
       <div
-        className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-mono text-xs font-bold z-10"
+        className="flex-shrink-0 w-8 h-8 flex items-center justify-center font-mono text-xs font-bold z-10"
         style={{
           backgroundColor: step.highlight ? dimColor : 'var(--surface2)',
           border: `1px solid ${step.highlight ? dimBorder : 'var(--border-subtle)'}`,
@@ -94,7 +94,7 @@ function FlowPanel({ data }) {
         style={{ borderColor: isRed ? 'var(--status-danger-border)' : 'var(--accent-border-soft)' }}
       >
         <div
-          className="w-2 h-2 rounded-full"
+          className="w-2.5 h-2.5"
           style={{ backgroundColor: accentColor }}
         />
         <div>
@@ -181,7 +181,7 @@ export default function GapSection() {
         hideOnMobile
         right={(
           <span
-            className="font-mono text-xs px-2 py-1 rounded-sm"
+            className="font-mono text-xs px-2.5 py-1.5 rounded-sm"
             style={{
               color: 'var(--accent)',
               backgroundColor: 'var(--accent-soft)',

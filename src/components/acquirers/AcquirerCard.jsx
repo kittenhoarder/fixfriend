@@ -47,7 +47,8 @@ export default function AcquirerCard({ acquirer, tier, isExpanded, onToggle }) {
     <div
       className={`rounded-lg border cursor-pointer transition-all duration-200 ${tierCardClass}`}
       style={{
-        backgroundColor: 'var(--surface)',
+        background:
+          'linear-gradient(180deg, rgba(255,255,255,0.025), transparent), var(--surface)',
         overflow: 'hidden',
       }}
       onClick={onToggle}
@@ -65,7 +66,7 @@ export default function AcquirerCard({ acquirer, tier, isExpanded, onToggle }) {
       <div className="p-4">
         <div className="flex items-start gap-3">
           <div
-            className="flex-shrink-0 w-8 h-8 rounded flex items-center justify-center mt-0.5"
+            className="flex-shrink-0 w-8 h-8 border flex items-center justify-center mt-0.5"
             style={{
               backgroundColor: `${accentColor}14`,
               border: `1px solid ${accentColor}25`,
@@ -77,7 +78,7 @@ export default function AcquirerCard({ acquirer, tier, isExpanded, onToggle }) {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
               <span
-                className="font-mono font-semibold text-sm"
+                className="font-serif text-[1.4rem] leading-none"
                 style={{ color: 'var(--text-primary)' }}
               >
                 {acquirer.name}
