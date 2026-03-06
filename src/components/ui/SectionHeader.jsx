@@ -4,14 +4,21 @@ export default function SectionHeader({ index, label, right, hideOnMobile, compa
   return (
     <div
       className={[
-        'px-6 border-b flex flex-wrap items-center gap-3 flex-shrink-0',
-        compact ? 'py-2' : 'py-4',
+        'px-6 border-b flex flex-wrap items-center gap-3 flex-shrink-0 backdrop-blur-sm',
+        compact ? 'py-3' : 'py-4',
         hideOnMobile ? 'hidden lg:flex' : '',
       ].filter(Boolean).join(' ')}
-      style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--bg-base)' }}
+      style={{
+        borderColor: 'var(--border-subtle)',
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.02), transparent), rgba(5,5,5,0.18)',
+      }}
     >
       {showLeft ? (
-        <div>
+        <div className="flex items-center gap-3">
+          <span
+            className="inline-block h-px w-5"
+            style={{ background: 'linear-gradient(90deg, var(--amber), transparent)' }}
+          />
           {index ? (
             <span
               className="font-mono text-xs tracking-widest"
@@ -23,7 +30,7 @@ export default function SectionHeader({ index, label, right, hideOnMobile, compa
           {label != null && label !== '' ? (
             <span
               className={`font-mono text-xs tracking-widest ${index ? 'ml-2' : ''}`}
-              style={{ color: 'var(--text-secondary)', letterSpacing: '0.12em' }}
+              style={{ color: 'var(--text-secondary)', letterSpacing: '0.16em' }}
             >
               {label}
             </span>

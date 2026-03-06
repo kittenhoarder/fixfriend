@@ -14,17 +14,22 @@ export default function AboutModal({ onClose }) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: 'rgba(2,6,23,0.72)', backdropFilter: 'blur(4px)' }}
+      style={{
+        background:
+          'radial-gradient(circle at top, rgba(59,130,246,0.14), transparent 30%), rgba(2,4,8,0.76)',
+        backdropFilter: 'blur(8px)',
+      }}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose()
       }}
     >
       <div
-        className="w-full max-w-xl rounded-xl border animate-fade-in-section"
+        className="w-full max-w-xl border animate-fade-in-section overflow-hidden"
         style={{
-          backgroundColor: 'var(--surface3)',
+          background:
+            'linear-gradient(180deg, rgba(255,255,255,0.025), transparent), var(--surface3)',
           borderColor: 'var(--border-subtle)',
-          boxShadow: '0 24px 80px var(--card-shadow)',
+          boxShadow: '0 36px 90px -40px var(--card-shadow)',
         }}
       >
         <div
@@ -32,14 +37,14 @@ export default function AboutModal({ onClose }) {
           style={{ borderColor: 'var(--border-subtle)' }}
         >
           <div>
-            <div
-              className="font-mono font-bold text-base"
-              style={{ color: 'var(--text-primary)' }}
-            >
+            <div className="eyebrow mb-2" style={{ color: 'var(--text-tertiary)' }}>
+              Founder
+            </div>
+            <div className="font-serif text-[1.9rem] leading-none" style={{ color: 'var(--text-primary)' }}>
               {ABOUT.name}
             </div>
             <div
-              className="text-xs mt-0.5"
+              className="text-xs mt-2"
               style={{ color: 'var(--text-secondary)' }}
             >
               {ABOUT.title}
@@ -47,8 +52,12 @@ export default function AboutModal({ onClose }) {
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded transition-colors duration-150 hover:bg-[var(--surface2)]"
-            style={{ color: 'var(--text-secondary)' }}
+            className="flex h-10 w-10 items-center justify-center border transition-colors duration-150"
+            style={{
+              color: 'var(--text-secondary)',
+              borderColor: 'var(--border-subtle)',
+              backgroundColor: 'var(--surface)',
+            }}
           >
             <X size={16} />
           </button>
@@ -66,7 +75,7 @@ export default function AboutModal({ onClose }) {
               {ABOUT.career.map((role, i) => (
                 <span key={role} className="flex items-center gap-1">
                   <span
-                    className="font-mono text-xs px-2 py-1 rounded-sm border"
+                    className="font-mono text-xs px-2.5 py-1.5 rounded-sm border"
                     style={{
                       color: i === ABOUT.career.length - 1 ? 'var(--status-success)' : 'var(--text-secondary)',
                       borderColor: i === ABOUT.career.length - 1 ? 'var(--status-success-border)' : 'var(--border-subtle)',
@@ -110,14 +119,15 @@ export default function AboutModal({ onClose }) {
           </div>
 
           <div
-            className="px-4 py-3 rounded border mb-5"
+            className="px-4 py-4 border mb-5"
             style={{
               borderColor: 'var(--accent-border-soft)',
-              backgroundColor: 'var(--accent-softer)',
+              background:
+                'linear-gradient(135deg, rgba(249,115,22,0.09), rgba(59,130,246,0.06) 58%, transparent), var(--surface)',
             }}
           >
             <p
-              className="text-sm leading-relaxed italic"
+              className="font-serif text-[1.35rem] leading-relaxed italic"
               style={{ color: 'var(--text-primary)' }}
             >
               &ldquo;{ABOUT.closing}&rdquo;
@@ -129,11 +139,10 @@ export default function AboutModal({ onClose }) {
               href={ABOUT.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2.5 rounded border text-sm font-medium transition-all duration-150"
+              className="button-outline flex items-center gap-2 px-4 py-2.5 text-sm font-medium"
               style={{
                 color: 'var(--accent)',
                 borderColor: 'var(--accent-border-soft)',
-                backgroundColor: 'var(--accent-soft)',
               }}
             >
               <Linkedin size={14} />

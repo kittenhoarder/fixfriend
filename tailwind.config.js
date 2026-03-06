@@ -27,7 +27,8 @@ export default {
       },
       fontFamily: {
         mono: ['"JetBrains Mono"', '"Fira Code"', 'ui-monospace', 'monospace'],
-        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"Manrope"', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
       },
       animation: {
         'pulse-slow': 'pulse-slow 2s ease-in-out infinite',

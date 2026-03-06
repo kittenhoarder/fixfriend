@@ -11,15 +11,16 @@ export default function StatusPill({ tone = 'neutral', children }) {
 
   return (
     <span
-      className="inline-flex items-center gap-1.5 font-mono text-xs px-2 py-1 rounded-sm"
+      className="inline-flex items-center gap-2 font-mono text-[11px] px-2.5 py-1.5 rounded-sm"
       style={{
         color: toneColor,
-        backgroundColor: `${toneColor}14`,
+        background: `linear-gradient(90deg, ${toneColor}10, transparent 72%)`,
         border: `1px solid ${toneColor}36`,
+        letterSpacing: '0.08em',
       }}
     >
       <span
-        className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
+        className="inline-block w-2 h-2 flex-shrink-0"
         style={{ backgroundColor: toneColor }}
       />
       {children}

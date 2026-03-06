@@ -650,46 +650,99 @@ export const PRODUCT_CONTENT = {
   },
 }
 
-// Interactive product demo: click-through story (players → problem → gap → solution → outcome)
-export const PRODUCT_DEMO_STEPS = [
-  {
-    id: 'players',
-    title: 'The players',
-    body: 'Three parties drive the cycle: the trading firm must stay connected and compliant; the exchange publishes protocol changes; the regulator requests evidence.',
-    personaIcons: ['Building2', 'Landmark', 'ShieldCheck'],
-    personaLabels: ['Trading firm', 'Exchange', 'Regulator'],
-    ctaLabel: 'Next',
+export const PRODUCT_PANIC_SCENARIO = {
+  title: 'Protocol Panic',
+  subtitle:
+    'Play the incident. A venue publishes a mandatory FIX change and the certification window closes in 9 days.',
+  manual: {
+    alerts: [
+      {
+        id: 'spec-delta',
+        title: 'Eurex T7 FIX delta',
+        detail: 'Tag 25016 becomes mandatory for algo orders. Certification closes Friday.',
+        severity: 'critical',
+        correct: true,
+      },
+      {
+        id: 'ops-digest',
+        title: 'Ops digest',
+        detail: 'Routine venue maintenance summary. No client action required.',
+        severity: 'low',
+        correct: false,
+      },
+      {
+        id: 'market-color',
+        title: 'Market color',
+        detail: 'Liquidity recap from yesterday’s session.',
+        severity: 'low',
+        correct: false,
+      },
+    ],
+    systems: [
+      {
+        id: 'gateway',
+        label: 'Order gateway config',
+        detail: 'Session dictionaries, tag validation, and routing rules.',
+        correct: true,
+      },
+      {
+        id: 'cert-pack',
+        label: 'Certification regression pack',
+        detail: 'Venue scenarios must be rebuilt and rerun.',
+        correct: true,
+      },
+      {
+        id: 'evidence-pack',
+        label: 'Compliance evidence pack',
+        detail: 'Controls, approvals, test outputs, and cert trail.',
+        correct: true,
+      },
+      {
+        id: 'sales-dashboard',
+        label: 'Sales dashboard',
+        detail: 'Not on the critical path for this venue change.',
+        correct: false,
+      },
+      {
+        id: 'marketing-site',
+        label: 'Marketing site copy',
+        detail: 'Completely unrelated noise.',
+        correct: false,
+      },
+    ],
+    pressureMoments: [
+      'Inbox alert arrives with a hard venue certification deadline.',
+      'Engineering has to interpret the change manually.',
+      'Evidence is left to the end, where audit risk compounds.',
+    ],
   },
-  {
-    id: 'problem',
-    title: 'The problem',
-    body: 'When a spec change arrives, the cycle is manual: someone reads the PDF, engineering rebuilds tests, UAT runs, and evidence is assembled retroactively.',
-    personaIcons: ['FileText', 'Wrench', 'ClipboardCheck'],
-    personaLabels: ['Spec change', 'Engineering', 'Evidence (retroactive)'],
-    ctaLabel: 'Next',
+  fixfriend: {
+    runbook: [
+      {
+        id: 'diff',
+        label: 'Semantic diff parsed',
+        value: 'Mandatory field change normalized and tagged by venue + message type.',
+      },
+      {
+        id: 'impact',
+        label: 'Impacted assets mapped',
+        value: 'Gateway config, cert suite, and evidence controls linked automatically.',
+      },
+      {
+        id: 'tests',
+        label: 'Validation queued',
+        value: 'Regression pack generated with venue certification checklist attached.',
+      },
+      {
+        id: 'evidence',
+        label: 'Evidence generated',
+        value: 'Change record, approvals, and certification proof assembled continuously.',
+      },
+    ],
+    outcomes: [
+      'Hours instead of weeks.',
+      'Audit-ready evidence at the point of change.',
+      'Human review preserved before anything ships.',
+    ],
   },
-  {
-    id: 'gap',
-    title: 'The gap',
-    body: 'There is no automated layer between spec change and compliance evidence. The work is absorbed into engineering headcount and never automated.',
-    personaIcons: ['AlertTriangle'],
-    personaLabels: ['Manual cycle'],
-    ctaLabel: 'Next',
-  },
-  {
-    id: 'fixfriend',
-    title: 'FIXFriend in the middle',
-    body: 'FIXFriend monitors specs, detects changes, validates systems, and produces audit-ready evidence. Supervised automation — engineers review before anything is deployed.',
-    personaIcons: ['Package', 'FileCheck'],
-    personaLabels: ['FIXFriend', 'Audit-ready evidence'],
-    ctaLabel: 'Next',
-  },
-  {
-    id: 'outcome',
-    title: 'The outcome',
-    body: 'Continuous evidence, audit-ready. The same three parties remain, but an automated layer sits between spec change and compliance proof.',
-    personaIcons: ['Building2', 'Package', 'Landmark', 'ShieldCheck'],
-    personaLabels: ['Trading firm', 'FIXFriend', 'Exchange', 'Regulator'],
-    ctaLabel: 'Done',
-  },
-]
+}

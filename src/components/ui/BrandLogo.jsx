@@ -10,8 +10,13 @@ export default function BrandLogo({ logoKey, label, size = 28 }) {
         alt={`${label} logo`}
         width={size}
         height={size}
-        className="rounded"
-        style={{ objectFit: 'contain', backgroundColor: 'transparent' }}
+        className="border"
+        style={{
+          objectFit: 'contain',
+          backgroundColor: 'rgba(255,255,255,0.94)',
+          borderColor: 'var(--border-subtle)',
+          padding: '2px',
+        }}
       />
     )
   }
@@ -19,7 +24,7 @@ export default function BrandLogo({ logoKey, label, size = 28 }) {
   if (meta.simpleIcon?.path) {
     return (
       <span
-        className="inline-flex items-center justify-center rounded border"
+        className="inline-flex items-center justify-center border"
         style={{
           width: size,
           height: size,
@@ -38,7 +43,7 @@ export default function BrandLogo({ logoKey, label, size = 28 }) {
 
   return (
     <span
-      className="inline-flex items-center justify-center rounded border font-mono"
+      className="inline-flex items-center justify-center border font-mono"
       style={{
         width: size,
         height: size,

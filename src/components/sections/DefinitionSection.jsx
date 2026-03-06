@@ -5,7 +5,7 @@ function Block({ title, children, className = '' }) {
     <div className={`mb-8 ${className}`}>
       <h2
         className="font-mono font-bold text-sm tracking-wider mb-3"
-        style={{ color: 'var(--accent)', letterSpacing: '0.1em' }}
+        style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
       >
         {title}
       </h2>
@@ -79,7 +79,7 @@ export default function DefinitionSection() {
 
         <h2
           className="font-mono font-bold text-sm tracking-wider mb-4"
-          style={{ color: 'var(--accent)', letterSpacing: '0.1em' }}
+          style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
         >
           {d.marketSize.title}
         </h2>
@@ -103,7 +103,7 @@ export default function DefinitionSection() {
         </div>
 
         <div
-          className="rounded-lg border px-4 py-3 mb-6"
+          className="panel-shell rounded-lg px-4 py-3 mb-6"
           style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
         >
           <span className="font-mono text-xs" style={{ color: 'var(--text-tertiary)' }}>SAM: </span>
@@ -112,7 +112,7 @@ export default function DefinitionSection() {
 
         <div
           className="rounded-lg border px-4 py-3"
-          style={{ borderColor: 'rgba(14,165,233,0.2)', backgroundColor: 'rgba(14,165,233,0.04)' }}
+          style={{ borderColor: 'var(--accent-border-soft)', backgroundColor: 'var(--accent-softer)' }}
         >
           <span className="font-mono text-xs" style={{ color: 'var(--accent)' }}>SOM: </span>
           <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{d.marketSize.som}</span>

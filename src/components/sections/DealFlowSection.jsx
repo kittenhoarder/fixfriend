@@ -56,7 +56,7 @@ export default function DealFlowSection() {
         </div>
 
         <div
-          className="rounded-lg border p-4 lg:p-6 mb-6"
+          className="panel-shell rounded-lg p-4 lg:p-6 mb-6"
           style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border-subtle)' }}
         >
           <Timeline
@@ -71,7 +71,7 @@ export default function DealFlowSection() {
           </div>
         ) : (
           <div
-            className="rounded-lg border p-4 mb-6 text-center"
+            className="panel-shell rounded-lg border p-4 mb-6 text-center"
             style={{
               backgroundColor: 'var(--accent-softer)',
               borderColor: 'var(--border-subtle)',
@@ -87,7 +87,7 @@ export default function DealFlowSection() {
         )}
 
         <div
-          className="rounded-lg border p-5"
+          className="panel-shell rounded-lg border p-5"
           style={{
             backgroundColor: 'var(--accent-softer)',
             borderColor: 'var(--accent-border-soft)',

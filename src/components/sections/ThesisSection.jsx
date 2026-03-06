@@ -3,16 +3,16 @@ import { THESIS } from '../../data/content'
 
 function StatCard({ stat }) {
   return (
-    <div className="stat-card rounded-lg p-5 flex flex-col gap-2">
+    <div className="stat-card rounded-lg p-5 flex flex-col gap-3">
       <div
-        className="font-mono font-bold leading-none"
-        style={{ fontSize: '2rem', color: 'var(--accent)' }}
+        className="font-serif leading-none"
+        style={{ fontSize: '2.35rem', color: 'var(--text-primary)' }}
       >
         {stat.value}
       </div>
       <div
         className="font-mono font-semibold text-xs tracking-widest"
-        style={{ color: 'var(--text-primary)', letterSpacing: '0.1em' }}
+        style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
       >
         {stat.label}
       </div>
@@ -30,69 +30,85 @@ export default function ThesisSection({ onNavigate }) {
       style={{ paddingTop: '72px' }}
     >
       <div className="w-full max-w-3xl mx-auto">
-
-        {/* Label */}
-        <div className="mb-6">
+        <div className="mb-8">
           <span
-            className="font-mono text-xs tracking-widest px-3 py-1 rounded-sm border"
+            className="eyebrow px-3 py-2 border"
             style={{
-              color: 'var(--accent)',
-              borderColor: 'rgba(14,165,233,0.3)',
-              backgroundColor: 'rgba(14,165,233,0.06)',
-              letterSpacing: '0.15em',
+              color: 'var(--text-secondary)',
+              borderColor: 'var(--border-subtle)',
+              background:
+                'linear-gradient(90deg, rgba(249,115,22,0.12), rgba(59,130,246,0.08) 70%, transparent)',
             }}
           >
             LEAN EXIT THESIS
           </span>
         </div>
 
-        {/* Headline */}
-        <h1
-          className="font-mono font-bold leading-tight mb-6"
-          style={{ fontSize: 'clamp(1.5rem, 4vw, 2.4rem)', color: 'var(--text-primary)' }}
+        <div
+          className="panel-shell relative overflow-hidden p-7 md:p-9 mb-10"
+          style={{
+            background:
+              'linear-gradient(135deg, rgba(249,115,22,0.1), transparent 28%), linear-gradient(315deg, rgba(59,130,246,0.08), transparent 36%), var(--surface)',
+          }}
         >
-          {THESIS.headline.split('\n').map((line, i) => (
-            <span key={i}>
-              {i > 0 && <br />}
-              {line}
-            </span>
-          ))}
-        </h1>
+          <div
+            className="absolute right-0 top-0 h-16 w-16 border-l border-b"
+            style={{ borderColor: 'var(--border-subtle)' }}
+          />
+          <h1
+            className="font-serif leading-[0.94] mb-5 max-w-2xl"
+            style={{ fontSize: 'clamp(2.7rem, 8vw, 5.4rem)', color: 'var(--text-primary)' }}
+          >
+            {THESIS.headline.split('\n').map((line, i) => (
+              <span
+                key={i}
+                style={{ color: i === THESIS.headline.split('\n').length - 1 ? 'var(--accent)' : 'inherit' }}
+              >
+                {i > 0 && <br />}
+                {line}
+              </span>
+            ))}
+          </h1>
 
-        {/* Subheadline */}
-        <p
-          className="text-base leading-relaxed mb-12 max-w-2xl"
-          style={{ color: 'var(--text-secondary)' }}
-        >
-          {THESIS.subheadline}
-        </p>
+          <p
+            className="text-base leading-relaxed mb-8 max-w-2xl"
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            {THESIS.subheadline}
+          </p>
 
-        {/* Stat cards */}
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              onClick={() => onNavigate('market')}
+              className="button-accent inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold"
+            >
+              Explore the thesis
+              <ArrowRight size={15} />
+            </button>
+            <a
+              href={THESIS.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button-outline inline-flex items-center gap-2 px-4 py-3 text-sm font-medium"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              <Linkedin size={14} />
+              Founder profile
+            </a>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
           {THESIS.stats.map((stat) => (
             <StatCard key={stat.id} stat={stat} />
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mb-12">
-          <button
-            onClick={() => onNavigate('market')}
-            className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-150 hover:opacity-85"
-            style={{ color: 'var(--accent)' }}
-          >
-            Explore the thesis
-            <ArrowRight size={14} />
-          </button>
-        </div>
-
-        {/* Divider */}
         <div
           className="border-t mb-8"
           style={{ borderColor: 'var(--border-subtle)' }}
         />
 
-        {/* Founder — always visible */}
         <div>
           <span
             className="font-mono text-xs font-medium tracking-wider block mb-4"
@@ -101,13 +117,13 @@ export default function ThesisSection({ onNavigate }) {
             ABOUT THE FOUNDER
           </span>
           <div
-            className="pt-4 border-t"
+            className="panel-shell p-5"
             style={{ borderColor: 'var(--border-subtle)' }}
           >
             <div className="flex flex-col sm:flex-row sm:items-start gap-4">
               <div className="flex-1">
                 <div
-                  className="font-semibold mb-1"
+                  className="font-serif text-[1.7rem] leading-none mb-2"
                   style={{ color: 'var(--text-primary)' }}
                 >
                   {THESIS.founderName}
@@ -127,11 +143,10 @@ export default function ThesisSection({ onNavigate }) {
                   href={THESIS.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-2 rounded border text-xs transition-all duration-150"
+                  className="button-outline flex items-center gap-1.5 px-3 py-2 text-xs"
                   style={{
                     color: 'var(--accent)',
                     borderColor: 'var(--accent-border-soft)',
-                    backgroundColor: 'var(--accent-soft)',
                   }}
                 >
                   <Linkedin size={12} />
