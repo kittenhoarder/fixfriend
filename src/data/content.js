@@ -31,6 +31,17 @@ export const THESIS = {
   founderSummary:
     '14 years in European electronic trading infrastructure. Technical product leader specialising in trading infrastructure at inflection points.',
   linkedinUrl: 'https://linkedin.com/in/oweneperry',
+  /** TL;DR for VC visitors: market size opportunity + tier-1 acquirer summary */
+  vcTldr: {
+    marketSummary:
+      'Entry TAM ~€450M (6,000 orgs × €75k). SAM ~€112M (high-automation segment). Target SOM: 10–25 customers, €1M–€2M ARR, then strategic embed for acquisition.',
+    tier1Acquirers: [
+      { name: 'ION Markets', fit: 'OMS/EMS stack; missing agent layer — FIXFriend bolts onto existing client base.' },
+      { name: 'Broadridge', fit: 'Connectivity → OMS → execution; autonomous agent layer missing; founder ex-Itiviti/Broadridge.' },
+      { name: 'Murex', fit: 'MX.3 clients are the firms with manual FIX cycles; agent embeds into platform.' },
+      { name: 'Trading Technologies', fit: '100+ exchanges; every venue change affects clients; agent is upsell to base.' },
+    ],
+  },
 }
 
 export const MARKET_NODES = {

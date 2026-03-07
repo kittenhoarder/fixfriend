@@ -135,6 +135,34 @@ export default function ThesisSection({ onNavigate }) {
           ))}
         </div>
 
+        {THESIS.vcTldr && (
+          <div
+            className="panel-shell rounded-lg p-5 mb-10"
+            style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
+          >
+            <span
+              className="font-mono text-xs font-semibold tracking-widest block mb-3"
+              style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
+            >
+              TL;DR FOR VCs
+            </span>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
+              {THESIS.vcTldr.marketSummary}
+            </p>
+            <div className="mb-2 font-mono text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>
+              Tier-1 acquirer fit
+            </div>
+            <ul className="space-y-2">
+              {THESIS.vcTldr.tier1Acquirers.map((a, i) => (
+                <li key={i} className="text-sm flex flex-wrap gap-x-2 gap-y-0">
+                  <span style={{ color: 'var(--accent)' }}>{a.name}</span>
+                  <span style={{ color: 'var(--text-secondary)' }}>— {a.fit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <div
           className="border-t mb-8"
           style={{ borderColor: 'var(--border-subtle)' }}
