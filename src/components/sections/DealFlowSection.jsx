@@ -48,7 +48,7 @@ export default function DealFlowSection() {
             className="font-mono font-bold text-base mb-2"
             style={{ color: 'var(--text-primary)' }}
           >
-            5 Verified Deals — 12 Months
+            9 Verified Deals — 12 Months
           </h2>
           <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
             Click a deal marker to see the detail and pattern evidence.

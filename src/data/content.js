@@ -17,16 +17,16 @@ export const THESIS = {
       id: 'deals',
       value: '5',
       label: 'VERIFIED DEALS IN 12 MONTHS',
-      detail: '$B+ in trading infrastructure M&A',
+      detail: 'Billions $  in trading infrastructure M&A',
     },
     {
       id: 'firms',
       value: '~1,500',
       label: 'TARGET FIRMS',
-      detail: 'Multi-venue connected sell-side entities',
+      detail: 'Multi-venue connected entities',
     },
   ],
-  founderName: 'Owen Perry',
+  founderName: 'Owen E. Perry',
   founderTitle: 'Technical Product & Trading Technology Leader',
   founderSummary:
     '14 years in European electronic trading infrastructure. Technical product leader specialising in trading infrastructure at inflection points.',
@@ -62,7 +62,7 @@ export const MARKET_NODES = {
     label: 'DORA',
     band: 'regulatory',
     title: 'DORA — Digital Operational Resilience Act',
-    status: 'In application since January 2025. Enforcement deepening 2026.',
+    status: 'Active from Jan 2025. Enforcement deepening 2026.',
     statusColor: 'green',
     body: 'Mandates ICT risk management, incident reporting, and digital operational resilience testing for financial entities. ESMA and fellow ESAs jointly overseeing critical third-party ICT providers from 2026.',
     implication:
@@ -192,7 +192,7 @@ export const GAP = {
         highlight: true,
       },
     ],
-    total: '2–4 WEEKS PER CHANGE, PER VENUE',
+    total: '2–4 WEEKS PER CHANGE, PER VENUE, AT MINIMUM',
     risk: 'With 10–20 venue connections and multiple changes per venue per year, a typical sell-side firm faces 50–200+ compliance cycles annually. Each one is manual. Each one carries production risk and audit risk.',
   },
   automated: {
@@ -563,12 +563,78 @@ export const DEALS = [
     relevance:
       "Founder's edge: Owen Perry worked at both Itiviti and Broadridge, including directly with Tbricks and the BTCS stack (VeriFIX, NYFIX). Knows the gap firsthand.",
   },
+  {
+    id: 'marketaxess-rfqhub',
+    logoKey: 'marketaxess',
+    date: 'May 2025',
+    dateSort: '2025-05-12',
+    acquirer: 'MarketAxess',
+    target: 'RFQ-hub',
+    status: 'Closed',
+    acquirerType: 'Public (NASDAQ: MKTX)',
+    timeline: '~1 month',
+    dealLogic:
+      'Acquire 90% of RFQ-hub, a multi-asset RFQ platform for derivatives, structured products and ETFs. Expand electronic trading protocols and distribution via MarketAxess\'s global client network.',
+    pattern:
+      'Electronic trading protocol consolidation. RFQ-hub adds protocol and connectivity breadth; venue and protocol change management remains a compliance and operational burden for clients.',
+    relevance: null,
+  },
+  {
+    id: 'kkr-osttra',
+    logoKey: 'kkr',
+    date: 'Oct 2025',
+    dateSort: '2025-10-10',
+    acquirer: 'KKR',
+    target: 'OSTTRA',
+    status: 'Closed',
+    acquirerType: 'Private Equity',
+    timeline: '~6 months',
+    dealValue: '~$3.1B',
+    dealLogic:
+      'Acquire post-trade solutions provider from S&P Global and CME Group. OSTTRA handles trade processing, lifecycle management and optimization across rates, FX, credit and equities.',
+    pattern:
+      'Post-trade infrastructure consolidation. Larger stacks mean more touchpoints and protocol dependencies; compliance evidence and change-control remain critical across the trade lifecycle.',
+    relevance: null,
+  },
+  {
+    id: 'six-baymarkets',
+    logoKey: 'six',
+    date: '25 Nov 2025',
+    dateSort: '2025-11-25',
+    acquirer: 'SIX Group',
+    target: 'Baymarkets',
+    status: 'Closed',
+    acquirerType: 'Private (Swiss bank-owned)',
+    timeline: '~3 months',
+    dealLogic:
+      'Strengthen pan-European clearing. Baymarkets (Oslo) provides clearing platform technology; SIX integrates clearing capabilities across derivatives and multiple asset classes.',
+    pattern:
+      'Exchange and clearing consolidation. SIX now operates multiple venues and clearing systems; member certification and connectivity compliance scale with each new platform.',
+    relevance:
+      'SIX already acquired Aquis (deal on timeline). More venues and clearing systems under one roof amplifies certification and protocol evidence needs.',
+  },
+  {
+    id: 'tt-opengamma',
+    logoKey: 'tt',
+    date: '17 Dec 2025',
+    dateSort: '2025-12-17',
+    acquirer: 'Trading Technologies',
+    target: 'OpenGamma',
+    status: 'Closed',
+    acquirerType: 'Private',
+    timeline: '~2 months',
+    dealLogic:
+      'Integrate margin and capital optimization analytics into TT\'s execution and clearing stack. OpenGamma serves buy-side and sell-side; TT gains hedge fund and energy sector reach.',
+    pattern:
+      'Front-to-back derivatives stack. TT adds margin analytics to execution and clearing; compliance and evidence around protocol changes and venue certification remain manual.',
+    relevance: null,
+  },
 ]
 
 export const ABOUT = {
   name: 'Owen Perry',
   title: 'Technical Product & Trading Technology Leader',
-  career: ['Nasdaq', 'Itiviti', 'Broadridge', 'Quod Financial', 'Tradeteq (acquired)'],
+  career: ['FactSet', 'Nasdaq OMX', 'Itiviti', 'Ai eXchange (AiX, acquired)', 'Quod Financial', 'Broadridge', 'Onyx Capital Group', 'Tradeteq (acquired)', 'Bermuda Commercial Bank'],
   summary:
     '14 years in European electronic trading infrastructure. Built, stabilised, and shipped revenue-critical trading systems for Tier-1 banks, exchanges, and fintech. Contributed to acquisition outcomes by clarifying platform strategy and market positioning.',
   experience: [
@@ -598,7 +664,7 @@ export const NAV_TABS = [
 export const DEFINITION = {
   origin: {
     title: 'Origin',
-    body: "I've spent over a decade inside electronic trading infrastructure — at Nasdaq operating live European markets, at Itiviti supporting FIX-based trading systems for Nordic banks, and at Broadridge and Quod delivering OMS/EMS connectivity programmes for Tier-1 institutions. I worked directly with Tbricks (Itiviti's EMS) and the Broadridge Trading and Connectivity Solutions (BTCS) stack — including VeriFIX and NYFIX — most intimately while at Broadridge. Across all of it the same pattern appeared: every protocol change triggered the same manual cycle. Someone read the PDF. Tests were rebuilt. Evidence was assembled retroactively. The problem was absorbed into engineering headcount and never automated.\n\nThat's the gap FIXFriend is built to close. But I hold the idea loosely. The core insight — that verification in electronic trading remains manual despite enormous system complexity — is what I'm confident in. The exact form the solution takes will be shaped by what I learn from the market.\n\nOne live constraint is that regulated trading firms are cautious about deploying AI inside their infrastructure. Local deployment addresses the data sovereignty concern, but adoption friction is real and I'm not pretending otherwise. The opportunity may be in the workflow layer above the systems, not inside them. I'm currently testing where the boundary sits.",
+    body: "I've spent over a decade inside electronic trading infrastructure — at Nasdaq operating live European markets, and at multiple institutional trading solution companies supporting FIX-based trading systems for Tier-1/2/3 institutions. I've personally managed highly interconnected trading systems and have encountered this precise problem personally, multiple times over my career. The pattern with this problem was this: every protocol change triggered the same manual cycle. Someone read the PDF. Tests were rebuilt. Many times the specifications differed from the software implementation. Evidence was assembled retroactively. The problem was absorbed into engineering headcount and never automated.\n\nThat's the gap FIXFriend is built to close. But I hold the idea loosely. The core insight — that verification in electronic trading remains manual despite enormous system complexity — is what I'm confident in. The exact form the solution takes will be shaped by what I learn from the market.\n\nOne live constraint is that regulated trading firms are cautious about deploying AI inside their infrastructure. Local deployment addresses the data sovereignty concern, but adoption friction is real and I'm not pretending otherwise. The opportunity may be in the workflow layer above the systems, not inside them. I'm currently testing where the boundary sits.",
   },
   marketDefinition: {
     title: 'Market Definition',

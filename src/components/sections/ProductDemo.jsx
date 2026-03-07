@@ -147,12 +147,13 @@ function ToggleSystemCard({ system, selected, disabled, onToggle }) {
       type="button"
       onClick={() => onToggle(system.id)}
       disabled={disabled}
-      className="text-left border p-4 transition-all duration-200"
+      className="text-left rounded-md border p-4 transition-all duration-200"
       style={{
         borderColor: selected ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
         background: selected
           ? 'linear-gradient(135deg, rgba(59,130,246,0.12), rgba(249,115,22,0.06) 90%, transparent)'
-          : 'var(--surface)',
+          : 'var(--surface2)',
+        boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.08), inset 0 -1px 1px rgba(255,255,255,0.03)',
         opacity: disabled ? 0.78 : 1,
       }}
     >
@@ -185,17 +186,18 @@ function AlertCard({ alert, selectedState, disabled, onSelect }) {
     ? 'var(--status-success-soft)'
     : selectedState === 'wrong'
       ? 'var(--status-danger-soft)'
-      : 'var(--surface)'
+      : 'var(--surface2)'
 
   return (
     <button
       type="button"
       onClick={() => onSelect(alert)}
       disabled={disabled}
-      className="text-left border p-4 transition-all duration-200"
+      className="text-left rounded-md border p-4 transition-all duration-200"
       style={{
         borderColor,
         background,
+        boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.08), inset 0 -1px 1px rgba(255,255,255,0.03)',
         opacity: disabled ? 0.84 : 1,
       }}
     >

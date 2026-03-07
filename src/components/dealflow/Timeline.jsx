@@ -55,11 +55,10 @@ export default function Timeline({ activeDealId, onDealClick }) {
                     {deal.date}
                   </span>
                 </div>
-                <div className="font-mono text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>
-                  {deal.acquirer}
-                </div>
-                <div className="font-mono text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
-                  → {deal.target}
+                <div className="font-mono text-xs text-center">
+                  <div className="font-semibold" style={{ color: 'var(--text-primary)' }}>{deal.acquirer}</div>
+                  <div className="text-[10px] mt-0.5" style={{ color: 'var(--text-tertiary)' }}>↓</div>
+                  <div className="mt-0.5" style={{ color: 'var(--text-secondary)' }}>{deal.target}</div>
                 </div>
               </button>
             )
@@ -79,41 +78,51 @@ export default function Timeline({ activeDealId, onDealClick }) {
           className="flex justify-between mb-1 font-mono text-xs"
           style={{ color: 'var(--text-secondary)' }}
         >
-          <span>Aug 2025</span>
+          <span>May 2025</span>
           <span>Feb 2026</span>
         </div>
 
-        <div className="relative" style={{ height: '48px' }}>
+        <div className="relative" style={{ height: '92px' }}>
           <div
-            className="absolute top-1/2 left-0 right-0"
+            className="absolute left-0 right-0"
             style={{
+              top: '16px',
               height: '1px',
               backgroundColor: 'var(--border-subtle)',
-              transform: 'translateY(-50%)',
             }}
           />
 
           {SORTED_DEALS.map((deal, i) => {
             const pct = getPosition(i)
             const isActive = activeDealId === deal.id
-            const dotColor = getDotColor(getStatusType(deal))
+            const statusType = getStatusType(deal)
+            const dotColor = getDotColor(statusType)
+            const isFloor2 = i % 2 === 0
+            const FLOOR1_TOP = 28
+            const FLOOR2_TOP = 62
+            const STEM_HEIGHT = FLOOR2_TOP - FLOOR1_TOP - 4
 
             return (
               <div
                 key={deal.id}
-                className="absolute"
+                className="absolute flex flex-col items-center text-center"
                 style={{
                   left: `${pct}%`,
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)',
+                  top: 0,
+                  transform: 'translateX(-50%)',
+                  width: 'max-content',
+                  maxWidth: '120px',
+                  minHeight: '92px',
                 }}
               >
                 <button
+                  type="button"
                   onClick={() => onDealClick(deal.id)}
-                  className="timeline-dot relative flex items-center justify-center rounded-full focus:outline-none"
+                  className="rounded-full focus:outline-none flex-shrink-0"
                   style={{
-                    width: isActive ? '20px' : '16px',
-                    height: isActive ? '20px' : '16px',
+                    width: isActive ? 20 : 16,
+                    height: isActive ? 20 : 16,
+                    marginTop: isActive ? 4 : 8,
                     backgroundColor: dotColor,
                     boxShadow: isActive
                       ? `0 0 0 4px ${dotColor}30, 0 0 12px ${dotColor}40`
@@ -122,53 +131,56 @@ export default function Timeline({ activeDealId, onDealClick }) {
                     animation: `fade-in-up 0.35s ease-out ${i * 80}ms forwards`,
                     opacity: 0,
                   }}
-                  title={`${deal.acquirer} → ${deal.target}`}
+                  title={`${deal.acquirer} ↓ ${deal.target}`}
                 />
+                {isFloor2 ? (
+                  <>
+                    <div
+                      className="w-px flex-shrink-0"
+                      style={{
+                        height: `${STEM_HEIGHT}px`,
+                        backgroundColor: isActive ? dotColor : 'var(--border-subtle)',
+                        transition: 'background-color 0.15s',
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => onDealClick(deal.id)}
+                      className="font-mono text-center w-full focus:outline-none absolute left-1/2 flex flex-col items-center"
+                      style={{
+                        top: `${FLOOR2_TOP}px`,
+                        transform: 'translateX(-50%)',
+                        color: isActive ? 'var(--text-primary)' : 'var(--text-tertiary)',
+                        transition: 'color 0.15s',
+                        fontSize: '0.65rem',
+                        lineHeight: 1.25,
+                      }}
+                    >
+                      <span style={{ color: isActive ? dotColor : 'var(--text-secondary)' }}>{deal.acquirer}</span>
+                      <span style={{ color: 'var(--text-tertiary)', fontSize: '0.5rem' }}>↓</span>
+                      <span>{deal.target}</span>
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => onDealClick(deal.id)}
+                    className="font-mono text-center w-full focus:outline-none absolute left-1/2 flex flex-col items-center"
+                    style={{
+                      top: `${FLOOR1_TOP}px`,
+                      transform: 'translateX(-50%)',
+                      color: isActive ? 'var(--text-primary)' : 'var(--text-tertiary)',
+                      transition: 'color 0.15s',
+                      fontSize: '0.65rem',
+                      lineHeight: 1.25,
+                    }}
+                  >
+                    <span style={{ color: isActive ? dotColor : 'var(--text-secondary)' }}>{deal.acquirer}</span>
+                    <span style={{ color: 'var(--text-tertiary)', fontSize: '0.5rem' }}>↓</span>
+                    <span>{deal.target}</span>
+                  </button>
+                )}
               </div>
-            )
-          })}
-        </div>
-
-        <div className="relative mt-4" style={{ height: '56px' }}>
-          {SORTED_DEALS.map((deal, i) => {
-            const pct = getPosition(i)
-            const isActive = activeDealId === deal.id
-            const dotColor = getDotColor(getStatusType(deal))
-
-            return (
-              <button
-                key={deal.id}
-                onClick={() => onDealClick(deal.id)}
-                className="absolute text-left"
-                style={{
-                  left: `${pct}%`,
-                  top: '0',
-                  transform: 'translateX(-50%)',
-                  maxWidth: '120px',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                <div
-                  className="font-mono font-semibold leading-tight"
-                  style={{
-                    color: isActive ? dotColor : 'var(--text-secondary)',
-                    transition: 'color 0.15s',
-                    fontSize: '0.65rem',
-                  }}
-                >
-                  {deal.acquirer}
-                </div>
-                <div
-                  className="font-mono leading-tight"
-                  style={{
-                    color: isActive ? 'var(--text-primary)' : 'var(--text-tertiary)',
-                    transition: 'color 0.15s',
-                    fontSize: '0.65rem',
-                  }}
-                >
-                  → {deal.target}
-                </div>
-              </button>
             )
           })}
         </div>
