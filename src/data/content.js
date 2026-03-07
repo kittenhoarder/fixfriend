@@ -30,7 +30,7 @@ export const THESIS = {
   founderTitle: 'Technical Product & Trading Technology Leader',
   founderSummary:
     '14 years in European electronic trading infrastructure. Technical product leader specialising in trading infrastructure at inflection points.',
-  linkedinUrl: 'https://www.linkedin.com/in/owenperry/',
+  linkedinUrl: 'https://linkedin.com/in/oweneperry',
 }
 
 export const MARKET_NODES = {
@@ -647,7 +647,7 @@ export const ABOUT = {
   ],
   closing:
     'FIXFriend exists because I have spent a career watching this problem compound — and I know it can be solved by an agent that does what engineers currently do manually.',
-  linkedinUrl: 'https://www.linkedin.com/in/owenperry/',
+  linkedinUrl: 'https://linkedin.com/in/oweneperry',
 }
 
 export const NAV_TABS = [

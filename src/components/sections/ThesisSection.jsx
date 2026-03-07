@@ -52,23 +52,54 @@ export default function ThesisSection({ onNavigate }) {
           }}
         >
           <div
-            className="absolute right-0 top-0 h-16 w-16 border-l border-b"
+            className="absolute right-0 bottom-0 h-16 w-16 border-t border-l"
             style={{ borderColor: 'var(--border-subtle)' }}
           />
-          <h1
-            className="font-serif leading-[0.94] mb-5 max-w-2xl"
-            style={{ fontSize: 'clamp(2.7rem, 8vw, 5.4rem)', color: 'var(--text-primary)' }}
+          <div
+            className="mb-5 gap-5 md:gap-6"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'clamp(4.5rem, 14vw, 8.5rem) 1fr',
+              alignItems: 'start',
+            }}
           >
-            {THESIS.headline.split('\n').map((line, i) => (
-              <span
-                key={i}
-                style={{ color: i === THESIS.headline.split('\n').length - 1 ? 'var(--accent)' : 'inherit' }}
+            <div
+              className="mt-0.5"
+              style={{ color: 'var(--amber)' }}
+              aria-hidden
+            >
+              <svg
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-full h-auto"
+                style={{ width: 'clamp(4.5rem, 14vw, 8.5rem)', height: 'clamp(4.5rem, 14vw, 8.5rem)' }}
+                fill="currentColor"
               >
-                {i > 0 && <br />}
-                {line}
-              </span>
-            ))}
-          </h1>
+                <path d="M175.656 22.375l-48.47 82.094c-23.017 4.384-43.547 11.782-60.124 22.374-24.436 15.613-40.572 37.414-45.5 67.875-4.79 29.62 1.568 68.087 24.125 116.093 93.162 22.88 184.08-10.908 257.25-18.813 37.138-4.012 71.196-.898 96.344 22.97 22.33 21.19 36.21 56.808 41.908 113.436 29.246-35.682 44.538-69.065 49.343-99.594 5.543-35.207-2.526-66.97-20.31-95.593-8.52-13.708-19.368-26.618-32-38.626l14.217-33-41.218 10.625c-8.637-6.278-17.765-12.217-27.314-17.782l-7.03-59.782-38.157 37.406c-12.418-5.186-25.184-9.804-38.158-13.812l-8.375-71.28-57.625 56.5c-9.344-1.316-18.625-2.333-27.812-2.97l-31.094-78.125zM222 325.345c-39.146 7.525-82.183 14.312-127.156 11.686 47.403 113.454 207.056 224.082 260.125 87-101.18 33.84-95.303-49.595-132.97-98.686z" />
+              </svg>
+            </div>
+            <h1
+              className="font-serif leading-[0.94]"
+              style={{ fontSize: 'clamp(2.7rem, 8vw, 5.4rem)', color: 'var(--text-primary)' }}
+            >
+              {THESIS.headline.split('\n')[0]}
+            </h1>
+            <div
+              className="font-serif leading-[0.94]"
+              style={{
+                gridColumn: '1 / -1',
+                fontSize: 'clamp(2.7rem, 8vw, 5.4rem)',
+                color: 'var(--accent)',
+              }}
+            >
+              {THESIS.headline.split('\n').slice(1).map((line, i) => (
+                <span key={i}>
+                  {i > 0 && <br />}
+                  {line}
+                </span>
+              ))}
+            </div>
+          </div>
 
           <p
             className="text-base leading-relaxed mb-8 max-w-2xl"

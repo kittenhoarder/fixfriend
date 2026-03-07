@@ -56,9 +56,9 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
           <div className="eyebrow mb-3" style={{ color: 'var(--text-tertiary)' }}>
             Investor Explorer
           </div>
-          <div className="flex items-start gap-3">
+          <div className="flex items-center gap-3">
             <div
-              className="mt-1 h-10 w-10 border flex items-center justify-center flex-shrink-0 overflow-hidden"
+              className="h-10 w-10 border flex items-center justify-center flex-shrink-0 overflow-hidden"
               style={{
                 borderColor: 'var(--accent-border-soft)',
                 background:
@@ -80,16 +80,8 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
                 />
               </svg>
             </div>
-            <div>
-              <div className="font-serif leading-none text-[1.7rem]" style={{ color: 'var(--text-primary)' }}>
-                FIXFriend
-              </div>
-              <div
-                className="font-mono text-[11px] mt-2"
-                style={{ color: 'var(--muted)', letterSpacing: '0.16em' }}
-              >
-                LEAN EXIT SYSTEM
-              </div>
+            <div className="font-serif leading-none text-[1.7rem]" style={{ color: 'var(--text-primary)' }}>
+              FIXFriend
             </div>
           </div>
         </div>
