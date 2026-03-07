@@ -32,6 +32,10 @@ npm run build      # production build to dist/
 npm run preview    # preview production build
 ```
 
+### Optional password gate
+
+To require a password before entering the app, set `VITE_GATE_PASSWORD` in a **`.env`** file in the project root (Vite does not load `.env.example`). Copy the variable from `.env.example` into `.env` and set your password. Restart the dev server after changing `.env`.
+
 ## Content Integrity
 
 All factual content (dates, figures, company details, regulatory language) is
@@ -66,7 +70,7 @@ against `fixfriend_artifacts.md`.
 
 Single-page app with tab-based navigation (no router). State managed with
 `useState` hooks in each section. All content is static — no API calls,
-no backend, no localStorage.
+no backend. SessionStorage is used only for the optional password gate (see above).
 
 ```
 src/
@@ -74,6 +78,7 @@ src/
   data/
     content.js          # Single source of truth for all displayed content
   components/
+    PasswordGate.jsx    # Optional env-gated password screen (when VITE_GATE_PASSWORD set)
     Sidebar.jsx
     AboutModal.jsx
     sections/           # One file per tab
