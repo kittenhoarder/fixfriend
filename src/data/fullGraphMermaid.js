@@ -102,8 +102,7 @@ Pan-European footprint"])
 Private (Swiss banks) · ~CHF 1.6B revenue
 Acquired Aquis (July 2025)"])
     X4(["Nasdaq Nordic
-Public · ~$6B revenue
-Your background"])
+Public · ~$6B revenue"])
   end
 
   subgraph TECH["FINTECH / WEALTH TECH"]

@@ -57,6 +57,12 @@ export const LOGO_MANIFEST = {
   factset: {
     fallbackText: 'FDS',
   },
+  marketaxess: {
+    fallbackText: 'MKTX',
+  },
+  kkr: {
+    fallbackText: 'KKR',
+  },
 }
 
 export function getLogoMeta(logoKey, label) {
