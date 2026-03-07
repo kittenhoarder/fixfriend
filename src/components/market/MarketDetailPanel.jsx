@@ -1,4 +1,4 @@
-import { MARKET_NODES, MARKET_DEFAULT_DETAIL } from '../../data/content'
+import { MARKET_NODES, MARKET_DEFAULT_DETAIL, DEFINITION } from '../../data/content'
 import StatusPill from '../ui/StatusPill'
 import BrandLogo from '../ui/BrandLogo'
 
@@ -169,7 +169,27 @@ function TriggerPanel({ node }) {
   )
 }
 
+function InlineBold({ text }) {
+  const parts = []
+  let rest = text
+  let key = 0
+  while (rest.length) {
+    const bold = rest.match(/\*\*([^*]+)\*\*/)
+    if (bold) {
+      const before = rest.slice(0, bold.index)
+      if (before) parts.push(<span key={key++}>{before}</span>)
+      parts.push(<strong key={key++} style={{ color: 'var(--text-primary)' }}>{bold[1]}</strong>)
+      rest = rest.slice(bold.index + bold[0].length)
+    } else {
+      parts.push(<span key={key++}>{rest}</span>)
+      break
+    }
+  }
+  return <>{parts}</>
+}
+
 function FirmsPanel({ node }) {
+  const ms = DEFINITION.marketSize
   return (
     <div className="animate-slide-in-right">
       <PanelHeading node={node} label="DEMAND SIDE" />
@@ -188,6 +208,58 @@ function FirmsPanel({ node }) {
       <Section label="Today">
         <span style={{ color: 'var(--status-danger)' }}>{node.today}</span>
       </Section>
+
+      <div
+        className="mt-6 pt-4 border-t"
+        style={{ borderColor: 'var(--border-subtle)' }}
+      >
+        <div
+          className="font-mono text-xs tracking-widest mb-3 uppercase"
+          style={{ color: 'var(--amber)', letterSpacing: '0.1em' }}
+        >
+          Market size
+        </div>
+        <div className="space-y-3 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+          <div>
+            <span className="font-mono text-xs font-semibold block mb-1" style={{ color: 'var(--text-primary)' }}>
+              {ms.entry.label}
+            </span>
+            <p className="whitespace-pre-line">
+              {ms.entry.body.split('\n\n').map((p, i) => (
+                <span key={i}>
+                  {i > 0 && <><br /><br /></>}
+                  {p.split('\n').map((line, j) => (
+                    <span key={j}>
+                      <InlineBold text={line} />
+                      {j < p.split('\n').length - 1 && <br />}
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </p>
+          </div>
+          <div>
+            <span className="font-mono text-xs font-semibold block mb-1" style={{ color: 'var(--text-primary)' }}>
+              {ms.expansion.label}
+            </span>
+            <p>{ms.expansion.body}</p>
+          </div>
+        </div>
+        <div
+          className="mt-3 rounded-lg px-3 py-2 border"
+          style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
+        >
+          <span className="font-mono text-xs" style={{ color: 'var(--text-tertiary)' }}>SAM: </span>
+          <span style={{ color: 'var(--text-primary)' }}><InlineBold text={ms.sam} /></span>
+        </div>
+        <div
+          className="mt-2 rounded-lg px-3 py-2 border"
+          style={{ borderColor: 'var(--accent-border-soft)', backgroundColor: 'var(--accent-softer)' }}
+        >
+          <span className="font-mono text-xs" style={{ color: 'var(--accent)' }}>SOM: </span>
+          <span style={{ color: 'var(--text-secondary)' }}>{ms.som}</span>
+        </div>
+      </div>
     </div>
   )
 }
