@@ -3,9 +3,9 @@
 // artifacts file first.
 
 export const THESIS = {
-  headline: 'THE COMPLIANCE EVIDENCE GAP\nIN EUROPEAN TRADING INFRASTRUCTURE',
+  headline: 'AN AUTONOMOUS AGENT\nFOR FIX PROTOCOL CHANGES',
   subheadline:
-    'A lean-exit startup building automated protocol change-control and compliance evidence for electronic trading firms. This site lays out the thesis, market, and potential acquirers.',
+    'An autonomous agent that monitors venue specifications, diffs against client systems, and produces actionable change requirements — with a continuous audit trail that compliance can review and intercept at any point. This site lays out the thesis, market, and potential acquirers.',
   stats: [
     {
       id: 'regulatory',
@@ -197,51 +197,51 @@ export const GAP = {
   },
   automated: {
     title: 'WITH FIXFRIEND',
-    subtitle: 'Automated protocol change-control',
+    subtitle: 'Autonomous agent-driven change-control',
     tint: 'blue',
     steps: [
       {
         number: '01',
         title: 'SPEC UPDATE DETECTED',
-        detail: 'Automated ingestion. Parsed and normalised.',
+        detail: 'Agent monitors venue channels and ingests specs automatically.',
         time: null,
       },
       {
         number: '02',
         title: 'IMPACT ASSESSMENT',
-        detail: 'Automated diff against current gateway configuration.',
+        detail: 'Agent diffs against current system configuration.',
         time: 'Minutes',
       },
       {
         number: '03',
-        title: 'CHANGE RECOMMENDATION',
-        detail: 'Proposed configuration changes with validation rules.',
+        title: 'CHANGE REQUIREMENTS',
+        detail: 'Agent produces actionable requirements with proposed changes.',
         time: 'Minutes',
       },
       {
         number: '04',
         title: 'AUTOMATED TESTING',
-        detail: 'Continuous validation against venue certification environments.',
+        detail: 'Agent runs validation against venue certification environments.',
         time: 'Hours',
       },
       {
         number: '05',
         title: 'CERTIFIED DEPLOYMENT',
-        detail: 'Evidence generated at point of change. Audit-ready.',
+        detail: 'Agent emits audit-ready evidence at every step.',
         time: null,
       },
       {
         number: '06',
-        title: 'CONTINUOUS EVIDENCE',
+        title: 'CONTINUOUS AUDIT TRAIL',
         detail:
-          'Compliance evidence produced continuously and stored. Available instantly when regulator asks. Machine-readable.',
+          'Continuous audit trail — compliance reviews and intercepts at any point. Available instantly when regulator asks. Machine-readable.',
         time: null,
         highlight: true,
       },
     ],
     total: 'HOURS, NOT WEEKS. CONTINUOUS, NOT RETROACTIVE.',
     summary:
-      'FIXFriend is the missing automation layer between venue protocol changes and compliance evidence. No one owns this layer today.',
+      'FIXFriend is the autonomous agent between venue protocol changes and your trading systems. It sources, diffs, acts, and creates the audit trail. No one owns this layer today.',
   },
 }
 
@@ -262,9 +262,9 @@ export const ACQUIRERS = [
         oneliner: 'OMS/EMS stack — Fidessa, Broadway Technology',
         decisionSpeed: 'fast',
         owns: 'OMS/EMS stack (Fidessa, Broadway Technology), trading infrastructure across fixed income and derivatives. ~13,000 employees. $6B+ debt.',
-        missing: 'Compliance evidence layer. No automated change-control.',
+        missing: 'Autonomous change-control agent. No system sources specs, diffs, and acts.',
         recentMA: 'Historically highly acquisitive (Broadway Technology, Fidessa, DASH Financial, Clarus FT)',
-        fit: 'ION owns the plumbing but not the compliance evidence. FIXFriend bolts directly onto their existing client base.',
+        fit: 'ION owns the plumbing but not the agent layer. FIXFriend bolts directly onto their existing client base.',
       },
       {
         id: 'broadridge',
@@ -276,9 +276,9 @@ export const ACQUIRERS = [
         oneliner: 'Connectivity · OMS (Itiviti/BTCS) · Execution (CQG)',
         decisionSpeed: 'medium',
         owns: 'Connectivity, order management (Itiviti, 2021 — now BTCS: Broadridge Trading and Connectivity Solutions). Within BTCS: Tbricks (EMS), VeriFIX (FIX onboarding and testing; test cases built manually, no AI automation), managed FIX service, NYFIX. Execution (CQG, announced Feb 2026), fund distribution (Acolin, 2025).',
-        missing: 'Automated compliance validation and evidence. VeriFIX supports FIX onboarding and testing but test cases are built manually; there is no continuous automated change-control layer.',
+        missing: 'Autonomous change-control agent. VeriFIX supports FIX onboarding and testing but test cases are built manually; there is no agent that sources specs, diffs, and acts.',
         recentMA: 'CQG (6 Feb 2026, expected close June 2026), Acolin (2025), Signal (2025)',
-        fit: 'Broadridge owns connectivity → OMS → execution. Compliance evidence is the missing layer. Founder worked at both Itiviti and Broadridge — including directly with Tbricks and the BTCS stack — and knows the gap firsthand.',
+        fit: 'Broadridge owns connectivity → OMS → execution. The autonomous agent layer is missing. Founder worked at both Itiviti and Broadridge — including directly with Tbricks and the BTCS stack — and knows the gap firsthand.',
       },
       {
         id: 'murex',
@@ -291,9 +291,9 @@ export const ACQUIRERS = [
         oneliner: 'MX.3 cross-asset trading & risk platform · 60,000+ users',
         decisionSpeed: 'fast',
         owns: 'MX.3 — dominant cross-asset trading and risk platform. 60,000+ users across 65+ countries. 3,400 employees.',
-        missing: 'Venue connectivity compliance. MX.3 clients connect to multiple venues; protocol changes are a pain point.',
+        missing: 'Autonomous agent for venue connectivity changes. MX.3 clients connect to multiple venues; protocol changes are a pain point with no agent to source, diff, and act.',
         recentMA: 'Selective. Primarily organic growth and strategic partnerships (AWS, Publicis Sapient).',
-        fit: 'Murex clients are exactly the firms that suffer from manual FIX compliance cycles. Embedding FIXFriend into MX.3 is a natural extension.',
+        fit: 'Murex clients are exactly the firms that suffer from manual FIX compliance cycles. Embedding the FIXFriend agent into MX.3 is a natural extension.',
       },
       {
         id: 'tt',
@@ -305,9 +305,9 @@ export const ACQUIRERS = [
         oneliner: 'Derivatives execution · 100+ exchanges · Best Sell-Side OMS 2025/26',
         decisionSpeed: 'fast',
         owns: 'Derivatives execution infrastructure, multi-venue connectivity, compliance & trade surveillance, TCA. SaaS platform connecting to 100+ exchanges.',
-        missing: 'Compliance evidence automation for venue connectivity changes.',
+        missing: 'Autonomous agent for venue connectivity change-control.',
         recentMA: '7RIDGE acquired TT Dec 2021. Thoma Bravo invested July 2025 (closed Q4 2025). Abel Noser Solutions (Aug 2023). Cboe holds a live exit option (exercisable since Jan 2025, not yet exercised).',
-        fit: 'TT connects traders to 100+ exchanges. Every venue protocol change affects their clients. Compliance automation is an upsell to existing client base.',
+        fit: 'TT connects traders to 100+ exchanges. Every venue protocol change affects their clients. An autonomous change-control agent is an upsell to existing client base.',
       },
     ],
   },
@@ -327,9 +327,9 @@ export const ACQUIRERS = [
         oneliner: 'SIX Swiss Exchange · BME · Aquis · 16 EU/UK markets',
         decisionSpeed: 'fast',
         owns: 'SIX Swiss Exchange, BME (Spain), Aquis (16 EU/UK markets, acquired July 2025). Data, post-trade, payments.',
-        missing: 'Automated member certification tooling at pan-European scale.',
+        missing: 'Autonomous agent for member certification at pan-European scale.',
         recentMA: 'Aquis Exchange (closed 1 July 2025, ~£207M), Worldline EDM business (2025)',
-        fit: 'SIX now operates the most venue-diverse exchange group in Europe. Every member connecting to their venues goes through certification. FIXFriend automates this at exchange scale.',
+        fit: 'SIX now operates the most venue-diverse exchange group in Europe. Every member connecting to their venues goes through certification. The FIXFriend agent automates this at exchange scale.',
       },
       {
         id: 'dbg',
@@ -341,7 +341,7 @@ export const ACQUIRERS = [
         oneliner: 'Eurex · Xetra · Clearstream · SimCorp',
         decisionSpeed: 'slow',
         owns: 'Eurex, Xetra, Clearstream, ISS, SimCorp. Full exchange value chain.',
-        missing: 'Member-facing compliance automation tools.',
+        missing: 'Autonomous agent for member-facing change-control.',
         recentMA: 'SimCorp (2023, €3.9B)',
         fit: 'Strategic but slower path. Eurex members face the same certification pain. Deutsche Börse has the resources but longer decision cycles.',
       },
@@ -355,7 +355,7 @@ export const ACQUIRERS = [
         oneliner: 'Paris · Amsterdam · Brussels · Dublin · Lisbon · Oslo · Milan',
         decisionSpeed: 'slow',
         owns: 'Pan-European exchange across 7 markets. Post-trade via Euronext Clearing.',
-        missing: 'Harmonised member compliance tooling across 7 markets.',
+        missing: 'Autonomous agent for harmonised member change-control across 7 markets.',
         recentMA: 'Borsa Italiana group (2021), Euronext Clearing launch.',
         fit: "Euronext's multi-market structure means members deal with multiple protocol variations. Compliance harmonisation is a real operational need.",
       },
@@ -377,7 +377,7 @@ export const ACQUIRERS = [
         oneliner: 'Regulatory reporting accuracy testing · transaction surveillance',
         decisionSpeed: 'fast',
         owns: 'Regulatory reporting accuracy testing, transaction surveillance.',
-        missing: 'Protocol change management and venue connectivity compliance.',
+        missing: 'Autonomous agent for protocol change management and venue connectivity.',
         recentMA: 'PE-backed growth (Guidepost Growth Equity, £42M round November 2024).',
         fit: 'Kaizen already sells compliance tooling to trading firms. FIXFriend is a natural product extension — same buyer (Head of Compliance / Head of Electronic Trading), adjacent problem.',
       },
@@ -392,7 +392,7 @@ export const ACQUIRERS = [
         oneliner: 'Reconciliation · post-trade controls · 1,500+ clients',
         decisionSpeed: 'medium',
         owns: 'Reconciliation, post-trade controls, reference data management. 1,500+ clients including 70+ of world\'s top 100 banks.',
-        missing: 'Front-office / connectivity compliance automation.',
+        missing: 'Autonomous agent for front-office / connectivity change-control.',
         recentMA: 'Selective acquirer in post-trade space.',
         fit: 'SmartStream owns post-trade evidence and control. FIXFriend owns pre-trade / connectivity evidence and control. Complementary.',
       },
@@ -406,9 +406,9 @@ export const ACQUIRERS = [
         oneliner: 'Testing & QA for exchanges and trading venues',
         decisionSpeed: 'fast',
         owns: 'Testing and QA for exchanges and trading venues. Functional and performance testing of trading systems.',
-        missing: 'Continuous automated compliance evidence. Exactpro does project-based testing, not ongoing automation.',
+        missing: 'Autonomous agent for continuous change-control. Exactpro does project-based testing, not ongoing agent-driven automation.',
         recentMA: 'Growing through organic expansion.',
-        fit: 'Exactpro tests trading systems. FIXFriend automates the ongoing compliance testing triggered by protocol changes. Potential acqui-hire or product integration.',
+        fit: 'Exactpro tests trading systems. The FIXFriend agent automates the ongoing change-control triggered by protocol changes. Potential acqui-hire or product integration.',
       },
     ],
   },
@@ -428,9 +428,9 @@ export const ACQUIRERS = [
         oneliner: 'Exchange · Market Technology · Adenza (risk/regtech)',
         decisionSpeed: 'slow',
         owns: 'US and Nordic exchanges. Market Technology: trade surveillance (SMARTS), compliance, matching/clearing tech. Adenza ($10.5B, 2023): risk and regtech for banks and asset managers.',
-        missing: 'Connectivity-layer compliance evidence (protocol change, venue certification). Adenza is risk/reg; NASDAQ surveillance is trade surveillance, not spec-change automation.',
+        missing: 'Autonomous agent for connectivity-layer change-control (protocol change, venue certification). Adenza is risk/reg; NASDAQ surveillance is trade surveillance, not spec-change agents.',
         recentMA: 'Adenza (2023, $10.5B). Digesting; divesting Nordic power futures to Euronext.',
-        fit: 'NASDAQ already sells compliance and surveillance to sell-side firms. FIXFriend\'s protocol/connectivity evidence is an adjacent layer. Long shot while they integrate Adenza; optional if they later extend into venue-certification tooling.',
+        fit: 'NASDAQ already sells compliance and surveillance to sell-side firms. The FIXFriend agent\'s protocol/connectivity change-control is an adjacent layer. Long shot while they integrate Adenza; optional if they later extend into venue-certification agents.',
       },
       {
         id: 'lseg',
@@ -442,9 +442,9 @@ export const ACQUIRERS = [
         oneliner: 'LSE · Refinitiv · data · post-trade',
         decisionSpeed: 'slow',
         owns: 'London Stock Exchange, Refinitiv (data, analytics, trading), FTSE Russell, LCH, post-trade (e.g. Axoni acquisition). Serves sell-side and buy-side globally.',
-        missing: 'Dedicated connectivity compliance evidence tooling for venue protocol changes.',
+        missing: 'Autonomous agent for venue connectivity change-control.',
         recentMA: 'Axoni post-trade tech (2024). Refinitiv (2021). Selective, large deals.',
-        fit: 'LSEG owns trading venues, Refinitiv data, and post-trade tech. Compliance evidence for venue connectivity is a niche they don\'t currently serve. Possible tuck-in if they build out a broader compliance/workflow suite.',
+        fit: 'LSEG owns trading venues, Refinitiv data, and post-trade tech. An autonomous change-control agent for venue connectivity is a niche they don\'t currently serve. Possible tuck-in if they build out a broader agent/workflow suite.',
       },
       {
         id: 'cboe',
@@ -456,7 +456,7 @@ export const ACQUIRERS = [
         oneliner: 'Cboe options · equities · Europe · BIDS · TT stake',
         decisionSpeed: 'medium',
         owns: 'Cboe Options, Cboe US/European equities, BIDS Trading (block ATS), investment in Trading Technologies (7RIDGE). Trade Alert, Hanweck, FT Options (data/analytics).',
-        missing: 'Member-facing protocol and connectivity compliance automation.',
+        missing: 'Autonomous agent for member-facing protocol and connectivity change-control.',
         recentMA: 'BIDS Trading (2020). Trade Alert (2020). Investment in TT via 7RIDGE (2021).',
         fit: 'Cboe has bought trading and analytics tools and has a stake in TT. Member certification and connectivity compliance could become relevant; today they\'re not visibly building in this niche.',
       },
@@ -470,9 +470,9 @@ export const ACQUIRERS = [
         oneliner: 'Data · research · LiquidityBook (OMS) · AI compliance suite',
         decisionSpeed: 'medium',
         owns: 'Workstation, data, research, portfolio analytics. LiquidityBook (2025): OMS/IBOR. AI compliance suite (KYC, AML, risk) for banking clients.',
-        missing: 'Connectivity and protocol-change compliance evidence. Compliance suite is KYC/AML/risk, not venue certification.',
+        missing: 'Autonomous agent for connectivity and protocol-change management. Compliance suite is KYC/AML/risk, not venue certification agents.',
         recentMA: 'LiquidityBook (Feb 2025, ~$246M). Building out compliance and execution workflows.',
-        fit: 'FactSet is adding execution (LiquidityBook) and compliance (AI suite). FIXFriend\'s connectivity compliance evidence targets the same institutions. Possible add-on if they expand compliance into trading infrastructure.',
+        fit: 'FactSet is adding execution (LiquidityBook) and compliance (AI suite). The FIXFriend agent\'s connectivity change-control targets the same institutions. Possible add-on if they expand agent-driven compliance into trading infrastructure.',
       },
     ],
   },
@@ -646,7 +646,7 @@ export const ABOUT = {
     'Built and launched AiX, a conversational AI trading platform acquired by Blockchain.com',
   ],
   closing:
-    'FIXFriend exists because I have spent a career watching this problem compound — and I know exactly who will pay to solve it.',
+    'FIXFriend exists because I have spent a career watching this problem compound — and I know it can be solved by an agent that does what engineers currently do manually.',
   linkedinUrl: 'https://www.linkedin.com/in/owenperry/',
 }
 
@@ -664,11 +664,11 @@ export const NAV_TABS = [
 export const DEFINITION = {
   origin: {
     title: 'Origin',
-    body: "I've spent over a decade inside electronic trading infrastructure — at Nasdaq operating live European markets, and at multiple institutional trading solution companies supporting FIX-based trading systems for Tier-1/2/3 institutions. I've personally managed highly interconnected trading systems and have encountered this precise problem personally, multiple times over my career. The pattern with this problem was this: every protocol change triggered the same manual cycle. Someone read the PDF. Tests were rebuilt. Many times the specifications differed from the software implementation. Evidence was assembled retroactively. The problem was absorbed into engineering headcount and never automated.\n\nThat's the gap FIXFriend is built to close. But I hold the idea loosely. The core insight — that verification in electronic trading remains manual despite enormous system complexity — is what I'm confident in. The exact form the solution takes will be shaped by what I learn from the market.\n\nOne live constraint is that regulated trading firms are cautious about deploying AI inside their infrastructure. Local deployment addresses the data sovereignty concern, but adoption friction is real and I'm not pretending otherwise. The opportunity may be in the workflow layer above the systems, not inside them. I'm currently testing where the boundary sits.",
+    body: "I've spent over a decade inside electronic trading infrastructure — at Nasdaq operating live European markets, and at multiple institutional trading solution companies supporting FIX-based trading systems for Tier-1/2/3 institutions. I've personally managed highly interconnected trading systems and have encountered this precise problem personally, multiple times over my career. The pattern with this problem was this: every protocol change triggered the same manual cycle. Someone read the PDF. Tests were rebuilt. Many times the specifications differed from the software implementation. Evidence was assembled retroactively. The problem was absorbed into engineering headcount and never automated.\n\nThat's the gap FIXFriend is built to close — an autonomous agent that does what engineers currently do manually: source the spec, diff the system, produce the requirements, and create the evidence trail. But I hold the idea loosely. The core insight — that verification in electronic trading remains manual despite enormous system complexity — is what I'm confident in. The exact form the solution takes will be shaped by what I learn from the market.\n\nOne live constraint is that regulated trading firms are cautious about deploying AI inside their infrastructure. Local deployment addresses the data sovereignty concern, but adoption friction is real and I'm not pretending otherwise. The opportunity is in the agent layer above the systems — sourcing, diffing, and producing requirements — not inside the trading systems themselves. I'm currently testing where the boundary sits.",
   },
   marketDefinition: {
     title: 'Market Definition',
-    body: 'Modern financial markets are fully electronic. Trading firms connect directly to exchanges through standardized messaging gateways that transmit every order placed in the market.\n\nThese connections are regulated access points to public markets. Firms cannot trade without maintaining them.\n\nRegulators require firms to demonstrate that trading systems remain safe after every infrastructure change.\n\nToday, this verification process is still largely manual.\n\nFIXFriend defines a missing category:\n\n**→ Continuous verification and maintenance of market connectivity controls.**\n\nFIXFriend **begins** as compliance automation and **expands** into the operational control plane governing how trading firms deploy, validate, and maintain trading infrastructure.',
+    body: 'Modern financial markets are fully electronic. Trading firms connect directly to exchanges through standardized messaging gateways that transmit every order placed in the market.\n\nThese connections are regulated access points to public markets. Firms cannot trade without maintaining them.\n\nRegulators require firms to demonstrate that trading systems remain safe after every infrastructure change.\n\nToday, this verification process is still largely manual.\n\nFIXFriend defines a missing category:\n\n**→ An autonomous agent for continuous verification and maintenance of market connectivity controls.**\n\nFIXFriend **begins** as an agent that sources specs and produces compliance evidence, and **expands** into the operational control plane governing how trading firms deploy, validate, and maintain trading infrastructure.',
   },
   marketSize: {
     title: 'Market Size',
@@ -688,25 +688,25 @@ export const DEFINITION = {
 // Week 1 content: Product description
 export const PRODUCT_CONTENT = {
   solution: {
-    title: 'The FIXFriend Solution',
-    intro: 'FIXFriend introduces an automated change‑control layer for trading infrastructure.\n\nA locally deployed system that:',
+    title: 'The FIXFriend Agent',
+    intro: 'FIXFriend is an autonomous agent for trading infrastructure change-control.\n\nA locally deployed agent that:',
     bullets: [
-      'monitors exchange specification updates',
-      'detects semantic protocol changes',
-      'maps downstream system impact',
-      'generates regression tests',
-      'executes validation workflows',
-      'produces audit‑ready compliance evidence',
+      'proactively sources new specs via email, websites, and venue portals',
+      'diffs spec changes against client system configurations',
+      'maps downstream impact across connected systems',
+      'produces actionable requirements for engineering teams',
+      'executes validation workflows autonomously or on approval',
+      'emits a continuous audit trail that compliance can review and intercept',
     ],
     supervised: {
-      title: 'Supervised Development Automation',
-      body: "Compliance evidence is the entry point, not the ceiling. Once protocol changes are identified and validated, FIXFriend generates the implementation artifacts engineering teams need: configuration updates, regression tests, validation scenarios, and proposed gateway change sets. All outputs enter an approval workflow — engineers review before anything is deployed. This is not autonomous operation. It is supervised automation that reduces repetitive maintenance work while preserving full auditability and human control. Over time, gateway maintenance shifts from manual interpretation toward continuously validated infrastructure.",
+      title: 'Human-in-the-Loop Agent',
+      body: "The agent acts. Humans review and intercept. FIXFriend operates as an autonomous agent that sources specs, diffs systems, and produces change artifacts — configuration updates, regression tests, validation scenarios, and proposed gateway change sets. All outputs enter an approval workflow before deployment. Compliance teams have full visibility into the audit trail and can intercept at any point. This is the OpenClaw pattern applied to trading infrastructure: an agent that does the work, with humans controlling the boundaries.",
     },
   },
   whatCustomersBuy: {
     title: 'What Customers Buy',
-    label: 'Continuous Market Access Control Evidence',
-    body: 'A standardized output showing: detected changes, affected systems, executed validation, control verification status, required remediation. This replaces manual evidence production already required by regulation.',
+    label: 'Autonomous Change-Control with Continuous Evidence',
+    body: 'An autonomous agent that detects changes, diffs systems, produces requirements, and emits a continuous audit trail. Output: detected changes, affected systems, executed validation, control verification status, required remediation. The audit trail replaces manual evidence production already required by regulation.',
   },
   targetBuyer: {
     title: 'Target Buyer & Economic Logic',
@@ -787,28 +787,28 @@ export const PRODUCT_PANIC_SCENARIO = {
       {
         id: 'diff',
         label: 'Semantic diff parsed',
-        value: 'Mandatory field change normalized and tagged by venue + message type.',
+        value: 'Agent parses and normalizes mandatory field change by venue + message type.',
       },
       {
         id: 'impact',
         label: 'Impacted assets mapped',
-        value: 'Gateway config, cert suite, and evidence controls linked automatically.',
+        value: 'Agent maps gateway config, cert suite, and evidence controls automatically.',
       },
       {
         id: 'tests',
         label: 'Validation queued',
-        value: 'Regression pack generated with venue certification checklist attached.',
+        value: 'Agent generates regression pack with venue certification checklist attached.',
       },
       {
         id: 'evidence',
         label: 'Evidence generated',
-        value: 'Change record, approvals, and certification proof assembled continuously.',
+        value: 'Agent assembles change record, approvals, and certification proof continuously.',
       },
     ],
     outcomes: [
+      'Agent sources, diffs, and acts — humans review and intercept.',
       'Hours instead of weeks.',
-      'Audit-ready evidence at the point of change.',
-      'Human review preserved before anything ships.',
+      'Continuous audit trail at every step.',
     ],
   },
 }

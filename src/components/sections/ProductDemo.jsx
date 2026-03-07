@@ -294,20 +294,20 @@ export default function ProductDemo() {
     ? [
         {
           icon: Package,
-          label: 'FIXFriend online',
-          detail: 'Venue delta parsed and normalized within minutes.',
+          label: 'FIXFriend agent online',
+          detail: 'Agent detected and parsed venue delta within minutes.',
           tone: 'info',
         },
         {
           icon: Wrench,
-          label: 'Impacts mapped',
+          label: 'Agent mapped impacts',
           detail: 'Gateway config, cert suite, and evidence trail linked automatically.',
           tone: 'success',
         },
         {
           icon: FileCheck,
-          label: 'Evidence live',
-          detail: 'Outputs attach to the change record as work happens.',
+          label: 'Audit trail live',
+          detail: 'Agent emits evidence to audit trail as work happens.',
           tone: 'success',
         },
       ]
