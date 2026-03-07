@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Sidebar from './components/Sidebar'
 import ThesisSection from './components/sections/ThesisSection'
 import MarketSection from './components/sections/MarketSection'
@@ -23,18 +23,38 @@ const SECTIONS = {
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('thesis')
+  const [visibleTab, setVisibleTab] = useState('thesis')
+  const [transitionState, setTransitionState] = useState('idle') // 'idle' | 'exiting' | 'entering'
   const [aboutOpen, setAboutOpen] = useState(false)
   const [theme, setTheme] = useState(() => {
     if (typeof window === 'undefined') return 'dark'
     return (window.localStorage.getItem(THEME_STORAGE_KEY) || 'dark')
   })
+  const transitionRef = useRef(null)
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
     window.localStorage.setItem(THEME_STORAGE_KEY, theme)
   }, [theme])
 
-  const ActiveSection = SECTIONS[activeTab]
+  useEffect(() => {
+    if (activeTab === visibleTab) return
+    if (transitionState === 'idle') {
+      setTransitionState('exiting')
+    }
+  }, [activeTab, visibleTab, transitionState])
+
+  const handleTransitionEnd = (e) => {
+    if (e.target !== transitionRef.current) return
+    if (transitionState === 'exiting') {
+      setVisibleTab(activeTab)
+      setTransitionState('entering')
+    } else if (transitionState === 'entering') {
+      setTransitionState('idle')
+    }
+  }
+
+  const ActiveSection = SECTIONS[visibleTab]
 
   return (
     <div className="app-shell flex h-screen w-full overflow-hidden" style={{ backgroundColor: 'var(--bg-base)' }}>
@@ -47,7 +67,11 @@ export default function App() {
       />
 
       <main className="app-main-shell flex-1 overflow-y-auto overflow-x-hidden">
-        <div key={activeTab} className="animate-fade-in-section h-full">
+        <div
+          ref={transitionRef}
+          className={`section-transition h-full ${transitionState === 'exiting' ? 'section-transition--exit' : ''} ${transitionState === 'entering' ? 'section-transition--enter' : ''}`}
+          onAnimationEnd={handleTransitionEnd}
+        >
           <ActiveSection onNavigate={(tab) => setActiveTab(tab)} theme={theme} />
         </div>
       </main>

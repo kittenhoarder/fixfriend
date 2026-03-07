@@ -156,7 +156,11 @@ export default function PasswordGate({ children }) {
   }
 
   if (status === 'unlocked') {
-    return children
+    return (
+      <div className="animate-fade-in-app min-h-screen w-full">
+        {children}
+      </div>
+    )
   }
 
   if (status === 'checking') {
