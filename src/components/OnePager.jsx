@@ -46,6 +46,10 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
   const topDeals = DEALS.filter(d =>
     ['broadridge-cqg', 'six-aquis', 'kkr-osttra', 'tt-opengamma', 'arcesium-limina'].includes(d.id)
   ).slice(0, 5)
+  // Short WHY FAST-PATH texts from vcTldr (maintained in content.js)
+  const shortFitMap = Object.fromEntries(
+    (THESIS.vcTldr?.tier1Acquirers || []).map(a => [a.name, a.fit])
+  )
 
   return (
     <div
@@ -250,29 +254,50 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
 
         <Hr m="0 0 12px" />
 
-        {/* ── Acquirers + M&A ── */}
+        {/* ── Tier 1: full-width fast-path acquirer table ── */}
+        <div style={{ marginBottom: '10px' }}>
+          <EL mb="5px">Primary Fast-Path Acquirers</EL>
+          <div style={{ fontSize: '7.5px', color: C.text3, marginBottom: '6px', fontFamily: mono, letterSpacing: '0.06em' }}>
+            Trading infrastructure vendors · missing the autonomous agent layer
+          </div>
+          {/* Column headers */}
+          <div style={{ display: 'grid', gridTemplateColumns: '130px 68px 1fr', borderBottom: `1px solid ${C.border}`, paddingBottom: '4px', marginBottom: '1px' }}>
+            {['COMPANY', 'REVENUE', 'WHY FAST-PATH'].map(h => (
+              <div key={h} style={{ fontSize: '7px', fontWeight: 700, color: C.text3, letterSpacing: '0.12em', fontFamily: mono }}>{h}</div>
+            ))}
+          </div>
+          {/* One row per Tier 1 acquirer */}
+          {tier1.map((a, i) => (
+            <div key={i} style={{ display: 'grid', gridTemplateColumns: '130px 68px 1fr', borderBottom: `1px solid ${C.border}`, padding: '5px 0' }}>
+              <div style={{ fontSize: '9.5px', fontWeight: 600, color: C.text }}>{a.name}</div>
+              <div style={{ fontSize: '8.5px', color: C.text3 }}>{a.revenue}</div>
+              <div style={{ fontSize: '8.5px', color: C.text2, lineHeight: 1.4 }}>{shortFitMap[a.name] || a.fit}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Tier 2/3 + M&A (compact 2-col) ── */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '12px' }}>
           <div>
-            <EL>Acquirer Universe</EL>
+            <EL mb="5px">Further Acquirer Tiers</EL>
             {[
-              { tier: 'TIER 1 — Trading Infrastructure', color: C.green, names: tier1.map(a => a.name).join(' · ') },
               { tier: 'TIER 2 — Exchange Groups', color: C.blue, names: 'SIX Group · Deutsche Börse · Euronext' },
               { tier: 'TIER 3 — RegTech Adjacency', color: C.indigo, names: 'Kaizen Reporting · SmartStream · Exactpro' },
             ].map((t, i) => (
-              <div key={i} style={{ marginBottom: '7px' }}>
+              <div key={i} style={{ marginBottom: '6px' }}>
                 <div style={{ fontSize: '7.5px', fontWeight: 700, color: t.color, letterSpacing: '0.1em', fontFamily: mono, marginBottom: '2px' }}>{t.tier}</div>
                 <div style={{ fontSize: '9.5px', color: C.text2 }}>{t.names}</div>
               </div>
             ))}
             <div style={{
-              marginTop: '7px', padding: '7px 10px',
+              marginTop: '6px', padding: '6px 9px',
               backgroundColor: 'rgba(249,115,22,0.06)',
               border: '1px solid rgba(249,115,22,0.18)',
               borderRadius: '2px',
             }}>
               <div style={{ fontSize: '8px', fontWeight: 700, color: C.amber, fontFamily: mono, marginBottom: '3px', letterSpacing: '0.08em' }}>FOUNDER EDGE</div>
               <p style={{ fontSize: '8.5px', color: C.text2, lineHeight: 1.4, margin: 0 }}>
-                Worked at Itiviti &amp; Broadridge — including directly with Tbricks (EMS), VeriFIX, and NYFIX inside the BTCS stack. Knows the gap firsthand.
+                Worked at Itiviti &amp; Broadridge — directly with Tbricks, VeriFIX &amp; NYFIX inside the BTCS stack. Knows the gap firsthand.
               </p>
             </div>
           </div>
@@ -292,7 +317,7 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
               </div>
             ))}
             <p style={{ fontSize: '8px', color: C.text3, lineHeight: 1.4, margin: '5px 0 0' }}>
-              Exchange consolidation directly amplifies the problem FIXFriend solves: more venues → more protocol complexity → more certification burden per member.
+              Exchange consolidation amplifies the problem FIXFriend solves: more venues → more protocol complexity → more certification burden per member.
             </p>
           </div>
         </div>
