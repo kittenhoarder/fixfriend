@@ -1,5 +1,7 @@
-import { Linkedin, ArrowRight } from 'lucide-react'
+import { useRef, useState, useCallback } from 'react'
+import { Linkedin, ArrowRight, FileDown, Loader } from 'lucide-react'
 import { THESIS } from '../../data/content'
+import { OnePager } from '../OnePager'
 
 function StatCard({ stat }) {
   return (
@@ -24,6 +26,37 @@ function StatCard({ stat }) {
 }
 
 export default function ThesisSection({ onNavigate }) {
+  const onePagerRef = useRef(null)
+  const [isGenerating, setIsGenerating] = useState(false)
+
+  const handleDownload = useCallback(async () => {
+    if (!onePagerRef.current || isGenerating) return
+    setIsGenerating(true)
+    try {
+      const html2pdf = (await import('html2pdf.js')).default
+      await html2pdf()
+        .from(onePagerRef.current)
+        .set({
+          margin: 0,
+          filename: 'FIXFriend-VC-OnePager.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: {
+            scale: 2.5,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#08090b',
+            logging: false,
+          },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        })
+        .save()
+    } catch (err) {
+      console.error('PDF generation failed:', err)
+    } finally {
+      setIsGenerating(false)
+    }
+  }, [isGenerating])
+
   return (
     <div
       className="flex flex-col items-center justify-center min-h-full px-8 py-16 lg:py-20"
@@ -135,32 +168,57 @@ export default function ThesisSection({ onNavigate }) {
           ))}
         </div>
 
+        {/* ── VC One-Pager download — sits above the TL;DR panel ── */}
         {THESIS.vcTldr && (
-          <div
-            className="panel-shell rounded-lg p-5 mb-10"
-            style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
-          >
-            <span
-              className="font-mono text-xs font-semibold tracking-widest block mb-3"
-              style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
+          <>
+            <button
+              onClick={handleDownload}
+              disabled={isGenerating}
+              className="w-full mb-3 inline-flex items-center justify-center gap-2.5 px-5 py-3 text-xs font-semibold tracking-widest transition-all"
+              style={{
+                border: '1px solid rgba(249,115,22,0.38)',
+                background: 'linear-gradient(135deg, rgba(249,115,22,0.09), rgba(59,130,246,0.05) 60%, transparent)',
+                color: isGenerating ? 'var(--text-tertiary)' : 'var(--amber)',
+                letterSpacing: '0.13em',
+                cursor: isGenerating ? 'wait' : 'pointer',
+                opacity: isGenerating ? 0.7 : 1,
+                borderRadius: '4px',
+              }}
+              title="Download VC one-pager as PDF"
             >
-              TL;DR FOR VCs
-            </span>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
-              {THESIS.vcTldr.marketSummary}
-            </p>
-            <div className="mb-2 font-mono text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>
-              Tier-1 acquirer fit
+              {isGenerating
+                ? <Loader size={13} className="animate-spin" />
+                : <FileDown size={13} />
+              }
+              {isGenerating ? 'GENERATING PDF…' : 'DOWNLOAD VC ONE-PAGER  ·  PDF  ·  FOR RAIDICAL'}
+            </button>
+
+            <div
+              className="panel-shell rounded-lg p-5 mb-10"
+              style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
+            >
+              <span
+                className="font-mono text-xs font-semibold tracking-widest block mb-3"
+                style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
+              >
+                TL;DR FOR VCs
+              </span>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
+                {THESIS.vcTldr.marketSummary}
+              </p>
+              <div className="mb-2 font-mono text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>
+                Tier-1 acquirer fit
+              </div>
+              <ul className="space-y-2">
+                {THESIS.vcTldr.tier1Acquirers.map((a, i) => (
+                  <li key={i} className="text-sm flex flex-wrap gap-x-2 gap-y-0">
+                    <span style={{ color: 'var(--accent)' }}>{a.name}</span>
+                    <span style={{ color: 'var(--text-secondary)' }}>— {a.fit}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-2">
-              {THESIS.vcTldr.tier1Acquirers.map((a, i) => (
-                <li key={i} className="text-sm flex flex-wrap gap-x-2 gap-y-0">
-                  <span style={{ color: 'var(--accent)' }}>{a.name}</span>
-                  <span style={{ color: 'var(--text-secondary)' }}>— {a.fit}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          </>
         )}
 
         <div
@@ -215,6 +273,11 @@ export default function ThesisSection({ onNavigate }) {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Hidden one-pager — rendered off-screen for PDF capture */}
+      <div style={{ position: 'fixed', left: '-9999px', top: '-9999px', zIndex: -1, pointerEvents: 'none' }}>
+        <OnePager ref={onePagerRef} />
       </div>
     </div>
   )
