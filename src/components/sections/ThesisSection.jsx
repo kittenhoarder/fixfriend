@@ -143,6 +143,22 @@ export default function ThesisSection({ onNavigate }) {
 
           <div className="flex flex-wrap items-center gap-3">
             <button
+              onClick={handleDownload}
+              disabled={isGenerating}
+              className="button-outline inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold transition-all"
+              style={{
+                color: isGenerating ? 'var(--text-tertiary)' : 'var(--emerald)',
+                borderColor: 'rgba(34,197,94,0.35)',
+                background: 'rgba(34,197,94,0.08)',
+                opacity: isGenerating ? 0.65 : 1,
+                cursor: isGenerating ? 'wait' : 'pointer',
+              }}
+              title="Download VC one-pager as PDF"
+            >
+              {isGenerating ? <Loader size={14} className="animate-spin" /> : <FileDown size={14} />}
+              {isGenerating ? 'Generating…' : 'One-Pager PDF'}
+            </button>
+            <button
               onClick={() => onNavigate('market')}
               className="button-accent inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold"
             >
@@ -168,57 +184,32 @@ export default function ThesisSection({ onNavigate }) {
           ))}
         </div>
 
-        {/* ── VC One-Pager download — sits above the TL;DR panel ── */}
         {THESIS.vcTldr && (
-          <>
-            <button
-              onClick={handleDownload}
-              disabled={isGenerating}
-              className="w-full mb-3 inline-flex items-center justify-center gap-2.5 px-5 py-3 text-xs font-semibold tracking-widest transition-all"
-              style={{
-                border: '1px solid rgba(249,115,22,0.38)',
-                background: 'linear-gradient(135deg, rgba(249,115,22,0.09), rgba(59,130,246,0.05) 60%, transparent)',
-                color: isGenerating ? 'var(--text-tertiary)' : 'var(--amber)',
-                letterSpacing: '0.13em',
-                cursor: isGenerating ? 'wait' : 'pointer',
-                opacity: isGenerating ? 0.7 : 1,
-                borderRadius: '4px',
-              }}
-              title="Download VC one-pager as PDF"
+          <div
+            className="panel-shell rounded-lg p-5 mb-10"
+            style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
+          >
+            <span
+              className="font-mono text-xs font-semibold tracking-widest block mb-3"
+              style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
             >
-              {isGenerating
-                ? <Loader size={13} className="animate-spin" />
-                : <FileDown size={13} />
-              }
-              {isGenerating ? 'GENERATING PDF…' : 'DOWNLOAD VC ONE-PAGER  ·  PDF  ·  FOR RAIDICAL'}
-            </button>
-
-            <div
-              className="panel-shell rounded-lg p-5 mb-10"
-              style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
-            >
-              <span
-                className="font-mono text-xs font-semibold tracking-widest block mb-3"
-                style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
-              >
-                TL;DR FOR VCs
-              </span>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
-                {THESIS.vcTldr.marketSummary}
-              </p>
-              <div className="mb-2 font-mono text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>
-                Tier-1 acquirer fit
-              </div>
-              <ul className="space-y-2">
-                {THESIS.vcTldr.tier1Acquirers.map((a, i) => (
-                  <li key={i} className="text-sm flex flex-wrap gap-x-2 gap-y-0">
-                    <span style={{ color: 'var(--accent)' }}>{a.name}</span>
-                    <span style={{ color: 'var(--text-secondary)' }}>— {a.fit}</span>
-                  </li>
-                ))}
-              </ul>
+              TL;DR FOR VCs
+            </span>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
+              {THESIS.vcTldr.marketSummary}
+            </p>
+            <div className="mb-2 font-mono text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>
+              Tier-1 acquirer fit
             </div>
-          </>
+            <ul className="space-y-2">
+              {THESIS.vcTldr.tier1Acquirers.map((a, i) => (
+                <li key={i} className="text-sm flex flex-wrap gap-x-2 gap-y-0">
+                  <span style={{ color: 'var(--accent)' }}>{a.name}</span>
+                  <span style={{ color: 'var(--text-secondary)' }}>— {a.fit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
 
         <div
