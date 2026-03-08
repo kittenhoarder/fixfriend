@@ -1,5 +1,7 @@
-import { Linkedin, ArrowRight } from 'lucide-react'
+import { useRef, useState, useCallback } from 'react'
+import { Linkedin, ArrowRight, FileDown, Loader } from 'lucide-react'
 import { THESIS } from '../../data/content'
+import { OnePager } from '../OnePager'
 
 function StatCard({ stat }) {
   return (
@@ -24,6 +26,37 @@ function StatCard({ stat }) {
 }
 
 export default function ThesisSection({ onNavigate }) {
+  const onePagerRef = useRef(null)
+  const [isGenerating, setIsGenerating] = useState(false)
+
+  const handleDownload = useCallback(async () => {
+    if (!onePagerRef.current || isGenerating) return
+    setIsGenerating(true)
+    try {
+      const html2pdf = (await import('html2pdf.js')).default
+      await html2pdf()
+        .from(onePagerRef.current)
+        .set({
+          margin: 0,
+          filename: 'FIXFriend-VC-OnePager.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: {
+            scale: 2.5,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#08090b',
+            logging: false,
+          },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        })
+        .save()
+    } catch (err) {
+      console.error('PDF generation failed:', err)
+    } finally {
+      setIsGenerating(false)
+    }
+  }, [isGenerating])
+
   return (
     <div
       className="flex flex-col items-center justify-center min-h-full px-8 py-16 lg:py-20"
@@ -109,6 +142,22 @@ export default function ThesisSection({ onNavigate }) {
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
+            <button
+              onClick={handleDownload}
+              disabled={isGenerating}
+              className="button-outline inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold transition-all"
+              style={{
+                color: isGenerating ? 'var(--text-tertiary)' : 'var(--emerald)',
+                borderColor: 'rgba(34,197,94,0.35)',
+                background: 'rgba(34,197,94,0.08)',
+                opacity: isGenerating ? 0.65 : 1,
+                cursor: isGenerating ? 'wait' : 'pointer',
+              }}
+              title="Download VC one-pager as PDF"
+            >
+              {isGenerating ? <Loader size={14} className="animate-spin" /> : <FileDown size={14} />}
+              {isGenerating ? 'Generating…' : 'One-Pager PDF'}
+            </button>
             <button
               onClick={() => onNavigate('market')}
               className="button-accent inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold"
@@ -215,6 +264,11 @@ export default function ThesisSection({ onNavigate }) {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Hidden one-pager — rendered off-screen for PDF capture */}
+      <div style={{ position: 'fixed', left: '-9999px', top: '-9999px', zIndex: -1, pointerEvents: 'none' }}>
+        <OnePager ref={onePagerRef} />
       </div>
     </div>
   )
