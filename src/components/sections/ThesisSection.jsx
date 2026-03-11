@@ -1,5 +1,7 @@
 import { Linkedin, ArrowRight } from 'lucide-react'
 import { THESIS } from '../../data/content'
+import StatusPill from '../ui/StatusPill'
+import LeanExitDownloads from '../LeanExitDownloads'
 
 function StatCard({ stat }) {
   return (
@@ -108,13 +110,56 @@ export default function ThesisSection({ onNavigate }) {
             {THESIS.subheadline}
           </p>
 
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+            <div
+              className="rounded-lg border p-4"
+              style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}
+            >
+              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+                Buyer line
+              </div>
+              <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+                {THESIS.buyerOneLiner}
+              </p>
+            </div>
+            <div
+              className="rounded-lg border p-4"
+              style={{ borderColor: 'var(--accent-border-soft)', backgroundColor: 'var(--accent-softer)' }}
+            >
+              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+                10x claim
+              </div>
+              <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+                {THESIS.tenXClaim}
+              </p>
+            </div>
+            <div
+              className="rounded-lg border p-4"
+              style={{ borderColor: 'var(--status-warning-border)', backgroundColor: 'var(--status-warning-soft)' }}
+            >
+              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-warning)' }}>
+                Why lean exit
+              </div>
+              <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+                {THESIS.leanExitWhy}
+              </p>
+            </div>
+          </div>
+
           <div className="flex flex-wrap items-center gap-3">
             <button
-              onClick={() => onNavigate('market')}
+              onClick={() => onNavigate('leanExit')}
               className="button-accent inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold"
             >
-              Explore the thesis
+              Explore lean exit
               <ArrowRight size={15} />
+            </button>
+            <button
+              onClick={() => onNavigate('market')}
+              className="button-outline inline-flex items-center gap-2 px-4 py-3 text-sm font-medium"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              Explore the market
             </button>
             <a
               href={THESIS.linkedinUrl}
@@ -136,21 +181,41 @@ export default function ThesisSection({ onNavigate }) {
         </div>
 
         {THESIS.vcTldr && (
+          <>
+            <div className="mb-3">
+              <LeanExitDownloads />
+            </div>
+
           <div
             className="panel-shell rounded-lg p-5 mb-10"
             style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
           >
-            <span
-              className="font-mono text-xs font-semibold tracking-widest block mb-3"
-              style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
-            >
-              TL;DR FOR VCs
-            </span>
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              <span
+                className="font-mono text-xs font-semibold tracking-widest block"
+                style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
+              >
+                {THESIS.vcTldr.title}
+              </span>
+              {THESIS.evidenceTypes.map((item) => (
+                <StatusPill key={item.label} tone={item.tone}>
+                  {item.label}
+                </StatusPill>
+              ))}
+            </div>
             <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
               {THESIS.vcTldr.marketSummary}
             </p>
+            <div className="grid gap-2 mb-4">
+              {THESIS.vcTldr.highlights.map((point) => (
+                <div key={point} className="flex items-start gap-2">
+                  <span style={{ color: 'var(--accent)', marginTop: '2px' }}>•</span>
+                  <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{point}</span>
+                </div>
+              ))}
+            </div>
             <div className="mb-2 font-mono text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>
-              Tier-1 acquirer fit
+              Strategic-fit acquirers
             </div>
             <ul className="space-y-2">
               {THESIS.vcTldr.tier1Acquirers.map((a, i) => (
@@ -161,6 +226,7 @@ export default function ThesisSection({ onNavigate }) {
               ))}
             </ul>
           </div>
+          </>
         )}
 
         <div

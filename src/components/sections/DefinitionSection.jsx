@@ -93,6 +93,17 @@ export default function DefinitionSection() {
           </div>
         </div>
 
+        {d.marketSize.attach && (
+          <div className="mb-6">
+            <h3 className="font-mono text-xs font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+              {d.marketSize.attach.label}
+            </h3>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              {d.marketSize.attach.body}
+            </p>
+          </div>
+        )}
+
         <div className="mb-6">
           <h3 className="font-mono text-xs font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
             {d.marketSize.expansion.label}
@@ -117,6 +128,28 @@ export default function DefinitionSection() {
           <span className="font-mono text-xs" style={{ color: 'var(--accent)' }}>SOM: </span>
           <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{d.marketSize.som}</span>
         </div>
+
+        {d.marketSize.methodology && (
+          <div
+            className="panel-shell rounded-lg px-4 py-4 mt-6"
+            style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
+          >
+            <div
+              className="font-mono text-xs tracking-widest mb-3"
+              style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
+            >
+              MARKET MODEL METHOD
+            </div>
+            <ul className="space-y-2">
+              {d.marketSize.methodology.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span style={{ color: 'var(--accent)', marginTop: '2px' }}>•</span>
+                  <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   )

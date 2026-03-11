@@ -1,4 +1,5 @@
 import {
+  Briefcase,
   Home,
   Globe,
   BookOpen,
@@ -14,6 +15,7 @@ import { NAV_TABS } from '../data/content'
 
 const ICON_MAP = {
   Home,
+  Briefcase,
   Globe,
   BookOpen,
   AlertTriangle,

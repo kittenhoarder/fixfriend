@@ -3,27 +3,27 @@
 // artifacts file first.
 
 export const THESIS = {
-  headline: 'AN AUTONOMOUS AGENT\nFOR FIX PROTOCOL CHANGES',
+  headline: 'THE MISSING WORKFLOW LAYER\nFOR VENUE CHANGE RESPONSE',
   subheadline:
-    'An autonomous agent that monitors venue specifications, diffs against client systems, and produces actionable change requirements — with a continuous audit trail that compliance can review and intercept at any point. This site lays out the thesis, market, and potential acquirers.',
+    'FIXFriend turns venue change notices into rollout-ready change packs, certification workflows, and client-ready evidence for trading technology vendors. The product is positioned as a lean-exit wedge: a missing workflow layer that becomes strategically valuable to incumbents already serving this market.',
   stats: [
     {
-      id: 'regulatory',
-      value: '3',
-      label: 'REGULATORY FORCES CONVERGING',
-      detail: 'DORA · MiFID 2 RTS 6 · EU AI Act',
+      id: 'tenx',
+      value: '10x',
+      label: 'FASTER TO CHANGE PACK',
+      detail: 'Same day, not 1–2 weeks of PM / engineering / QA coordination',
+    },
+    {
+      id: 'discovery',
+      value: '6',
+      label: 'WEEK ACQUIRER DISCOVERY LOOP',
+      detail: 'Product, corp-dev, advisor, and operator interviews shape the wedge',
     },
     {
       id: 'deals',
-      value: '5',
+      value: '9',
       label: 'VERIFIED DEALS IN 12 MONTHS',
-      detail: 'Billions $  in trading infrastructure M&A',
-    },
-    {
-      id: 'firms',
-      value: '~1,500',
-      label: 'TARGET FIRMS',
-      detail: 'Multi-venue connected entities',
+      detail: 'Trading infrastructure and exchange consolidation continues',
     },
   ],
   founderName: 'Owen E. Perry',
@@ -31,15 +31,45 @@ export const THESIS = {
   founderSummary:
     '14 years in European electronic trading infrastructure. Technical product leader specialising in trading infrastructure at inflection points.',
   linkedinUrl: 'https://linkedin.com/in/oweneperry',
-  /** TL;DR for VC visitors: market size opportunity + tier-1 acquirer summary */
+  buyerOneLiner:
+    'FIXFriend turns venue change notices into rollout-ready change packs, certification workflows, and client-ready evidence for trading technology vendors.',
+  acquirerOneLiner:
+    'FIXFriend is the missing workflow layer between venue change, product update, and client rollout.',
+  tenXClaim:
+    'Same-day change assessment and certification prep instead of 1–2 weeks of PM, engineering, and QA coordination.',
+  leanExitWhy:
+    'This is not a scale-first SaaS story. It is a strategic attach wedge that becomes valuable if incumbents decide this workflow gap matters enough to buy, embed, or partner around.',
+  evidenceTypes: [
+    {
+      label: 'Validated',
+      tone: 'success',
+      detail: 'Public-source facts, verified deals, and direct interview evidence.',
+    },
+    {
+      label: 'Hypothesis',
+      tone: 'warning',
+      detail: 'Current beliefs about product shape, pricing, and strategic fit.',
+    },
+    {
+      label: 'Open Question',
+      tone: 'info',
+      detail: 'What acquirer discovery still needs to answer.',
+    },
+  ],
   vcTldr: {
+    title: 'LEAN EXIT IN ONE SCREEN',
     marketSummary:
-      'Entry TAM ~€450M (6,000 orgs × €75k). SAM ~€112M (high-automation segment). Target SOM: 10–25 customers, €1M–€2M ARR, then strategic embed for acquisition.',
+      'Beachhead wedge: vendor-side change-response and certification workflow. Direct market is modest, but strategic attach value rises inside incumbent trading infrastructure stacks.',
+    highlights: [
+      'Lead with strategic fit, not standalone scale.',
+      'First validation loop is acquirer discovery, not generic SaaS GTM.',
+      'First 10 customers are design partners chosen for strategic relevance.',
+    ],
     tier1Acquirers: [
-      { name: 'ION Markets', fit: 'OMS/EMS stack; missing agent layer — FIXFriend bolts onto existing client base.' },
-      { name: 'Broadridge', fit: 'Connectivity → OMS → execution; autonomous agent layer missing; founder ex-Itiviti/Broadridge.' },
-      { name: 'Murex', fit: 'MX.3 clients are the firms with manual FIX cycles; agent embeds into platform.' },
-      { name: 'Trading Technologies', fit: '100+ exchanges; every venue change affects clients; agent is upsell to base.' },
+      { name: 'ION Markets', fit: 'Owns venue-facing plumbing. Missing workflow layer for change-response and client rollout.' },
+      { name: 'Broadridge', fit: 'Already owns connectivity, OMS, execution, and onboarding tooling. Missing the cross-party venue-change workflow.' },
+      { name: 'Trading Technologies', fit: 'Multi-venue connectivity at scale. Same workflow gap exists between venue change, product update, and customer rollout.' },
+      { name: 'SIX Group', fit: 'Venue and member certification complexity makes the wedge strategically relevant on the exchange side too.' },
     ],
   },
 }
@@ -123,21 +153,33 @@ export const MARKET_NODES = {
     title: 'Protocol / Rule Update — The Mandatory Trigger',
     status: '⚠ Mandatory compliance trigger for all connected firms',
     statusColor: 'amber',
-    body: 'When a venue publishes a FIX specification change, a native API update, or a regulatory-driven protocol change, every connected firm must respond. There is no opt-out.',
+    body: 'When a venue publishes a FIX specification change, a native API update, or a regulatory-driven protocol change, every connected vendor, service provider, and direct-connect firm has to respond. There is no opt-out.',
     implication:
-      'Each trigger starts a 2–4 week manual cycle: assess impact, implement changes, certify, deploy, and produce evidence. With 50–200+ triggers per year across a typical firm\'s venue connections, this is a chronic operational burden.',
+      'Each trigger starts a manual cycle of triage, engineering, certification, client communication, and evidence production. The product wedge is not generic FIX automation; it is the missing workflow layer between the notice and a reliable rollout response.',
+  },
+  vendors: {
+    id: 'vendors',
+    label: 'Trading Tech\nVendors',
+    band: 'intermediary',
+    title: 'Trading Technology Vendors & Connectivity Providers',
+    count: '~150–250 likely beachhead operators globally',
+    includes:
+      'OMS/EMS vendors, managed FIX providers, selected venues, testing/compliance adjacencies, and infrastructure teams that absorb venue changes for many downstream clients',
+    body: 'This is where the lean-exit wedge sits. Vendors receive short-notice venue changes, coordinate research across product, engineering, QA, and customer teams, then absorb reputation risk when certification drags or venue-side issues surface late.',
+    today:
+      'Teams often add buffer just for communication and external QA loops. Change-response knowledge is fragmented across inboxes, specs, test packs, and client escalations.',
   },
   firms: {
     id: 'firms',
-    label: 'Electronic\nTrading Firms',
+    label: 'End Clients /\nConnected Firms',
     band: 'demand',
-    title: 'Electronic Trading Firms',
+    title: 'End Clients & Connected Trading Firms',
     count: '~1,500 multi-venue connected entities (sell-side focus)',
     includes:
       'Investment banks, broker-dealers, market makers, proprietary trading firms, hedge funds with direct market access (DMA)',
-    body: 'Every protocol change at every connected venue triggers a compliance cycle: read the spec delta, assess impact, modify gateway configuration, test, certify, deploy, produce evidence for audit.',
+    body: 'Clients still feel the pain downstream: late rollouts, compressed certification windows, unclear communication, and support escalations when venue changes are misunderstood or venue-side defects surface in certification.',
     today:
-      '2–4 weeks per change. Manual. Recurring. Evidence reconstructed retroactively when the regulator asks. Production incidents when changes are missed or misimplemented.',
+      'They care about speed, confidence, and evidence, but they often rely on vendors and venues to coordinate the response.',
   },
   regulators: {
     id: 'regulators',
@@ -154,105 +196,105 @@ export const MARKET_NODES = {
 
 export const MARKET_DEFAULT_DETAIL = {
   title: 'The European Market Chain',
-  body: 'Click any node on the map to explore the detail. The chain runs from regulatory mandates at the top, through exchanges publishing protocol updates, to the trigger that forces compliance cycles at every connected trading firm — and the regulators who demand evidence of compliance.',
-  hint: 'Start with the regulatory band at the top, or click the amber trigger node at the centre.',
+  body: 'Click any node on the map to explore the detail. The lean-exit story now shows the missing vendor layer between venue changes and downstream clients. That is where FIXFriend aims to live: between the notice, the rollout response, and the evidence trail.',
+  hint: 'Start with the amber trigger node, then move into the vendor layer to see the strategic wedge.',
 }
 
 export const GAP = {
   today: {
     title: 'TODAY',
-    subtitle: 'The manual compliance cycle',
+    subtitle: 'The manual venue-change scramble',
     tint: 'red',
     steps: [
       {
         number: '01',
-        title: 'VENUE PUBLISHES SPEC UPDATE',
-        detail: 'Received via email, portal, or PDF. No standard format.',
+        title: 'VENUE NOTICE LANDS',
+        detail: 'Received via email, portal, PDF, or support contact. No standard format.',
         time: null,
       },
       {
         number: '02',
-        title: 'COMPLIANCE TEAM REVIEWS',
-        detail: 'Manual assessment of impact.',
+        title: 'CROSS-TEAM TRIAGE',
+        detail: 'Product, engineering, QA, and client teams figure out what actually changed.',
         time: '1–3 days',
       },
       {
         number: '03',
-        title: 'ENGINEERING IMPLEMENTS CHANGES',
-        detail: 'Gateway configuration, message mapping.',
-        time: '3–10 days',
+        title: 'PROTOCOL FRAGMENTATION RESEARCH',
+        detail: 'Message dictionaries, custom tags, and workflow-specific exceptions have to be understood manually.',
+        time: '2–5 days',
       },
       {
         number: '04',
-        title: 'UAT & CERTIFICATION',
-        detail: 'Manual test execution against venue certification environment.',
-        time: '3–7 days',
+        title: 'TESTING & CERTIFICATION COORDINATION',
+        detail: 'Teams rebuild test packs, chase credentials, and become external QA for venue-side issues.',
+        time: '2–5 days',
       },
       {
         number: '05',
-        title: 'PRODUCTION DEPLOYMENT',
-        detail: 'Change deployed. Risk of production incidents.',
+        title: 'CLIENT ROLLOUT & SUPPORT',
+        detail: 'Communication buffers get added because engineering confidence and venue turnaround are uncertain.',
         time: null,
       },
       {
         number: '06',
-        title: 'EVIDENCE ASSEMBLY (WHEN AUDITED)',
+        title: 'EVIDENCE & COMMUNICATION RECONSTRUCTED',
         detail:
-          'Evidence reconstructed retroactively from emails, tickets, test logs. Often weeks after the change. Incomplete. Expensive.',
+          'Emails, tickets, test logs, and client updates are stitched together after the fact. Incomplete. Expensive. Reputation risk lingers.',
         time: null,
         highlight: true,
       },
     ],
-    total: '2–4 WEEKS PER CHANGE, PER VENUE, AT MINIMUM',
-    risk: 'With 10–20 venue connections and multiple changes per venue per year, a typical sell-side firm faces 50–200+ compliance cycles annually. Each one is manual. Each one carries production risk and audit risk.',
+    total: '1–2 WEEKS TO A RELIABLE CHANGE PACK',
+    risk: 'Vendors add delivery buffer just for communication and venue-side QA churn. The cost is not only engineering time; it is slower rollout, client frustration, and reputational drag.',
   },
   automated: {
     title: 'WITH FIXFRIEND',
-    subtitle: 'Autonomous agent-driven change-control',
+    subtitle: 'Supervised venue-change response workflow',
     tint: 'blue',
     steps: [
       {
         number: '01',
         title: 'SPEC UPDATE DETECTED',
-        detail: 'Agent monitors venue channels and ingests specs automatically.',
+        detail: 'FIXFriend ingests venue notices, specs, and deadlines from the channels teams already monitor.',
         time: null,
       },
       {
         number: '02',
-        title: 'IMPACT ASSESSMENT',
-        detail: 'Agent diffs against current system configuration.',
+        title: 'IMPACT MAPPED',
+        detail: 'FIXFriend links the change to relevant products, configurations, test packs, and downstream client workflows.',
         time: 'Minutes',
       },
       {
         number: '03',
-        title: 'CHANGE REQUIREMENTS',
-        detail: 'Agent produces actionable requirements with proposed changes.',
+        title: 'CHANGE PACK ASSEMBLED',
+        detail: 'Engineering-ready requirements, rollout notes, and certification tasks are created in one supervised package.',
         time: 'Minutes',
       },
       {
         number: '04',
-        title: 'AUTOMATED TESTING',
-        detail: 'Agent runs validation against venue certification environments.',
+        title: 'CERTIFICATION RUNBOOK READY',
+        detail: 'Validation steps, dependencies, and evidence expectations are queued before the window compresses.',
         time: 'Hours',
       },
       {
         number: '05',
-        title: 'CERTIFIED DEPLOYMENT',
-        detail: 'Agent emits audit-ready evidence at every step.',
+        title: 'CLIENT ROLLOUT MATERIALS READY',
+        detail: 'Client-facing summaries and internal approval records are generated alongside the technical response.',
         time: null,
       },
       {
         number: '06',
         title: 'CONTINUOUS AUDIT TRAIL',
         detail:
-          'Continuous audit trail — compliance reviews and intercepts at any point. Available instantly when regulator asks. Machine-readable.',
+          'Evidence, approvals, and timeline context remain live as the work happens. Teams do not have to reconstruct the story later.',
         time: null,
         highlight: true,
       },
     ],
-    total: 'HOURS, NOT WEEKS. CONTINUOUS, NOT RETROACTIVE.',
+    total: 'SAME DAY TO CERTIFICATION-READY CHANGE PACK',
     summary:
-      'FIXFriend is the autonomous agent between venue protocol changes and your trading systems. It sources, diffs, acts, and creates the audit trail. No one owns this layer today.',
+      'FIXFriend is the missing workflow layer between venue change, product update, certification, and client rollout. The work still happens. The chaos disappears.',
   },
 }
 
@@ -663,10 +705,11 @@ export const ABOUT = {
 
 export const NAV_TABS = [
   { id: 'thesis', label: 'THESIS', icon: 'Home' },
+  { id: 'leanExit', label: 'LEAN EXIT', icon: 'Briefcase' },
   { id: 'market', label: 'MARKET', icon: 'Globe' },
-  { id: 'definition', label: 'DEFINITION', icon: 'BookOpen' },
   { id: 'gap', label: 'GAP', icon: 'AlertTriangle' },
   { id: 'product', label: 'PRODUCT', icon: 'Package' },
+  { id: 'definition', label: 'DEFINITION', icon: 'BookOpen' },
   { id: 'acquirers', label: 'ACQUIRERS', icon: 'Crosshair' },
   { id: 'dealflow', label: 'DEAL FLOW', icon: 'TrendingUp' },
 ]
@@ -675,62 +718,78 @@ export const NAV_TABS = [
 export const DEFINITION = {
   origin: {
     title: 'Origin',
-    body: "I've spent over a decade inside electronic trading infrastructure — at Nasdaq operating live European markets, and at multiple institutional trading solution companies supporting FIX-based trading systems for Tier-1/2/3 institutions. I've personally managed highly interconnected trading systems and have encountered this precise problem personally, multiple times over my career. The pattern with this problem was this: every protocol change triggered the same manual cycle. Someone read the PDF. Tests were rebuilt. Many times the specifications differed from the software implementation. Evidence was assembled retroactively. The problem was absorbed into engineering headcount and never automated.\n\nThat's the gap FIXFriend is built to close — an autonomous agent that does what engineers currently do manually: source the spec, diff the system, produce the requirements, and create the evidence trail. But I hold the idea loosely. The core insight — that verification in electronic trading remains manual despite enormous system complexity — is what I'm confident in. The exact form the solution takes will be shaped by what I learn from the market.\n\nOne live constraint is that regulated trading firms are cautious about deploying AI inside their infrastructure. Local deployment addresses the data sovereignty concern, but adoption friction is real and I'm not pretending otherwise. The opportunity is in the agent layer above the systems — sourcing, diffing, and producing requirements — not inside the trading systems themselves. I'm currently testing where the boundary sits.",
+    body: "I've spent over a decade inside electronic trading infrastructure — at Nasdaq operating live markets and inside vendor platforms that had to absorb venue changes on behalf of clients. The pattern was consistent: short-notice notices land, teams chase context across product, engineering, QA, and client channels, and the organisation reconstructs evidence only after the fact.\n\nFIXFriend starts from that observation, but the framing here is deliberately lean-exit. The goal is not to pretend this is already a giant standalone category. The goal is to show that a repeatable workflow gap exists in a market full of incumbents, and that solving it could become strategically valuable to one of them.\n\nThat is why the current thesis is vendor-first and acquirer-aware. The wedge may refine or pivot as more is learned from likely buyers, likely acquirers, and the people who actually coordinate change-response today.",
   },
   marketDefinition: {
     title: 'Market Definition',
-    body: 'Modern financial markets are fully electronic. Trading firms connect directly to exchanges through standardized messaging gateways that transmit every order placed in the market.\n\nThese connections are regulated access points to public markets. Firms cannot trade without maintaining them.\n\nRegulators require firms to demonstrate that trading systems remain safe after every infrastructure change.\n\nToday, this verification process is still largely manual.\n\nFIXFriend defines a missing category:\n\n**→ An autonomous agent for continuous verification and maintenance of market connectivity controls.**\n\nFIXFriend **begins** as an agent that sources specs and produces compliance evidence, and **expands** into the operational control plane governing how trading firms deploy, validate, and maintain trading infrastructure.',
+    body: 'Modern market access depends on venue-driven change-response: interpreting notices, understanding protocol nuance, coordinating testing, and getting clients through rollout safely.\n\nExisting vendors already own important pieces of the stack: connectivity, onboarding, testing, and reporting. The missing category is not “generic FIX automation.”\n\nFIXFriend defines a narrower wedge:\n\n**→ A supervised venue-change response workflow for trading technology vendors.**\n\nIt begins as a change-pack, certification, and evidence layer, then expands only if discovery shows adjacent workflows are strategically important.',
   },
   marketSize: {
     title: 'Market Size',
     entry: {
-      label: 'Entry Market',
-      body: 'Organizations operating regulated electronic market connectivity globally ≈ 6,000.\n\nTypical annual license: €50k–€200k (blended €75k).\n\n**Entry TAM:** 6,000 × €75k ≈ **€450M**\n\nThis represents protocol verification and market access control automation.',
+      label: 'Beachhead Market',
+      body: 'Target wedge: OMS/EMS vendors, managed FIX/connectivity providers, selected venues, and testing/compliance adjacencies that repeatedly absorb venue change-response work.\n\nWorking model: ~150–250 reachable operators globally × €100k–€200k ARR.\n\n**Beachhead market:** ≈ **€15M–€50M**.\n\nThis is intentionally narrower than the broader trading-firm TAM. It is the wedge most likely to matter in a lean-exit path.',
+    },
+    attach: {
+      label: 'Strategic Attach View',
+      body: 'The lean-exit upside is not just direct ARR. If FIXFriend plugs into an incumbent platform, the value is attach revenue plus lower rollout drag, lower support load, and stronger client stickiness across an installed base.',
     },
     expansion: {
-      label: 'Expansion Market',
-      body: 'Once embedded, FIXFriend expands into broader electronic trading infrastructure lifecycle automation, including testing governance, release management, configuration control, and supervised development workflows.',
+      label: 'Broader Expansion',
+      body: 'If the wedge proves strategic, it expands into broader trading infrastructure lifecycle automation: release governance, certification tooling, change communication, configuration control, and supervised development workflows.',
     },
-    sam: 'High-automation firms (~25%) ≈ 1,500 entities → **€112M**.',
-    som: "FIXFriend's objective is rapid strategic embed rather than maximum market penetration. Target: 10–25 institutional customers, €1M–€2M ARR, deployment across multiple venues per client. At this stage, FIXFriend becomes operationally embedded within trading change-control workflows, creating high switching costs and strategic acquisition relevance.",
+    sam: 'Working wedge: **40–80 high-fit operators** in Europe and the US before channel expansion.',
+    som: 'Lean-exit objective: 5–10 design partners, 3–5 paid pilots, and €1M–€3M ARR potential before strategic embed or acquisition.',
+    methodology: [
+      'Start with the narrow beachhead, not the broadest possible end market.',
+      'Model direct ARR separately from strategic attach value inside incumbent installed bases.',
+      'Treat pricing as a hypothesis until discovery confirms the buyer, budget owner, and deployment scope.',
+    ],
   },
 }
 
 // Week 1 content: Product description
 export const PRODUCT_CONTENT = {
   solution: {
-    title: 'The FIXFriend Agent',
-    intro: 'FIXFriend is an autonomous agent for trading infrastructure change-control.\n\nA locally deployed agent that:',
+    title: 'The FIXFriend Workflow Layer',
+    intro: 'FIXFriend is a supervised venue-change response workflow for trading technology vendors.\n\nIt is designed to:',
     bullets: [
-      'proactively sources new specs via email, websites, and venue portals',
-      'diffs spec changes against client system configurations',
-      'maps downstream impact across connected systems',
-      'produces actionable requirements for engineering teams',
-      'executes validation workflows autonomously or on approval',
-      'emits a continuous audit trail that compliance can review and intercept',
+      'source venue notices and spec deltas from the channels teams already monitor',
+      'map the impact across product, configuration, certification, and client workflows',
+      'turn fragmented context into an engineering-ready change pack',
+      'queue certification and validation tasks before deadlines compress',
+      'produce client-ready evidence and communication alongside the technical response',
+      'keep the workflow supervised, visible, and reviewable at every stage',
     ],
     supervised: {
-      title: 'Human-in-the-Loop Agent',
-      body: "The agent acts. Humans review and intercept. FIXFriend operates as an autonomous agent that sources specs, diffs systems, and produces change artifacts — configuration updates, regression tests, validation scenarios, and proposed gateway change sets. All outputs enter an approval workflow before deployment. Compliance teams have full visibility into the audit trail and can intercept at any point. This is the OpenClaw pattern applied to trading infrastructure: an agent that does the work, with humans controlling the boundaries.",
+      title: 'Human-Supervised Change Response',
+      body: 'FIXFriend is not a black-box autopilot. It creates the response package, links the right evidence, and keeps approvals visible, but humans stay in control of release decisions, venue coordination, and deployment boundaries.',
     },
   },
   whatCustomersBuy: {
     title: 'What Customers Buy',
-    label: 'Autonomous Change-Control with Continuous Evidence',
-    body: 'An autonomous agent that detects changes, diffs systems, produces requirements, and emits a continuous audit trail. Output: detected changes, affected systems, executed validation, control verification status, required remediation. The audit trail replaces manual evidence production already required by regulation.',
+    label: 'Rollout-Ready Change Packs With Continuous Evidence',
+    body: 'Buyers are not paying for a generic model. They are paying for a workflow layer that turns venue change into a faster, more reliable internal response and a clearer client rollout. The audit trail is created as work happens instead of being rebuilt later.',
   },
   targetBuyer: {
     title: 'Target Buyer & Economic Logic',
-    primary: 'Head of Electronic Trading / Trading Technology Lead',
-    budget: 'FIXFriend does not create new budget. It reallocates existing spend: trading infrastructure engineering, QA automation, and operational risk management. The buyer is not approving a new line item — they are replacing a cost they already carry, unreliably, with a system that produces the same output continuously and automatically.',
-    triggers: ['Production incident', 'Failed exchange certification', 'Regulatory audit', 'Departure of key engineer'],
+    primary: 'Head of Product / Head of Connectivity / Head of Electronic Trading',
+    budget: 'FIXFriend does not need a brand-new budget category to make sense. It reallocates spend already buried in product coordination, certification effort, support escalation, and delayed client rollout.',
+    triggers: ['Short-notice venue change', 'Certification bottleneck', 'Client rollout delay', 'Repeated support escalation'],
   },
+  painPoints: [
+    'Communication breaks first: the notice, deadline, and impact are spread across too many people and systems.',
+    'Protocol fragmentation means “standardised FIX” still hides asset-class and venue-specific nuance.',
+    'Testing is expensive because vendors either build simulators or depend on venue cooperation.',
+    'Connectivity setup still creates delay: Internet, VPN, private lines, and x-connects all change the response path.',
+    'Vendors become external QA for venues and absorb the reputation cost when releases slip.',
+  ],
 }
 
 export const PRODUCT_PANIC_SCENARIO = {
   title: 'Protocol Panic',
   subtitle:
-    'Play the incident. A venue publishes a mandatory FIX change and the certification window closes in 9 days.',
+    'Replay the incident. A venue publishes a mandatory FIX change and your team has to brief engineering, QA, and client rollout before the certification window closes.',
   manual: {
     alerts: [
       {
@@ -770,8 +829,8 @@ export const PRODUCT_PANIC_SCENARIO = {
       },
       {
         id: 'evidence-pack',
-        label: 'Compliance evidence pack',
-        detail: 'Controls, approvals, test outputs, and cert trail.',
+        label: 'Client / evidence pack',
+        detail: 'Controls, approvals, test outputs, client summary, and cert trail.',
         correct: true,
       },
       {
@@ -789,8 +848,8 @@ export const PRODUCT_PANIC_SCENARIO = {
     ],
     pressureMoments: [
       'Inbox alert arrives with a hard venue certification deadline.',
-      'Engineering has to interpret the change manually.',
-      'Evidence is left to the end, where audit risk compounds.',
+      'Product, engineering, QA, and client teams all need different answers quickly.',
+      'If the venue-side release is imperfect, your team becomes the external QA layer.',
     ],
   },
   fixfriend: {
@@ -803,7 +862,7 @@ export const PRODUCT_PANIC_SCENARIO = {
       {
         id: 'impact',
         label: 'Impacted assets mapped',
-        value: 'Agent maps gateway config, cert suite, and evidence controls automatically.',
+        value: 'Agent maps gateway config, cert suite, client comms, and evidence controls automatically.',
       },
       {
         id: 'tests',
@@ -817,9 +876,343 @@ export const PRODUCT_PANIC_SCENARIO = {
       },
     ],
     outcomes: [
-      'Agent sources, diffs, and acts — humans review and intercept.',
-      'Hours instead of weeks.',
-      'Continuous audit trail at every step.',
+      'The response package is assembled while the notice is still fresh.',
+      'Humans stay in control while the coordination burden drops sharply.',
+      'Client rollout and evidence stay aligned with the technical response.',
+    ],
+  },
+}
+
+export const MARKET_MODEL = {
+  beachhead: {
+    label: 'Beachhead',
+    value: '€15M–€50M',
+    detail:
+      'Working model: ~150–250 reachable operators globally × €100k–€200k ARR.',
+  },
+  strategicAttach: {
+    label: 'Strategic Attach',
+    value: 'Platform leverage',
+    detail:
+      'If FIXFriend plugs into incumbent platforms, strategic value comes from attach revenue plus faster client rollout, lower support load, and stronger stickiness.',
+  },
+  expansion: {
+    label: 'Broader Expansion',
+    value: '€450M',
+    detail:
+      'The broader trading-firm opportunity remains meaningful, but the lean-exit path starts with the narrower vendor wedge first.',
+  },
+  methodology: [
+    'Count the narrow beachhead first: vendors, managed connectivity providers, selected venues, and testing/compliance adjacencies.',
+    'Separate direct ARR from strategic attach value; do not hide both inside one TAM number.',
+    'Treat pricing and reachable account count as hypotheses to be tightened through buyer and acquirer discovery.',
+  ],
+}
+
+export const BUSINESS_MODEL_CANVAS = {
+  customerSegments: [
+    'OMS / EMS vendors',
+    'Managed FIX and connectivity providers',
+    'Selected venue operators',
+    'Testing and compliance adjacencies',
+  ],
+  valueProp:
+    'Turn venue change notices into rollout-ready change packs, certification workflows, and client-ready evidence without rebuilding the story by hand.',
+  channels: [
+    'Founder-led warm intros',
+    'Design-partner outreach around live venue-change pain',
+    'Industry events and thought leadership',
+    'Partner and platform distribution after the first wedge is proven',
+  ],
+  revenueStreams: [
+    'Paid design partner or pilot: €25k–€50k',
+    'Annual platform contract: €100k–€200k ARR',
+    'Optional integration and professional services',
+  ],
+  costStructure: [
+    'Founder-led discovery and implementation',
+    'Protocol parsing and workflow product development',
+    'Customer integration and support',
+    'High-signal travel, events, and partner development',
+  ],
+}
+
+export const FEATURE_PRIORITIES = {
+  mvp: [
+    {
+      title: 'Venue notice ingestion',
+      reason: 'The wedge starts when teams are still staring at inboxes, portals, and PDFs.',
+    },
+    {
+      title: 'Impact mapping across product, config, and cert workflows',
+      reason: 'This is where manual coordination currently burns time.',
+    },
+    {
+      title: 'Change-pack generation',
+      reason: 'Engineering and product need one response package instead of fragmented context.',
+    },
+    {
+      title: 'Evidence and approval trail',
+      reason: 'The workflow has to stay supervised and audit-ready from day one.',
+    },
+  ],
+  v2: [
+    {
+      title: 'Client rollout communication templates',
+      reason: 'Differentiates FIXFriend from technical-only tooling and lowers support drag.',
+    },
+    {
+      title: 'Certification dependency tracking',
+      reason: 'Captures delays caused by venue-side readiness and environment setup.',
+    },
+    {
+      title: 'Historical venue-change backtesting',
+      reason: 'Helps prove strategic value before a live embedded rollout.',
+    },
+  ],
+  future: [
+    {
+      title: 'Partner / platform embed APIs',
+      reason: 'Matters once strategic attach becomes the dominant route to scale.',
+    },
+    {
+      title: 'Multi-party workflow analytics',
+      reason: 'Turns operational activity into a management and M&A insight layer.',
+    },
+    {
+      title: 'Selective automation of repetitive certification steps',
+      reason: 'Only after the workflow layer is trusted and clearly bounded.',
+    },
+  ],
+}
+
+export const PRICING_TRACKER = [
+  {
+    name: 'Broadridge FIX / connectivity services',
+    signal: 'Enterprise platform sale; public pricing not disclosed.',
+    logic: 'Supports the view that buyers already accept large enterprise workflows when they remove operational burden.',
+    evidence: 'Validated',
+    sourceLabel: 'Broadridge FIX Technology and Client Connectivity Services',
+    sourceUrl: 'https://www.broadridge.com/capability/front-office-solutions/connectivity/fix-technology-and-client-connectivity-services',
+  },
+  {
+    name: 'Tradeweb integration support',
+    signal: 'Integration is strategic and relationship-heavy; pricing is not public.',
+    logic: 'Supports the view that workflow and support costs are real even when the budget is hidden inside a broader relationship.',
+    evidence: 'Validated',
+    sourceLabel: 'Tradeweb Integration',
+    sourceUrl: 'https://www.tradeweb.com/our-markets/institutional/integration/',
+  },
+  {
+    name: 'Kaizen testing / assurance',
+    signal: 'Adjacent assurance spend exists; public pricing not disclosed.',
+    logic: 'Supports pricing FIXFriend as an enterprise workflow and assurance layer, not a seat-based tool.',
+    evidence: 'Validated',
+    sourceLabel: 'Kaizen Accuracy on Demand',
+    sourceUrl: 'https://www.kaizenreporting.com/solutions/reportshield/accuracy-on-demand-regulatory-reporting-testing/',
+  },
+  {
+    name: 'Exactpro protocol-aware testing',
+    signal: 'Testing tooling already commands specialist enterprise spend.',
+    logic: 'Confirms FIXFriend must price against high-value workflow pain, not generic developer tooling.',
+    evidence: 'Validated',
+    sourceLabel: 'Exactpro ClearTH',
+    sourceUrl: 'https://exactpro.com/test-tools/clearth',
+  },
+  {
+    name: 'FIXFriend pricing hypothesis',
+    signal: 'Pilot €25k–€50k, then €100k–€200k ARR + optional services.',
+    logic: 'Matches a narrow enterprise wedge with design-partner and strategic-attach potential.',
+    evidence: 'Hypothesis',
+    sourceLabel: 'Current operating hypothesis',
+    sourceUrl: '',
+  },
+]
+
+export const VALIDATION_PLAN = {
+  riskiestAssumption:
+    'This workflow gap is strategic enough for an incumbent or likely acquirer to care about as a product gap, not just a useful feature.',
+  hypothesis:
+    'If likely acquirers repeatedly describe venue-driven change response as painful, cross-functional, and hard to internalise quickly, then a vendor-side workflow layer can become strategically valuable.',
+  timeline: [
+    {
+      label: 'Week 1–2',
+      focus: 'Acquirer-side product and connectivity interviews',
+      detail: 'Run 8–10 conversations with leaders closest to product rollout, venue onboarding, or client certification.',
+    },
+    {
+      label: 'Week 2–4',
+      focus: 'Corp-dev, strategy, and M&A advisor interviews',
+      detail: 'Run 4–6 conversations to learn how similar acquisitions are sourced, sponsored, and evaluated.',
+    },
+    {
+      label: 'Week 3–5',
+      focus: 'Operator back-testing',
+      detail: 'Replay 2 historical venue changes with product, QA, or connectivity operators to test whether FIXFriend output is materially useful.',
+    },
+    {
+      label: 'Week 6',
+      focus: 'Wedge decision',
+      detail: 'Choose whether to stay vendor-first or pivot toward venue-side or testing/regtech adjacency.',
+    },
+  ],
+  successMetrics: [
+    '2+ recurring strategic pain patterns across likely acquirers.',
+    '1 clear internal sponsor role per acquirer archetype.',
+    '1 credible buy / partner / embed path that is more attractive than internal build.',
+    '1 paid pilot or strong design-partner commitment.',
+  ],
+  pivotTriggers: [
+    'Acquirers describe the product as tactical, not strategic.',
+    'Only one archetype shows real urgency.',
+    'The pain is stronger on venue-side or testing-side than vendor-side.',
+  ],
+}
+
+export const COMPETITION_MATRIX = [
+  {
+    name: 'Manual status quo',
+    evidence: 'Validated',
+    whatTheyDo: 'Humans coordinate notices, specs, testing, and client communication across inboxes and tickets.',
+    gap: 'Slow, relationship-driven, hard to evidence, and fragile when venue-side issues surface late.',
+    sourceLabel: 'Interview with Tom, Bloomberg',
+    sourceUrl: '',
+  },
+  {
+    name: 'Broadridge',
+    evidence: 'Validated',
+    whatTheyDo: 'Connectivity, onboarding, FIX services, testing, and broader trading stack capabilities.',
+    gap: 'Strong platform coverage, but the cross-party venue-change workflow still appears fragmented across functions and products.',
+    sourceLabel: 'Broadridge FIX Technology and Client Connectivity Services',
+    sourceUrl: 'https://www.broadridge.com/capability/front-office-solutions/connectivity/fix-technology-and-client-connectivity-services',
+  },
+  {
+    name: 'Tradeweb',
+    evidence: 'Validated',
+    whatTheyDo: 'Integration support, multiple integration routes, and venue-side developer interaction.',
+    gap: 'Supports integration, but does not solve the vendor-side workflow burden when changes arrive with short notice or venue-side issues bounce back.',
+    sourceLabel: 'Tradeweb Integration',
+    sourceUrl: 'https://www.tradeweb.com/our-markets/institutional/integration/',
+  },
+  {
+    name: 'Kaizen',
+    evidence: 'Validated',
+    whatTheyDo: 'Testing and assurance in adjacent reporting/compliance workflows.',
+    gap: 'Adjacent buyer and adjacent spend, but not focused on venue-driven product rollout and certification coordination.',
+    sourceLabel: 'Kaizen Accuracy on Demand',
+    sourceUrl: 'https://www.kaizenreporting.com/solutions/reportshield/accuracy-on-demand-regulatory-reporting-testing/',
+  },
+  {
+    name: 'Exactpro',
+    evidence: 'Validated',
+    whatTheyDo: 'Protocol-aware testing and specialist QA tooling.',
+    gap: 'Testing capability is strong, but it does not own the full workflow from notice to product update to client-ready evidence.',
+    sourceLabel: 'Exactpro ClearTH',
+    sourceUrl: 'https://exactpro.com/test-tools/clearth',
+  },
+  {
+    name: 'FIXFriend',
+    evidence: 'Hypothesis',
+    whatTheyDo: 'Own the workflow layer: notice ingestion, impact mapping, change-pack assembly, certification readiness, and client/evidence outputs.',
+    gap: 'Must still prove that this wedge is strategic enough to buy or embed rather than build internally.',
+    sourceLabel: 'Current thesis',
+    sourceUrl: '',
+  },
+]
+
+export const GTM_PLAYBOOK = {
+  first10: [
+    'Founder-led warm intros through Nasdaq, Itiviti, Broadridge, Bloomberg, and venue relationships.',
+    'Use a sample historical venue-change teardown to prove insight before asking for a pilot.',
+    'Target design partners whose workflows also matter to likely acquirers.',
+    'Prioritise accounts where communication and certification pain is already visible, not generic innovation interest.',
+  ],
+  next100: [
+    'Use case-study-led outbound once one wedge is proven.',
+    'Distribute through partners, incumbents, consultancies, or testing/compliance adjacencies instead of building a heavy direct-sales machine.',
+    'Publish thought leadership on certification drag, venue-change fragmentation, and rollout readiness.',
+    'Use events such as FIX EMEA and FIA IDX for concentrated relationship-building, not broad funnel volume.',
+  ],
+  costs: [
+    'Targeted founder travel and conference attendance instead of paid media.',
+    'High-touch design-partner sales motion for the first 10.',
+    'Low CAC expectation only becomes realistic once attach-to-platform distribution exists.',
+  ],
+}
+
+export const OPEN_QUESTIONS = [
+  'Who really sponsors these acquisitions: business-unit leader, corp-dev, founder/CEO, or advisor?',
+  'What proof makes this look strategic rather than tactical?',
+  'Is the strongest wedge vendor-side, venue-side, or testing/regtech adjacency?',
+  'How much of the problem is workflow versus missing technical tooling?',
+]
+
+export const LEAN_EXIT_CASE = {
+  intro:
+    'FIXFriend is framed as a narrow workflow wedge with strategic value if incumbents decide the gap between venue change, product update, certification, and client rollout is worth buying, embedding, or partnering around.',
+  evidenceOverview: [
+    {
+      label: 'Validated',
+      tone: 'success',
+      items: [
+        'Interview evidence points to communication, certification, and protocol fragmentation as recurring pain.',
+        'Public incumbents already cover onboarding, testing, and connectivity, which sharpens the differentiation bar.',
+        'Verified sector deals show continued consolidation across trading infrastructure and exchanges.',
+      ],
+    },
+    {
+      label: 'Hypothesis',
+      tone: 'warning',
+      items: [
+        'Vendor-side change-response is the strongest initial wedge.',
+        'The right buyer will pay for faster rollout and lower support drag before they pay for AI by itself.',
+        'A workflow layer is more strategically interesting than a narrow point solution.',
+      ],
+    },
+    {
+      label: 'Open Question',
+      tone: 'info',
+      items: [
+        'Which acquirer archetype feels this gap most intensely?',
+        'What evidence would make buy-or-embed more attractive than internal build?',
+        'Which product boundary creates the strongest strategic fit?',
+      ],
+    },
+  ],
+  wedge: {
+    evidence: 'Hypothesis',
+    buyerOneLiner:
+      'FIXFriend turns venue change notices into rollout-ready change packs, certification workflows, and client-ready evidence for trading technology vendors.',
+    acquirerOneLiner:
+      'FIXFriend is the missing workflow layer between venue change, product update, and client rollout.',
+    tenX:
+      'Same-day change assessment and certification prep instead of 1–2 weeks of PM, engineering, and QA coordination.',
+    quantifiedFrom: '1–2 weeks',
+    quantifiedTo: 'Same day',
+    quantifiedLabel: 'Time to a certification-ready change pack',
+  },
+  scope: {
+    evidence: 'Hypothesis',
+    does: [
+      'Ingest venue changes from the channels teams already monitor.',
+      'Map impact across products, configurations, certification tasks, and client workflows.',
+      'Create change packs that engineering, QA, and rollout teams can use immediately.',
+      'Produce client-ready evidence and approval context as the work happens.',
+    ],
+    doesNot: [
+      'Replace FIX engines or OMS / EMS infrastructure.',
+      'Normalize every protocol dialect into one universal standard.',
+      'Replace venue simulators or venue-side testing environments.',
+      'Auto-deploy production changes without human approval.',
+    ],
+  },
+  whyBought: {
+    evidence: 'Hypothesis',
+    points: [
+      'Reduces rollout friction and support drag around venue changes.',
+      'Turns a painful multi-team workflow into a differentiated attach product.',
+      'Improves client stickiness by making incumbent platforms easier to keep current.',
+      'Fits beside existing onboarding, testing, and compliance capabilities rather than replacing them.',
     ],
   },
 }

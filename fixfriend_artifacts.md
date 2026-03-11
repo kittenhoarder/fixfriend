@@ -334,3 +334,117 @@ Direct experience with the compliance evidence gap:
 
 FIXFriend exists because Owen Perry spent a career watching this problem
 compound — and knows exactly who will pay to solve it.
+
+---
+
+## Lean-Exit Revision
+
+### Core framing
+- Audience: VCs, with an acquirer-discovery lens
+- Strategic frame: Lean exit, not standalone venture-scale first
+- Buyer-language line: FIXFriend turns venue change notices into rollout-ready
+  change packs, certification workflows, and client-ready evidence for trading
+  technology vendors.
+- Acquirer-language line: FIXFriend is the missing workflow layer between venue
+  change, product update, and client rollout.
+- 10x claim: Same-day change assessment and certification prep instead of 1–2
+  weeks of PM, engineering, and QA coordination.
+
+### Evidence labels used in the site
+- Validated: public-source facts, verified deals, direct interview evidence
+- Hypothesis: current beliefs about pricing, wedge shape, and strategic fit
+- Open Question: what founder discovery still needs to answer
+
+### Lean-exit wedge
+- Primary operating wedge: vendor-side change-response and certification
+  workflow
+- Includes: OMS/EMS vendors, managed FIX/connectivity providers, selected
+  venues, testing/compliance adjacencies
+- The wedge is NOT:
+  - a replacement FIX engine
+  - a universal protocol normalisation layer
+  - a venue simulator replacement
+  - an autonomous production deployer
+
+### Updated market model
+- Beachhead market:
+  - Working model: ~150–250 reachable operators globally × €100k–€200k ARR
+  - Range: ~€15M–€50M
+- Strategic attach view:
+  - Value comes from attach revenue plus lower rollout drag, lower support load,
+    and stronger client stickiness if embedded into incumbent platforms
+- Broader expansion:
+  - Broader trading-firm TAM remains meaningful, but is secondary to the narrow
+    lean-exit wedge
+- Working wedge/SAM:
+  - 40–80 high-fit operators in Europe and the US before channel expansion
+- Lean-exit SOM objective:
+  - 5–10 design partners
+  - 3–5 paid pilots
+  - €1M–€3M ARR potential before strategic embed or acquisition
+
+### Business defaults
+- Economic buyer:
+  - Head of Product
+  - Head of Connectivity
+  - Head of Electronic Trading
+- Revenue model:
+  - paid design partner / pilot: €25k–€50k
+  - annual platform contract: €100k–€200k ARR
+  - optional integration / professional services
+
+### Interview-backed pain points to foreground
+- Communication and short-notice change management are the first bottleneck
+- FIX / protocol fragmentation is real even inside “standardized” workflows
+- Testing and certification are expensive and relationship-heavy
+- Connectivity setup still creates real delay and dependency
+- Vendors can become the venue's effective external QA layer
+
+### Validation plan
+- Riskiest assumption:
+  - This workflow gap is strategic enough for an incumbent or likely acquirer to
+    care about as a product gap, not just a useful feature
+- 6-week loop:
+  - Week 1–2: 8–10 acquirer-side product/connectivity interviews
+  - Week 2–4: 4–6 corp-dev, strategy, former corp-dev, or sector M&A advisor
+    interviews
+  - Week 3–5: 4–6 operator back-testing interviews
+  - Week 6: choose the wedge to keep or pivot
+- Success metrics:
+  - 2+ recurring strategic pain patterns
+  - 1 clear internal sponsor role per archetype
+  - 1 credible buy / partner / embed path
+  - 1 paid pilot or strong design-partner commitment
+- Pivot triggers:
+  - acquirers call it tactical, not strategic
+  - only one archetype shows urgency
+  - the pain is stronger venue-side or testing-side than vendor-side
+
+### Public-source guardrails
+- Broadridge FIX Technology and Client Connectivity Services:
+  - Shows incumbents already market onboarding, testing, and certification
+    support
+  - Source:
+    https://www.broadridge.com/capability/front-office-solutions/connectivity/fix-technology-and-client-connectivity-services
+- Trading Technologies Global Network:
+  - Confirms connectivity spans Internet, extranet private lines, and direct
+    connect
+  - Source:
+    https://tradingtechnologies.com/infrastructure/global-network/
+- Tradeweb Integration:
+  - Shows integration support and multiple integration routes already exist
+  - Source:
+    https://www.tradeweb.com/our-markets/institutional/integration/
+- Kaizen Accuracy on Demand:
+  - Shows adjacent testing / assurance spend exists
+  - Source:
+    https://www.kaizenreporting.com/solutions/reportshield/accuracy-on-demand-regulatory-reporting-testing/
+- Exactpro ClearTH:
+  - Shows protocol-aware testing tooling exists already
+  - Source:
+    https://exactpro.com/test-tools/clearth
+
+### Explicit inference
+- The whitespace is NOT generic FIX automation.
+- The whitespace is the cross-party workflow and evidence layer for
+  venue-driven change response.

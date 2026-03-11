@@ -30,7 +30,7 @@ export default function AcquirersSection() {
               className="font-mono text-xs ml-2"
               style={{ color: 'var(--text-secondary)' }}
             >
-              Decision speed
+              Supporting proof for the lean-exit case
             </span>
           </div>
         )}

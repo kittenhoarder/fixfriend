@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Sidebar from './components/Sidebar'
 import ThesisSection from './components/sections/ThesisSection'
+import LeanExitSection from './components/sections/LeanExitSection'
 import MarketSection from './components/sections/MarketSection'
 import DefinitionSection from './components/sections/DefinitionSection'
 import GapSection from './components/sections/GapSection'
@@ -13,6 +14,7 @@ const THEME_STORAGE_KEY = 'fixfriend-theme'
 
 const SECTIONS = {
   thesis: ThesisSection,
+  leanExit: LeanExitSection,
   market: MarketSection,
   definition: DefinitionSection,
   gap: GapSection,

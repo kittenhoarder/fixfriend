@@ -51,7 +51,7 @@ export default function DealFlowSection() {
             9 Verified Deals — 12 Months
           </h2>
           <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-            Click a deal marker to see the detail and pattern evidence.
+            Click a deal marker to see the detail and the pattern evidence that supports the lean-exit thesis.
           </p>
         </div>
 
@@ -100,8 +100,7 @@ export default function DealFlowSection() {
             PATTERN
           </div>
           <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
-            Private and PE-backed firms close in weeks to months. Public companies
-            acquire, but decision cycles are longer.
+            Sector consolidation is real, but this section now plays a supporting role: it shows why acquirer discovery is worth doing, not why the product is already bought.
           </p>
           <div
             className="border-t pt-4"
@@ -111,7 +110,7 @@ export default function DealFlowSection() {
               className="font-mono text-xs tracking-widest mb-2"
               style={{ color: 'var(--text-secondary)', letterSpacing: '0.08em' }}
             >
-              FIXFRIEND TIER 1 PRIVATE TARGETS
+              HIGH-SIGNAL LEAN EXIT TARGETS
             </div>
             <div className="flex flex-wrap gap-2">
               {[
@@ -139,7 +138,7 @@ export default function DealFlowSection() {
               className="text-xs mt-3"
               style={{ color: 'var(--text-secondary)' }}
             >
-              Decision-makers, not committees. →
+              Fast-moving, strategically relevant, and worth validating directly. →
             </p>
           </div>
         </div>

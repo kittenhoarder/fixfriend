@@ -1,0 +1,456 @@
+import { useMemo, useRef, useState } from 'react'
+import { Download, Loader } from 'lucide-react'
+import {
+  THESIS,
+  LEAN_EXIT_CASE,
+  BUSINESS_MODEL_CANVAS,
+  VALIDATION_PLAN,
+  MARKET_MODEL,
+} from '../data/content'
+
+async function generatePDF(el, filename) {
+  const { default: html2canvas } = await import('html2canvas')
+  const { jsPDF } = await import('jspdf')
+
+  const canvas = await html2canvas(el, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: '#0b0b0c',
+    logging: false,
+    width: el.scrollWidth,
+    height: el.scrollHeight,
+    windowWidth: el.scrollWidth,
+    windowHeight: el.scrollHeight,
+  })
+
+  const imgData = canvas.toDataURL('image/jpeg', 0.95)
+  const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
+  const pdfW = pdf.internal.pageSize.getWidth()
+  const pdfH = pdf.internal.pageSize.getHeight()
+  pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, pdfH)
+  pdf.save(filename)
+}
+
+function BaseDocument({ title, subtitle, children }) {
+  const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+
+  const styles = useMemo(() => ({
+    page: {
+      width: '794px',
+      height: '1123px',
+      backgroundColor: '#0b0b0c',
+      color: '#f5f3ef',
+      fontFamily: "'Manrope', system-ui, sans-serif",
+      padding: '44px 48px 40px',
+      boxSizing: 'border-box',
+      position: 'relative',
+      overflow: 'hidden',
+    },
+    glow1: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '340px',
+      height: '280px',
+      background: 'radial-gradient(ellipse at top left, rgba(249,115,22,0.16), transparent 70%)',
+      pointerEvents: 'none',
+    },
+    glow2: {
+      position: 'absolute',
+      right: 0,
+      top: 0,
+      width: '320px',
+      height: '260px',
+      background: 'radial-gradient(ellipse at top right, rgba(59,130,246,0.14), transparent 70%)',
+      pointerEvents: 'none',
+    },
+    content: {
+      position: 'relative',
+      zIndex: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+    },
+    header: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+      marginBottom: '20px',
+    },
+    brand: {
+      fontFamily: "'Instrument Serif', Georgia, serif",
+      fontSize: '28px',
+      lineHeight: 1,
+      marginBottom: '6px',
+    },
+    badge: {
+      fontSize: '10px',
+      fontWeight: 700,
+      letterSpacing: '0.16em',
+      color: '#f97316',
+      border: '1px solid rgba(249,115,22,0.3)',
+      background: 'rgba(249,115,22,0.08)',
+      padding: '4px 8px',
+      display: 'inline-block',
+    },
+    meta: {
+      fontSize: '10px',
+      color: '#8e897f',
+      textAlign: 'right',
+      lineHeight: 1.5,
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+    },
+    title: {
+      fontFamily: "'Instrument Serif', Georgia, serif",
+      fontSize: '28px',
+      lineHeight: 1.05,
+      marginBottom: '8px',
+      maxWidth: '620px',
+    },
+    subtitle: {
+      fontSize: '11px',
+      lineHeight: 1.6,
+      color: '#c8c2b8',
+      maxWidth: '640px',
+      marginBottom: '18px',
+    },
+    divider: {
+      height: '1px',
+      background: 'linear-gradient(90deg, rgba(249,115,22,0.5), rgba(59,130,246,0.35), transparent)',
+      marginBottom: '18px',
+    },
+    footer: {
+      marginTop: 'auto',
+      paddingTop: '16px',
+      borderTop: '1px solid #20242a',
+      fontSize: '9px',
+      color: '#8e897f',
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+  }), [])
+
+  return (
+    <div style={styles.page}>
+      <div style={styles.glow1} />
+      <div style={styles.glow2} />
+      <div style={styles.content}>
+        <div style={styles.header}>
+          <div>
+            <div style={styles.brand}>FIXFriend</div>
+            <div style={styles.badge}>LEAN EXIT THESIS</div>
+          </div>
+          <div style={styles.meta}>
+            <div>{today}</div>
+            <div>VC-facing · acquirer lens</div>
+          </div>
+        </div>
+        <div style={styles.title}>{title}</div>
+        <div style={styles.subtitle}>{subtitle}</div>
+        <div style={styles.divider} />
+        {children}
+        <div style={styles.footer}>
+          <span>FIXFriend · Confidential</span>
+          <span>{THESIS.linkedinUrl.replace('https://', '')}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function Label({ children }) {
+  return (
+    <div
+      style={{
+        fontSize: '10px',
+        letterSpacing: '0.14em',
+        textTransform: 'uppercase',
+        color: '#f97316',
+        fontWeight: 700,
+        marginBottom: '8px',
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+function Panel({ children, minHeight }) {
+  return (
+    <div
+      style={{
+        border: '1px solid #20242a',
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.02), transparent), #111214',
+        padding: '14px',
+        minHeight,
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+function LeanExitOnePagerDocument() {
+  return (
+    <BaseDocument
+      title="The missing workflow layer for venue-driven change response"
+      subtitle={THESIS.subheadline}
+    >
+      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.9fr', gap: '14px', flex: 1 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <Panel>
+            <Label>The Wedge</Label>
+            <div style={{ fontSize: '16px', lineHeight: 1.3, marginBottom: '8px' }}>
+              {LEAN_EXIT_CASE.wedge.buyerOneLiner}
+            </div>
+            <div style={{ fontSize: '12px', color: '#c8c2b8', lineHeight: 1.55 }}>
+              {LEAN_EXIT_CASE.wedge.acquirerOneLiner}
+            </div>
+          </Panel>
+
+          <Panel>
+            <Label>10x Claim</Label>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px' }}>
+              <div>
+                <div style={{ fontSize: '9px', color: '#8e897f', textTransform: 'uppercase', letterSpacing: '0.1em' }}>From</div>
+                <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '26px' }}>{LEAN_EXIT_CASE.wedge.quantifiedFrom}</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '9px', color: '#8e897f', textTransform: 'uppercase', letterSpacing: '0.1em' }}>To</div>
+                <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '26px', color: '#22c55e' }}>{LEAN_EXIT_CASE.wedge.quantifiedTo}</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '9px', color: '#8e897f', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Measured as</div>
+                <div style={{ fontSize: '11px', lineHeight: 1.5, color: '#c8c2b8' }}>{LEAN_EXIT_CASE.wedge.quantifiedLabel}</div>
+              </div>
+            </div>
+          </Panel>
+
+          <Panel minHeight="240px">
+            <Label>Why This Could Be Bought</Label>
+            {LEAN_EXIT_CASE.whyBought.points.map((point) => (
+              <div key={point} style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+                <span style={{ color: '#3b82f6' }}>•</span>
+                <span style={{ fontSize: '11px', color: '#c8c2b8', lineHeight: 1.5 }}>{point}</span>
+              </div>
+            ))}
+          </Panel>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <Panel>
+            <Label>Business Logic</Label>
+            <div style={{ fontSize: '11px', lineHeight: 1.6, color: '#c8c2b8' }}>
+              <strong style={{ color: '#f5f3ef' }}>Buyer:</strong> Head of Product / Head of Connectivity / Head of Electronic Trading
+              <br />
+              <strong style={{ color: '#f5f3ef' }}>Pilot:</strong> €25k–€50k
+              <br />
+              <strong style={{ color: '#f5f3ef' }}>ARR:</strong> €100k–€200k
+              <br />
+              <strong style={{ color: '#f5f3ef' }}>Distribution:</strong> direct design partners first, then attach-to-platform paths
+            </div>
+          </Panel>
+
+          <Panel>
+            <Label>Market Model</Label>
+            {[MARKET_MODEL.beachhead, MARKET_MODEL.strategicAttach, MARKET_MODEL.expansion].map((item) => (
+              <div key={item.label} style={{ marginBottom: '10px' }}>
+                <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#3b82f6' }}>{item.label}</div>
+                <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '20px', marginTop: '2px' }}>{item.value}</div>
+                <div style={{ fontSize: '10px', lineHeight: 1.5, color: '#c8c2b8' }}>{item.detail}</div>
+              </div>
+            ))}
+          </Panel>
+
+          <Panel minHeight="292px">
+            <Label>Validation</Label>
+            <div style={{ fontSize: '11px', color: '#c8c2b8', lineHeight: 1.55, marginBottom: '10px' }}>
+              <strong style={{ color: '#f5f3ef' }}>Riskiest assumption:</strong> {VALIDATION_PLAN.riskiestAssumption}
+            </div>
+            {VALIDATION_PLAN.timeline.slice(0, 3).map((item) => (
+              <div key={item.label} style={{ marginBottom: '10px' }}>
+                <div style={{ fontSize: '10px', color: '#f97316', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{item.label}</div>
+                <div style={{ fontSize: '11px', color: '#f5f3ef', marginTop: '2px' }}>{item.focus}</div>
+                <div style={{ fontSize: '10px', lineHeight: 1.5, color: '#c8c2b8' }}>{item.detail}</div>
+              </div>
+            ))}
+          </Panel>
+        </div>
+      </div>
+    </BaseDocument>
+  )
+}
+
+function BusinessModelCanvasDocument() {
+  const cardStyle = {
+    border: '1px solid #20242a',
+    background: 'linear-gradient(180deg, rgba(255,255,255,0.02), transparent), #111214',
+    padding: '14px',
+    minHeight: '140px',
+  }
+
+  return (
+    <BaseDocument
+      title="Business Model Canvas"
+      subtitle="A compact operating view of the lean-exit wedge."
+    >
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', alignContent: 'start', flex: 1 }}>
+        {[
+          ['Customer Segments', BUSINESS_MODEL_CANVAS.customerSegments],
+          ['Value Proposition', [BUSINESS_MODEL_CANVAS.valueProp]],
+          ['Channels', BUSINESS_MODEL_CANVAS.channels],
+          ['Revenue Streams', BUSINESS_MODEL_CANVAS.revenueStreams],
+          ['Cost Structure', BUSINESS_MODEL_CANVAS.costStructure],
+        ].map(([label, rows]) => (
+          <div key={label} style={cardStyle}>
+            <Label>{label}</Label>
+            {rows.map((row) => (
+              <div key={row} style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+                <span style={{ color: '#3b82f6' }}>•</span>
+                <span style={{ fontSize: '11px', color: '#c8c2b8', lineHeight: 1.5 }}>{row}</span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </BaseDocument>
+  )
+}
+
+function ValidationPlanDocument() {
+  return (
+    <BaseDocument
+      title="Validation Experiment Plan"
+      subtitle="The first loop is acquirer-backwards discovery, not generic scale GTM."
+    >
+      <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 0.95fr', gap: '14px', flex: 1 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <Panel>
+            <Label>Riskiest Assumption</Label>
+            <div style={{ fontSize: '14px', lineHeight: 1.45 }}>{VALIDATION_PLAN.riskiestAssumption}</div>
+          </Panel>
+
+          <Panel>
+            <Label>Hypothesis</Label>
+            <div style={{ fontSize: '11px', color: '#c8c2b8', lineHeight: 1.6 }}>{VALIDATION_PLAN.hypothesis}</div>
+          </Panel>
+
+          <Panel minHeight="420px">
+            <Label>Timeline</Label>
+            {VALIDATION_PLAN.timeline.map((item) => (
+              <div key={item.label} style={{ marginBottom: '14px' }}>
+                <div style={{ fontSize: '10px', color: '#f97316', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{item.label}</div>
+                <div style={{ fontSize: '12px', color: '#f5f3ef', marginTop: '2px' }}>{item.focus}</div>
+                <div style={{ fontSize: '11px', color: '#c8c2b8', lineHeight: 1.5 }}>{item.detail}</div>
+              </div>
+            ))}
+          </Panel>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <Panel>
+            <Label>Success Metrics</Label>
+            {VALIDATION_PLAN.successMetrics.map((item) => (
+              <div key={item} style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+                <span style={{ color: '#22c55e' }}>•</span>
+                <span style={{ fontSize: '11px', color: '#c8c2b8', lineHeight: 1.5 }}>{item}</span>
+              </div>
+            ))}
+          </Panel>
+          <Panel>
+            <Label>Pivot Triggers</Label>
+            {VALIDATION_PLAN.pivotTriggers.map((item) => (
+              <div key={item} style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+                <span style={{ color: '#f97316' }}>•</span>
+                <span style={{ fontSize: '11px', color: '#c8c2b8', lineHeight: 1.5 }}>{item}</span>
+              </div>
+            ))}
+          </Panel>
+        </div>
+      </div>
+    </BaseDocument>
+  )
+}
+
+function DownloadButton({ label, loading, onClick, accent = 'var(--amber)' }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={loading}
+      className="button-outline inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold w-full"
+      style={{
+        borderColor: 'rgba(249,115,22,0.35)',
+        color: loading ? 'var(--text-tertiary)' : accent,
+        letterSpacing: '0.08em',
+        background: 'linear-gradient(135deg, rgba(249,115,22,0.07), rgba(59,130,246,0.04))',
+      }}
+    >
+      {loading ? <Loader size={13} className="animate-spin" /> : <Download size={13} />}
+      {loading ? 'GENERATING PDF…' : label}
+    </button>
+  )
+}
+
+export default function LeanExitDownloads() {
+  const leanExitRef = useRef(null)
+  const canvasRef = useRef(null)
+  const validationRef = useRef(null)
+  const [activeDoc, setActiveDoc] = useState(null)
+
+  async function handleDownload(ref, key, filename) {
+    if (!ref.current || activeDoc) return
+    setActiveDoc(key)
+    try {
+      await generatePDF(ref.current, filename)
+    } finally {
+      setActiveDoc(null)
+    }
+  }
+
+  return (
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <DownloadButton
+          label="DOWNLOAD LEAN EXIT ONE-PAGER · PDF"
+          loading={activeDoc === 'lean-exit'}
+          onClick={() => handleDownload(leanExitRef, 'lean-exit', 'FIXFriend-Lean-Exit-OnePager.pdf')}
+        />
+        <DownloadButton
+          label="DOWNLOAD BUSINESS MODEL CANVAS · PDF"
+          loading={activeDoc === 'canvas'}
+          onClick={() => handleDownload(canvasRef, 'canvas', 'FIXFriend-Business-Model-Canvas.pdf')}
+          accent="var(--accent)"
+        />
+        <DownloadButton
+          label="DOWNLOAD VALIDATION PLAN · PDF"
+          loading={activeDoc === 'validation'}
+          onClick={() => handleDownload(validationRef, 'validation', 'FIXFriend-Validation-Plan.pdf')}
+          accent="var(--status-success)"
+        />
+      </div>
+
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          top: '-9999px',
+          left: '-9999px',
+          zIndex: -1,
+          pointerEvents: 'none',
+        }}
+      >
+        <div ref={leanExitRef}>
+          <LeanExitOnePagerDocument />
+        </div>
+        <div ref={canvasRef}>
+          <BusinessModelCanvasDocument />
+        </div>
+        <div ref={validationRef}>
+          <ValidationPlanDocument />
+        </div>
+      </div>
+    </>
+  )
+}

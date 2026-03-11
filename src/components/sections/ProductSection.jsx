@@ -6,6 +6,7 @@ export default function ProductSection() {
   const s = PRODUCT_CONTENT.solution
   const w = PRODUCT_CONTENT.whatCustomersBuy
   const t = PRODUCT_CONTENT.targetBuyer
+  const painPoints = PRODUCT_CONTENT.painPoints || []
 
   return (
     <div className="flex flex-col h-full pt-14 lg:pt-0" style={{ minHeight: '100vh' }}>
@@ -109,6 +110,25 @@ export default function ProductSection() {
                 ))}
               </ul>
             </div>
+
+            {painPoints.length > 0 && (
+              <div className="border-t pt-6 mt-8" style={{ borderColor: 'var(--border-subtle)' }}>
+                <h2
+                  className="font-mono font-bold text-sm tracking-wider mb-3"
+                  style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
+                >
+                  Interview-backed pain points
+                </h2>
+                <ul className="space-y-2">
+                  {painPoints.map((point) => (
+                    <li key={point} className="flex items-start gap-2">
+                      <Check size={14} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--accent)' }} />
+                      <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>

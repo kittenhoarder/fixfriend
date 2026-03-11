@@ -301,7 +301,7 @@ export default function ProductDemo() {
         {
           icon: Wrench,
           label: 'Agent mapped impacts',
-          detail: 'Gateway config, cert suite, and evidence trail linked automatically.',
+          detail: 'Gateway config, cert suite, client rollout, and evidence trail linked automatically.',
           tone: 'success',
         },
         {
@@ -321,13 +321,13 @@ export default function ProductDemo() {
         {
           icon: AlertTriangle,
           label: 'Manual triage',
-          detail: 'No automation layer exists between the spec change and the response plan.',
+          detail: 'Product, engineering, QA, and client teams still have to assemble the response manually.',
           tone: 'danger',
         },
         {
           icon: ShieldCheck,
           label: 'Regulator expectation',
-          detail: 'When asked, the firm must show what changed, what was tested, and why it was safe.',
+          detail: 'When asked, the team still has to show what changed, what was tested, and why the rollout was safe.',
           tone: 'neutral',
         },
       ]
@@ -384,7 +384,7 @@ export default function ProductDemo() {
                 Spot the trigger
               </div>
               <div className="text-xs mt-2 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                Find the alert that actually forces a certification cycle.
+                Find the alert that forces a real rollout and certification response.
               </div>
             </div>
             <div className="border p-4" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}>
@@ -395,7 +395,7 @@ export default function ProductDemo() {
                 Feel the burden
               </div>
               <div className="text-xs mt-2 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                Choose what must change and see the manual fallout.
+                Choose what must change and see the manual coordination cost.
               </div>
             </div>
             <div className="border p-4" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}>
@@ -469,7 +469,7 @@ export default function ProductDemo() {
                 </div>
 
                 <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--text-secondary)' }}>
-                  Three alerts hit your desk. Only one creates a mandatory certification cycle. Pick the real one before the window compresses.
+                  Three alerts hit your desk. Only one creates a mandatory rollout and certification cycle. Pick the real one before the window compresses.
                 </p>
 
                 <div className="grid gap-3">
@@ -541,7 +541,7 @@ export default function ProductDemo() {
                   You can get through it. You just can’t get through it cleanly.
                 </h4>
                 <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
-                  Engineering absorbs the change, certification gets squeezed, and evidence is still being assembled after the fact. The work happens, but the process stays fragile.
+                  Engineering absorbs the change, certification gets squeezed, client communication stays reactive, and evidence is still being assembled after the fact. The work happens, but the process stays fragile.
                 </p>
 
                 <div className="grid gap-3 md:grid-cols-3 mt-5">
@@ -605,7 +605,7 @@ export default function ProductDemo() {
                   Same trigger. Different operating model.
                 </h4>
                 <p className="text-sm leading-relaxed mt-3 mb-5" style={{ color: 'var(--text-secondary)' }}>
-                  FIXFriend parses the venue delta, maps impact, assembles the validation plan, and builds the evidence trail while the work is happening. Human review still sits before deployment.
+                  FIXFriend parses the venue delta, maps impact, assembles the validation plan, lines up client rollout, and builds the evidence trail while the work is happening. Human review still sits before deployment.
                 </p>
 
                 <div className="grid gap-3">
@@ -664,7 +664,7 @@ export default function ProductDemo() {
                   The work stays. The chaos disappears.
                 </h4>
                 <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
-                  The same venue change still needs review, validation, and proof. FIXFriend turns those steps into a continuous, supervised workflow instead of a manual scramble.
+                  The same venue change still needs review, validation, client rollout, and proof. FIXFriend turns those steps into a continuous, supervised workflow instead of a manual scramble.
                 </p>
 
                 <div className="grid gap-3 md:grid-cols-3 mt-5">
@@ -690,7 +690,7 @@ export default function ProductDemo() {
                         What the buyer is actually buying
                       </div>
                       <div className="text-sm mt-2 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                        A controlled change-response system that detects venue deltas, maps operational impact, runs validation, and emits audit-ready compliance evidence without waiting for the regulator to ask.
+                        A controlled change-response system that detects venue deltas, maps operational impact, prepares certification and rollout work, and emits audit-ready evidence without waiting for the regulator or client to ask.
                       </div>
                     </div>
                   </div>

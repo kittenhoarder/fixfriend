@@ -188,11 +188,11 @@ function InlineBold({ text }) {
   return <>{parts}</>
 }
 
-function FirmsPanel({ node }) {
+function VendorsPanel({ node }) {
   const ms = DEFINITION.marketSize
   return (
     <div className="animate-slide-in-right">
-      <PanelHeading node={node} label="DEMAND SIDE" />
+      <PanelHeading node={node} label="VENDOR LAYER" />
       <div
         className="font-mono text-xs px-2 py-1 rounded-sm mb-4 inline-block"
         style={{
@@ -204,7 +204,7 @@ function FirmsPanel({ node }) {
         {node.count}
       </div>
       <Section label="Includes">{node.includes}</Section>
-      <Section label="The Problem">{node.body}</Section>
+      <Section label="Why This Layer Matters">{node.body}</Section>
       <Section label="Today">
         <span style={{ color: 'var(--status-danger)' }}>{node.today}</span>
       </Section>
@@ -238,6 +238,14 @@ function FirmsPanel({ node }) {
               ))}
             </p>
           </div>
+          {ms.attach ? (
+            <div>
+              <span className="font-mono text-xs font-semibold block mb-1" style={{ color: 'var(--text-primary)' }}>
+                {ms.attach.label}
+              </span>
+              <p>{ms.attach.body}</p>
+            </div>
+          ) : null}
           <div>
             <span className="font-mono text-xs font-semibold block mb-1" style={{ color: 'var(--text-primary)' }}>
               {ms.expansion.label}
@@ -264,6 +272,29 @@ function FirmsPanel({ node }) {
   )
 }
 
+function FirmsPanel({ node }) {
+  return (
+    <div className="animate-slide-in-right">
+      <PanelHeading node={node} label="DOWNSTREAM CLIENTS" />
+      <div
+        className="font-mono text-xs px-2 py-1 rounded-sm mb-4 inline-block"
+        style={{
+          color: 'var(--accent)',
+          backgroundColor: 'var(--accent-soft)',
+          border: '1px solid var(--accent-border-soft)',
+        }}
+      >
+        {node.count}
+      </div>
+      <Section label="Includes">{node.includes}</Section>
+      <Section label="What They Feel">{node.body}</Section>
+      <Section label="Today">
+        <span style={{ color: 'var(--status-danger)' }}>{node.today}</span>
+      </Section>
+    </div>
+  )
+}
+
 function RegulatorsPanel({ node }) {
   return (
     <div className="animate-slide-in-right">
@@ -285,6 +316,7 @@ const PANEL_MAP = {
   esma: RegulatoryPanel,
   venues: VenuesPanel,
   trigger: TriggerPanel,
+  vendors: VendorsPanel,
   firms: FirmsPanel,
   regulators: RegulatorsPanel,
 }
