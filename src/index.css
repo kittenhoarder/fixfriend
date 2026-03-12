@@ -214,20 +214,24 @@
   }
 
   .rounded-sm {
-    border-radius: 2px !important;
+    border-radius: 0 !important;
   }
 
   .rounded,
   .rounded-md {
-    border-radius: 4px !important;
+    border-radius: 0 !important;
   }
 
   .rounded-lg {
-    border-radius: 8px !important;
+    border-radius: 0 !important;
   }
 
   .rounded-xl {
-    border-radius: 12px !important;
+    border-radius: 0 !important;
+  }
+
+  .rounded-full {
+    border-radius: 0 !important;
   }
 
   .app-shell {
