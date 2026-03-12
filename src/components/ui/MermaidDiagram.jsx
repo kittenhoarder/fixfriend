@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import mermaid from 'mermaid'
-import { FULL_GRAPH_MERMAID } from '../../data/fullGraphMermaid'
-import DiagramCanvas from '../ui/DiagramCanvas'
+import DiagramCanvas from './DiagramCanvas'
 
-export default function FullGraphView({ theme = 'dark' }) {
+export default function MermaidDiagram({ diagram, theme = 'dark', minHeight = 260 }) {
+  const uniqueId = useId()
   const [svg, setSvg] = useState(null)
   const [error, setError] = useState(null)
 
   useEffect(() => {
     let cancelled = false
-    setError(null)
     setSvg(null)
+    setError(null)
 
     const isLight = theme === 'light'
 
@@ -18,8 +18,11 @@ export default function FullGraphView({ theme = 'dark' }) {
       startOnLoad: false,
       securityLevel: 'loose',
       flowchart: {
-        useMaxWidth: false,
+        useMaxWidth: true,
         htmlLabels: true,
+      },
+      sequence: {
+        useMaxWidth: true,
       },
       theme: 'base',
       themeVariables: {
@@ -27,7 +30,7 @@ export default function FullGraphView({ theme = 'dark' }) {
         primaryTextColor: isLight ? '#111827' : '#e2e8f0',
         primaryBorderColor: isLight ? '#94a3b8' : '#334155',
         lineColor: isLight ? '#64748b' : '#64748b',
-        secondaryColor: isLight ? '#f1f5f9' : '#111827',
+        secondaryColor: isLight ? '#f8fafc' : '#111827',
         tertiaryColor: isLight ? '#e2e8f0' : '#1e293b',
         fontFamily: '"DM Sans", system-ui, sans-serif',
         fontSize: '14px',
@@ -35,30 +38,30 @@ export default function FullGraphView({ theme = 'dark' }) {
       },
     })
 
-    const id = `mermaid-full-graph-${Date.now()}`
+    const id = `mermaid-${uniqueId.replace(/:/g, '-')}`
     mermaid
-      .render(id, FULL_GRAPH_MERMAID.trim())
+      .render(id, diagram.trim())
       .then(({ svg: rendered }) => {
-        if (!cancelled) {
-          setSvg(rendered)
-        }
+        if (!cancelled) setSvg(rendered)
       })
       .catch((err) => {
-        if (!cancelled) {
-          setError(err?.message || 'Failed to render diagram')
-        }
+        if (!cancelled) setError(err?.message || 'Failed to render diagram')
       })
 
     return () => {
       cancelled = true
     }
-  }, [theme])
+  }, [diagram, theme])
 
   if (error) {
     return (
       <div
-        className="relative w-full h-full min-h-[460px] rounded-lg border overflow-hidden flex items-center justify-center p-4"
-        style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--bg-base)' }}
+        className="rounded-lg border p-4"
+        style={{
+          minHeight,
+          borderColor: 'var(--border-subtle)',
+          backgroundColor: 'var(--surface)',
+        }}
       >
         <div className="font-mono text-sm" style={{ color: 'var(--text-secondary)' }}>
           Diagram failed to load: {error}
@@ -70,8 +73,12 @@ export default function FullGraphView({ theme = 'dark' }) {
   if (!svg) {
     return (
       <div
-        className="relative w-full h-full min-h-[460px] rounded-lg border overflow-hidden flex items-center justify-center p-4"
-        style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--bg-base)' }}
+        className="rounded-lg border p-4"
+        style={{
+          minHeight,
+          borderColor: 'var(--border-subtle)',
+          backgroundColor: 'var(--surface)',
+        }}
       >
         <div className="font-mono text-sm" style={{ color: 'var(--text-secondary)' }}>
           Loading diagram...
@@ -81,11 +88,11 @@ export default function FullGraphView({ theme = 'dark' }) {
   }
 
   return (
-    <DiagramCanvas minHeight={460} className="h-full">
+    <DiagramCanvas minHeight={minHeight}>
       <div
-        className="mermaid-full-graph"
+        className="mermaid-diagram"
         dangerouslySetInnerHTML={{ __html: svg }}
-        style={{ lineHeight: 0 }}
+        style={{ lineHeight: 0, minWidth: 'max-content' }}
       />
     </DiagramCanvas>
   )

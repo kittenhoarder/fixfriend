@@ -1,11 +1,10 @@
 import {
+  Briefcase,
   Home,
   Globe,
   BookOpen,
-  AlertTriangle,
   Package,
   Crosshair,
-  TrendingUp,
   User,
   Sun,
   Moon,
@@ -14,12 +13,11 @@ import { NAV_TABS } from '../data/content'
 
 const ICON_MAP = {
   Home,
+  Briefcase,
   Globe,
   BookOpen,
-  AlertTriangle,
   Package,
   Crosshair,
-  TrendingUp,
 }
 
 function NavButton({ isActive, children, ...props }) {

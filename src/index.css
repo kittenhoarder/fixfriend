@@ -254,6 +254,131 @@
     box-shadow: 0 24px 64px -36px var(--card-shadow);
   }
 
+  .content-rail {
+    width: min(100%, 78rem);
+    margin-inline: auto;
+  }
+
+  .product-flat-section {
+    padding-block: 1.25rem;
+  }
+
+  .product-flat-section + .product-flat-section {
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .product-metric-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .product-metric-cell {
+    padding: 0.9rem 0.25rem 0.9rem 0;
+  }
+
+  .product-metric-cell + .product-metric-cell {
+    border-left: 1px solid var(--border-subtle);
+    padding-left: 1rem;
+  }
+
+  .product-stage-compare {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .product-stage-pane + .product-stage-pane {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 1rem;
+  }
+
+  .product-row-list {
+    margin-top: 0.75rem;
+  }
+
+  .product-row {
+    padding-block: 0.85rem;
+  }
+
+  .product-row + .product-row {
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .product-inline-list {
+    margin-top: 0.75rem;
+  }
+
+  .product-inline-list .product-row {
+    padding-block: 0.3rem;
+  }
+
+  .product-inline-list .product-row + .product-row {
+    border-top: 0;
+  }
+
+  .pain-matrix-grid {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pain-matrix-axis {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  .pain-matrix-y-label {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 767px) {
+    .product-flat-section {
+      padding-block: 1rem;
+    }
+
+    .product-metric-strip {
+      grid-template-columns: 1fr;
+    }
+
+    .product-metric-cell {
+      padding-right: 0;
+    }
+
+    .product-metric-cell + .product-metric-cell {
+      border-left: 0;
+      border-top: 1px solid var(--border-subtle);
+      padding-left: 0;
+      padding-top: 0.9rem;
+    }
+
+    .pain-matrix-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .product-stage-compare {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .product-stage-pane + .product-stage-pane {
+      border-top: 0;
+      border-left: 1px solid var(--border-subtle);
+      padding-top: 0;
+      padding-left: 1.25rem;
+      margin-left: 1.25rem;
+    }
+  }
+
   .button-outline {
     border: 1px solid var(--border-subtle);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent), var(--surface);

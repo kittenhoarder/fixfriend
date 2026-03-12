@@ -108,8 +108,8 @@ export default function AboutModal({ onClose }) {
             </div>
             <ul className="space-y-2">
               {ABOUT.experience.map((item, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span style={{ color: 'var(--text-secondary)', marginTop: '3px', flexShrink: 0 }}>—</span>
+                <li key={i} className="flex items-center gap-2">
+                  <span style={{ color: 'var(--accent)' }}>•</span>
                   <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>
                     {item}
                   </span>

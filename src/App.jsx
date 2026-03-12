@@ -1,24 +1,22 @@
 import { useState, useEffect, useRef } from 'react'
 import Sidebar from './components/Sidebar'
 import ThesisSection from './components/sections/ThesisSection'
+import LeanExitSection from './components/sections/LeanExitSection'
 import MarketSection from './components/sections/MarketSection'
 import DefinitionSection from './components/sections/DefinitionSection'
-import GapSection from './components/sections/GapSection'
 import ProductSection from './components/sections/ProductSection'
 import AcquirersSection from './components/sections/AcquirersSection'
-import DealFlowSection from './components/sections/DealFlowSection'
 import AboutModal from './components/AboutModal'
 
 const THEME_STORAGE_KEY = 'fixfriend-theme'
 
 const SECTIONS = {
   thesis: ThesisSection,
+  leanExit: LeanExitSection,
   market: MarketSection,
   definition: DefinitionSection,
-  gap: GapSection,
   product: ProductSection,
   acquirers: AcquirersSection,
-  dealflow: DealFlowSection,
 }
 
 export default function App() {

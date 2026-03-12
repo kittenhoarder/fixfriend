@@ -5,6 +5,7 @@ const BANDS = {
   regulatory: ['mifir', 'aiact', 'dora', 'esma'],
   supply: ['venues'],
   trigger: ['trigger'],
+  intermediary: ['vendors'],
   demand: ['firms', 'regulators'],
 }
 
@@ -15,14 +16,15 @@ const NODE_LABELS = {
   esma: 'ESMA 2026\nWork Programme',
   venues: 'EU & UK Exchanges\n& Venues',
   trigger: 'Protocol /\nRule Update',
-  firms: 'Electronic\nTrading Firms',
+  vendors: 'Trading Tech\nVendors',
+  firms: 'End Clients /\nConnected Firms',
   regulators: 'Regulators',
 }
 
 
 // Fixed coordinate space; extra row spacing so arrows and labels don't overlap boxes
 const SVG_W = 600
-const SVG_H = 820
+const SVG_H = 930
 
 // Regulatory → venues: bend horizontal above supply box, converge at center top
 const REG_ARROW_BEND_Y = 115
@@ -36,8 +38,9 @@ const NODE_POSITIONS = {
   esma:   { x: 500, y: 60 },
   venues: { x: 300, y: 230 },
   trigger: { x: 300, y: 360 },
-  firms:  { x: 300, y: 460 },
-  regulators: { x: 300, y: 560 },
+  vendors: { x: 300, y: 485 },
+  firms:  { x: 300, y: 620 },
+  regulators: { x: 300, y: 760 },
 }
 
 // Node dimensions (w, h) in SVG coords
@@ -48,6 +51,7 @@ const NODE_SIZES = {
   esma:   { w: 120, h: 52 },
   venues: { w: 180, h: 60 },
   trigger: { w: 150, h: 58 },
+  vendors: { w: 170, h: 58 },
   firms:  { w: 160, h: 58 },
   regulators: { w: 160, h: 58 },
 }
@@ -55,9 +59,10 @@ const NODE_SIZES = {
 // Arrow config: fromId, toId, label, dashed. Path and label position computed per arrow to avoid box overlap.
 const ARROWS = [
   ['venues', 'trigger', 'Publishes spec update', false],
-  ['trigger', 'firms', 'Triggers compliance cycle\n2–4 weeks · manual', false],
-  ['firms', 'regulators', 'Compliance evidence\nreconstructed retroactively', false],
-  ['firms', 'venues', 'Orders & trades\nvia certified gateway', true],
+  ['trigger', 'vendors', 'Forces triage &\nchange pack', false],
+  ['vendors', 'firms', 'Drives rollout &\ncertification', false],
+  ['firms', 'regulators', 'Evidence &\nassurance', false],
+  ['firms', 'vendors', 'Client escalations &\nrollout pressure', true],
   ['regulators', 'firms', 'Audit requests &\nexaminations', true],
 ]
 
@@ -95,14 +100,6 @@ function getEdgePoint(id, targetX, targetY) {
     const ex = r.cx + (dx / (dy || 1)) * halfH
     return { x: Math.max(r.left + 4, Math.min(r.right - 4, ex)), y: ey }
   }
-}
-
-// Path around the trigger box: 90° elbows only (no curves/loops), left-side detour
-const DETOUR_LEFT_X = 118
-
-function pathAroundTrigger(from, to) {
-  // from = firms top centre, to = venues bottom centre; route left of trigger with sharp corners
-  return `M ${from.x} ${from.y} L ${DETOUR_LEFT_X} ${from.y} L ${DETOUR_LEFT_X} ${to.y} L ${to.x} ${to.y}`
 }
 
 // Straight segment for vertical flow (no obstacle in between)
@@ -163,37 +160,32 @@ function ConnectionArrows({ activeNodeId }) {
     const fromPos = NODE_POSITIONS[fromId]
     let from = edge(fromId, toPos.x, toPos.y)
     let to = edge(toId, fromPos.x, fromPos.y)
-    const isFirmsToVenues = fromId === 'firms' && toId === 'venues'
-    if (isFirmsToVenues) {
-      const rf = r('firms')
-      const rv = r('venues')
-      from = { x: rf.left, y: rf.cy }
-      to = { x: rv.left, y: rv.cy }
-    }
 
     const isActive = activeNodeId === fromId || activeNodeId === toId
     const color = dashed ? 'var(--border-subtle)' : 'var(--border)'
     const activeColor = dashed ? 'var(--muted)' : 'var(--text-tertiary)'
     const labelLines = label.split('\n')
 
-    const pathD = isFirmsToVenues ? pathAroundTrigger(from, to) : flowPath(from, to)
+    const pathD = flowPath(from, to)
 
     // Label positions in clear space between rows (not over boxes)
     let labelX = (from.x + to.x) / 2
     let labelY = (from.y + to.y) / 2
     if (fromId === 'venues' && toId === 'trigger') {
       labelY = (r('venues').bottom + r('trigger').top) / 2
-    } else if (fromId === 'trigger' && toId === 'firms') {
-      labelY = (r('trigger').bottom + r('firms').top) / 2
+    } else if (fromId === 'trigger' && toId === 'vendors') {
+      labelY = (r('trigger').bottom + r('vendors').top) / 2
+    } else if (fromId === 'vendors' && toId === 'firms') {
+      labelY = (r('vendors').bottom + r('firms').top) / 2
     } else if (fromId === 'firms' && toId === 'regulators') {
       labelX = 420
       labelY = (r('firms').bottom + r('regulators').top) / 2
     } else if (fromId === 'regulators' && toId === 'firms') {
       labelX = 180
       labelY = (r('regulators').top + r('firms').bottom) / 2
-    } else if (isFirmsToVenues) {
-      labelX = 85
-      labelY = (from.y + to.y) / 2
+    } else if (fromId === 'firms' && toId === 'vendors') {
+      labelX = 430
+      labelY = (r('firms').top + r('vendors').bottom) / 2
     }
 
     arrows.push(
@@ -373,13 +365,15 @@ export default function MarketMap({ activeNodeId, onNodeClick }) {
         <rect x={0} y={22} width={SVG_W} height={85} fill="var(--surface3)" opacity={0.5} rx={4} />
         <rect x={0} y={198} width={SVG_W} height={75} fill="var(--surface3)" opacity={0.4} rx={4} />
         <rect x={0} y={330} width={SVG_W} height={75} fill="rgba(245,158,11,0.04)" rx={4} />
-        <rect x={0} y={428} width={SVG_W} height={200} fill="var(--surface3)" opacity={0.4} rx={4} />
+        <rect x={0} y={452} width={SVG_W} height={75} fill="rgba(59,130,246,0.05)" rx={4} />
+        <rect x={0} y={590} width={SVG_W} height={225} fill="var(--surface3)" opacity={0.4} rx={4} />
 
         {/* Band labels */}
         <BandLabel label="REGULATORY CONVERGENCE" y={18} />
         <BandLabel label="SUPPLY SIDE" y={194} />
         <BandLabel label="— TRIGGER —" y={326} />
-        <BandLabel label="DEMAND SIDE" y={424} />
+        <BandLabel label="VENDOR LAYER" y={448} />
+        <BandLabel label="DEMAND SIDE" y={586} />
 
         {/* Connection lines */}
         <ConnectionArrows activeNodeId={activeNodeId} />

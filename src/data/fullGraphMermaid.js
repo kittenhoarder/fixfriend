@@ -38,12 +38,21 @@ continuously"])
     FIX(["📄 Protocol / Rule Update
 Spec delta published
 ⚠ Mandatory compliance
-trigger for all
-connected firms"])
+trigger for connected
+vendors & firms"])
+  end
+
+  subgraph VENDL["  VENDOR LAYER  "]
+    VD(["Trading Technology Vendors
+OMS / EMS vendors
+Managed FIX providers
+Selected venues / adjacencies
+Absorb change-response
+for downstream clients"])
   end
 
   subgraph DEMAND["  DEMAND SIDE  "]
-    TF(["EU Trading Firms
+    TF(["End Clients / Connected Firms
 ~2,500 entities
 Investment banks
 Broker-dealers
@@ -62,12 +71,14 @@ AI-enabled supervision"])
   end
 
   EX -->|"Publishes spec update"| FIX
-  FIX -->|"Triggers mandatory compliance cycle
-2–4 weeks · manual · recurring"| TF
+  FIX -->|"Forces triage, change pack
+& certification response"| VD
+  VD -->|"Drives rollout & certification
+for downstream clients"| TF
   TF -->|"Compliance evidence
 reconstructed retroactively"| RG
-  TF -.->|"Orders & trades
-via certified gateway"| EX
+  TF -.->|"Client escalations &
+rollout pressure"| VD
   RG -.->|"Audit requests &
 formal examinations"| TF
 end
@@ -126,7 +137,7 @@ subgraph SUPPORT["  🔧  SUPPORTING MARKETS"]
   OMS(["OMS / EMS Vendors
 ION · Bloomberg · Fidessa
 Own execution stack
-Not compliance layer"])
+Not change-response workflow"])
   CONN(["Connectivity Providers
 BT Radianz · TNS · IPC
 Manage network layer
@@ -139,13 +150,15 @@ Not change control"])
 Manual evidence support
 Expensive · Slow · Retroactive"])
   TEST(["UAT / Testing Services
-Manual test management
-Certification support
-No automation layer"])
+  Manual test management
+  Certification support
+  No workflow ownership"])
   FF(["MISSING LAYER
-Automated change-control
-& compliance evidence
-→ FIXFriend (EU Focus)"])
+  Autonomous minor changes
+  Major-change escalation
+  Client-ready evidence
+  Expoty context core
+  → FIXFriend"])
 end
 
 ENV -->|"Mandate AI governance, resilience testing
@@ -163,7 +176,7 @@ classDef fixNode fill:#0ea5e9,stroke:#0369a1,stroke-width:3px,color:#ffffff,rx:8
 classDef acquirerNode fill:#dcfce7,stroke:#22c55e,stroke-width:2px,color:#14532d,rx:8
 
 class E1,E2,E3,E4 envNode
-class EX,TF,RG,OMS,CONN,DATA chainNode
+class EX,VD,TF,RG,OMS,CONN,DATA chainNode
 class FIX triggerNode
 class CONSULT,TEST riskNode
 class FF fixNode

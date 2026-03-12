@@ -1,7 +1,7 @@
-import { useRef, useState, useCallback } from 'react'
-import { Linkedin, ArrowRight, FileDown, Loader } from 'lucide-react'
+import { Linkedin, ArrowRight } from 'lucide-react'
 import { THESIS } from '../../data/content'
-import { OnePager } from '../OnePager'
+import StatusPill from '../ui/StatusPill'
+import LeanExitDownloads from '../LeanExitDownloads'
 
 function StatCard({ stat }) {
   return (
@@ -26,37 +26,6 @@ function StatCard({ stat }) {
 }
 
 export default function ThesisSection({ onNavigate }) {
-  const onePagerRef = useRef(null)
-  const [isGenerating, setIsGenerating] = useState(false)
-
-  const handleDownload = useCallback(async () => {
-    if (!onePagerRef.current || isGenerating) return
-    setIsGenerating(true)
-    try {
-      const html2pdf = (await import('html2pdf.js')).default
-      await html2pdf()
-        .from(onePagerRef.current)
-        .set({
-          margin: 0,
-          filename: 'FIXFriend-VC-OnePager.pdf',
-          image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: {
-            scale: 2.5,
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: '#08090b',
-            logging: false,
-          },
-          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        })
-        .save()
-    } catch (err) {
-      console.error('PDF generation failed:', err)
-    } finally {
-      setIsGenerating(false)
-    }
-  }, [isGenerating])
-
   return (
     <div
       className="flex flex-col items-center justify-center min-h-full px-8 py-16 lg:py-20"
@@ -141,29 +110,56 @@ export default function ThesisSection({ onNavigate }) {
             {THESIS.subheadline}
           </p>
 
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+            <div
+              className="rounded-lg border p-4"
+              style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}
+            >
+              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+                Buyer line
+              </div>
+              <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+                {THESIS.buyerOneLiner}
+              </p>
+            </div>
+            <div
+              className="rounded-lg border p-4"
+              style={{ borderColor: 'var(--accent-border-soft)', backgroundColor: 'var(--accent-softer)' }}
+            >
+              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+                10x claim
+              </div>
+              <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+                {THESIS.tenXClaim}
+              </p>
+            </div>
+            <div
+              className="rounded-lg border p-4"
+              style={{ borderColor: 'var(--status-warning-border)', backgroundColor: 'var(--status-warning-soft)' }}
+            >
+              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-warning)' }}>
+                Why lean exit
+              </div>
+              <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+                {THESIS.leanExitWhy}
+              </p>
+            </div>
+          </div>
+
           <div className="flex flex-wrap items-center gap-3">
             <button
-              onClick={handleDownload}
-              disabled={isGenerating}
-              className="button-outline inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold transition-all"
-              style={{
-                color: isGenerating ? 'var(--text-tertiary)' : 'var(--emerald)',
-                borderColor: 'rgba(34,197,94,0.35)',
-                background: 'rgba(34,197,94,0.08)',
-                opacity: isGenerating ? 0.65 : 1,
-                cursor: isGenerating ? 'wait' : 'pointer',
-              }}
-              title="Download VC one-pager as PDF"
+              onClick={() => onNavigate('leanExit')}
+              className="button-accent inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold"
             >
-              {isGenerating ? <Loader size={14} className="animate-spin" /> : <FileDown size={14} />}
-              {isGenerating ? 'Generating…' : 'One-Pager PDF'}
+              Explore lean exit
+              <ArrowRight size={15} />
             </button>
             <button
               onClick={() => onNavigate('market')}
-              className="button-accent inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold"
+              className="button-outline inline-flex items-center gap-2 px-4 py-3 text-sm font-medium"
+              style={{ color: 'var(--text-secondary)' }}
             >
-              Explore the thesis
-              <ArrowRight size={15} />
+              Explore the market
             </button>
             <a
               href={THESIS.linkedinUrl}
@@ -185,31 +181,52 @@ export default function ThesisSection({ onNavigate }) {
         </div>
 
         {THESIS.vcTldr && (
+          <>
+            <div className="mb-3">
+              <LeanExitDownloads />
+            </div>
+
           <div
             className="panel-shell rounded-lg p-5 mb-10"
             style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
           >
-            <span
-              className="font-mono text-xs font-semibold tracking-widest block mb-3"
-              style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
-            >
-              TL;DR FOR VCs
-            </span>
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              <span
+                className="font-mono text-xs font-semibold tracking-widest block"
+                style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
+              >
+                {THESIS.vcTldr.title}
+              </span>
+              {THESIS.evidenceTypes.map((item) => (
+                <StatusPill key={item.label} tone={item.tone}>
+                  {item.label}
+                </StatusPill>
+              ))}
+            </div>
             <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
               {THESIS.vcTldr.marketSummary}
             </p>
+            <div className="grid gap-2 mb-4">
+              {THESIS.vcTldr.highlights.map((point) => (
+                <div key={point} className="flex items-center gap-2">
+                  <span style={{ color: 'var(--accent)' }}>•</span>
+                  <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{point}</span>
+                </div>
+              ))}
+            </div>
             <div className="mb-2 font-mono text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>
-              Tier-1 acquirer fit
+              Strategic-fit acquirers
             </div>
             <ul className="space-y-2">
               {THESIS.vcTldr.tier1Acquirers.map((a, i) => (
-                <li key={i} className="text-sm flex flex-wrap gap-x-2 gap-y-0">
-                  <span style={{ color: 'var(--accent)' }}>{a.name}</span>
-                  <span style={{ color: 'var(--text-secondary)' }}>— {a.fit}</span>
+                <li key={i} className="text-sm">
+                  <div style={{ color: 'var(--accent)' }}>{a.name}</div>
+                  <div style={{ color: 'var(--text-secondary)' }}>{a.fit}</div>
                 </li>
               ))}
             </ul>
           </div>
+          </>
         )}
 
         <div
@@ -262,13 +279,7 @@ export default function ThesisSection({ onNavigate }) {
                 </a>
               </div>
             </div>
-          </div>
         </div>
-      </div>
-
-      {/* Hidden one-pager — rendered off-screen for PDF capture */}
-      <div style={{ position: 'fixed', left: '-9999px', top: '-9999px', zIndex: -1, pointerEvents: 'none' }}>
-        <OnePager ref={onePagerRef} />
       </div>
     </div>
   )

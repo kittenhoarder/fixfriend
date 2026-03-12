@@ -18,8 +18,8 @@ function getCooldownMs(failCount) {
 }
 
 async function hashGateToken(password) {
-  const data = new TextEncoder().encode(password + GATE_SALT)
-  const buf = await crypto.subtle.digest('SHA-256', data)
+  const data = new globalThis.TextEncoder().encode(password + GATE_SALT)
+  const buf = await globalThis.crypto.subtle.digest('SHA-256', data)
   return Array.from(new Uint8Array(buf))
     .map((b) => b.toString(16).padStart(2, '0'))
     .join('')
@@ -27,7 +27,7 @@ async function hashGateToken(password) {
 
 function getStoredFailCount() {
   try {
-    const n = parseInt(sessionStorage.getItem(STORAGE_KEY_FAIL_COUNT) ?? '0', 10)
+    const n = parseInt(window.sessionStorage.getItem(STORAGE_KEY_FAIL_COUNT) ?? '0', 10)
     return Number.isFinite(n) ? Math.max(0, n) : 0
   } catch {
     return 0
@@ -36,7 +36,7 @@ function getStoredFailCount() {
 
 function getStoredLastAttempt() {
   try {
-    const t = parseInt(sessionStorage.getItem(STORAGE_KEY_LAST_ATTEMPT) ?? '0', 10)
+    const t = parseInt(window.sessionStorage.getItem(STORAGE_KEY_LAST_ATTEMPT) ?? '0', 10)
     return Number.isFinite(t) ? t : 0
   } catch {
     return 0
@@ -50,8 +50,8 @@ export default function PasswordGate({ children }) {
   const [status, setStatus] = useState(() => (passwordSet ? 'checking' : 'unlocked'))
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const [failCount, setFailCount] = useState(getStoredFailCount)
-  const [lastAttemptAt, setLastAttemptAt] = useState(getStoredLastAttempt)
+  const [, setFailCount] = useState(getStoredFailCount)
+  const [, setLastAttemptAt] = useState(getStoredLastAttempt)
   const [cooldownRemaining, setCooldownRemaining] = useState(() => {
     if (!passwordSet) return 0
     const count = getStoredFailCount()
@@ -63,7 +63,7 @@ export default function PasswordGate({ children }) {
 
   const verifyStoredToken = useCallback(async () => {
     if (!passwordSet || !requiredPassword) return
-    const stored = sessionStorage.getItem(STORAGE_KEY_TOKEN)
+    const stored = window.sessionStorage.getItem(STORAGE_KEY_TOKEN)
     if (!stored) {
       setStatus('locked')
       return
@@ -99,7 +99,7 @@ export default function PasswordGate({ children }) {
 
   useEffect(() => {
     if (status !== 'locked' || cooldownRemaining <= 0) return
-    const interval = setInterval(() => {
+    const interval = window.setInterval(() => {
       const last = getStoredLastAttempt()
       const count = getStoredFailCount()
       const cooldownMs = getCooldownMs(count)
@@ -108,9 +108,9 @@ export default function PasswordGate({ children }) {
       setCooldownRemaining(remaining)
       setLastAttemptAt(last)
       setFailCount(count)
-      if (remaining <= 0) clearInterval(interval)
+      if (remaining <= 0) window.clearInterval(interval)
     }, 1000)
-    return () => clearInterval(interval)
+    return () => window.clearInterval(interval)
   }, [status, cooldownRemaining])
 
   const handleSubmit = async (e) => {
@@ -134,9 +134,9 @@ export default function PasswordGate({ children }) {
     const actual = await hashGateToken(trimmed)
 
     if (actual === expected) {
-      sessionStorage.setItem(STORAGE_KEY_TOKEN, expected)
-      sessionStorage.removeItem(STORAGE_KEY_FAIL_COUNT)
-      sessionStorage.removeItem(STORAGE_KEY_LAST_ATTEMPT)
+      window.sessionStorage.setItem(STORAGE_KEY_TOKEN, expected)
+      window.sessionStorage.removeItem(STORAGE_KEY_FAIL_COUNT)
+      window.sessionStorage.removeItem(STORAGE_KEY_LAST_ATTEMPT)
       setFailCount(0)
       setLastAttemptAt(0)
       setCooldownRemaining(0)
@@ -147,8 +147,8 @@ export default function PasswordGate({ children }) {
 
     const newCount = count + 1
     const now = Date.now()
-    sessionStorage.setItem(STORAGE_KEY_FAIL_COUNT, String(newCount))
-    sessionStorage.setItem(STORAGE_KEY_LAST_ATTEMPT, String(now))
+    window.sessionStorage.setItem(STORAGE_KEY_FAIL_COUNT, String(newCount))
+    window.sessionStorage.setItem(STORAGE_KEY_LAST_ATTEMPT, String(now))
     setFailCount(newCount)
     setLastAttemptAt(now)
     setCooldownRemaining(Math.ceil(cooldownMs / 1000))
