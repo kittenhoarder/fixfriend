@@ -226,10 +226,10 @@ function LeanExitOnePagerDocument() {
           </div>
         </Panel>
 
-        {/* Panel 2: Business logic + Operating model + Market model — 3 columns */}
+        {/* Panel 2: Business logic + Operating model top row, Market model across bottom */}
         <Panel>
           <Label>Business, Operating & Market</Label>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '12px' }}>
             <div>
               <div style={{ fontSize: '9px', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Business Logic</div>
               {[
@@ -256,13 +256,15 @@ function LeanExitOnePagerDocument() {
                 </div>
               ))}
             </div>
-            <div>
-              <div style={{ fontSize: '9px', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Market Model</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '9px', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Market Model</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '8px' }}>
               {[MARKET_MODEL.tam, MARKET_MODEL.sam, MARKET_MODEL.som, MARKET_MODEL.strategicAttach].map((item) => (
-                <div key={item.label} style={{ marginBottom: '6px' }}>
+                <div key={item.label} style={{ borderTop: '1px solid #20242a', paddingTop: '6px' }}>
                   <div style={{ fontSize: '9px', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{item.label}</div>
-                  <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '16px', lineHeight: 1.1 }}>{item.value}</div>
-                  <div style={{ fontSize: '9px', color: '#8e897f', lineHeight: 1.35 }}>{item.detail}</div>
+                  <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '15px', lineHeight: 1.1 }}>{item.value}</div>
+                  <div style={{ fontSize: '8.5px', color: '#8e897f', lineHeight: 1.35 }}>{item.detail}</div>
                 </div>
               ))}
             </div>
