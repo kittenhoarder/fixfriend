@@ -112,8 +112,8 @@
 
   body {
     background:
-      radial-gradient(circle at top left, rgba(249, 115, 22, 0.12), transparent 30%),
-      radial-gradient(circle at 85% 10%, rgba(59, 130, 246, 0.12), transparent 28%),
+      radial-gradient(circle at top left, rgba(249, 115, 22, 0.06), transparent 30%),
+      radial-gradient(circle at 85% 10%, rgba(59, 130, 246, 0.06), transparent 28%),
       linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg-base) 100%);
     color: var(--text-primary);
     font-family: 'Manrope', system-ui, sans-serif;
@@ -122,31 +122,6 @@
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 88%);
-    opacity: 0.24;
-  }
-
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-      radial-gradient(rgba(255, 255, 255, 0.05) 0.6px, transparent 0.6px);
-    background-size: 8px 8px;
-    opacity: 0.05;
-    mix-blend-mode: soft-light;
   }
 
   #root {
@@ -240,16 +215,6 @@
 
   .app-main-shell {
     position: relative;
-  }
-
-  .app-main-shell::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      linear-gradient(135deg, rgba(249, 115, 22, 0.05), transparent 24%),
-      linear-gradient(315deg, rgba(59, 130, 246, 0.05), transparent 26%);
   }
 
   .panel-shell {

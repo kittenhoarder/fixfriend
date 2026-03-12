@@ -5,7 +5,7 @@
 export const THESIS = {
   headline: 'THE MISSING WORKFLOW LAYER\nFOR VENUE CHANGE RESPONSE',
   subheadline:
-    'FIXFriend turns venue change notices into autonomous minor-change execution, coordinated major-change projects, and audit-ready evidence for trading technology vendors. The product is positioned as a wedge that can win direct customers and become strategically valuable to incumbents already serving this market.',
+    'FIXFriend gives trading technology vendors same-day, certification-ready change packs for minor venue updates — and a structured escalation path for major ones. Built to win on workflow. Positioned to sell strategically.',
   stats: [
     {
       id: 'tenx',
@@ -853,7 +853,7 @@ export const NAV_TABS = [
 export const DEFINITION = {
   origin: {
     title: 'Origin',
-    body: "The idea came from repeated exposure to the same failure mode inside trading infrastructure teams: venue notices arrive fast, context is fragmented, and evidence is rebuilt late.\n\nThat pattern showed up across live market operations, vendor platforms, and client-facing rollout work. The operational pain is real, and the commercial case starts with selling into that pain directly.\n\nThat is why the thesis stays narrow. FIXFriend is not trying to invent a huge abstract category. It is trying to prove that venue-change response is a product gap worth buying, using, and eventually owning strategically.",
+    body: "Repeated exposure to the same failure mode across trading ops, vendor platforms, and client rollout work: venue notices arrive, context is fragmented, evidence rebuilds late. The pain is real and recurring. The thesis stays narrow — venue-change response is a product gap worth proving, selling into directly, and positioning for strategic ownership.",
   },
   marketDefinition: {
     title: 'Market Definition',
@@ -1588,7 +1588,7 @@ export const OPEN_QUESTIONS = [
 
 export const LEAN_EXIT_CASE = {
   intro:
-    'FIXFriend is framed as a narrow workflow wedge that should be able to win direct customers on operational value alone. If that wedge also becomes strategically important to incumbents, partner, embed, and acquisition paths open from a stronger position.',
+    'FIXFriend wins on operational value first — same-day change packs, less coordination drag. If the wedge is strategically relevant to incumbents, it becomes a target. That is the lean exit thesis: prove the workflow, then keep the strategic paths open.',
   evidenceOverview: [
     {
       label: 'Validated',

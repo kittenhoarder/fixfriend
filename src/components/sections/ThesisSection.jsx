@@ -46,11 +46,6 @@ export default function ThesisSection({ onNavigate }) {
         className="panel-shell relative overflow-hidden p-7 md:p-9 mb-10"
         style={panelShell}
       >
-        <span
-          className="absolute right-0 bottom-0 h-16 w-16 border-t border-l"
-          style={{ borderColor: 'var(--border-subtle)' }}
-          aria-hidden
-        />
         <header
           className="mb-5 grid gap-5 md:gap-6"
           style={{
