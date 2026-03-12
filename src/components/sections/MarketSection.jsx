@@ -2,6 +2,7 @@ import { useState } from 'react'
 import MarketMap from '../market/MarketMap'
 import MarketDetailPanel from '../market/MarketDetailPanel'
 import FullGraphView from '../market/FullGraphView'
+import { CONTINUOUS_CHANGE_SIGNALS } from '../../data/content'
 
 export default function MarketSection({ theme }) {
   const [activeNodeId, setActiveNodeId] = useState(null)
@@ -52,6 +53,51 @@ export default function MarketSection({ theme }) {
         >
           Full graph
         </button>
+      </div>
+
+      <div
+        className="md:hidden px-4 py-2 border-b flex-shrink-0"
+        style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}
+      >
+        <div className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+          {CONTINUOUS_CHANGE_SIGNALS.title}
+        </div>
+        <p className="text-xs leading-relaxed mt-1" style={{ color: 'var(--text-secondary)' }}>
+          Extended hours, longer clearing windows, and workflow automation increase the need for constant-change readiness.
+        </p>
+      </div>
+
+      <div
+        className="hidden md:block px-6 py-3 border-b flex-shrink-0"
+        style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}
+      >
+        <div className="max-w-6xl mx-auto">
+          <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+            {CONTINUOUS_CHANGE_SIGNALS.title}
+          </div>
+          <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
+            {CONTINUOUS_CHANGE_SIGNALS.intro}
+          </p>
+          <div className="flex flex-wrap gap-2 mt-3">
+            {CONTINUOUS_CHANGE_SIGNALS.items.map((item) => (
+              <a
+                key={item.title}
+                href={item.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[11px] px-3 py-2 border"
+                style={{
+                  color: 'var(--text-secondary)',
+                  borderColor: 'var(--border-subtle)',
+                  backgroundColor: 'var(--surface)',
+                  letterSpacing: '0.08em',
+                }}
+              >
+                {item.title}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
       {viewMode === 'interactive' && (

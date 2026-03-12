@@ -23,7 +23,7 @@ async function generatePDF(el) {
   const pdfW = pdf.internal.pageSize.getWidth()
   const pdfH = pdf.internal.pageSize.getHeight()
   pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, pdfH)
-  pdf.save('FIXFriend-VC-OnePager.pdf')
+  pdf.save('FIXFriend-Strategic-Fit-VC-OnePager.pdf')
 }
 
 // ─── The actual one-pager layout ─────────────────────────────────────────────
@@ -209,7 +209,7 @@ function OnePagerDocument() {
               </svg>
               <div>
                 <div style={styles.productName}>FIXFriend</div>
-                <div style={styles.tagBadge}>LEAN EXIT THESIS</div>
+                <div style={styles.tagBadge}>STRATEGIC FIT BRIEF</div>
               </div>
             </div>
           </div>
@@ -224,8 +224,8 @@ function OnePagerDocument() {
         {/* ── Hero ── */}
         <div style={styles.hero}>
           <div style={styles.heroHeadline}>
-            An Autonomous Agent for{' '}
-            <span style={styles.heroAccent}>FIX Protocol Changes</span>
+            An Agent Layer for{' '}
+            <span style={styles.heroAccent}>System Change</span>
           </div>
           <div style={styles.heroSub}>
             {THESIS.subheadline}
@@ -256,16 +256,16 @@ function OnePagerDocument() {
                 <div style={{ ...styles.splitBox, ...styles.splitBoxRed }}>
                   <div style={{ ...styles.splitLabel, ...styles.splitLabelRed }}>Today — Manual</div>
                   <div style={styles.splitText}>
-                    Venue publishes FIX spec. Compliance reads PDF manually. Engineering implements. UAT runs manually. Evidence assembled retroactively when audited.
+                    Venue publishes a change. Clients, vendors, and venues chase impact across specs, runtime behavior, testing, and evidence by hand.
                   </div>
-                  <div style={{ ...styles.splitTime, ...styles.splitTimeRed }}>2–4 WEEKS PER CHANGE</div>
+                  <div style={{ ...styles.splitTime, ...styles.splitTimeRed }}>WEEKS TO MONTHS PER CHANGE</div>
                 </div>
                 <div style={{ ...styles.splitBox, ...styles.splitBoxBlue }}>
                   <div style={{ ...styles.splitLabel, ...styles.splitLabelBlue }}>FIXFriend — Agent</div>
                   <div style={styles.splitText}>
-                    Agent monitors venues, diffs specs against live system config, maps impact, generates requirements, runs validation, and emits a continuous audit trail.
+                    Agent monitors the source channel, diffs against live system context, structures the work, and emits a continuous audit trail in existing tools.
                   </div>
-                  <div style={{ ...styles.splitTime, ...styles.splitTimeBlue }}>HOURS, NOT WEEKS</div>
+                  <div style={{ ...styles.splitTime, ...styles.splitTimeBlue }}>DAYS FOR BOUNDED CASES</div>
                 </div>
               </div>
             </div>

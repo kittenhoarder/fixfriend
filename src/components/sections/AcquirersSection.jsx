@@ -81,8 +81,8 @@ export default function AcquirersSection() {
               </div>
               <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
                 Interviews with vendors, traders, and workflow owners (Bloomberg/Broadway, NASDAQ, and Squarepoint) back up
-                the acquirer thesis: the same venue-change workflow gap shows up in day-to-day operations that acquirers see
-                at portfolio and platform level.
+                the acquirer thesis: the same venue-change workflow gap shows up in day-to-day operations, and it points to
+                a broader change-response problem that acquirers can see at portfolio and platform level.
               </p>
               <div className="mt-3 grid gap-3 md:grid-cols-3">
                 {INTERVIEW_TRACKER.slice(0, 3).map((entry) => (

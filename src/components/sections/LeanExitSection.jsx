@@ -321,7 +321,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
   return (
     <div className="flex flex-col h-full pt-14 lg:pt-0" style={{ minHeight: '100vh' }}>
       <SectionHeader
-        label="LEAN EXIT"
+        label="STRATEGIC FIT"
         hideOnMobile
         right={(
           <div className="flex flex-wrap items-center gap-2">
@@ -337,10 +337,10 @@ export default function LeanExitSection({ theme = 'dark' }) {
           <Shell accent="var(--accent-border-soft)">
             <div>
               <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
-                Lean Exit Thesis
+                Strategic Fit Thesis
               </div>
               <h2 className="font-serif text-[2.5rem] leading-[0.92] mt-3 max-w-4xl" style={{ color: 'var(--text-primary)' }}>
-                A narrow workflow wedge that should win on its own.
+                A workflow-control wedge that proves value before it predicts the future.
               </h2>
               <p className="text-base leading-relaxed mt-4 max-w-4xl" style={{ color: 'var(--text-secondary)' }}>
                 {LEAN_EXIT_CASE.intro}
@@ -416,7 +416,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
               </div>
               <div className="rounded-lg border p-5" style={{ borderColor: 'var(--accent-border-soft)', background: 'linear-gradient(135deg, rgba(59,130,246,0.12), rgba(249,115,22,0.06) 95%, transparent)' }}>
                 <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
-                  10x claim
+                  Cycle-time compression
                 </div>
                 <div className="text-base leading-relaxed mt-3" style={{ color: 'var(--text-primary)' }}>
                   {LEAN_EXIT_CASE.wedge.tenX}
@@ -505,7 +505,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
               icon={LineChart}
               title="4. Business Logic"
               evidence="Hypothesis"
-              subtitle="Keep the economics realistic for a lean-exit path: narrow direct wedge, high-signal design partners, and strategic attach upside."
+              subtitle="Keep the economics realistic for a discovery-led path: narrow direct wedge, high-signal design partners, and strategic attach upside."
             />
             <div className="space-y-4">
               <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
@@ -718,7 +718,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
               icon={Milestone}
               title="6. Path to Strategic Relevance"
               evidence="Open Question"
-              subtitle="Still answer the GTM question, but in a way that fits a lean-exit thesis instead of a heavy scale-sales story."
+              subtitle="Still answer the GTM question, but in a way that fits strategic-fit discovery instead of a heavy scale-sales story."
             />
             <div className="space-y-4">
               <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>

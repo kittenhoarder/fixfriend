@@ -199,14 +199,14 @@ export default function ProductSection({ theme = 'dark' }) {
 
       <div className="flex-1 overflow-y-auto p-4 lg:p-6">
         <div className="content-rail space-y-0">
-          <ProductSectionBlock eyebrow="Product" title="From venue-change scramble to same-day response">
+          <ProductSectionBlock eyebrow="Product" title="From venue-change scramble to days-scale response">
             <p className="text-base leading-relaxed max-w-4xl" style={{ color: 'var(--text-secondary)' }}>
-              FIXFriend is an agent-operated venue-change response system for trading technology vendors. It turns one repeated operational mess into one controlled workflow: capture the notice, recover the missing context, decide whether the change stays autonomous in UAT, and leave the evidence trail behind as the work happens.
+              FIXFriend is an agent-operated change-response system for trading technology vendors, starting with venue change as the first wedge. It turns one repeated operational mess into one controlled workflow: capture the notice, recover the missing context, decide whether the change stays autonomous in UAT, structure human-actionable outputs in existing tools, and leave the evidence trail behind as the work happens.
             </p>
 
             <MetricStrip
               items={[
-                { label: 'Minor changes', value: 'Same day', color: 'var(--status-success)' },
+                { label: 'Bounded cases', value: 'Days', color: 'var(--status-success)' },
                 { label: 'Execution boundary', value: 'UAT only', color: 'var(--accent)' },
                 { label: 'Production writes', value: 'Never', color: 'var(--status-danger)' },
               ]}

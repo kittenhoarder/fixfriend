@@ -141,7 +141,7 @@ function BaseDocument({ title, subtitle, children }) {
         <div style={styles.header}>
           <div>
             <div style={styles.brand}>FIXFriend</div>
-            <div style={styles.badge}>LEAN EXIT THESIS</div>
+            <div style={styles.badge}>STRATEGIC FIT BRIEF</div>
           </div>
           <div style={styles.meta}>
             <div>{today}</div>
@@ -196,7 +196,7 @@ function Panel({ children, minHeight }) {
 function LeanExitOnePagerDocument() {
   return (
     <BaseDocument
-      title="The missing workflow layer for venue-driven change response"
+      title="The workflow-control layer for continuous change"
       subtitle={THESIS.subheadline}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
@@ -366,7 +366,7 @@ function ValidationPlanDocument() {
   return (
     <BaseDocument
       title="Validation Experiment Plan"
-      subtitle="The first loop tests direct customer pull first, then strategic paths."
+      subtitle="The first loop tests direct customer pull, strategic-acquirer pain, and how similar deals actually get bought."
     >
       <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 0.95fr', gap: '14px', flex: 1 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -457,9 +457,9 @@ export default function LeanExitDownloads() {
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         <DownloadButton
-          label="DOWNLOAD LEAN EXIT ONE-PAGER · PDF"
+          label="DOWNLOAD STRATEGIC FIT ONE-PAGER · PDF"
           loading={activeDoc === 'lean-exit'}
-          onClick={() => handleDownload(leanExitRef, 'lean-exit', 'FIXFriend-Lean-Exit-OnePager.pdf')}
+          onClick={() => handleDownload(leanExitRef, 'lean-exit', 'FIXFriend-Strategic-Fit-OnePager.pdf')}
         />
         <DownloadButton
           label="DOWNLOAD BUSINESS MODEL CANVAS · PDF"

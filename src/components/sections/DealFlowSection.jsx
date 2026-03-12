@@ -51,7 +51,7 @@ export default function DealFlowSection() {
             9 Verified Deals — 12 Months
           </h2>
           <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-            Click a deal marker to see the detail and the pattern evidence that supports the lean-exit thesis.
+            Click a deal marker to see the detail and the pattern evidence that supports the strategic-fit thesis.
           </p>
         </div>
 
@@ -110,7 +110,7 @@ export default function DealFlowSection() {
               className="font-mono text-xs tracking-widest mb-2"
               style={{ color: 'var(--text-secondary)', letterSpacing: '0.08em' }}
             >
-              HIGH-SIGNAL LEAN EXIT TARGETS
+              HIGH-SIGNAL STRATEGIC FIT TARGETS
             </div>
             <div className="flex flex-wrap gap-2">
               {[
