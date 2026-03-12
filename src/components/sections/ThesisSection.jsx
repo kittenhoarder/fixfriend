@@ -1,5 +1,5 @@
 import { Linkedin, ArrowRight } from 'lucide-react'
-import { THESIS } from '../../data/content'
+import { CONTINUOUS_CHANGE_SIGNALS, THESIS } from '../../data/content'
 import StatusPill from '../ui/StatusPill'
 import LeanExitDownloads from '../LeanExitDownloads'
 
@@ -39,7 +39,7 @@ export default function ThesisSection({ onNavigate }) {
             'linear-gradient(90deg, rgba(249,115,22,0.12), rgba(59,130,246,0.08) 70%, transparent)',
         }}
       >
-        LEAN EXIT THESIS
+        STRATEGIC FIT BRIEF
       </span>
 
       <article
@@ -99,21 +99,58 @@ export default function ThesisSection({ onNavigate }) {
             <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>{THESIS.buyerOneLiner}</p>
           </article>
           <article className="rounded-lg border p-4" style={{ borderColor: 'var(--accent-border-soft)', backgroundColor: 'var(--accent-softer)' }}>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>10x claim</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>Cycle-time compression</p>
             <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>{THESIS.tenXClaim}</p>
           </article>
           <article className="rounded-lg border p-4" style={{ borderColor: 'var(--status-warning-border)', backgroundColor: 'var(--status-warning-soft)' }}>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-warning)' }}>Why lean exit</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-warning)' }}>Why strategic fit</p>
             <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>{THESIS.leanExitWhy}</p>
           </article>
         </div>
+
+        <article
+          className="rounded-lg border p-5 mb-8"
+          style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
+        >
+          <p className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+            {CONTINUOUS_CHANGE_SIGNALS.title}
+          </p>
+          <p className="text-sm leading-relaxed mt-3 mb-4 max-w-3xl" style={{ color: 'var(--text-secondary)' }}>
+            {CONTINUOUS_CHANGE_SIGNALS.intro}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {CONTINUOUS_CHANGE_SIGNALS.items.map((item) => (
+              <article
+                key={item.title}
+                className="rounded-lg border p-4"
+                style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}
+              >
+                <p className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+                  {item.title}
+                </p>
+                <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+                  {item.detail}
+                </p>
+                <a
+                  href={item.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-3 text-xs font-mono"
+                  style={{ color: 'var(--accent)' }}
+                >
+                  {item.sourceLabel}
+                </a>
+              </article>
+            ))}
+          </div>
+        </article>
 
         <div className="flex flex-wrap items-center gap-3">
           <button
             onClick={() => onNavigate('leanExit')}
             className="button-accent inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold"
           >
-            Explore lean exit
+            Explore strategic fit
             <ArrowRight size={15} />
           </button>
           <button

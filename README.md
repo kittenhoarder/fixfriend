@@ -1,14 +1,14 @@
-# FIXFriend — Lean Exit Thesis
+# FIXFriend — Strategic Fit Brief
 
-A single-page interactive web application presenting the lean-exit thesis for
-FIXFriend: automated protocol change-control and compliance evidence for
-European electronic trading firms.
+A single-page interactive web application presenting the strategic-fit thesis
+for FIXFriend: a venue-first change-response control layer for European
+electronic trading firms.
 
 ## Purpose
 
-Presents the startup as a lean-exit opportunity: thesis, market, product, and
-acquirer landscape in an interactive deal-room format for investors and
-potential acquirers.
+Presents the startup as a discovery-led strategic-fit opportunity: thesis,
+market, product, and acquirer landscape in an interactive deal-room format for
+investors and potential acquirers.
 
 ## Stack
 

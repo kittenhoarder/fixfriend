@@ -337,25 +337,26 @@ compound — and knows exactly who will pay to solve it.
 
 ---
 
-## Lean-Exit Revision
+## Strategic-Fit Revision
 
 ### Core framing
 - Audience: VCs, with an acquirer-discovery lens
-- Strategic frame: Lean exit, not standalone venture-scale first
-- Buyer-language line: FIXFriend turns venue change notices into rollout-ready
-  change packs, certification workflows, and client-ready evidence for trading
-  technology vendors.
-- Acquirer-language line: FIXFriend is the missing workflow layer between venue
-  change, product update, and client rollout.
-- 10x claim: Same-day change assessment and certification prep instead of 1–2
-  weeks of PM, engineering, and QA coordination.
+- Strategic frame: discovery-led strategic fit, not exit forecasting
+- Buyer-language line: FIXFriend turns venue change notices into bounded
+  autonomous execution, structured human work, and audit-ready evidence inside
+  existing systems.
+- Acquirer-language line: FIXFriend is a workflow-control layer for change in
+  systems, starting with venue change and designed to fit around incumbent pain.
+- Cycle-time claim: bounded cases move to days instead of several weeks or
+  months because coordination, context recovery, and evidence assembly are
+  compressed early.
 
 ### Evidence labels used in the site
 - Validated: public-source facts, verified deals, direct interview evidence
 - Hypothesis: current beliefs about pricing, wedge shape, and strategic fit
 - Open Question: what founder discovery still needs to answer
 
-### Lean-exit wedge
+### Strategic-fit wedge
 - Primary operating wedge: vendor-side change-response and certification
   workflow
 - Includes: OMS/EMS vendors, managed FIX/connectivity providers, selected
@@ -375,13 +376,13 @@ compound — and knows exactly who will pay to solve it.
     and stronger client stickiness if embedded into incumbent platforms
 - Broader expansion:
   - Broader trading-firm TAM remains meaningful, but is secondary to the narrow
-    lean-exit wedge
+    strategic-fit wedge
 - Working wedge/SAM:
   - 40–80 high-fit operators in Europe and the US before channel expansion
-- Lean-exit SOM objective:
+- Strategic-fit SOM objective:
   - 5–10 design partners
   - 3–5 paid pilots
-  - €1M–€3M ARR potential before strategic embed or acquisition
+  - €1M–€3M ARR potential before broader platform distribution
 
 ### Business defaults
 - Economic buyer:

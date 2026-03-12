@@ -3,27 +3,27 @@
 // needs fresher acquirer research.
 
 export const THESIS = {
-  headline: 'THE MISSING WORKFLOW LAYER\nFOR VENUE CHANGE RESPONSE',
+  headline: 'THE WORKFLOW CONTROL LAYER\nFOR CONTINUOUS CHANGE',
   subheadline:
-    'FIXFriend gives trading technology vendors same-day, certification-ready change packs for minor venue updates — and a structured escalation path for major ones. Built to win on workflow. Positioned to sell strategically.',
+    'FIXFriend starts with venue-driven change response as the first wedge, then fits around the change pain strategic acquirers care about most. Agents do bounded development work, structure human-actionable outputs in existing channels, stay inside sandbox, test, and UAT, and leave a continuous audit trail behind.',
   stats: [
     {
-      id: 'tenx',
-      value: '10x',
-      label: 'FASTER TO CHANGE PACK',
-      detail: 'Same day, not 1–2 weeks of PM / engineering / QA coordination',
+      id: 'cycle',
+      value: 'Days',
+      label: 'TIME TO BOUNDED CHANGE PACK',
+      detail: 'Not several weeks or months of cross-party coordination for bounded cases',
     },
     {
       id: 'discovery',
       value: '6',
       label: 'WEEK ACQUIRER DISCOVERY LOOP',
-      detail: 'Product, corp-dev, advisor, and operator interviews shape the wedge',
+      detail: 'Product, corp-dev, advisor, and operator interviews shape the wedge and any pivot',
     },
     {
-      id: 'deals',
-      value: '9',
-      label: 'VERIFIED DEALS IN 12 MONTHS',
-      detail: 'Trading infrastructure and exchange consolidation continues',
+      id: 'markets',
+      value: '24/5+',
+      label: 'CONTINUOUS-MARKET SIGNAL',
+      detail: 'Extended hours and clearing windows increase the need for constant-change readiness',
     },
   ],
   founderName: 'Owen E. Perry',
@@ -32,13 +32,13 @@ export const THESIS = {
     '14 years in European electronic trading infrastructure. Technical product leader specialising in trading infrastructure at inflection points.',
   linkedinUrl: 'https://linkedin.com/in/oweneperry',
   buyerOneLiner:
-    'FIXFriend turns venue change notices into autonomous minor-change execution, coordinated major-change projects, and audit-ready evidence for trading technology vendors.',
+    'FIXFriend turns venue change notices into bounded autonomous execution, coordinated human projects, and audit-ready evidence inside the systems teams already use.',
   acquirerOneLiner:
-    'FIXFriend is the workflow and context layer between venue change, UAT execution, and client rollout.',
+    'FIXFriend is a workflow-control layer for change in systems, starting with venue change response and designed to fit around incumbent operating pain.',
   tenXClaim:
-    'Same-day UAT-ready change bundles for minor venue updates instead of 1–2 weeks of PM, engineering, and QA coordination.',
+    'Bounded cases move to days instead of several weeks or months because FIXFriend compresses coordination, context recovery, and evidence assembly before the cross-party loop stalls.',
   leanExitWhy:
-    'This is not a scale-first SaaS story. It is a wedge-first go-to-market: win the workflow directly, then keep open the strategic paths to partner, embed, or sell into larger platforms.',
+    'This is a discovery-led strategic-fit story: use venue change as the first wedge, learn where acquirers feel the deepest operational pain, and pivot the product boundary around that signal instead of forecasting too far ahead.',
   evidenceTypes: [
     {
       label: 'Validated',
@@ -57,13 +57,13 @@ export const THESIS = {
     },
   ],
   vcTldr: {
-    title: 'LEAN EXIT IN ONE SCREEN',
+    title: 'STRATEGIC FIT IN ONE SCREEN',
     marketSummary:
-      'Beachhead wedge: vendor-side change-response and certification workflow. Direct market is modest, but strategic attach value rises inside incumbent trading infrastructure stacks.',
+      'Beachhead wedge: vendor-side change response and certification workflow. The broader category is automation around change in systems, but venue change stays the first concrete proof point.',
     highlights: [
-      'Lead with strategic fit, not standalone scale.',
+      'Lead with strategic-acquirer pain, not exit forecasting.',
       'First validation loop is buyer and acquirer discovery, not generic SaaS GTM.',
-      'First 10 customers are design partners chosen for strategic relevance.',
+      'Use venue change as the first wedge, then pivot if another change domain shows stronger pull.',
     ],
     tier1Acquirers: [
       { name: 'ION Markets', fit: 'Owns venue-facing plumbing. Missing workflow layer for change-response and client rollout.' },
@@ -72,6 +72,42 @@ export const THESIS = {
       { name: 'SIX Group', fit: 'Venue and member certification complexity makes the wedge strategically relevant on the exchange side too.' },
     ],
   },
+}
+
+export const CONTINUOUS_CHANGE_SIGNALS = {
+  title: 'Continuous-change signals',
+  intro:
+    'The implication is not that every market is already trading around the clock. It is that operating windows are stretching, post-trade infrastructure is extending, and workflow automation is moving deeper into communications-heavy processes. Systems have to absorb change continuously and prove control while they do it.',
+  items: [
+    {
+      title: 'Extended-hours trading',
+      detail:
+        'Nasdaq is preparing for a 24-hour trading day, which pushes infrastructure teams toward longer operational readiness and faster change handling.',
+      sourceLabel: 'Nasdaq',
+      sourceUrl: 'https://www.nasdaq.com/newsroom/nasdaqs-view-road-24-hour-trading',
+    },
+    {
+      title: 'Post-trade windows are widening too',
+      detail:
+        'DTCC is extending NSCC clearing hours to support extended trading, which means operational compression is moving beyond the venue session itself.',
+      sourceLabel: 'DTCC',
+      sourceUrl: 'https://www.dtcc.com/news/2025/march/18/dtccs-nscc-to-increase-clearing-hours-to-support-extended-trading',
+    },
+    {
+      title: 'Infrastructure must handle constant change',
+      detail:
+        'A-Team frames continuous markets as an infrastructure problem of constant change, shorter recovery windows, and operating resilience rather than a simple market-hours story.',
+      sourceLabel: 'A-Team Insight',
+      sourceUrl: 'https://a-teaminsight.com/blog/modernising-for-continuous-markets-why-infrastructure-must-be-built-for-constant-change/?brand=tti',
+    },
+    {
+      title: 'Workflow automation is spreading',
+      detail:
+        'Recent post-trade automation moves show more demand for systems that replace exception-heavy manual work with structured, auditable workflows.',
+      sourceLabel: 'A-Team on Broadridge / DeepSee',
+      sourceUrl: 'https://a-teaminsight.com/blog/broadridge-deepens-ai-push-with-minority-investment-in-deepsee-to-transform-post-trade-operations/?brand=ati',
+    },
+  ],
 }
 
 export const MARKET_NODES = {
@@ -196,7 +232,7 @@ export const MARKET_NODES = {
 
 export const MARKET_DEFAULT_DETAIL = {
   title: 'The European Market Chain',
-  body: 'Click any node on the map to explore the detail. The market thesis shows the missing vendor layer between venue changes and downstream clients. That is where FIXFriend aims to live: between the notice, the rollout response, and the evidence trail.',
+  body: 'Click any node on the map to explore the detail. The market thesis shows the missing vendor layer between venue changes and downstream clients. That is the first wedge. The broader product lives between the notice, the human response, and the evidence trail wherever systems have to absorb constant change safely.',
   hint: 'Start with the amber trigger node, then move into the vendor layer to see the strategic wedge.',
 }
 
@@ -215,20 +251,20 @@ export const GAP = {
       {
         number: '02',
         title: 'CROSS-TEAM TRIAGE',
-        detail: 'Product, engineering, QA, and client teams figure out what actually changed.',
-        time: '1–3 days',
+        detail: 'Client, vendor, venue, product, engineering, and QA teams all need different answers before the real impact is even clear.',
+        time: '2–7 days',
       },
       {
         number: '03',
         title: 'PROTOCOL FRAGMENTATION RESEARCH',
-        detail: 'Message dictionaries, custom tags, and workflow-specific exceptions have to be understood manually.',
-        time: '2–5 days',
+        detail: 'Message dictionaries, custom tags, and the gap between what the spec says and how the flow actually behaves have to be understood manually.',
+        time: '1–3 weeks',
       },
       {
         number: '04',
         title: 'TESTING & CERTIFICATION COORDINATION',
-        detail: 'Teams rebuild test packs, chase credentials, and become external QA for venue-side issues.',
-        time: '2–5 days',
+        detail: 'Teams rebuild test packs, chase credentials, find bugs mid-stream, and often wait on venue-side fixes before certification can continue.',
+        time: '1–6 weeks',
       },
       {
         number: '05',
@@ -245,12 +281,12 @@ export const GAP = {
         highlight: true,
       },
     ],
-    total: '1–2 WEEKS TO A RELIABLE CHANGE PACK',
-    risk: 'Vendors add delivery buffer just for communication and venue-side QA churn. The cost is not only engineering time; it is slower rollout, client frustration, and reputational drag.',
+    total: 'SEVERAL WEEKS TO MONTHS FOR A RELIABLE CHANGE PACK',
+    risk: 'The slowness is not only engineering implementation. It sits in communication chains, spec-versus-runtime drift, venue-side bug turnaround, and evidence rebuilds after the fact.',
   },
   automated: {
     title: 'WITH FIXFRIEND',
-    subtitle: 'Agent-operated venue-change response system',
+    subtitle: 'Agent-operated change-response control layer',
     tint: 'blue',
     steps: [
       {
@@ -263,19 +299,19 @@ export const GAP = {
         number: '02',
         title: 'IMPACT MAPPED',
         detail: 'FIXFriend links the change to relevant products, configurations, test packs, and downstream client workflows.',
-        time: 'Minutes',
+        time: 'Hours',
       },
       {
         number: '03',
         title: 'CHANGE PACK ASSEMBLED',
-        detail: 'Engineering-ready requirements, rollout notes, and certification tasks are created in one UAT-ready bundle.',
-        time: 'Minutes',
+        detail: 'Engineering-ready requirements, rollout notes, UAT tasks, and channel-ready comms are created in one bounded working bundle.',
+        time: '1–2 days',
       },
       {
         number: '04',
         title: 'CERTIFICATION RUNBOOK READY',
         detail: 'Validation steps, dependencies, and evidence expectations are queued before the window compresses.',
-        time: 'Hours',
+        time: '1–3 days',
       },
       {
         number: '05',
@@ -292,9 +328,9 @@ export const GAP = {
         highlight: true,
       },
     ],
-    total: 'SAME DAY TO CERTIFICATION-READY CHANGE PACK',
+    total: 'DAYS TO A BOUNDED CHANGE PACK',
     summary:
-      'FIXFriend is the missing workflow layer between venue change, product update, certification, and client rollout. The work still happens. The chaos disappears.',
+      'FIXFriend is the workflow-control layer between change notice, human action, certification readiness, and evidence. Bounded cases move faster. Long-running external dependencies become visible earlier and stay structured.',
   },
 }
 
@@ -842,7 +878,7 @@ export const ABOUT = {
 
 export const NAV_TABS = [
   { id: 'thesis', label: 'THESIS', icon: 'Home' },
-  { id: 'leanExit', label: 'LEAN EXIT', icon: 'Briefcase' },
+  { id: 'leanExit', label: 'STRATEGIC FIT', icon: 'Briefcase' },
   { id: 'market', label: 'MARKET', icon: 'Globe' },
   { id: 'product', label: 'PRODUCT', icon: 'Package' },
   { id: 'definition', label: 'DEFINITION', icon: 'BookOpen' },
@@ -853,11 +889,11 @@ export const NAV_TABS = [
 export const DEFINITION = {
   origin: {
     title: 'Origin',
-    body: "Repeated exposure to the same failure mode across trading ops, vendor platforms, and client rollout work: venue notices arrive, context is fragmented, evidence rebuilds late. The pain is real and recurring. The thesis stays narrow — venue-change response is a product gap worth proving, selling into directly, and positioning for strategic ownership.",
+    body: "Repeated exposure to the same failure mode across trading ops, vendor platforms, and client rollout work: change lands, context is fragmented, and evidence rebuilds late. Venue-driven change response is the first concrete wedge because the pain is real, recurring, and acquirer-relevant.\n\nThe broader thesis is automation around change in systems. FIXFriend starts with venue change, then learns from acquirer conversations which adjacent change domain carries the strongest strategic pull.",
   },
   marketDefinition: {
     title: 'Market Definition',
-    body: 'Modern market access depends on venue-driven change response: interpreting notices, understanding protocol nuance, coordinating certification, and getting clients through rollout safely.\n\nIncumbents already own key parts of the stack, including connectivity, onboarding, testing, and reporting. The gap is not generic FIX automation.\n\n**FIXFriend defines a narrower wedge: an agent-operated venue-change response system for trading technology vendors.**\n\nIt handles minor changes through UAT-ready outputs, escalates major changes into structured human work, and leaves evidence behind as the response happens.',
+    body: 'Modern market access depends on venue-driven change response: interpreting notices, understanding protocol nuance, coordinating certification, and getting clients through rollout safely.\n\nIncumbents already own key parts of the stack, including connectivity, onboarding, testing, and reporting. The gap is not generic FIX automation.\n\n**FIXFriend defines a narrower wedge: an agent-operated change-response control layer for trading technology vendors, starting with venue change.**\n\nIt handles bounded minor changes through UAT-ready outputs, escalates major changes into structured human work, lands outputs in existing tools and channels, and leaves evidence behind as the response happens.',
   },
   marketSize: {
     title: 'Market Size',
@@ -867,17 +903,18 @@ export const DEFINITION = {
     },
     attach: {
       label: 'Strategic Attach View',
-      body: 'The upside is not only direct ARR. If FIXFriend attaches to an incumbent platform, the value is attach revenue plus faster rollout, lower support load, and stronger client stickiness across the installed base.',
+      body: 'The upside is not only direct ARR. If FIXFriend attaches to an incumbent platform, the value is attach revenue plus faster change handling, lower support load, and stronger client stickiness across the installed base.',
     },
     expansion: {
       label: 'Broader Expansion',
-      body: 'If the wedge proves strategic, it can expand into broader trading-infrastructure lifecycle automation: certification tooling, release governance, change communication, configuration control, and non-production development workflows.',
+      body: 'Expansion should be discovered, not forecast. Venue change is the first wedge; adjacent change domains should only be pulled forward once acquirer conversations repeatedly point to the same broader operational pain.',
     },
     sam: 'Working wedge: **40–80 high-fit operators** in Europe and the US before channel expansion.',
-    som: 'Near-term objective: 5–10 design partners, 3–5 paid pilots, and €1M–€3M ARR potential before platform-scale distribution or a strategic transaction.',
+    som: 'Near-term objective: 5–10 design partners, 3–5 paid pilots, and €1M–€3M ARR potential before broader platform distribution.',
     methodology: [
       'Start with the narrow beachhead, not the broadest possible end market.',
       'Model direct ARR separately from strategic attach value inside incumbent installed bases.',
+      'Keep venue change as the proof wedge until discovery shows a stronger adjacent change domain.',
       'Treat pricing as a hypothesis until discovery confirms the buyer, budget owner, and deployment scope.',
     ],
   },
@@ -914,7 +951,7 @@ export const PRODUCT_WORKFLOW_STAGES = [
     today: 'Teams rebuild test packs, chase credentials, and absorb venue-side defects late in the window.',
     todayDrag: 'Drag: venue-side bounce-back and certification churn.',
     fixfriend: 'FIXFriend prepares the UAT branch plan, regression pack, validation runbook, and escalation path before the window compresses.',
-    fixfriendImpact: 'Outcome: same-day certification-ready preparation for minor changes.',
+    fixfriendImpact: 'Outcome: bounded cases reach certification-ready preparation in days instead of several weeks or months.',
   },
   {
     id: 'rollout',
@@ -938,13 +975,13 @@ export const PRODUCT_WORKFLOW_STAGES = [
 export const PRODUCT_CONTENT = {
   solution: {
     title: 'FIXFriend, In Product Terms',
-    intro: 'FIXFriend is an agent-operated venue-change response system for trading technology vendors.\n\nIt is built to:',
+    intro: 'FIXFriend is an agent-operated change-response system for trading technology vendors, starting with venue change as the first wedge.\n\nIt is built to:',
     bullets: [
       'monitor venue notices, portals, and digests for change signals',
       'retrieve specs and related context through Expoty, then pursue missing documentation when needed',
       'classify changes with rules-first gates into autonomous minor work or coordinated major work',
-      'generate UAT branches, regression packs, update notes, workflow tickets, and owner routing for minor changes',
-      'publish evidence into Jira, Confluence or Notion, Slack, Git, and audit logs',
+      'generate UAT branches, regression packs, update notes, workflow tickets, and owner routing for bounded minor changes',
+      'publish evidence into Jira, Confluence or Notion, Slack, Teams, email, Git, and audit logs',
       'keep every autonomous action inside sandbox, test, or UAT environments',
     ],
     boundary: {
@@ -955,7 +992,7 @@ export const PRODUCT_CONTENT = {
   whatCustomersBuy: {
     title: 'What Customers Buy',
     label: 'Faster Change Response, Less Coordination Drag',
-    body: 'Buyers are not paying for a generic model. They are paying for a system that sources the spec, closes coordination gaps, creates UAT-ready outputs in existing tools, and preserves the evidence trail while the work happens.',
+    body: 'Buyers are not paying for a generic model. They are paying for a system that sources the spec, closes coordination gaps, creates UAT-ready outputs in existing tools and channels, and preserves the evidence trail while the work happens.',
   },
   targetBuyer: {
     title: 'Target Buyer & Economic Logic',
@@ -964,10 +1001,11 @@ export const PRODUCT_CONTENT = {
     triggers: ['Short-notice venue change', 'Certification bottleneck', 'Client rollout delay', 'Repeated support escalation'],
   },
   painPoints: [
-    'Communication breaks first: the notice, deadline, and impact are spread across too many people and systems.',
+    'Communication breaks first: the notice, deadline, and impact move across clients, vendors, venues, and internal teams before anyone has one canonical view.',
     'Specs are hard to source consistently across portals, emails, PDFs, and venue websites.',
+    'What the spec says and how the flow actually behaves often diverge, so teams rediscover runtime reality mid-project.',
     'Protocol fragmentation means standard FIX still hides asset-class and venue-specific nuance.',
-    'Testing is expensive because vendors either build simulators or depend on venue cooperation.',
+    'Testing is expensive because vendors either build simulators or depend on venue cooperation, and bugs are often discovered mid-stream.',
     'Connectivity setup still creates delay: internet, VPN, private lines, and x-connects change the response path.',
     'Vendors become external QA for venues and absorb the reputation cost when releases slip.',
   ],
@@ -975,11 +1013,11 @@ export const PRODUCT_CONTENT = {
 
 export const PRODUCT_OPERATING_MODEL = {
   summary:
-    'FIXFriend runs two lanes. Minor venue changes are handled autonomously through UAT-ready outputs. Major changes become structured human work with source provenance and escalation evidence attached.',
+    'FIXFriend runs two lanes. Bounded minor changes are handled autonomously through UAT-ready outputs. Major changes become structured human work with source provenance and escalation evidence attached.',
   principles: [
     'Workflow-first externally, multi-agent internally.',
     'Human out of the loop only for minor changes in sandbox, test, or UAT.',
-    'All outputs land inside tools teams already use.',
+    'All outputs land inside tools and channels teams already use.',
   ],
   lanes: {
     minor: {
@@ -991,7 +1029,7 @@ export const PRODUCT_OPERATING_MODEL = {
         'Monitor agent detects the venue notice and hands the source request to the source agent.',
         'Source agent fetches the spec bundle and uses Expoty to recover related tickets, code paths, tests, and prior decisions.',
         'Impact agent classifies the change as minor using deterministic gates plus model reasoning.',
-        'Planning and execution agents emit requirements, UAT branch plan, regression pack, update docs, Jira tickets, Slack summary, and audit evidence.',
+        'Planning and execution agents emit requirements, UAT branch plan, regression pack, update docs, Jira tickets, channel-ready summaries, and audit evidence.',
       ],
       outputs: [
         'Requirements bundle',
@@ -999,7 +1037,7 @@ export const PRODUCT_OPERATING_MODEL = {
         'Regression tests and results',
         'Update docs and explainer',
         'Jira tickets and owner routing',
-        'Structured Slack message',
+        'Structured channel summary',
         'Audit log with spec sources',
       ],
       metrics: [
@@ -1008,7 +1046,7 @@ export const PRODUCT_OPERATING_MODEL = {
         { label: 'Evidence', value: 'Live', tone: 'success' },
       ],
       result:
-        'Minor venue changes become same-day UAT-ready bundles instead of manual coordination projects.',
+        'Bounded minor changes become days-scale UAT-ready bundles instead of manual coordination projects that drag through several weeks or months.',
     },
     major: {
       label: 'Coordinated major-change lane',
@@ -1025,7 +1063,7 @@ export const PRODUCT_OPERATING_MODEL = {
         'Escalation project page',
         'Jira epic and owner tags',
         'Confluence or Notion brief',
-        'Blocked-state Slack summary',
+        'Blocked-state channel summary',
         'Publisher outreach log',
         'Audit bundle and decision record',
       ],
@@ -1063,7 +1101,7 @@ export const PRODUCT_AGENT_SYSTEM = [
   },
   {
     name: 'Comms agent',
-    role: 'Publishes structured Jira, Confluence or Notion, and Slack outputs with links, explainers, and tags.',
+    role: 'Publishes structured Jira, Confluence or Notion, Slack, Teams, and email outputs with links, explainers, and tags.',
   },
   {
     name: 'Audit agent',
@@ -1095,8 +1133,8 @@ export const PRODUCT_OUTPUTS = [
     detail: 'Update docs, explainer bundles, and escalation briefs are published with source links and decisions.',
   },
   {
-    name: 'Slack summaries',
-    detail: 'Structured notifications link to sources, branches, tickets, tests, and tagged system owners.',
+    name: 'Slack, Teams, and email summaries',
+    detail: 'Structured notifications link to sources, branches, tickets, tests, and tagged system owners without forcing a new comms tool.',
   },
   {
     name: 'Git and UAT branches',
@@ -1160,7 +1198,7 @@ export const PRODUCT_MERMAID_DIAGRAMS = {
       Plan->>Exec: UAT branch plan, regression pack, update tasks
       Note over Exec: Sandbox / test / UAT only<br/>Never prod
       Exec-->>Audit: Test outputs and execution evidence
-      Plan->>Comms: Jira, Confluence or Notion, Slack bundle
+      Plan->>Comms: Jira, docs, and channel bundle
       Comms-->>Audit: Links, owner tags, explanation
       Audit-->>Venue: Provenance-backed decision trail ready
     `,
@@ -1180,7 +1218,7 @@ export const PRODUCT_MERMAID_DIAGRAMS = {
       D --> E
       E --> F[Create Jira epic and owner routing]
       E --> G[Publish Confluence or Notion brief]
-      E --> H[Send blocked-state Slack summary]
+      E --> H[Send blocked-state channel summary]
       E --> I[Attach source provenance and decision log]
       I --> J[Human-led project in sandbox / UAT only]
       J --> K[Never prod without separate human release path]
@@ -1203,7 +1241,7 @@ export const PRODUCT_MERMAID_DIAGRAMS = {
       P --> E
       P --> C
       E --> W[(Git / UAT branches<br/>Regression results)]
-      C --> Y[(Jira / Confluence or Notion / Slack)]
+      C --> Y[(Jira / Docs / Slack / Teams / Email)]
       S --> A[Audit agent]
       I --> A
       E --> A
@@ -1317,7 +1355,7 @@ export const MARKET_MODEL = {
     label: 'TAM',
     value: '€450M',
     detail:
-      'Broader trading-infrastructure lifecycle automation opportunity if the workflow expands beyond the initial wedge.',
+      'Broader change-response and workflow-control opportunity if discovery repeatedly points beyond the initial venue-change wedge.',
   },
   sam: {
     label: 'SAM',
@@ -1329,7 +1367,7 @@ export const MARKET_MODEL = {
     label: 'SOM',
     value: '€1M–€3M',
     detail:
-      'Initial reachable objective before strategic embed or acquisition: 5–10 design partners and 3–5 paid pilots.',
+      'Initial reachable objective before broader platform distribution: 5–10 design partners and 3–5 paid pilots.',
   },
   strategicAttach: {
     label: 'Strategic Attach',
@@ -1352,12 +1390,12 @@ export const BUSINESS_MODEL_CANVAS = {
     'Testing and compliance adjacencies',
   ],
   valueProp:
-    'Turn venue change notices into rollout-ready change packs, certification workflows, and client-ready evidence without rebuilding the story by hand.',
+    'Turn change notices into bounded execution packs, structured human workflows, and client-ready evidence without rebuilding the story by hand.',
   channels: [
     'Founder-led warm intros',
     'Design-partner outreach around live venue-change pain',
     'Industry events and thought leadership',
-    'Partner and platform distribution after the first wedge is proven',
+    'Partner and platform distribution after discovery confirms the first wedge',
   ],
   revenueStreams: [
     'Paid design partner or pilot: €25k–€50k',
@@ -1388,7 +1426,7 @@ export const FEATURE_PRIORITIES = {
     },
     {
       title: 'UAT bundle generation and workflow outputs',
-      reason: 'Minor changes need requirements, UAT branches, tests, docs, tickets, Slack summaries, and audit evidence to appear automatically.',
+      reason: 'Minor changes need requirements, UAT branches, tests, docs, tickets, channel-ready summaries, and audit evidence to appear automatically.',
     },
     {
       title: 'Audit trail with source citations',
@@ -1420,7 +1458,7 @@ export const FEATURE_PRIORITIES = {
     },
     {
       title: 'Broader non-prod workflow automation',
-      reason: 'Expand only after the autonomy boundary is trusted and clearly bounded.',
+      reason: 'Expand only after discovery confirms the next change domain and the autonomy boundary is trusted.',
     },
   ],
 }
@@ -1470,40 +1508,42 @@ export const PRICING_TRACKER = [
 
 export const VALIDATION_PLAN = {
   riskiestAssumption:
-    'This workflow gap is strategic enough for an incumbent or likely acquirer to care about as a product gap, not just a useful feature.',
+    'This change-response workflow gap is strategic enough for an incumbent or likely acquirer to care about as a product gap, not just a useful feature.',
   hypothesis:
-    'If likely acquirers repeatedly describe venue-driven change response as painful, cross-functional, and hard to internalise quickly, then a vendor-side workflow layer can become strategically valuable.',
+    'If likely acquirers repeatedly describe venue-driven change response as one instance of a broader system-change pain that is painful, cross-functional, and hard to internalise quickly, then FIXFriend can become strategically valuable as a workflow-control layer.',
   timeline: [
     {
       label: 'Week 1–2',
       focus: 'Acquirer-side product and connectivity interviews',
-      detail: 'Run 8–10 conversations with leaders closest to product rollout, venue onboarding, or client certification.',
+      detail: 'Run 8–10 conversations with leaders closest to product rollout, venue onboarding, client certification, and other recurring change workflows.',
     },
     {
       label: 'Week 2–4',
       focus: 'Corp-dev, strategy, and M&A advisor interviews',
-      detail: 'Run 4–6 conversations to learn how similar acquisitions are sourced, sponsored, and evaluated.',
+      detail: 'Run 4–6 conversations to learn how similar acquisitions are sourced, sponsored, evaluated, and pushed through internal process.',
     },
     {
       label: 'Week 3–5',
       focus: 'Operator back-testing',
-      detail: 'Replay 2 historical venue changes with product, QA, or connectivity operators to test whether FIXFriend output is materially useful.',
+      detail: 'Replay 2 historical venue changes with product, QA, or connectivity operators to test whether FIXFriend output materially reduces coordination drag and ambiguity.',
     },
     {
       label: 'Week 6',
       focus: 'Wedge decision',
-      detail: 'Choose whether to stay vendor-first or pivot toward venue-side or testing/regtech adjacency.',
+      detail: 'Choose whether to stay vendor-first on venue change or pivot toward the adjacent change domain acquirers describe most consistently.',
     },
   ],
   successMetrics: [
     '2+ recurring strategic pain patterns across likely acquirers.',
     '1 clear internal sponsor role per acquirer archetype.',
     '1 credible buy / partner / embed path that is more attractive than internal build.',
+    '1 clear read on how the M&A process actually gets sourced and approved.',
     '1 paid pilot or strong design-partner commitment.',
   ],
   pivotTriggers: [
     'Acquirers describe the product as tactical, not strategic.',
     'Only one archetype shows real urgency.',
+    'Another change domain is described as more urgent than venue change.',
     'The pain is stronger on venue-side or testing-side than vendor-side.',
   ],
 }
@@ -1582,13 +1622,14 @@ export const GTM_PLAYBOOK = {
 export const OPEN_QUESTIONS = [
   'Who really sponsors these acquisitions: business-unit leader, corp-dev, founder/CEO, or advisor?',
   'What proof makes this look strategic rather than tactical?',
+  'Which change domain beyond venue response shows the strongest repeated pain?',
   'Is the strongest wedge vendor-side, venue-side, or testing/regtech adjacency?',
   'How much of the problem is workflow versus missing technical tooling?',
 ]
 
 export const LEAN_EXIT_CASE = {
   intro:
-    'FIXFriend wins on operational value first — same-day change packs, less coordination drag. If the wedge is strategically relevant to incumbents, it becomes a target. That is the lean exit thesis: prove the workflow, then keep the strategic paths open.',
+    'FIXFriend starts with operational value first: compress bounded change-response work from several weeks or months to days, while making long-running dependencies visible earlier. The real thesis is discovery-led strategic fit: learn where acquirers feel the deepest change pain, understand how they buy, and let that signal shape the wedge.',
   evidenceOverview: [
     {
       label: 'Validated',
@@ -1597,6 +1638,7 @@ export const LEAN_EXIT_CASE = {
         'Interview evidence points to communication, certification, and protocol fragmentation as recurring pain.',
         'Public incumbents already cover onboarding, testing, and connectivity, which sharpens the differentiation bar.',
         'Verified sector deals show continued consolidation across trading infrastructure and exchanges.',
+        'Extended trading and clearing windows strengthen the need for systems built for continuous change.',
       ],
     },
     {
@@ -1604,8 +1646,8 @@ export const LEAN_EXIT_CASE = {
       tone: 'warning',
       items: [
         'Vendor-side autonomous minor-change handling is the strongest initial wedge.',
-        'The right buyer will pay for faster rollout and lower support drag before they pay for AI by itself.',
-        'A workflow and context layer is more strategically interesting than a narrow point solution.',
+        'The right buyer will pay for lower coordination drag, earlier impact clarity, and live evidence before they pay for AI by itself.',
+        'A workflow and context layer for change in systems is more strategically interesting than a narrow point solution.',
       ],
     },
     {
@@ -1615,27 +1657,28 @@ export const LEAN_EXIT_CASE = {
         'Which acquirer archetype feels this gap most intensely?',
         'What evidence would make buy-or-embed more attractive than internal build?',
         'Which product boundary creates the strongest strategic fit?',
+        'Which adjacent change domain should pull the wedge beyond venue response?',
       ],
     },
   ],
   wedge: {
     evidence: 'Hypothesis',
     buyerOneLiner:
-      'FIXFriend turns venue change notices into autonomous minor-change execution, coordinated major-change projects, and audit-ready evidence for trading technology vendors.',
+      'FIXFriend turns venue change notices into bounded autonomous execution, coordinated major-change projects, and audit-ready evidence for trading technology vendors.',
     acquirerOneLiner:
-      'FIXFriend is the workflow and context layer between venue change, UAT execution, and client rollout.',
+      'FIXFriend is a workflow-control layer for change in systems, starting with venue change and designed to fit around incumbent pain.',
     tenX:
-      'Same-day UAT-ready change bundles for minor venue updates instead of 1–2 weeks of PM, engineering, and QA coordination.',
-    quantifiedFrom: '1–2 weeks',
-    quantifiedTo: 'Same day',
-    quantifiedLabel: 'Time to a UAT-ready change bundle',
+      'Bounded cases move to days instead of several weeks or months because FIXFriend compresses coordination, context recovery, and evidence assembly before the cross-party loop stalls.',
+    quantifiedFrom: 'Several weeks to months',
+    quantifiedTo: 'Days for bounded cases',
+    quantifiedLabel: 'Time to a bounded change pack',
   },
   scope: {
     evidence: 'Hypothesis',
     does: [
       'Monitor venue changes across existing channels and pursue missing documentation automatically.',
       'Use Expoty as the shared context core for specs, prior decisions, code context, and test history.',
-      'Autonomously emit UAT branches, regression packs, update docs, Jira tickets, Slack summaries, and audit evidence for minor changes.',
+      'Autonomously emit UAT branches, regression packs, update docs, Jira tickets, channel summaries, and audit evidence for bounded minor changes.',
       'Escalate major changes into structured human projects with source provenance and decision lineage attached.',
     ],
     doesNot: [
@@ -1648,9 +1691,9 @@ export const LEAN_EXIT_CASE = {
   whyBought: {
     evidence: 'Hypothesis',
     points: [
-      'Reduces rollout friction and support drag around venue changes by automating the minor cases that consume time constantly.',
+      'Reduces rollout friction and support drag around venue changes by automating the bounded cases that consume time constantly.',
       'Turns a painful multi-team workflow into a differentiated attach product with provenance-backed execution.',
-      'Improves client stickiness by making incumbent platforms easier to keep current inside existing Jira, docs, Slack, and UAT workflows.',
+      'Improves client stickiness by making incumbent platforms easier to keep current inside existing Jira, docs, Slack, Teams, email, and UAT workflows.',
       'Expoty compounds strategic value by turning each resolved venue change into reusable context for the next one.',
     ],
   },

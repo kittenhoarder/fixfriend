@@ -28,12 +28,12 @@ const OUTPUT_ICONS = {
   'Regression tests and results': TestTube2,
   'Update docs and explainer': FileText,
   'Jira tickets and owner routing': Workflow,
-  'Structured Slack message': MessagesSquare,
+  'Structured channel summary': MessagesSquare,
   'Audit log with spec sources': ShieldCheck,
   'Escalation project page': FileText,
   'Jira epic and owner tags': Workflow,
   'Confluence or Notion brief': FileText,
-  'Blocked-state Slack summary': MessagesSquare,
+  'Blocked-state channel summary': MessagesSquare,
   'Publisher outreach log': AlertTriangle,
   'Audit bundle and decision record': ShieldCheck,
 }
@@ -154,11 +154,11 @@ export default function ProductDemo() {
               Product Operating Demo
             </div>
             <h3 className="font-serif text-[2.3rem] leading-[0.92]" style={{ color: 'var(--text-primary)' }}>
-              Autonomous for minor changes. Coordinated for major ones.
+              Autonomous for bounded minor changes. Coordinated for major ones.
             </h3>
             <p className="text-sm md:text-base mt-3 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               FIXFriend monitors venue notices, retrieves source context through Expoty, decides whether the change can
-              run autonomously in UAT, and either emits the working bundle or opens a structured human project.
+              run autonomously in UAT, and either emits the working bundle or opens a structured human project with channel-ready outputs.
             </p>
           </div>
 

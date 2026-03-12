@@ -98,7 +98,7 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
           </svg>
           <span style={{ fontFamily: serif, fontSize: '16px', color: C.text, letterSpacing: '-0.01em' }}>FIXFriend</span>
           <span style={{ width: '1px', height: '12px', backgroundColor: C.border, display: 'inline-block' }} />
-          <span style={{ fontSize: '8px', fontWeight: 700, color: C.amber, letterSpacing: '0.15em', fontFamily: mono }}>LEAN EXIT THESIS</span>
+          <span style={{ fontSize: '8px', fontWeight: 700, color: C.amber, letterSpacing: '0.15em', fontFamily: mono }}>STRATEGIC FIT BRIEF</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <span style={{ fontSize: '8px', color: C.text3, letterSpacing: '0.1em', fontFamily: mono }}>PREPARED FOR RAIDICAL</span>
@@ -113,15 +113,15 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
         {/* Hero */}
         <div style={{ marginBottom: '10px' }}>
           <div style={{ fontFamily: serif, fontSize: '33px', lineHeight: 1.0, color: C.text }}>
-            AN AUTONOMOUS AGENT
+            AN AGENT LAYER
           </div>
           <div style={{ fontFamily: serif, fontSize: '33px', lineHeight: 1.0, color: C.amber, marginBottom: '8px' }}>
-            FOR FIX PROTOCOL CHANGES
+            FOR SYSTEM CHANGE
           </div>
           <p style={{ fontSize: '10.5px', lineHeight: 1.5, color: C.text2, maxWidth: '620px', margin: 0 }}>
-            An autonomous agent that monitors venue specifications, diffs against client systems,
-            and produces actionable change requirements — with a continuous audit trail that compliance
-            can review and intercept at any point. No one owns this layer today.
+            An agent-operated control layer that starts with venue specifications, diffs against client systems,
+            structures actionable work in existing channels, and leaves a continuous audit trail that compliance
+            can review and intercept at any point.
           </p>
         </div>
 
@@ -178,7 +178,7 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
               border: '1px solid rgba(239,68,68,0.18)',
               borderRadius: '2px',
               fontSize: '8px', fontWeight: 700, color: C.red, fontFamily: mono, letterSpacing: '0.04em',
-            }}>2–4 WEEKS · 50–200+ CYCLES PER YEAR</div>
+            }}>WEEKS TO MONTHS · 50–200+ CYCLES PER YEAR</div>
 
             <div style={{ marginTop: '10px' }}>
               <EL color={C.blue}>With FIXFriend — Agent-Driven</EL>
@@ -203,7 +203,7 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
                 border: '1px solid rgba(59,130,246,0.18)',
                 borderRadius: '2px',
                 fontSize: '8px', fontWeight: 700, color: C.blue, fontFamily: mono, letterSpacing: '0.04em',
-              }}>HOURS, NOT WEEKS · CONTINUOUS, NOT RETROACTIVE</div>
+              }}>DAYS FOR BOUNDED CASES · CONTINUOUS, NOT RETROACTIVE</div>
             </div>
           </div>
 
@@ -228,7 +228,7 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
               ))}
             </div>
             <p style={{ fontSize: '8.5px', color: C.text3, lineHeight: 1.4, margin: '0 0 9px' }}>
-              Entry: protocol verification &amp; change-control (€75k licence, blended). Expansion: broader trading infrastructure lifecycle governance.
+              Entry: venue-change response and change-control. Expansion: adjacent system-change workflows discovered through acquirer conversations.
             </p>
 
             {/* Regulatory */}
