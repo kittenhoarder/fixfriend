@@ -279,7 +279,6 @@ export default function ThesisSection({ onNavigate }) {
                 </a>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
