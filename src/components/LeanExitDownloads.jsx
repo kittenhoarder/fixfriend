@@ -199,99 +199,126 @@ function LeanExitOnePagerDocument() {
       title="The missing workflow layer for venue-driven change response"
       subtitle={THESIS.subheadline}
     >
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.9fr', gap: '14px', flex: 1 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-          <Panel>
-            <Label>The Wedge</Label>
-            <div style={{ fontSize: '16px', lineHeight: 1.3, marginBottom: '8px' }}>
-              {LEAN_EXIT_CASE.wedge.buyerOneLiner}
-            </div>
-            <div style={{ fontSize: '12px', color: '#c8c2b8', lineHeight: 1.55 }}>
-              {LEAN_EXIT_CASE.wedge.acquirerOneLiner}
-            </div>
-          </Panel>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
 
-          <Panel>
-            <Label>10x Claim</Label>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px' }}>
-              <div>
-                <div style={{ fontSize: '9px', color: '#8e897f', textTransform: 'uppercase', letterSpacing: '0.1em' }}>From</div>
-                <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '26px' }}>{LEAN_EXIT_CASE.wedge.quantifiedFrom}</div>
-              </div>
-              <div>
-                <div style={{ fontSize: '9px', color: '#8e897f', textTransform: 'uppercase', letterSpacing: '0.1em' }}>To</div>
-                <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '26px', color: '#22c55e' }}>{LEAN_EXIT_CASE.wedge.quantifiedTo}</div>
-              </div>
-              <div>
-                <div style={{ fontSize: '9px', color: '#8e897f', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Measured as</div>
-                <div style={{ fontSize: '11px', lineHeight: 1.5, color: '#c8c2b8' }}>{LEAN_EXIT_CASE.wedge.quantifiedLabel}</div>
-              </div>
+        {/* Panel 1: Wedge + 10x */}
+        <Panel>
+          <Label>The Wedge</Label>
+          <div style={{ fontSize: '15px', lineHeight: 1.3, marginBottom: '6px' }}>
+            {LEAN_EXIT_CASE.wedge.buyerOneLiner}
+          </div>
+          <div style={{ fontSize: '11px', color: '#c8c2b8', lineHeight: 1.5, marginBottom: '12px' }}>
+            {LEAN_EXIT_CASE.wedge.acquirerOneLiner}
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 2fr', gap: '12px', borderTop: '1px solid #20242a', paddingTop: '10px' }}>
+            <div>
+              <div style={{ fontSize: '9px', color: '#8e897f', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '3px' }}>From</div>
+              <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '22px' }}>{LEAN_EXIT_CASE.wedge.quantifiedFrom}</div>
             </div>
-          </Panel>
+            <div>
+              <div style={{ fontSize: '9px', color: '#8e897f', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '3px' }}>To</div>
+              <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '22px', color: '#22c55e' }}>{LEAN_EXIT_CASE.wedge.quantifiedTo}</div>
+            </div>
+            <div>
+              <div style={{ fontSize: '9px', color: '#8e897f', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '3px' }}>Measured as</div>
+              <div style={{ fontSize: '11px', lineHeight: 1.4, color: '#c8c2b8' }}>{LEAN_EXIT_CASE.wedge.quantifiedLabel}</div>
+            </div>
+          </div>
+        </Panel>
 
-          <Panel minHeight="240px">
-            <Label>Why This Could Be Bought</Label>
+        {/* Panel 2: Business logic + Operating model + Market model — 3 columns */}
+        <Panel>
+          <Label>Business, Operating & Market</Label>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+            <div>
+              <div style={{ fontSize: '9px', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Business Logic</div>
+              {[
+                ['Buyer', 'Head of Product / Connectivity / Electronic Trading'],
+                ['Pilot', '€25k–€50k'],
+                ['ARR', '€100k–€200k'],
+                ['Distribution', 'Direct design partners, then platform attach'],
+              ].map(([k, v]) => (
+                <div key={k} style={{ fontSize: '10px', lineHeight: 1.5, color: '#c8c2b8', marginBottom: '3px' }}>
+                  <strong style={{ color: '#f5f3ef' }}>{k}:</strong> {v}
+                </div>
+              ))}
+            </div>
+            <div>
+              <div style={{ fontSize: '9px', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Operating Boundary</div>
+              {[
+                [PRODUCT_OPERATING_MODEL.lanes.minor.label, 'autonomous in sandbox / UAT'],
+                [PRODUCT_OPERATING_MODEL.lanes.major.label, 'coordinated human project'],
+                ['Boundary', 'never touches production'],
+                ['Context core', PRODUCT_CONTEXT_CORE.title],
+              ].map(([k, v]) => (
+                <div key={k} style={{ fontSize: '10px', lineHeight: 1.5, color: '#c8c2b8', marginBottom: '3px' }}>
+                  <strong style={{ color: '#f5f3ef' }}>{k}:</strong> {v}
+                </div>
+              ))}
+            </div>
+            <div>
+              <div style={{ fontSize: '9px', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Market Model</div>
+              {[MARKET_MODEL.tam, MARKET_MODEL.sam, MARKET_MODEL.som, MARKET_MODEL.strategicAttach].map((item) => (
+                <div key={item.label} style={{ marginBottom: '6px' }}>
+                  <div style={{ fontSize: '9px', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{item.label}</div>
+                  <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '16px', lineHeight: 1.1 }}>{item.value}</div>
+                  <div style={{ fontSize: '9px', color: '#8e897f', lineHeight: 1.35 }}>{item.detail}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Panel>
+
+        {/* Panel 3: Why this could be bought — 2-column bullet grid */}
+        <Panel>
+          <Label>Why This Could Be Bought</Label>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
             {LEAN_EXIT_CASE.whyBought.points.map((point) => (
-              <div key={point} style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
-                <span style={{ color: '#3b82f6' }}>•</span>
+              <div key={point} style={{ display: 'flex', gap: '8px' }}>
+                <span style={{ color: '#3b82f6', flexShrink: 0 }}>•</span>
                 <span style={{ fontSize: '11px', color: '#c8c2b8', lineHeight: 1.5 }}>{point}</span>
               </div>
             ))}
-          </Panel>
-        </div>
+          </div>
+        </Panel>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-          <Panel>
-            <Label>Operating Model</Label>
-            <div style={{ fontSize: '11px', lineHeight: 1.6, color: '#c8c2b8' }}>
-              <strong style={{ color: '#f5f3ef' }}>{PRODUCT_OPERATING_MODEL.lanes.minor.label}:</strong> autonomous in sandbox / UAT
-              <br />
-              <strong style={{ color: '#f5f3ef' }}>{PRODUCT_OPERATING_MODEL.lanes.major.label}:</strong> coordinated human project
-              <br />
-              <strong style={{ color: '#f5f3ef' }}>Boundary:</strong> never prod
-              <br />
-              <strong style={{ color: '#f5f3ef' }}>Context core:</strong> {PRODUCT_CONTEXT_CORE.title}
-            </div>
-          </Panel>
-
-          <Panel>
-            <Label>Business Logic</Label>
-            <div style={{ fontSize: '11px', lineHeight: 1.6, color: '#c8c2b8' }}>
-              <strong style={{ color: '#f5f3ef' }}>Buyer:</strong> Head of Product / Head of Connectivity / Head of Electronic Trading
-              <br />
-              <strong style={{ color: '#f5f3ef' }}>Pilot:</strong> €25k–€50k
-              <br />
-              <strong style={{ color: '#f5f3ef' }}>ARR:</strong> €100k–€200k
-              <br />
-              <strong style={{ color: '#f5f3ef' }}>Distribution:</strong> direct design partners first, then attach-to-platform paths
-            </div>
-          </Panel>
-
-          <Panel>
-            <Label>Market Model</Label>
-            {[MARKET_MODEL.tam, MARKET_MODEL.sam, MARKET_MODEL.som, MARKET_MODEL.strategicAttach].map((item) => (
-              <div key={item.label} style={{ marginBottom: '10px' }}>
-                <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#3b82f6' }}>{item.label}</div>
-                <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '20px', marginTop: '2px' }}>{item.value}</div>
-                <div style={{ fontSize: '10px', lineHeight: 1.5, color: '#c8c2b8' }}>{item.detail}</div>
+        {/* Panel 4: Validation — assumption + timeline left, metrics + triggers right */}
+        <Panel>
+          <Label>Validation Plan</Label>
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '16px' }}>
+            <div>
+              <div style={{ fontSize: '11px', lineHeight: 1.5, color: '#c8c2b8', marginBottom: '10px' }}>
+                <strong style={{ color: '#f5f3ef' }}>Riskiest assumption:</strong> {VALIDATION_PLAN.riskiestAssumption}
               </div>
-            ))}
-          </Panel>
-
-          <Panel minHeight="248px">
-            <Label>Validation</Label>
-            <div style={{ fontSize: '11px', color: '#c8c2b8', lineHeight: 1.55, marginBottom: '10px' }}>
-              <strong style={{ color: '#f5f3ef' }}>Riskiest assumption:</strong> {VALIDATION_PLAN.riskiestAssumption}
+              {VALIDATION_PLAN.timeline.slice(0, 2).map((item) => (
+                <div key={item.label} style={{ marginBottom: '8px' }}>
+                  <div style={{ fontSize: '9px', color: '#f97316', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{item.label}</div>
+                  <div style={{ fontSize: '11px', color: '#f5f3ef', marginTop: '1px' }}>{item.focus}</div>
+                  <div style={{ fontSize: '10px', lineHeight: 1.4, color: '#c8c2b8' }}>{item.detail}</div>
+                </div>
+              ))}
             </div>
-            {VALIDATION_PLAN.timeline.slice(0, 2).map((item) => (
-              <div key={item.label} style={{ marginBottom: '10px' }}>
-                <div style={{ fontSize: '10px', color: '#f97316', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{item.label}</div>
-                <div style={{ fontSize: '11px', color: '#f5f3ef', marginTop: '2px' }}>{item.focus}</div>
-                <div style={{ fontSize: '10px', lineHeight: 1.5, color: '#c8c2b8' }}>{item.detail}</div>
-              </div>
-            ))}
-          </Panel>
-        </div>
+            <div>
+              <div style={{ fontSize: '9px', color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Success Metrics</div>
+              {VALIDATION_PLAN.successMetrics.map((item) => (
+                <div key={item} style={{ display: 'flex', gap: '6px', marginBottom: '5px' }}>
+                  <span style={{ color: '#22c55e', fontSize: '9px', flexShrink: 0 }}>•</span>
+                  <span style={{ fontSize: '9.5px', color: '#c8c2b8', lineHeight: 1.4 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+            <div>
+              <div style={{ fontSize: '9px', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Pivot Triggers</div>
+              {VALIDATION_PLAN.pivotTriggers.map((item) => (
+                <div key={item} style={{ display: 'flex', gap: '6px', marginBottom: '5px' }}>
+                  <span style={{ color: '#f97316', fontSize: '9px', flexShrink: 0 }}>•</span>
+                  <span style={{ fontSize: '9.5px', color: '#c8c2b8', lineHeight: 1.4 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Panel>
+
       </div>
     </BaseDocument>
   )

@@ -17,7 +17,7 @@ export default function MarketSection({ theme }) {
       style={{ minHeight: '100vh' }}
     >
       <div
-        className="px-6 py-3 border-b flex flex-wrap items-center gap-2 flex-shrink-0 backdrop-blur-sm"
+        className="px-6 py-3 border-b flex flex-wrap items-center justify-center gap-2 flex-shrink-0 backdrop-blur-sm"
         style={{
           borderColor: 'var(--border-subtle)',
           background: 'linear-gradient(180deg, rgba(255,255,255,0.02), transparent), rgba(5,5,5,0.18)',

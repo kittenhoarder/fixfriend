@@ -134,6 +134,13 @@ export default function ThesisSection({ onNavigate }) {
             Founder profile
           </a>
         </div>
+
+        <div className="mt-5 pt-5 border-t" style={{ borderColor: 'var(--border-subtle)' }}>
+          <p className="font-mono text-[10px] tracking-widest mb-3" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.12em' }}>
+            DOWNLOAD DOCUMENTS
+          </p>
+          <LeanExitDownloads />
+        </div>
       </article>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
@@ -144,9 +151,6 @@ export default function ThesisSection({ onNavigate }) {
 
       {THESIS.vcTldr && (
         <>
-          <div className="mb-3">
-            <LeanExitDownloads />
-          </div>
           <article
             className="panel-shell rounded-lg p-5 mb-10"
             style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
