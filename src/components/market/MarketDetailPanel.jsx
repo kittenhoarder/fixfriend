@@ -112,8 +112,8 @@ function RegulatoryPanel({ node }) {
         <Section label="Key Priorities">
           <ul className="space-y-1.5">
             {node.priorities.map((p, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span style={{ color: 'var(--text-secondary)', marginTop: '4px' }}>—</span>
+              <li key={i} className="flex items-center gap-2">
+                <span style={{ color: 'var(--accent)' }}>•</span>
                 <span>{p}</span>
               </li>
             ))}

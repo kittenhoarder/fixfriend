@@ -3,10 +3,8 @@ import {
   Home,
   Globe,
   BookOpen,
-  AlertTriangle,
   Package,
   Crosshair,
-  TrendingUp,
   User,
   Sun,
   Moon,
@@ -18,10 +16,8 @@ const ICON_MAP = {
   Briefcase,
   Globe,
   BookOpen,
-  AlertTriangle,
   Package,
   Crosshair,
-  TrendingUp,
 }
 
 function NavButton({ isActive, children, ...props }) {

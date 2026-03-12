@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   Briefcase,
   Compass,
   Download,
@@ -22,12 +21,134 @@ import {
   COMPETITION_MATRIX,
   GTM_PLAYBOOK,
   OPEN_QUESTIONS,
+  PAIN_MATRIX,
+  BUYER_DECISION_PROCESS,
+  ECONOMIC_BUYER_DECISION_PROCESS,
+  PRODUCT_CONTEXT_CORE,
+  PRODUCT_AUTONOMY_RULES,
+  PRODUCT_MERMAID_DIAGRAMS,
 } from '../../data/content'
+import MermaidDiagram from '../ui/MermaidDiagram'
 
 const EVIDENCE_TONES = {
   Validated: 'success',
   Hypothesis: 'warning',
   'Open Question': 'info',
+}
+
+function getPainBucket(level) {
+  const normalized = (level || '').toLowerCase()
+  if (normalized.startsWith('high') || normalized.startsWith('medium-high')) return 'high'
+  return 'medium'
+}
+
+function getPainMatrixCell(item) {
+  const frequency = getPainBucket(item.frequency)
+  const impact = getPainBucket(item.impact)
+  return `${impact}-${frequency}`
+}
+
+function PainMatrixPlot({ items }) {
+  const cells = [
+    {
+      id: 'high-high',
+      title: 'Wedge now',
+      tone: 'success',
+      description: 'Recurring, high-impact pain where FIXFriend can win first.',
+    },
+    {
+      id: 'high-medium',
+      title: 'Important but less constant',
+      tone: 'warning',
+      description: 'Painful when it appears, but not the best first proof point.',
+    },
+    {
+      id: 'medium-high',
+      title: 'Constant friction',
+      tone: 'info',
+      description: 'Shows up often, but usually with narrower delivery impact.',
+    },
+    {
+      id: 'medium-medium',
+      title: 'Supporting issues',
+      tone: 'neutral',
+      description: 'Relevant context, but not the opening wedge on its own.',
+    },
+  ]
+
+  const toneStyles = {
+    success: {
+      borderColor: 'var(--status-success-border)',
+      backgroundColor: 'var(--status-success-soft)',
+      chipColor: 'var(--status-success)',
+    },
+    warning: {
+      borderColor: 'var(--status-warning-border)',
+      backgroundColor: 'var(--status-warning-soft)',
+      chipColor: 'var(--status-warning)',
+    },
+    info: {
+      borderColor: 'var(--accent-border-soft)',
+      backgroundColor: 'var(--accent-softer)',
+      chipColor: 'var(--accent)',
+    },
+    neutral: {
+      borderColor: 'var(--border-subtle)',
+      backgroundColor: 'var(--surface3)',
+      chipColor: 'var(--text-secondary)',
+    },
+  }
+
+  return (
+    <div className="space-y-3">
+      <div className="pain-matrix-grid">
+        {cells.map((cell) => {
+          const style = toneStyles[cell.tone]
+          const cellItems = items.filter((item) => getPainMatrixCell(item) === cell.id)
+
+          return (
+            <div
+              key={cell.id}
+              className="rounded-lg border p-4"
+              style={{ borderColor: style.borderColor, backgroundColor: style.backgroundColor }}
+            >
+              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: style.chipColor }}>
+                {cell.title}
+              </div>
+              <p className="text-xs leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
+                {cell.description}
+              </p>
+              <div className="mt-3 space-y-2">
+                {cellItems.map((item) => (
+                  <div key={item.id} className="rounded-md border px-3 py-2" style={{ borderColor: style.borderColor }}>
+                    <div className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
+                      {item.label}
+                    </div>
+                    <div className="text-[11px] font-mono mt-1" style={{ color: 'var(--text-tertiary)' }}>
+                      {item.frequency} frequency · {item.impact} impact
+                    </div>
+                  </div>
+                ))}
+                {cellItems.length === 0 ? (
+                  <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
+                    No current interview themes clustered here.
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      <div className="pain-matrix-axis">
+        <span>Lower frequency</span>
+        <span>Higher frequency</span>
+      </div>
+      <div className="pain-matrix-y-label" style={{ color: 'var(--text-tertiary)' }}>
+        Higher delivery impact sits on the top row; lower-impact supporting issues sit on the bottom row.
+      </div>
+    </div>
+  )
 }
 
 function EvidenceBadge({ label }) {
@@ -111,38 +232,66 @@ function SourceLink({ label, href }) {
 
 function Table({ columns, rows }) {
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full border-collapse">
-        <thead>
-          <tr>
-            {columns.map((column) => (
-              <th
-                key={column.key}
-                className="text-left font-mono text-[11px] uppercase tracking-[0.14em] pb-3 pr-4 border-b"
-                style={{ color: 'var(--text-tertiary)', borderColor: 'var(--border-subtle)' }}
-              >
-                {column.label}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, index) => (
-            <tr key={row.name || row.title || index}>
+    <>
+      <div className="space-y-3 md:hidden">
+        {rows.map((row, index) => (
+          <div
+            key={row.name || row.title || index}
+            className="rounded-lg border p-4"
+            style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}
+          >
+            <div className="space-y-3">
               {columns.map((column) => (
-                <td
+                <div key={column.key}>
+                  <div
+                    className="font-mono text-[10px] uppercase tracking-[0.12em] mb-1"
+                    style={{ color: 'var(--text-tertiary)' }}
+                  >
+                    {column.label}
+                  </div>
+                  <div className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                    {column.render ? column.render(row[column.key], row) : row[column.key]}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="hidden md:block overflow-x-auto">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr>
+              {columns.map((column) => (
+                <th
                   key={column.key}
-                  className="align-top py-3 pr-4 border-b text-sm"
-                  style={{ color: 'var(--text-secondary)', borderColor: 'var(--border-subtle)' }}
+                  className="text-left font-mono text-[11px] uppercase tracking-[0.14em] pb-3 pr-4 border-b"
+                  style={{ color: 'var(--text-tertiary)', borderColor: 'var(--border-subtle)' }}
                 >
-                  {column.render ? column.render(row[column.key], row) : row[column.key]}
-                </td>
+                  {column.label}
+                </th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {rows.map((row, index) => (
+              <tr key={row.name || row.title || index}>
+                {columns.map((column) => (
+                  <td
+                    key={column.key}
+                    className="align-top py-3 pr-4 border-b text-sm"
+                    style={{ color: 'var(--text-secondary)', borderColor: 'var(--border-subtle)' }}
+                  >
+                    {column.render ? column.render(row[column.key], row) : row[column.key]}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   )
 }
 
@@ -162,26 +311,7 @@ function ArtifactHeader({ title, subtitle }) {
   )
 }
 
-function SketchStep({ title, body }) {
-  return (
-    <div
-      className="rounded-lg border p-4"
-      style={{
-        borderColor: 'var(--accent-border-soft)',
-        background: 'linear-gradient(135deg, rgba(59,130,246,0.08), rgba(249,115,22,0.05) 90%, transparent)',
-      }}
-    >
-      <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
-        {title}
-      </div>
-      <div className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
-        {body}
-      </div>
-    </div>
-  )
-}
-
-export default function LeanExitSection() {
+export default function LeanExitSection({ theme = 'dark' }) {
   const pricingRows = PRICING_TRACKER.map((item) => ({
     ...item,
     sourceLabel: item.sourceLabel,
@@ -203,14 +333,14 @@ export default function LeanExitSection() {
       />
 
       <div className="flex-1 overflow-y-auto p-4 lg:p-6">
-        <div className="max-w-6xl mx-auto space-y-6">
+        <div className="content-rail space-y-6">
           <Shell accent="var(--accent-border-soft)">
             <div>
               <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
                 Lean Exit Thesis
               </div>
               <h2 className="font-serif text-[2.5rem] leading-[0.92] mt-3 max-w-4xl" style={{ color: 'var(--text-primary)' }}>
-                A narrow workflow wedge with clear strategic relevance if incumbents decide the gap is worth owning.
+                A narrow workflow wedge that should win on its own.
               </h2>
               <p className="text-base leading-relaxed mt-4 max-w-4xl" style={{ color: 'var(--text-secondary)' }}>
                 {LEAN_EXIT_CASE.intro}
@@ -364,7 +494,7 @@ export default function LeanExitSection() {
                   Strategic reading
                 </div>
                 <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
-                  Public incumbents already market onboarding, testing, and connectivity. FIXFriend has to look valuable beside those systems, not instead of them. The whitespace is the cross-party workflow and evidence layer for venue-driven change response.
+                  Public incumbents already market onboarding, testing, and connectivity. FIXFriend has to look valuable beside those systems, not instead of them. The whitespace is autonomous minor-change coordination, structured major-change escalation, and provenance-backed execution inside the buyer&apos;s existing workflow stack.
                 </p>
               </div>
             </div>
@@ -378,8 +508,8 @@ export default function LeanExitSection() {
               subtitle="Keep the economics realistic for a lean-exit path: narrow direct wedge, high-signal design partners, and strategic attach upside."
             />
             <div className="space-y-4">
-              <div className="grid gap-3 md:grid-cols-3">
-                {[MARKET_MODEL.beachhead, MARKET_MODEL.strategicAttach, MARKET_MODEL.expansion].map((item) => (
+              <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+                {[MARKET_MODEL.tam, MARKET_MODEL.sam, MARKET_MODEL.som, MARKET_MODEL.strategicAttach].map((item) => (
                   <div
                     key={item.label}
                     className="rounded-lg border p-4"
@@ -463,10 +593,10 @@ export default function LeanExitSection() {
               icon={FlaskConical}
               title="5. Evidence Plan"
               evidence="Open Question"
-              subtitle="The first validation loop is acquirer-backwards: is this strategic enough to buy, embed, or partner around?"
+              subtitle="The first validation loop has two jobs: prove direct customer pull and test whether the wedge also matters strategically to larger platforms."
             />
-            <div className="space-y-4">
-              <div className="rounded-lg border p-5" style={{ borderColor: 'var(--status-warning-border)', backgroundColor: 'var(--status-warning-soft)' }}>
+            <div className="space-y-5">
+              <div className="border-b pb-4" style={{ borderColor: 'var(--border-subtle)' }}>
                 <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-warning)' }}>
                   Riskiest assumption
                 </div>
@@ -475,7 +605,7 @@ export default function LeanExitSection() {
                 </p>
               </div>
 
-              <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}>
+              <div className="border-b pb-4" style={{ borderColor: 'var(--border-subtle)' }}>
                 <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
                   Hypothesis
                 </div>
@@ -484,14 +614,13 @@ export default function LeanExitSection() {
                 </p>
               </div>
 
-              <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
-                <ArtifactHeader
-                  title="Validation experiment plan"
-                  subtitle="Six-week loop with clear success and pivot criteria."
-                />
-                <div className="space-y-4">
+              <div>
+                <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+                  Six-week experiment loop
+                </div>
+                <div className="space-y-4 mt-4">
                   {VALIDATION_PLAN.timeline.map((item) => (
-                    <div key={item.label} className="rounded-lg border p-4" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}>
+                    <div key={item.label} className="border-l pl-4" style={{ borderColor: 'var(--accent-border-soft)' }}>
                       <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
                         {item.label}
                       </div>
@@ -504,22 +633,79 @@ export default function LeanExitSection() {
                     </div>
                   ))}
                 </div>
+              </div>
 
-                <div className="grid gap-4 md:grid-cols-2 mt-5">
-                  <div className="rounded-lg border p-4" style={{ borderColor: 'var(--status-success-border)', backgroundColor: 'var(--status-success-soft)' }}>
-                    <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-success)' }}>
-                      Success metrics
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-success)' }}>
+                    Success metrics
+                  </div>
+                  <div className="mt-3">
+                    <BulletList items={VALIDATION_PLAN.successMetrics} bulletColor="var(--status-success)" />
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-danger)' }}>
+                    Pivot triggers
+                  </div>
+                  <div className="mt-3">
+                    <BulletList items={VALIDATION_PLAN.pivotTriggers} bulletColor="var(--status-danger)" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+                <ArtifactHeader
+                  title="Interview-backed pain matrix"
+                  subtitle="This is not a generic market map. It is a wedge-selection tool: which interview-backed pains are both recurring and severe enough to anchor the first product promise."
+                />
+                <div className="grid gap-5 lg:grid-cols-[1.1fr,0.9fr]">
+                  <div>
+                    <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+                      Reading the matrix
                     </div>
-                    <div className="mt-3">
-                      <BulletList items={VALIDATION_PLAN.successMetrics} bulletColor="var(--status-success)" />
+                    <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
+                      X-axis: {PAIN_MATRIX.axes.x}. Y-axis: {PAIN_MATRIX.axes.y}. The upper-right quadrant is the point of the exercise: pains that show up repeatedly and create enough delivery damage to justify a focused workflow product.
+                    </p>
+                    <div className="mt-4">
+                      <PainMatrixPlot items={PAIN_MATRIX.items} />
+                    </div>
+                    <div
+                      className="rounded-lg border px-4 py-3 mt-4"
+                      style={{ borderColor: 'var(--status-success-border)', backgroundColor: 'var(--status-success-soft)' }}
+                    >
+                      <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-success)' }}>
+                        Why the wedge sits here
+                      </div>
+                      <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
+                        {PAIN_MATRIX.wedgeExplanation}
+                      </p>
                     </div>
                   </div>
-                  <div className="rounded-lg border p-4" style={{ borderColor: 'var(--status-danger-border)', backgroundColor: 'var(--status-danger-soft)' }}>
-                    <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-danger)' }}>
-                      Pivot triggers
+                  <div>
+                    <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+                      What each theme means
                     </div>
-                    <div className="mt-3">
-                      <BulletList items={VALIDATION_PLAN.pivotTriggers} bulletColor="var(--status-danger)" />
+                    <div className="space-y-2 mt-3">
+                      {PAIN_MATRIX.items.map((item) => (
+                        <div
+                          key={item.id}
+                          className="rounded-lg border p-3"
+                          style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}
+                        >
+                          <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+                            {item.label}
+                          </div>
+                          <div className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
+                            Frequency: <span className="font-mono">{item.frequency}</span> · Impact:{' '}
+                            <span className="font-mono">{item.impact}</span> · Interview support:{' '}
+                            <span className="font-mono">{item.interviewSupport.length}</span>
+                          </div>
+                          <div className="text-xs leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
+                            {item.summary}
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -598,6 +784,39 @@ export default function LeanExitSection() {
 
               <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
                 <ArtifactHeader
+                  title="Buyer and economic-buyer decision flows"
+                  subtitle="Clarify who feels the pain, who signs for the product, and who ultimately decides whether the company is strategically interesting to buy."
+                />
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+                      Product buyer journey
+                    </div>
+                    <ol className="mt-3 space-y-2 list-decimal list-inside">
+                      {BUYER_DECISION_PROCESS.steps.map((step) => (
+                        <li key={step} className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                          {step}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                  <div>
+                    <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+                      Economic-buyer (acquirer) journey
+                    </div>
+                    <ol className="mt-3 space-y-2 list-decimal list-inside">
+                      {ECONOMIC_BUYER_DECISION_PROCESS.steps.map((step) => (
+                        <li key={step} className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                          {step}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+                <ArtifactHeader
                   title="Feature prioritization"
                   subtitle="Build only the workflow layer required to prove the wedge."
                 />
@@ -633,26 +852,52 @@ export default function LeanExitSection() {
           </Shell>
 
           <Shell>
-            <div className="grid gap-4 xl:grid-cols-[0.85fr,1.15fr]">
+            <div className="flex flex-col gap-6">
               <div>
                 <ModuleHeader
                   icon={Compass}
-                  title="Solution Sketch"
+                  title="Agent System + Expoty Core"
                   evidence="Hypothesis"
-                  subtitle="A simple low-fi picture of what buyers are actually buying."
+                  subtitle="The technical moat is narrow-agent coordination around a shared context core, not one giant tool-heavy agent."
                 />
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  This is intentionally not a full product mockup. It is a workflow sketch that makes the wedge tangible: venue notice in, supervised change pack out.
+                <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
+                  Expoty holds the shared context, specialist agents stay narrow, and deterministic autonomy rules stop the system before anything touches production.
                 </p>
+                <div
+                  className="rounded-lg border p-4 mt-4"
+                  style={{ borderColor: 'var(--accent-border-soft)', backgroundColor: 'var(--accent-softer)' }}
+                >
+                  <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+                    Context core
+                  </div>
+                  <div className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
+                    {PRODUCT_CONTEXT_CORE.summary}
+                  </div>
+                </div>
+                <div
+                  className="rounded-lg border p-4 mt-4"
+                  style={{ borderColor: 'var(--status-danger-border)', backgroundColor: 'var(--status-danger-soft)' }}
+                >
+                  <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-danger)' }}>
+                    Hard boundary
+                  </div>
+                  <div className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
+                    {PRODUCT_AUTONOMY_RULES.hardBoundary}
+                  </div>
+                </div>
               </div>
-              <div className="grid gap-3 md:grid-cols-[1fr,auto,1fr,auto,1fr,auto,1fr] items-stretch">
-                <SketchStep title="1. Notice" body="Venue update, deadline, and spec delta arrive through existing channels." />
-                <div className="flex items-center justify-center text-xs" style={{ color: 'var(--text-tertiary)' }}><ArrowRight size={16} /></div>
-                <SketchStep title="2. Impact map" body="FIXFriend links the change to products, configs, tests, and clients." />
-                <div className="flex items-center justify-center text-xs" style={{ color: 'var(--text-tertiary)' }}><ArrowRight size={16} /></div>
-                <SketchStep title="3. Change pack" body="Engineering, QA, and rollout tasks are assembled in one supervised package." />
-                <div className="flex items-center justify-center text-xs" style={{ color: 'var(--text-tertiary)' }}><ArrowRight size={16} /></div>
-                <SketchStep title="4. Evidence" body="Client-ready context, approvals, and evidence stay live while the work happens." />
+              <div className="w-full">
+                <div className="font-mono text-[11px] uppercase tracking-[0.14em] mb-2" style={{ color: 'var(--amber)' }}>
+                  {PRODUCT_MERMAID_DIAGRAMS.architecture.title}
+                </div>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
+                  {PRODUCT_MERMAID_DIAGRAMS.architecture.subtitle}
+                </p>
+                <MermaidDiagram
+                  diagram={PRODUCT_MERMAID_DIAGRAMS.architecture.diagram}
+                  theme={theme}
+                  minHeight={520}
+                />
               </div>
             </div>
           </Shell>

@@ -448,3 +448,37 @@ compound — and knows exactly who will pay to solve it.
 - The whitespace is NOT generic FIX automation.
 - The whitespace is the cross-party workflow and evidence layer for
   venue-driven change response.
+
+### Product refinement
+- Product framing:
+  - FIXFriend is an agent-operated venue-change response system
+  - Workflow-first externally, multi-agent internally
+  - Fits into Jira, Confluence / Notion, Slack, Git, and UAT workflows
+- Two execution lanes:
+  - Minor changes:
+    - human out of the loop
+    - autonomous in sandbox / test / UAT only
+    - outputs include requirements, UAT branch plan, regression pack,
+      update docs, Jira, Slack, and audit evidence
+  - Major changes:
+    - triggered by data-model changes, business-workflow changes, unresolved
+      source confidence, environment dependency, or failed tests
+    - become coordinated human projects with escalation bundles
+- Context core:
+  - Expoty is the shared semantic retrieval layer across specs, prior
+    decisions, tickets, code context, test artifacts, and workflow history
+  - Raw sources and outputs still need immutable IDs, timestamps, and
+    provenance for auditability
+- Agent system:
+  - monitor agent
+  - source agent
+  - impact agent
+  - planning agent
+  - execution agent
+  - comms agent
+  - audit agent
+- Hard boundary:
+  - never prod
+  - no autonomous production deployment
+  - no production config writes
+  - no live production execution path

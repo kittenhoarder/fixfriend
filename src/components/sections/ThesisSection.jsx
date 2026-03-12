@@ -208,8 +208,8 @@ export default function ThesisSection({ onNavigate }) {
             </p>
             <div className="grid gap-2 mb-4">
               {THESIS.vcTldr.highlights.map((point) => (
-                <div key={point} className="flex items-start gap-2">
-                  <span style={{ color: 'var(--accent)', marginTop: '2px' }}>•</span>
+                <div key={point} className="flex items-center gap-2">
+                  <span style={{ color: 'var(--accent)' }}>•</span>
                   <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{point}</span>
                 </div>
               ))}
@@ -219,9 +219,9 @@ export default function ThesisSection({ onNavigate }) {
             </div>
             <ul className="space-y-2">
               {THESIS.vcTldr.tier1Acquirers.map((a, i) => (
-                <li key={i} className="text-sm flex flex-wrap gap-x-2 gap-y-0">
-                  <span style={{ color: 'var(--accent)' }}>{a.name}</span>
-                  <span style={{ color: 'var(--text-secondary)' }}>— {a.fit}</span>
+                <li key={i} className="text-sm">
+                  <div style={{ color: 'var(--accent)' }}>{a.name}</div>
+                  <div style={{ color: 'var(--text-secondary)' }}>{a.fit}</div>
                 </li>
               ))}
             </ul>

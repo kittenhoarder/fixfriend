@@ -17,3 +17,6 @@ dist/
 
 # Vite
 *.local
+
+# Claude / Cursor worktrees
+.claude/

@@ -150,14 +150,15 @@ Not change control"])
 Manual evidence support
 Expensive · Slow · Retroactive"])
   TEST(["UAT / Testing Services
-Manual test management
-Certification support
-No workflow ownership"])
+  Manual test management
+  Certification support
+  No workflow ownership"])
   FF(["MISSING LAYER
-Supervised change packs
-Certification readiness
-Client-ready evidence
-→ FIXFriend"])
+  Autonomous minor changes
+  Major-change escalation
+  Client-ready evidence
+  Expoty context core
+  → FIXFriend"])
 end
 
 ENV -->|"Mandate AI governance, resilience testing

@@ -1,11 +1,11 @@
-// All content sourced from fixfriend_artifacts.md.
-// Do not modify dates, figures, or company details without updating the
-// artifacts file first.
+// Core market and company facts are maintained in fixfriend_artifacts.md and
+// supplemented with current public-source links embedded below when the site
+// needs fresher acquirer research.
 
 export const THESIS = {
   headline: 'THE MISSING WORKFLOW LAYER\nFOR VENUE CHANGE RESPONSE',
   subheadline:
-    'FIXFriend turns venue change notices into rollout-ready change packs, certification workflows, and client-ready evidence for trading technology vendors. The product is positioned as a lean-exit wedge: a missing workflow layer that becomes strategically valuable to incumbents already serving this market.',
+    'FIXFriend turns venue change notices into autonomous minor-change execution, coordinated major-change projects, and audit-ready evidence for trading technology vendors. The product is positioned as a wedge that can win direct customers and become strategically valuable to incumbents already serving this market.',
   stats: [
     {
       id: 'tenx',
@@ -32,13 +32,13 @@ export const THESIS = {
     '14 years in European electronic trading infrastructure. Technical product leader specialising in trading infrastructure at inflection points.',
   linkedinUrl: 'https://linkedin.com/in/oweneperry',
   buyerOneLiner:
-    'FIXFriend turns venue change notices into rollout-ready change packs, certification workflows, and client-ready evidence for trading technology vendors.',
+    'FIXFriend turns venue change notices into autonomous minor-change execution, coordinated major-change projects, and audit-ready evidence for trading technology vendors.',
   acquirerOneLiner:
-    'FIXFriend is the missing workflow layer between venue change, product update, and client rollout.',
+    'FIXFriend is the workflow and context layer between venue change, UAT execution, and client rollout.',
   tenXClaim:
-    'Same-day change assessment and certification prep instead of 1–2 weeks of PM, engineering, and QA coordination.',
+    'Same-day UAT-ready change bundles for minor venue updates instead of 1–2 weeks of PM, engineering, and QA coordination.',
   leanExitWhy:
-    'This is not a scale-first SaaS story. It is a strategic attach wedge that becomes valuable if incumbents decide this workflow gap matters enough to buy, embed, or partner around.',
+    'This is not a scale-first SaaS story. It is a wedge-first go-to-market: win the workflow directly, then keep open the strategic paths to partner, embed, or sell into larger platforms.',
   evidenceTypes: [
     {
       label: 'Validated',
@@ -62,7 +62,7 @@ export const THESIS = {
       'Beachhead wedge: vendor-side change-response and certification workflow. Direct market is modest, but strategic attach value rises inside incumbent trading infrastructure stacks.',
     highlights: [
       'Lead with strategic fit, not standalone scale.',
-      'First validation loop is acquirer discovery, not generic SaaS GTM.',
+      'First validation loop is buyer and acquirer discovery, not generic SaaS GTM.',
       'First 10 customers are design partners chosen for strategic relevance.',
     ],
     tier1Acquirers: [
@@ -165,7 +165,7 @@ export const MARKET_NODES = {
     count: '~150–250 likely beachhead operators globally',
     includes:
       'OMS/EMS vendors, managed FIX providers, selected venues, testing/compliance adjacencies, and infrastructure teams that absorb venue changes for many downstream clients',
-    body: 'This is where the lean-exit wedge sits. Vendors receive short-notice venue changes, coordinate research across product, engineering, QA, and customer teams, then absorb reputation risk when certification drags or venue-side issues surface late.',
+    body: 'This is where the initial wedge sits. Vendors receive short-notice venue changes, coordinate research across product, engineering, QA, and customer teams, then absorb reputation risk when certification drags or venue-side issues surface late.',
     today:
       'Teams often add buffer just for communication and external QA loops. Change-response knowledge is fragmented across inboxes, specs, test packs, and client escalations.',
   },
@@ -196,7 +196,7 @@ export const MARKET_NODES = {
 
 export const MARKET_DEFAULT_DETAIL = {
   title: 'The European Market Chain',
-  body: 'Click any node on the map to explore the detail. The lean-exit story now shows the missing vendor layer between venue changes and downstream clients. That is where FIXFriend aims to live: between the notice, the rollout response, and the evidence trail.',
+  body: 'Click any node on the map to explore the detail. The market thesis shows the missing vendor layer between venue changes and downstream clients. That is where FIXFriend aims to live: between the notice, the rollout response, and the evidence trail.',
   hint: 'Start with the amber trigger node, then move into the vendor layer to see the strategic wedge.',
 }
 
@@ -250,7 +250,7 @@ export const GAP = {
   },
   automated: {
     title: 'WITH FIXFRIEND',
-    subtitle: 'Supervised venue-change response workflow',
+    subtitle: 'Agent-operated venue-change response system',
     tint: 'blue',
     steps: [
       {
@@ -268,7 +268,7 @@ export const GAP = {
       {
         number: '03',
         title: 'CHANGE PACK ASSEMBLED',
-        detail: 'Engineering-ready requirements, rollout notes, and certification tasks are created in one supervised package.',
+        detail: 'Engineering-ready requirements, rollout notes, and certification tasks are created in one UAT-ready bundle.',
         time: 'Minutes',
       },
       {
@@ -298,6 +298,23 @@ export const GAP = {
   },
 }
 
+export const ACQUIRER_PAGE_OVERVIEW = {
+  title: 'Targets, Proof, and Current Market Flow',
+  summary:
+    'This page combines the target list and the market proof. The job is to show which firms are consolidating, how they appear to buy, and who is most likely to sponsor a small strategic acquisition.',
+  bullets: [
+    'Tier 1 and Tier 2 carry the deepest research because they sit closest to the workflow FIXFriend actually improves.',
+    'Recent deals matter as pattern evidence, not as proof that FIXFriend is already positioned for purchase.',
+    'When sourcing or adviser involvement is inferred rather than disclosed, the card says so explicitly.',
+  ],
+  marketFlow: [
+    'Broadridge completed Acolin on January 6, 2026 and announced CQG on February 6, 2026.',
+    'Trading Technologies acquired OpenGamma on December 17, 2025 after earlier expansion into fixed income through AxeTrading.',
+    'SIX completed Aquis on July 1, 2025 and acquired Baymarkets on November 25, 2025.',
+    'Deutsche Börse announced Allfunds on January 21, 2026 and the remaining ISS STOXX minority stake on February 11, 2026.',
+  ],
+}
+
 export const ACQUIRERS = [
   {
     tier: 1,
@@ -310,14 +327,28 @@ export const ACQUIRERS = [
         logoKey: 'ion',
         name: 'ION Markets',
         ownership: 'Private',
-        ownershipDetail: 'Controlled by Andrea Pignataro · Dublin',
+        ownershipDetail: 'Founder-controlled',
         revenue: '$2.3B+',
-        oneliner: 'OMS/EMS stack — Fidessa, Broadway Technology',
+        oneliner: 'OMS, EMS, and capital-markets workflow assets at scale',
         decisionSpeed: 'fast',
-        owns: 'OMS/EMS stack (Fidessa, Broadway Technology), trading infrastructure across fixed income and derivatives. ~13,000 employees. $6B+ debt.',
-        missing: 'Autonomous change-control agent. No system sources specs, diffs, and acts.',
-        recentMA: 'Historically highly acquisitive (Broadway Technology, Fidessa, DASH Financial, Clarus FT)',
-        fit: 'ION owns the plumbing but not the agent layer. FIXFriend bolts directly onto their existing client base.',
+        owns: 'Fidessa, Broadway Technology, DASH, Clarus, and a broad workflow stack across front, middle, and post-trade capital-markets operations.',
+        missing: 'No visible product layer owns venue notices, context recovery, certification coordination, and evidence generation as one response workflow.',
+        strategicFit: 'ION already owns the plumbing. FIXFriend would sit above that stack as a thin venue-change response layer rather than another core platform.',
+        howTheyBuy: 'Founder-led and centralized. Public sources show repeated control acquisitions in adjacent workflow businesses, but the exact sourcing route is not disclosed in the linked materials.',
+        sourcingConfidence: 'Needs further diligence',
+        recentDeals: [
+          { label: 'Prelios', detail: 'Closed July 19, 2024 through X3, an ION subsidiary, for EUR 1.35bn.' },
+          { label: 'Clarus Financial Technology', detail: 'Acquired September 10, 2021 to deepen cleared derivatives and post-trade capabilities.' },
+        ],
+        decisionMakers: [
+          { name: 'Andrea Pignataro', role: 'Founder and CEO', note: 'Likely final sponsor on strategic acquisitions.' },
+          { name: 'Carlo Purassanta', role: 'EVP, Strategy and Corporate Development', note: 'Direct corporate development lead named publicly by ION.' },
+        ],
+        sourceLinks: [
+          { label: 'ION closes Prelios acquisition', url: 'https://iongroup.com/press-release/group/ion-group-announces-closing-of-prelios-acquisition/' },
+          { label: 'ION appoints Carlo Purassanta', url: 'https://iongroup.com/press-release/corporates/carlo-purassanta-appointed-executive-vice-president-strategy-and-corporate-development-at-ion/' },
+          { label: 'ION acquires Clarus', url: 'https://iongroup.com/press-release/markets/ion-acquires-clarus-financial-technology/' },
+        ],
       },
       {
         id: 'broadridge',
@@ -326,12 +357,29 @@ export const ACQUIRERS = [
         ownership: 'Public',
         ownershipDetail: 'NYSE: BR',
         revenue: '$5B+',
-        oneliner: 'Connectivity · OMS (Itiviti/BTCS) · Execution (CQG)',
+        oneliner: 'Connectivity, OMS, onboarding, execution, and distribution',
         decisionSpeed: 'medium',
-        owns: 'Connectivity, order management (Itiviti, 2021 — now BTCS: Broadridge Trading and Connectivity Solutions). Within BTCS: Tbricks (EMS), VeriFIX (FIX onboarding and testing; test cases built manually, no AI automation), managed FIX service, NYFIX. Execution (CQG, announced Feb 2026), fund distribution (Acolin, 2025).',
-        missing: 'Autonomous change-control agent. VeriFIX supports FIX onboarding and testing but test cases are built manually; there is no agent that sources specs, diffs, and acts.',
-        recentMA: 'CQG (6 Feb 2026, expected close June 2026), Acolin (2025), Signal (2025)',
-        fit: 'Broadridge owns connectivity → OMS → execution. The autonomous agent layer is missing. Founder worked at both Itiviti and Broadridge — including directly with Tbricks and the BTCS stack — and knows the gap firsthand.',
+        owns: 'Connectivity and order management through BTCS, including Itiviti, ULLINK, Tbricks, VeriFIX, managed FIX services, and NYFIX. Execution is expanding through CQG. Distribution expanded through Acolin.',
+        missing: 'VeriFIX covers onboarding and testing, but there is still no agent layer that sources specs, classifies change, coordinates minor versus major work, and preserves live evidence across the workflow.',
+        strategicFit: 'Broadridge is the cleanest stack fit. Connectivity, OMS, execution, onboarding, and distribution are already there; FIXFriend would add response orchestration rather than another core system.',
+        howTheyBuy: 'The public signal is relationship-led platform expansion. Broadridge announced a strategic integration with CQG in November 2025 and followed with a full acquisition agreement on February 6, 2026.',
+        sourcingConfidence: 'Relationship-led',
+        recentDeals: [
+          { label: 'Acolin', detail: 'Completed January 6, 2026 to expand fund distribution infrastructure.' },
+          { label: 'CQG', detail: 'Acquisition announced February 6, 2026 after a prior strategic integration announcement in November 2025.' },
+        ],
+        decisionMakers: [
+          { name: 'Chris Perry', role: 'President', note: 'Official bio states he oversees international expansion and corporate development.' },
+          { name: 'Frank Troise', role: 'President, BTCS and Head of Global Technology and Operations', note: 'Most directly connected to the stack where FIXFriend would attach.' },
+          { name: 'Tim Gokey', role: 'Chief Executive Officer', note: 'Likely executive approver for strategic tuck-ins.' },
+        ],
+        sourceLinks: [
+          { label: 'Broadridge leadership team', url: 'https://www.broadridge.com/our-leadership-team' },
+          { label: 'Broadridge completes Acolin', url: 'https://www.broadridge.com/press-release/2026/broadridge-completes-acquisition-of-acolin' },
+          { label: 'Broadridge to acquire CQG', url: 'https://www.broadridge.com/press-release/2026/broadridge-enters-into-agreement-to-acquire-cqg' },
+          { label: 'Broadridge and CQG strategic integration', url: 'https://www.broadridge.com/press-release/2025/broadridge-and-cqg-enter-into-strategic-technology-integration-agreement' },
+          { label: 'Broadridge completes Itiviti acquisition', url: 'https://www.prnewswire.com/news-releases/broadridge-completes-acquisition-of-itiviti-301312894.html' },
+        ],
       },
       {
         id: 'murex',
@@ -340,27 +388,57 @@ export const ACQUIRERS = [
         ownership: 'Private',
         ownershipDetail: 'Founder-led',
         revenue: 'Undisclosed',
-        revenueNote: 'estimates $500M–$2B',
-        oneliner: 'MX.3 cross-asset trading & risk platform · 60,000+ users',
+        revenueNote: 'estimates remain wide',
+        oneliner: 'MX.3 trading, risk, collateral, and MXSaaS platform',
         decisionSpeed: 'fast',
-        owns: 'MX.3 — dominant cross-asset trading and risk platform. 60,000+ users across 65+ countries. 3,400 employees.',
-        missing: 'Autonomous agent for venue connectivity changes. MX.3 clients connect to multiple venues; protocol changes are a pain point with no agent to source, diff, and act.',
-        recentMA: 'Selective. Primarily organic growth and strategic partnerships (AWS, Publicis Sapient).',
-        fit: 'Murex clients are exactly the firms that suffer from manual FIX compliance cycles. Embedding the FIXFriend agent into MX.3 is a natural extension.',
+        owns: 'MX.3 across trading, risk, collateral, treasury, and investment management, with a strong managed-services and cloud migration push through MXSaaS.',
+        missing: 'The pain exists in the client base, but public evidence still points more to organic build and partnerships than to active acquisitions in this niche.',
+        strategicFit: 'This is a fit story more than an M&A-pattern story. Murex faces the right workflow problem, but the public acquisition signal is weak.',
+        howTheyBuy: 'Publicly, Murex currently looks independence-led and partnership-led. The official signal is organic expansion around MX.3 and MXSaaS rather than visible acquisitions.',
+        sourcingConfidence: 'Needs further diligence',
+        recentDeals: [
+          { label: 'AWS collaboration', detail: 'Announced September 29, 2025 as a strategic multi-year collaboration to scale managed services.' },
+          { label: 'Alveo partnership', detail: 'Announced March 5, 2024 to strengthen data-rich investment-management workflows.' },
+        ],
+        decisionMakers: [
+          { name: 'Elias Eddé', role: 'Chief Executive Officer', note: 'Current operating leader and likely sponsor if M&A posture changes.' },
+          { name: 'Maroun Eddé', role: 'Executive Chairman', note: 'Still central to strategic direction and governance.' },
+        ],
+        sourceLinks: [
+          { label: 'Murex governance transition', url: 'https://www.murex.com/en/news/murex-elias-edde-takes-ceo-role-financial-technology-leader-governance-transition-maroun-edde' },
+          { label: 'Murex and AWS collaboration', url: 'https://www.murex.com/en/news/murex-announces-strategic-multi-year-global-aws-collaboration-agreement-accelerate-ambitious' },
+          { label: 'Murex and Alveo partnership', url: 'https://www.murex.com/en/news/murex-alveo-partner-provide-comprehensive-data-driven-ims-solution' },
+        ],
       },
       {
         id: 'tt',
         logoKey: 'tt',
         name: 'Trading Technologies',
         ownership: 'Private',
-        ownershipDetail: '7RIDGE / Thoma Bravo-backed',
+        ownershipDetail: '7RIDGE-backed',
         revenue: 'Undisclosed',
-        oneliner: 'Derivatives execution · 100+ exchanges · Best Sell-Side OMS 2025/26',
+        oneliner: 'Execution, analytics, compliance, and multi-asset workflow expansion',
         decisionSpeed: 'fast',
-        owns: 'Derivatives execution infrastructure, multi-venue connectivity, compliance & trade surveillance, TCA. SaaS platform connecting to 100+ exchanges.',
-        missing: 'Autonomous agent for venue connectivity change-control.',
-        recentMA: '7RIDGE acquired TT Dec 2021. Thoma Bravo invested July 2025 (closed Q4 2025). Abel Noser Solutions (Aug 2023). Cboe holds a live exit option (exercisable since Jan 2025, not yet exercised).',
-        fit: 'TT connects traders to 100+ exchanges. Every venue protocol change affects their clients. An autonomous change-control agent is an upsell to existing client base.',
+        owns: 'Derivatives execution infrastructure, multi-venue connectivity, compliance and surveillance tooling, and a growing analytics layer across listed and OTC workflows.',
+        missing: 'The platform reaches 100+ exchanges, but FIXFriend’s venue-change coordination layer is still absent from the stack.',
+        strategicFit: 'TT already knows how to buy adjacent workflow technology. FIXFriend fits as a small control product inside a platform that already lives close to the venue edge.',
+        howTheyBuy: 'Executive-sponsored platform expansion backed by sponsor capital. Public acquisitions show targeted product and analytics tuck-ins; adviser involvement on larger deals is plausible but not disclosed in the linked sources.',
+        sourcingConfidence: 'Needs further diligence',
+        recentDeals: [
+          { label: 'OpenGamma', detail: 'Acquired December 17, 2025 to add margin and capital optimization analytics.' },
+          { label: 'AxeTrading', detail: 'Acquired January 12, 2023 to accelerate multi-asset expansion into fixed income.' },
+        ],
+        decisionMakers: [
+          { name: 'Justin Llewellyn-Jones', role: 'Chief Executive Officer', note: 'Most visible executive sponsor for platform expansion.' },
+          { name: 'Jason Shaffer', role: 'Chief Technology and Product Officer', note: 'Likely product-side sponsor for adjacent workflow acquisitions.' },
+          { name: 'Roger Mills', role: 'Chief Financial Officer', note: 'Likely part of the acquisition and integration committee; ownership-side mapping still merits one more diligence pass.' },
+        ],
+        sourceLinks: [
+          { label: 'TT acquires OpenGamma', url: 'https://tradingtechnologies.com/news-releases/trading-technologies-acquires-opengamma-leader-in-margin-and-capital-optimization-analytics/' },
+          { label: 'TT CEO transition', url: 'https://tradingtechnologies.com/news-releases/trading-technologies-promotes-justin-llewellyn-jones-to-ceo-keith-todd-to-deputy-chairman/' },
+          { label: 'TT management team', url: 'https://tradingtechnologies.com/about-us/meet-the-team/' },
+          { label: 'TT acquires AxeTrading', url: 'https://tradingtechnologies.com/news-releases/trading-technologies-acquires-axetrading-further-accelerating-multi-asset-class-expansion-with-major-move-into-fixed-income-markets/' },
+        ],
       },
     ],
   },
@@ -375,28 +453,59 @@ export const ACQUIRERS = [
         logoKey: 'six',
         name: 'SIX Group',
         ownership: 'Private',
-        ownershipDetail: 'Owned by Swiss banks',
+        ownershipDetail: 'Swiss bank-owned',
         revenue: '~CHF 1.6B',
-        oneliner: 'SIX Swiss Exchange · BME · Aquis · 16 EU/UK markets',
+        oneliner: 'Exchanges, post-trade, and pan-European market structure buildout',
         decisionSpeed: 'fast',
-        owns: 'SIX Swiss Exchange, BME (Spain), Aquis (16 EU/UK markets, acquired July 2025). Data, post-trade, payments.',
-        missing: 'Autonomous agent for member certification at pan-European scale.',
-        recentMA: 'Aquis Exchange (closed 1 July 2025, ~£207M), Worldline EDM business (2025)',
-        fit: 'SIX now operates the most venue-diverse exchange group in Europe. Every member connecting to their venues goes through certification. The FIXFriend agent automates this at exchange scale.',
+        owns: 'SIX Swiss Exchange, BME, Aquis, post-trade infrastructure, and securities services spanning multiple European market structures.',
+        missing: 'No visible product layer automates member-facing certification, protocol evidence, and cross-venue change response at group scale.',
+        strategicFit: 'SIX is now one of the clearest exchange-side fits. More venues and more post-trade technology mean more member certification complexity.',
+        howTheyBuy: 'Executive-led exchange and post-trade expansion. Public releases show a direct pattern of buying core market-structure assets and integrating them into the group platform.',
+        sourcingConfidence: 'Publicly disclosed',
+        recentDeals: [
+          { label: 'Aquis Exchange', detail: 'Completed July 1, 2025, extending SIX across 16 EU and UK markets.' },
+          { label: 'Baymarkets', detail: 'Acquired November 25, 2025 to modernize clearing technology.' },
+        ],
+        decisionMakers: [
+          { name: 'Bjørn Sibbern', role: 'Chief Executive Officer', note: 'Primary executive sponsor for group strategy.' },
+          { name: 'Tomas Kindler', role: 'Global Head Exchanges', note: 'Likely venue-side sponsor for exchange and certification workflow gaps.' },
+          { name: 'Daniel Schmucki', role: 'Chief Financial Officer', note: 'Likely part of major transaction approval.' },
+        ],
+        sourceLinks: [
+          { label: 'SIX completes acquisition of Aquis', url: 'https://www.six-group.com/en/newsroom/media-releases/2025/20250701-completion-acquisition-aquis.html' },
+          { label: 'SIX acquires Baymarkets', url: 'https://www.six-group.com/en/newsroom/media-releases/2025/20251125-baymarkets-acquisition.html' },
+          { label: 'SIX executive board', url: 'https://www.six-group.com/en/company/governance/executive-board.html' },
+          { label: 'SIX board of directors', url: 'https://www.six-group.com/en/company/governance/board-of-directors.html' },
+        ],
       },
       {
         id: 'dbg',
         logoKey: 'deutsche-boerse',
         name: 'Deutsche Börse',
         ownership: 'Public',
-        ownershipDetail: 'Frankfurt Stock Exchange',
+        ownershipDetail: 'ETR: DB1',
         revenue: '€4B+',
-        oneliner: 'Eurex · Xetra · Clearstream · SimCorp',
+        oneliner: 'Exchange, clearing, index, software, and investment-management infrastructure',
         decisionSpeed: 'slow',
-        owns: 'Eurex, Xetra, Clearstream, ISS, SimCorp. Full exchange value chain.',
-        missing: 'Autonomous agent for member-facing change-control.',
-        recentMA: 'SimCorp (2023, €3.9B)',
-        fit: 'Strategic but slower path. Eurex members face the same certification pain. Deutsche Börse has the resources but longer decision cycles.',
+        owns: 'Eurex, Xetra, Clearstream, ISS STOXX, SimCorp, and a broad investment-management software and data stack.',
+        missing: 'The strategic fit is credible, but the path is formal and slower. No public signal suggests a push into small workflow acquisitions around venue certification.',
+        strategicFit: 'The problem exists inside the Eurex ecosystem, but this is a longer-cycle public-company path rather than a fast tuck-in target.',
+        howTheyBuy: 'Formal public-company M&A with stated value-accretive logic. The linked sources support disciplined strategic acquisitions; adviser mix is not disclosed here and should be treated as inference.',
+        sourcingConfidence: 'Needs further diligence',
+        recentDeals: [
+          { label: 'Allfunds Group', detail: 'Recommended acquisition agreement announced January 21, 2026.' },
+          { label: 'ISS STOXX minority stake', detail: 'Agreed February 11, 2026 to acquire the remaining 20% minority stake from General Atlantic.' },
+        ],
+        decisionMakers: [
+          { name: 'Stephan Leithner', role: 'Chief Executive Officer', note: 'Top-level strategic sponsor.' },
+          { name: 'Jens Schulte', role: 'Chief Financial Officer', note: 'Likely central to transaction evaluation.' },
+          { name: 'Christian Kromann', role: 'Executive Board, Investment Management Solutions', note: 'Relevant for software and workflow adjacencies.' },
+        ],
+        sourceLinks: [
+          { label: 'Deutsche Börse and Allfunds agreement', url: 'https://www.deutsche-boerse.com/dbg-en/media/news-stories/press-releases/Deutsche-B-rse-Group-and-Allfunds-Group-Sign-Agreement-on-Recommended-Acquisition-of-Allfunds-Group-4914918' },
+          { label: 'Deutsche Börse acquires ISS STOXX minority stake', url: 'https://www.deutsche-boerse.com/dbg-en/media/news-stories/press-releases/Deutsche-B-rse-Group-to-Acquire-General-Atlantic-s-Minority-Stake-in-ISS-STOXX-4948682' },
+          { label: 'Deutsche Börse executive board', url: 'https://www.deutsche-boerse.com/dbg-en/about-us/deutsche-boerse-group/executive-board' },
+        ],
       },
       {
         id: 'euronext',
@@ -405,19 +514,36 @@ export const ACQUIRERS = [
         ownership: 'Public',
         ownershipDetail: 'Pan-European exchange',
         revenue: '€1.5B+',
-        oneliner: 'Paris · Amsterdam · Brussels · Dublin · Lisbon · Oslo · Milan',
-        decisionSpeed: 'slow',
-        owns: 'Pan-European exchange across 7 markets. Post-trade via Euronext Clearing.',
-        missing: 'Autonomous agent for harmonised member change-control across 7 markets.',
-        recentMA: 'Borsa Italiana group (2021), Euronext Clearing launch.',
-        fit: "Euronext's multi-market structure means members deal with multiple protocol variations. Compliance harmonisation is a real operational need.",
+        oneliner: 'Federal market infrastructure model with active strategic development',
+        decisionSpeed: 'medium',
+        owns: 'Pan-European cash, derivatives, clearing, and software infrastructure across multiple national markets.',
+        missing: 'There is clear strategic-development capacity, but the specific fit to venue-change workflow still needs proof through direct conversations.',
+        strategicFit: 'Euronext has the right structural problem: multiple markets, multiple protocol variants, and a public M&A machine that already integrates recurring infrastructure businesses.',
+        howTheyBuy: 'Strategy-led M&A is visible publicly, including a named strategic-development and M&A lead. The federal model makes small infrastructure tuck-ins plausible when they fit the broader platform.',
+        sourcingConfidence: 'Publicly disclosed',
+        recentDeals: [
+          { label: 'Admincontrol', detail: 'Completed May 13, 2025 to add recurring software revenue.' },
+          { label: 'ATHEX Group', detail: 'Successful tender announced November 19, 2025, reaching about 74.25% of voting rights.' },
+        ],
+        decisionMakers: [
+          { name: 'Stéphane Boujnah', role: 'Chief Executive Officer and Chairman of the Managing Board', note: 'Visible top-level sponsor for strategic direction.' },
+          { name: 'Camille Beudin', role: 'Chief Diversification Officer', note: 'Publicly identified with strategic development and M&A.' },
+          { name: 'Giorgio Modica', role: 'Chief Financial Officer', note: 'Likely part of evaluation and approval.' },
+        ],
+        sourceLinks: [
+          { label: 'Euronext full-year 2025 results', url: 'https://www.euronext.com/en/investor-relations/financial-information/news/euronext-publishes-q4-and-full-year-2025-results' },
+          { label: 'Euronext and Admincontrol announcement', url: 'https://www.euronext.com/sites/default/files/2025-03/20250313_Euronext%20Admincontrol%20announcement.pdf' },
+          { label: 'Euronext announces success of ATHEX exchange offer', url: 'https://www.euronext.com/en/investor-relations/financial-information/news/euronext-announces-success-voluntary-share-exchange' },
+          { label: 'Euronext to acquire Nasdaq Nordic power futures business', url: 'https://www.euronext.com/en/about/media/euronext-press-releases/euronext-acquire-nasdaqs-nordic-power-futures-business' },
+          { label: 'Euronext managing board', url: 'https://www.euronext.com/en/investor-relations/corporate-governance/managing-board' },
+        ],
       },
     ],
   },
   {
     tier: 3,
     tierLabel: 'REGTECH / COMPLIANCE ADJACENCY',
-    tierSubtitle: 'Same buyer, adjacent problem',
+    tierSubtitle: 'Same buyer, lighter probability',
     tierColor: 'indigo',
     acquirers: [
       {
@@ -425,29 +551,27 @@ export const ACQUIRERS = [
         logoKey: 'kaizen',
         name: 'Kaizen Reporting',
         ownership: 'PE-backed',
-        ownershipDetail: 'Guidepost Growth Equity · £42M round Nov 2024',
+        ownershipDetail: 'Guidepost Growth Equity',
         revenue: 'Private',
-        oneliner: 'Regulatory reporting accuracy testing · transaction surveillance',
+        oneliner: 'Regulatory reporting testing and surveillance',
         decisionSpeed: 'fast',
-        owns: 'Regulatory reporting accuracy testing, transaction surveillance.',
-        missing: 'Autonomous agent for protocol change management and venue connectivity.',
-        recentMA: 'PE-backed growth (Guidepost Growth Equity, £42M round November 2024).',
-        fit: 'Kaizen already sells compliance tooling to trading firms. FIXFriend is a natural product extension — same buyer (Head of Compliance / Head of Electronic Trading), adjacent problem.',
+        owns: 'Regulatory reporting accuracy testing, control evidence, and transaction surveillance.',
+        missing: 'Adjacent buyer, but not the core venue-change workflow owner today.',
+        strategicFit: 'Possible adjacency play if FIXFriend is framed as evidence and control infrastructure rather than exchange workflow.',
       },
       {
         id: 'smartstream',
         logoKey: 'smartstream',
         name: 'SmartStream Technologies',
         ownership: 'Sovereign wealth-backed',
-        ownershipDetail: 'DIFC/ICD-owned',
+        ownershipDetail: 'ICD-owned',
         revenue: '~£43M',
         revenueNote: 'FY2023',
-        oneliner: 'Reconciliation · post-trade controls · 1,500+ clients',
+        oneliner: 'Reconciliation, controls, and post-trade operations',
         decisionSpeed: 'medium',
-        owns: 'Reconciliation, post-trade controls, reference data management. 1,500+ clients including 70+ of world\'s top 100 banks.',
-        missing: 'Autonomous agent for front-office / connectivity change-control.',
-        recentMA: 'Selective acquirer in post-trade space.',
-        fit: 'SmartStream owns post-trade evidence and control. FIXFriend owns pre-trade / connectivity evidence and control. Complementary.',
+        owns: 'Reconciliation, post-trade controls, and reference data management.',
+        missing: 'Still further from front-office venue-change response than Tier 1 or Tier 2 targets.',
+        strategicFit: 'More plausible as a control-adjacency conversation than as a primary acquirer target.',
       },
       {
         id: 'exactpro',
@@ -456,19 +580,49 @@ export const ACQUIRERS = [
         ownership: 'Private',
         ownershipDetail: 'Independent specialist',
         revenue: 'Private',
-        oneliner: 'Testing & QA for exchanges and trading venues',
+        oneliner: 'Testing and QA for exchanges and trading venues',
         decisionSpeed: 'fast',
-        owns: 'Testing and QA for exchanges and trading venues. Functional and performance testing of trading systems.',
-        missing: 'Autonomous agent for continuous change-control. Exactpro does project-based testing, not ongoing agent-driven automation.',
-        recentMA: 'Growing through organic expansion.',
-        fit: 'Exactpro tests trading systems. The FIXFriend agent automates the ongoing change-control triggered by protocol changes. Potential acqui-hire or product integration.',
+        owns: 'Testing and QA services for exchanges, venues, and trading systems.',
+        missing: 'Strong on testing, weaker on owning the full workflow from notice to rollout to evidence.',
+        strategicFit: 'Best treated as product adjacency, integration path, or talent-rich partner target.',
+      },
+      {
+        id: 'quod',
+        logoKey: 'quod',
+        name: 'Quod Financial',
+        ownership: 'Private',
+        ownershipDetail: 'Founder-led / independent',
+        revenue: 'Undisclosed',
+        oneliner: 'Multi-asset OMS, EMS, SOR, and pre-trade automation',
+        decisionSpeed: 'medium',
+        owns: 'Multi-asset OMS/OEMS, smart order routing, algorithmic execution, pre-trade automation, auditability, and broad front-to-middle-office trading workflows.',
+        missing: 'No visible layer owns venue notices, context recovery, certification coordination, and evidence generation as one dedicated response workflow.',
+        strategicFit: 'Quod is a real product fit. FIXFriend would attach naturally to an OMS/EMS and automation stack already used by banks, brokers, and liquidity providers.',
+        howTheyBuy: 'Publicly, Quod looks product-led and expansion-led rather than visibly acquisitive. Strategic fit is strong, but public evidence for acquisition pace or financing appetite is limited and should be treated as diligence work, not assumption.',
+        sourcingConfidence: 'Needs further diligence',
+        recentDeals: [
+          { label: 'Co-CEO transition', detail: 'Medan Gabbay was appointed Co-CEO effective March 21, 2025, signaling a broader leadership structure as the company scales.' },
+          { label: 'North American expansion', detail: 'Quod announced a New York head-of-sales hire in July 2024, which supports expansion intent but not a disclosed M&A pattern.' },
+        ],
+        decisionMakers: [
+          { name: 'Ali Pichvai', role: 'Co-CEO and Founder', note: 'Most likely top-level sponsor if Quod ever pursues a strategic tuck-in.' },
+          { name: 'Medan Gabbay', role: 'Co-CEO', note: 'Deep product and commercial operator with current leadership authority across the platform.' },
+        ],
+        sourceLinks: [
+          { label: 'Quod homepage and product overview', url: 'https://www.quodfinancial.com/' },
+          { label: 'Quod OMS overview', url: 'https://www.quodfinancial.com/order-management-system-oms/' },
+          { label: 'Quod Equities O/EMS overview', url: 'https://www.quodfinancial.com/markets/equities-oms/' },
+          { label: 'Medan Gabbay appointed Co-CEO', url: 'https://www.quodfinancial.com/medan-gabbay-co-ceo-appointment/' },
+          { label: 'Quod news and press', url: 'https://www.quodfinancial.com/resources/news-press/' },
+          { label: 'Quod about us', url: 'https://www.quodfinancial.com/about-us/' },
+        ],
       },
     ],
   },
   {
     tier: 4,
-    tierLabel: 'LONG-SHOT / STRATEGIC OPTIONALITY',
-    tierSubtitle: 'Lower probability; optional expansion path',
+    tierLabel: 'LONG-SHOT / OPTIONALITY',
+    tierSubtitle: 'Lower probability and longer cycles',
     tierColor: 'indigo',
     acquirers: [
       {
@@ -478,12 +632,11 @@ export const ACQUIRERS = [
         ownership: 'Public',
         ownershipDetail: 'NASDAQ: NDAQ',
         revenue: '$6B+',
-        oneliner: 'Exchange · Market Technology · Adenza (risk/regtech)',
+        oneliner: 'Exchange, market tech, surveillance, and Adenza',
         decisionSpeed: 'slow',
-        owns: 'US and Nordic exchanges. Market Technology: trade surveillance (SMARTS), compliance, matching/clearing tech. Adenza ($10.5B, 2023): risk and regtech for banks and asset managers.',
-        missing: 'Autonomous agent for connectivity-layer change-control (protocol change, venue certification). Adenza is risk/reg; NASDAQ surveillance is trade surveillance, not spec-change agents.',
-        recentMA: 'Adenza (2023, $10.5B). Digesting; divesting Nordic power futures to Euronext.',
-        fit: 'NASDAQ already sells compliance and surveillance to sell-side firms. The FIXFriend agent\'s protocol/connectivity change-control is an adjacent layer. Long shot while they integrate Adenza; optional if they later extend into venue-certification agents.',
+        owns: 'Exchanges, surveillance, matching and clearing technology, and the Adenza risk and regtech stack.',
+        missing: 'Not visibly building the specific venue-change workflow layer FIXFriend addresses.',
+        strategicFit: 'Strategically relevant, but not a near-term target while digestion of larger acquisitions continues.',
       },
       {
         id: 'lseg',
@@ -492,26 +645,11 @@ export const ACQUIRERS = [
         ownership: 'Public',
         ownershipDetail: 'London Stock Exchange Group',
         revenue: '£8B+',
-        oneliner: 'LSE · Refinitiv · data · post-trade',
+        oneliner: 'Exchange, data, post-trade, and workflow distribution',
         decisionSpeed: 'slow',
-        owns: 'London Stock Exchange, Refinitiv (data, analytics, trading), FTSE Russell, LCH, post-trade (e.g. Axoni acquisition). Serves sell-side and buy-side globally.',
-        missing: 'Autonomous agent for venue connectivity change-control.',
-        recentMA: 'Axoni post-trade tech (2024). Refinitiv (2021). Selective, large deals.',
-        fit: 'LSEG owns trading venues, Refinitiv data, and post-trade tech. An autonomous change-control agent for venue connectivity is a niche they don\'t currently serve. Possible tuck-in if they build out a broader agent/workflow suite.',
-      },
-      {
-        id: 'cboe',
-        logoKey: 'cboe',
-        name: 'Cboe Global Markets',
-        ownership: 'Public',
-        ownershipDetail: 'Cboe: CBOE',
-        revenue: '$4B+',
-        oneliner: 'Cboe options · equities · Europe · BIDS · TT stake',
-        decisionSpeed: 'medium',
-        owns: 'Cboe Options, Cboe US/European equities, BIDS Trading (block ATS), investment in Trading Technologies (7RIDGE). Trade Alert, Hanweck, FT Options (data/analytics).',
-        missing: 'Autonomous agent for member-facing protocol and connectivity change-control.',
-        recentMA: 'BIDS Trading (2020). Trade Alert (2020). Investment in TT via 7RIDGE (2021).',
-        fit: 'Cboe has bought trading and analytics tools and has a stake in TT. Member certification and connectivity compliance could become relevant; today they\'re not visibly building in this niche.',
+        owns: 'Trading venues, Refinitiv, FTSE Russell, LCH, and post-trade technology.',
+        missing: 'The gap is visible, but the likely buy path is long and selective.',
+        strategicFit: 'Optional long-range fit if LSEG pushes further into agent-assisted operational workflows.',
       },
       {
         id: 'factset',
@@ -520,12 +658,11 @@ export const ACQUIRERS = [
         ownership: 'Public',
         ownershipDetail: 'NYSE: FDS',
         revenue: '$2B+',
-        oneliner: 'Data · research · LiquidityBook (OMS) · AI compliance suite',
+        oneliner: 'Data, analytics, OMS, and compliance adjacencies',
         decisionSpeed: 'medium',
-        owns: 'Workstation, data, research, portfolio analytics. LiquidityBook (2025): OMS/IBOR. AI compliance suite (KYC, AML, risk) for banking clients.',
-        missing: 'Autonomous agent for connectivity and protocol-change management. Compliance suite is KYC/AML/risk, not venue certification agents.',
-        recentMA: 'LiquidityBook (Feb 2025, ~$246M). Building out compliance and execution workflows.',
-        fit: 'FactSet is adding execution (LiquidityBook) and compliance (AI suite). The FIXFriend agent\'s connectivity change-control targets the same institutions. Possible add-on if they expand agent-driven compliance into trading infrastructure.',
+        owns: 'Research, analytics, LiquidityBook, and a growing compliance tooling footprint.',
+        missing: 'Still one step removed from the venue-certification problem.',
+        strategicFit: 'Interesting only if the compliance and workflow thesis broadens materially.',
       },
     ],
   },
@@ -707,39 +844,37 @@ export const NAV_TABS = [
   { id: 'thesis', label: 'THESIS', icon: 'Home' },
   { id: 'leanExit', label: 'LEAN EXIT', icon: 'Briefcase' },
   { id: 'market', label: 'MARKET', icon: 'Globe' },
-  { id: 'gap', label: 'GAP', icon: 'AlertTriangle' },
   { id: 'product', label: 'PRODUCT', icon: 'Package' },
   { id: 'definition', label: 'DEFINITION', icon: 'BookOpen' },
   { id: 'acquirers', label: 'ACQUIRERS', icon: 'Crosshair' },
-  { id: 'dealflow', label: 'DEAL FLOW', icon: 'TrendingUp' },
 ]
 
 // Week 1 content: Market Definition & Market Size
 export const DEFINITION = {
   origin: {
     title: 'Origin',
-    body: "I've spent over a decade inside electronic trading infrastructure — at Nasdaq operating live markets and inside vendor platforms that had to absorb venue changes on behalf of clients. The pattern was consistent: short-notice notices land, teams chase context across product, engineering, QA, and client channels, and the organisation reconstructs evidence only after the fact.\n\nFIXFriend starts from that observation, but the framing here is deliberately lean-exit. The goal is not to pretend this is already a giant standalone category. The goal is to show that a repeatable workflow gap exists in a market full of incumbents, and that solving it could become strategically valuable to one of them.\n\nThat is why the current thesis is vendor-first and acquirer-aware. The wedge may refine or pivot as more is learned from likely buyers, likely acquirers, and the people who actually coordinate change-response today.",
+    body: "The idea came from repeated exposure to the same failure mode inside trading infrastructure teams: venue notices arrive fast, context is fragmented, and evidence is rebuilt late.\n\nThat pattern showed up across live market operations, vendor platforms, and client-facing rollout work. The operational pain is real, and the commercial case starts with selling into that pain directly.\n\nThat is why the thesis stays narrow. FIXFriend is not trying to invent a huge abstract category. It is trying to prove that venue-change response is a product gap worth buying, using, and eventually owning strategically.",
   },
   marketDefinition: {
     title: 'Market Definition',
-    body: 'Modern market access depends on venue-driven change-response: interpreting notices, understanding protocol nuance, coordinating testing, and getting clients through rollout safely.\n\nExisting vendors already own important pieces of the stack: connectivity, onboarding, testing, and reporting. The missing category is not “generic FIX automation.”\n\nFIXFriend defines a narrower wedge:\n\n**→ A supervised venue-change response workflow for trading technology vendors.**\n\nIt begins as a change-pack, certification, and evidence layer, then expands only if discovery shows adjacent workflows are strategically important.',
+    body: 'Modern market access depends on venue-driven change response: interpreting notices, understanding protocol nuance, coordinating certification, and getting clients through rollout safely.\n\nIncumbents already own key parts of the stack, including connectivity, onboarding, testing, and reporting. The gap is not generic FIX automation.\n\n**FIXFriend defines a narrower wedge: an agent-operated venue-change response system for trading technology vendors.**\n\nIt handles minor changes through UAT-ready outputs, escalates major changes into structured human work, and leaves evidence behind as the response happens.',
   },
   marketSize: {
     title: 'Market Size',
     entry: {
       label: 'Beachhead Market',
-      body: 'Target wedge: OMS/EMS vendors, managed FIX/connectivity providers, selected venues, and testing/compliance adjacencies that repeatedly absorb venue change-response work.\n\nWorking model: ~150–250 reachable operators globally × €100k–€200k ARR.\n\n**Beachhead market:** ≈ **€15M–€50M**.\n\nThis is intentionally narrower than the broader trading-firm TAM. It is the wedge most likely to matter in a lean-exit path.',
+      body: 'Target wedge: OMS/EMS vendors, managed FIX and connectivity providers, selected venues, and testing or compliance adjacencies that repeatedly absorb venue change-response work.\n\nWorking model: ~150–250 reachable operators globally at €100k–€200k ARR.\n\n**Beachhead market:** ≈ **€15M–€50M**.\n\nThis is deliberately narrower than the broader trading-firm TAM. It is the part FIXFriend can sell into first and the part most likely to matter in a strategic outcome.',
     },
     attach: {
       label: 'Strategic Attach View',
-      body: 'The lean-exit upside is not just direct ARR. If FIXFriend plugs into an incumbent platform, the value is attach revenue plus lower rollout drag, lower support load, and stronger client stickiness across an installed base.',
+      body: 'The upside is not only direct ARR. If FIXFriend attaches to an incumbent platform, the value is attach revenue plus faster rollout, lower support load, and stronger client stickiness across the installed base.',
     },
     expansion: {
       label: 'Broader Expansion',
-      body: 'If the wedge proves strategic, it expands into broader trading infrastructure lifecycle automation: release governance, certification tooling, change communication, configuration control, and supervised development workflows.',
+      body: 'If the wedge proves strategic, it can expand into broader trading-infrastructure lifecycle automation: certification tooling, release governance, change communication, configuration control, and non-production development workflows.',
     },
     sam: 'Working wedge: **40–80 high-fit operators** in Europe and the US before channel expansion.',
-    som: 'Lean-exit objective: 5–10 design partners, 3–5 paid pilots, and €1M–€3M ARR potential before strategic embed or acquisition.',
+    som: 'Near-term objective: 5–10 design partners, 3–5 paid pilots, and €1M–€3M ARR potential before platform-scale distribution or a strategic transaction.',
     methodology: [
       'Start with the narrow beachhead, not the broadest possible end market.',
       'Model direct ARR separately from strategic attach value inside incumbent installed bases.',
@@ -748,42 +883,336 @@ export const DEFINITION = {
   },
 }
 
+export const PRODUCT_WORKFLOW_STAGES = [
+  {
+    id: 'trigger',
+    label: 'Trigger',
+    today: 'A venue notice lands through email, portal, PDF, or a relationship channel. Teams start from an inconsistent source pack.',
+    todayDrag: 'Drag: source sprawl starts immediately.',
+    fixfriend: 'FIXFriend watches the same channels, captures the notice, timestamps the source, and opens one canonical change record.',
+    fixfriendImpact: 'Outcome: one entry point instead of inbox hunting.',
+  },
+  {
+    id: 'triage',
+    label: 'Triage',
+    today: 'Product, engineering, QA, and client teams all need different answers. Owners hand work across functions before anyone knows the full impact.',
+    todayDrag: 'Drag: context switching and owner handoff latency.',
+    fixfriend: 'FIXFriend maps the notice to impacted products, configurations, tests, and downstream workflows before routing owners.',
+    fixfriendImpact: 'Outcome: teams start with scoped impact, not guesswork.',
+  },
+  {
+    id: 'context',
+    label: 'Context Recovery',
+    today: 'Specs, message dictionaries, past tickets, and venue exceptions are recovered manually from scattered systems.',
+    todayDrag: 'Drag: protocol nuance is rediscovered each time.',
+    fixfriend: 'Expoty retrieves the relevant specs, prior changes, code context, tests, and decisions into a shared working bundle.',
+    fixfriendImpact: 'Outcome: reusable context replaces repeated archaeology.',
+  },
+  {
+    id: 'certification',
+    label: 'Certification',
+    today: 'Teams rebuild test packs, chase credentials, and absorb venue-side defects late in the window.',
+    todayDrag: 'Drag: venue-side bounce-back and certification churn.',
+    fixfriend: 'FIXFriend prepares the UAT branch plan, regression pack, validation runbook, and escalation path before the window compresses.',
+    fixfriendImpact: 'Outcome: same-day certification-ready preparation for minor changes.',
+  },
+  {
+    id: 'rollout',
+    label: 'Rollout',
+    today: 'Client communication lags because technical confidence, venue readiness, and owner alignment are still moving targets.',
+    todayDrag: 'Drag: communication buffer gets priced into delivery.',
+    fixfriend: 'Client-facing notes, internal approvals, and owner routing are generated alongside the technical response.',
+    fixfriendImpact: 'Outcome: rollout materials move with the work, not after it.',
+  },
+  {
+    id: 'evidence',
+    label: 'Evidence',
+    today: 'Evidence is stitched together after the fact from emails, tickets, test logs, and client updates.',
+    todayDrag: 'Drag: expensive reconstruction and lingering reputation risk.',
+    fixfriend: 'Evidence, decisions, and timeline context stay live as the work happens, with immutable source references attached.',
+    fixfriendImpact: 'Outcome: the audit trail is created continuously instead of rebuilt later.',
+  },
+]
+
 // Week 1 content: Product description
 export const PRODUCT_CONTENT = {
   solution: {
-    title: 'The FIXFriend Workflow Layer',
-    intro: 'FIXFriend is a supervised venue-change response workflow for trading technology vendors.\n\nIt is designed to:',
+    title: 'FIXFriend, In Product Terms',
+    intro: 'FIXFriend is an agent-operated venue-change response system for trading technology vendors.\n\nIt is built to:',
     bullets: [
-      'source venue notices and spec deltas from the channels teams already monitor',
-      'map the impact across product, configuration, certification, and client workflows',
-      'turn fragmented context into an engineering-ready change pack',
-      'queue certification and validation tasks before deadlines compress',
-      'produce client-ready evidence and communication alongside the technical response',
-      'keep the workflow supervised, visible, and reviewable at every stage',
+      'monitor venue notices, portals, and digests for change signals',
+      'retrieve specs and related context through Expoty, then pursue missing documentation when needed',
+      'classify changes with rules-first gates into autonomous minor work or coordinated major work',
+      'generate UAT branches, regression packs, update notes, workflow tickets, and owner routing for minor changes',
+      'publish evidence into Jira, Confluence or Notion, Slack, Git, and audit logs',
+      'keep every autonomous action inside sandbox, test, or UAT environments',
     ],
-    supervised: {
-      title: 'Human-Supervised Change Response',
-      body: 'FIXFriend is not a black-box autopilot. It creates the response package, links the right evidence, and keeps approvals visible, but humans stay in control of release decisions, venue coordination, and deployment boundaries.',
+    boundary: {
+      title: 'Autonomous In UAT, Coordinated At The Boundary',
+      body: 'Minor changes can run without human intervention up to UAT-ready outputs. Major changes stop the autonomous lane and open a structured human project. FIXFriend never deploys to production, never writes production config, and never acts in live production environments.',
     },
   },
   whatCustomersBuy: {
     title: 'What Customers Buy',
-    label: 'Rollout-Ready Change Packs With Continuous Evidence',
-    body: 'Buyers are not paying for a generic model. They are paying for a workflow layer that turns venue change into a faster, more reliable internal response and a clearer client rollout. The audit trail is created as work happens instead of being rebuilt later.',
+    label: 'Faster Change Response, Less Coordination Drag',
+    body: 'Buyers are not paying for a generic model. They are paying for a system that sources the spec, closes coordination gaps, creates UAT-ready outputs in existing tools, and preserves the evidence trail while the work happens.',
   },
   targetBuyer: {
     title: 'Target Buyer & Economic Logic',
     primary: 'Head of Product / Head of Connectivity / Head of Electronic Trading',
-    budget: 'FIXFriend does not need a brand-new budget category to make sense. It reallocates spend already buried in product coordination, certification effort, support escalation, and delayed client rollout.',
+    budget: 'FIXFriend does not require a brand-new budget line. It reallocates spend already buried in product coordination, certification effort, support escalation, and delayed client rollout.',
     triggers: ['Short-notice venue change', 'Certification bottleneck', 'Client rollout delay', 'Repeated support escalation'],
   },
   painPoints: [
     'Communication breaks first: the notice, deadline, and impact are spread across too many people and systems.',
-    'Protocol fragmentation means “standardised FIX” still hides asset-class and venue-specific nuance.',
+    'Specs are hard to source consistently across portals, emails, PDFs, and venue websites.',
+    'Protocol fragmentation means standard FIX still hides asset-class and venue-specific nuance.',
     'Testing is expensive because vendors either build simulators or depend on venue cooperation.',
-    'Connectivity setup still creates delay: Internet, VPN, private lines, and x-connects all change the response path.',
+    'Connectivity setup still creates delay: internet, VPN, private lines, and x-connects change the response path.',
     'Vendors become external QA for venues and absorb the reputation cost when releases slip.',
   ],
+}
+
+export const PRODUCT_OPERATING_MODEL = {
+  summary:
+    'FIXFriend runs two lanes. Minor venue changes are handled autonomously through UAT-ready outputs. Major changes become structured human work with source provenance and escalation evidence attached.',
+  principles: [
+    'Workflow-first externally, multi-agent internally.',
+    'Human out of the loop only for minor changes in sandbox, test, or UAT.',
+    'All outputs land inside tools teams already use.',
+  ],
+  lanes: {
+    minor: {
+      label: 'Autonomous minor-change lane',
+      summary:
+        'When the spec is available, source confidence is high, and the change does not alter data models or business workflows, FIXFriend generates the working bundle automatically.',
+      trigger: 'Spec found, rules-first gate passes, UAT-only execution path available',
+      steps: [
+        'Monitor agent detects the venue notice and hands the source request to the source agent.',
+        'Source agent fetches the spec bundle and uses Expoty to recover related tickets, code paths, tests, and prior decisions.',
+        'Impact agent classifies the change as minor using deterministic gates plus model reasoning.',
+        'Planning and execution agents emit requirements, UAT branch plan, regression pack, update docs, Jira tickets, Slack summary, and audit evidence.',
+      ],
+      outputs: [
+        'Requirements bundle',
+        'UAT branch and implementation plan',
+        'Regression tests and results',
+        'Update docs and explainer',
+        'Jira tickets and owner routing',
+        'Structured Slack message',
+        'Audit log with spec sources',
+      ],
+      metrics: [
+        { label: 'Human approvals', value: '0 before UAT', tone: 'success' },
+        { label: 'Environment', value: 'Sandbox / UAT', tone: 'info' },
+        { label: 'Evidence', value: 'Live', tone: 'success' },
+      ],
+      result:
+        'Minor venue changes become same-day UAT-ready bundles instead of manual coordination projects.',
+    },
+    major: {
+      label: 'Coordinated major-change lane',
+      summary:
+        'When the change affects data models, business workflows, certification dependencies, or source confidence, FIXFriend stops autonomous execution and opens a coordinated project for humans.',
+      trigger: 'Data model or workflow impact, missing source confidence, unresolved publisher outreach, or failed UAT regression',
+      steps: [
+        'Source agent either recovers the spec or records publisher outreach when documentation is not fetchable.',
+        'Impact agent flags the change as major because the rules-first gate fails.',
+        'Planning agent creates a coordinated project bundle instead of autonomous execution outputs.',
+        'Comms and audit agents route owners, link sources, explain the blocker, and preserve the evidence trail for the human project.',
+      ],
+      outputs: [
+        'Escalation project page',
+        'Jira epic and owner tags',
+        'Confluence or Notion brief',
+        'Blocked-state Slack summary',
+        'Publisher outreach log',
+        'Audit bundle and decision record',
+      ],
+      metrics: [
+        { label: 'Execution', value: 'Paused', tone: 'warning' },
+        { label: 'Environment', value: 'No prod path', tone: 'danger' },
+        { label: 'Outcome', value: 'Human-coordinated', tone: 'info' },
+      ],
+      result:
+        'Major changes are surfaced early with structured coordination instead of being discovered late through broken tests or client escalations.',
+    },
+  },
+}
+
+export const PRODUCT_AGENT_SYSTEM = [
+  {
+    name: 'Monitor agent',
+    role: 'Watches venue notifications, portals, websites, and email digests for spec-change signals.',
+  },
+  {
+    name: 'Source agent',
+    role: 'Fetches specs and supporting docs. If documentation is not fetchable, it opens publisher outreach and logs the attempt.',
+  },
+  {
+    name: 'Impact agent',
+    role: 'Applies deterministic autonomy gates and uses model reasoning to classify the change and explain why.',
+  },
+  {
+    name: 'Planning agent',
+    role: 'Creates requirements, implementation tasks, branch plans, test plans, and owner routing.',
+  },
+  {
+    name: 'Execution agent',
+    role: 'Runs branch preparation, regression packs, and evidence capture in sandboxed environments, test environments, or UAT only.',
+  },
+  {
+    name: 'Comms agent',
+    role: 'Publishes structured Jira, Confluence or Notion, and Slack outputs with links, explainers, and tags.',
+  },
+  {
+    name: 'Audit agent',
+    role: 'Stores source provenance, outreach attempts, decisions, test outputs, and escalation reasons.',
+  },
+]
+
+export const PRODUCT_CONTEXT_CORE = {
+  title: 'Expoty context core',
+  summary:
+    'Expoty is the shared retrieval layer for the agent system. It lets agents recover the relevant specs, history, code context, tests, and prior decisions without dragging the whole stack into every prompt.',
+  bullets: [
+    'Indexes specs, prior tickets, code references, test artifacts, and workflow history in one retrieval layer.',
+    'Lets specialist agents query only the context they need instead of carrying every tool and every prompt at once.',
+    'Connects semantic retrieval back to immutable source IDs, snapshots, and timestamps for auditability.',
+    'Compounds over time as more venue changes, outcomes, and decisions become searchable institutional memory.',
+  ],
+  hardBoundary:
+    'Expoty is the context core, but canonical source files and outputs remain attached to immutable source records so the audit trail stays deterministic.',
+}
+
+export const PRODUCT_OUTPUTS = [
+  {
+    name: 'Jira tickets',
+    detail: 'Requirements, tasks, escalation epics, and owner routing appear in the existing delivery workflow.',
+  },
+  {
+    name: 'Confluence or Notion',
+    detail: 'Update docs, explainer bundles, and escalation briefs are published with source links and decisions.',
+  },
+  {
+    name: 'Slack summaries',
+    detail: 'Structured notifications link to sources, branches, tickets, tests, and tagged system owners.',
+  },
+  {
+    name: 'Git and UAT branches',
+    detail: 'Minor changes emit UAT branch plans and implementation context without touching production.',
+  },
+  {
+    name: 'Regression packs and results',
+    detail: 'Existing and update-specific tests run in sandbox or UAT and attach results directly to the change bundle.',
+  },
+  {
+    name: 'Audit log',
+    detail: 'Every output references source provenance, decision lineage, outreach attempts, and environment boundaries.',
+  },
+]
+
+export const PRODUCT_AUTONOMY_RULES = {
+  minorTitle: 'Autonomous if all are true',
+  minor: [
+    'No data-model change is required.',
+    'No business-workflow change is required.',
+    'No new connectivity topology or environment dependency is introduced.',
+    'Source confidence is high and the required spec bundle is available.',
+    'Regression and update tests pass in sandbox, test, or UAT.',
+  ],
+  majorTitle: 'Escalate if any are true',
+  major: [
+    'A data-model or schema change is required.',
+    'A business-workflow or certification process changes materially.',
+    'Source confidence is low or publisher outreach remains unresolved.',
+    'Regression, update tests, or environment checks fail.',
+    'The change would require a production write or live rollout decision.',
+  ],
+  hardBoundary:
+    'Autonomous actions stop at UAT. FIXFriend never deploys to production, never writes production config, and never acts in live production environments.',
+}
+
+export const PRODUCT_MERMAID_DIAGRAMS = {
+  minor: {
+    title: 'Minor Change Autopilot',
+    subtitle:
+      'Sequence from venue notice to Expoty retrieval to UAT-ready outputs and live audit evidence.',
+    diagram: `sequenceDiagram
+      autonumber
+      participant Venue as Venue / Spec Publisher
+      participant Monitor as Monitor Agent
+      participant Source as Source Agent
+      participant Expoty as Expoty Context Core
+      participant Impact as Impact Agent
+      participant Plan as Planning Agent
+      participant Exec as Execution Agent
+      participant Comms as Comms Agent
+      participant Audit as Audit Agent
+
+      Venue->>Monitor: Notice, portal update, or website change
+      Monitor->>Source: Fetch source bundle
+      Source->>Expoty: Retrieve related specs, tickets, code, tests, decisions
+      Source-->>Audit: Source IDs, timestamps, hashes
+      Source->>Impact: Canonical source bundle
+      Note over Impact: Minor if no data-model or workflow change<br/>and source confidence is high
+      Impact->>Plan: Minor classification + rationale
+      Plan->>Exec: UAT branch plan, regression pack, update tasks
+      Note over Exec: Sandbox / test / UAT only<br/>Never prod
+      Exec-->>Audit: Test outputs and execution evidence
+      Plan->>Comms: Jira, Confluence or Notion, Slack bundle
+      Comms-->>Audit: Links, owner tags, explanation
+      Audit-->>Venue: Provenance-backed decision trail ready
+    `,
+  },
+  major: {
+    title: 'Major Change Escalation',
+    subtitle:
+      'Rules-first gate that halts autonomous execution and opens a structured human project.',
+    diagram: `flowchart TD
+      A[Venue notice captured] --> B[Source agent fetches spec bundle]
+      B --> C{Rules-first autonomy gate}
+      C -->|Missing spec or low confidence| D[Publisher outreach opened and logged]
+      C -->|Data-model change| E[Escalate]
+      C -->|Business-workflow change| E
+      C -->|New connectivity dependency| E
+      C -->|Regression fails in UAT| E
+      D --> E
+      E --> F[Create Jira epic and owner routing]
+      E --> G[Publish Confluence or Notion brief]
+      E --> H[Send blocked-state Slack summary]
+      E --> I[Attach source provenance and decision log]
+      I --> J[Human-led project in sandbox / UAT only]
+      J --> K[Never prod without separate human release path]
+    `,
+  },
+  architecture: {
+    title: 'Agent System + Expoty Core',
+    subtitle:
+      'Specialist agents stay narrow while Expoty carries the shared semantic context across the workflow.',
+    diagram: `graph LR
+      V[Venues, portals, websites, email] --> M[Monitor agent]
+      M --> S[Source agent]
+      S --> X[(Expoty context core)]
+      D[(Canonical sources and snapshots)] --> S
+      X --> I[Impact agent]
+      X --> P[Planning agent]
+      X --> E[Execution agent]
+      X --> C[Comms agent]
+      I --> P
+      P --> E
+      P --> C
+      E --> W[(Git / UAT branches<br/>Regression results)]
+      C --> Y[(Jira / Confluence or Notion / Slack)]
+      S --> A[Audit agent]
+      I --> A
+      E --> A
+      C --> A
+      D --> A
+      A --> Z[(Decision log and provenance trail)]
+      N[Never prod<br/>Sandbox / test / UAT only] --> E
+    `,
+  },
 }
 
 export const PRODUCT_PANIC_SCENARIO = {
@@ -884,23 +1313,29 @@ export const PRODUCT_PANIC_SCENARIO = {
 }
 
 export const MARKET_MODEL = {
-  beachhead: {
-    label: 'Beachhead',
+  tam: {
+    label: 'TAM',
+    value: '€450M',
+    detail:
+      'Broader trading-infrastructure lifecycle automation opportunity if the workflow expands beyond the initial wedge.',
+  },
+  sam: {
+    label: 'SAM',
     value: '€15M–€50M',
     detail:
-      'Working model: ~150–250 reachable operators globally × €100k–€200k ARR.',
+      'Beachhead wedge: ~150–250 reachable operators globally × €100k–€200k ARR for vendor-side change response.',
+  },
+  som: {
+    label: 'SOM',
+    value: '€1M–€3M',
+    detail:
+      'Initial reachable objective before strategic embed or acquisition: 5–10 design partners and 3–5 paid pilots.',
   },
   strategicAttach: {
     label: 'Strategic Attach',
     value: 'Platform leverage',
     detail:
       'If FIXFriend plugs into incumbent platforms, strategic value comes from attach revenue plus faster client rollout, lower support load, and stronger stickiness.',
-  },
-  expansion: {
-    label: 'Broader Expansion',
-    value: '€450M',
-    detail:
-      'The broader trading-firm opportunity remains meaningful, but the lean-exit path starts with the narrower vendor wedge first.',
   },
   methodology: [
     'Count the narrow beachhead first: vendors, managed connectivity providers, selected venues, and testing/compliance adjacencies.',
@@ -940,39 +1375,43 @@ export const BUSINESS_MODEL_CANVAS = {
 export const FEATURE_PRIORITIES = {
   mvp: [
     {
-      title: 'Venue notice ingestion',
-      reason: 'The wedge starts when teams are still staring at inboxes, portals, and PDFs.',
+      title: 'Monitoring + source ingestion',
+      reason: 'The wedge starts by watching the channels teams already rely on and pulling the source package automatically.',
     },
     {
-      title: 'Impact mapping across product, config, and cert workflows',
-      reason: 'This is where manual coordination currently burns time.',
+      title: 'Fetch fallback and publisher outreach',
+      reason: 'If the documentation is not fetchable, the product has to pursue it and log the attempt without waiting on humans.',
     },
     {
-      title: 'Change-pack generation',
-      reason: 'Engineering and product need one response package instead of fragmented context.',
+      title: 'Rules-first autonomy gate',
+      reason: 'Minor versus major classification is the core trust boundary for the entire system.',
     },
     {
-      title: 'Evidence and approval trail',
-      reason: 'The workflow has to stay supervised and audit-ready from day one.',
+      title: 'UAT bundle generation and workflow outputs',
+      reason: 'Minor changes need requirements, UAT branches, tests, docs, tickets, Slack summaries, and audit evidence to appear automatically.',
+    },
+    {
+      title: 'Audit trail with source citations',
+      reason: 'The workflow has to stay provenance-backed and audit-ready from day one.',
     },
   ],
   v2: [
     {
-      title: 'Client rollout communication templates',
-      reason: 'Differentiates FIXFriend from technical-only tooling and lowers support drag.',
+      title: 'Historical venue-change backtesting',
+      reason: 'Lets the product prove the autonomy model against prior changes before expanding live usage.',
     },
     {
       title: 'Certification dependency tracking',
       reason: 'Captures delays caused by venue-side readiness and environment setup.',
     },
     {
-      title: 'Historical venue-change backtesting',
-      reason: 'Helps prove strategic value before a live embedded rollout.',
+      title: 'Publisher relationship intelligence',
+      reason: 'Improves how missing or broken documentation is recovered and routed over time.',
     },
   ],
   future: [
     {
-      title: 'Partner / platform embed APIs',
+      title: 'Partner and platform embed APIs',
       reason: 'Matters once strategic attach becomes the dominant route to scale.',
     },
     {
@@ -980,8 +1419,8 @@ export const FEATURE_PRIORITIES = {
       reason: 'Turns operational activity into a management and M&A insight layer.',
     },
     {
-      title: 'Selective automation of repetitive certification steps',
-      reason: 'Only after the workflow layer is trusted and clearly bounded.',
+      title: 'Broader non-prod workflow automation',
+      reason: 'Expand only after the autonomy boundary is trusted and clearly bounded.',
     },
   ],
 }
@@ -1113,8 +1552,8 @@ export const COMPETITION_MATRIX = [
   {
     name: 'FIXFriend',
     evidence: 'Hypothesis',
-    whatTheyDo: 'Own the workflow layer: notice ingestion, impact mapping, change-pack assembly, certification readiness, and client/evidence outputs.',
-    gap: 'Must still prove that this wedge is strategic enough to buy or embed rather than build internally.',
+    whatTheyDo: 'Own the workflow and context layer: monitor notices, recover specs through Expoty, classify minor versus major changes, emit UAT-ready outputs, and preserve provenance-backed evidence.',
+    gap: 'Must still prove that the autonomous-minor and coordinated-major model is strategic enough to buy or embed rather than build internally.',
     sourceLabel: 'Current thesis',
     sourceUrl: '',
   },
@@ -1149,7 +1588,7 @@ export const OPEN_QUESTIONS = [
 
 export const LEAN_EXIT_CASE = {
   intro:
-    'FIXFriend is framed as a narrow workflow wedge with strategic value if incumbents decide the gap between venue change, product update, certification, and client rollout is worth buying, embedding, or partnering around.',
+    'FIXFriend is framed as a narrow workflow wedge that should be able to win direct customers on operational value alone. If that wedge also becomes strategically important to incumbents, partner, embed, and acquisition paths open from a stronger position.',
   evidenceOverview: [
     {
       label: 'Validated',
@@ -1164,9 +1603,9 @@ export const LEAN_EXIT_CASE = {
       label: 'Hypothesis',
       tone: 'warning',
       items: [
-        'Vendor-side change-response is the strongest initial wedge.',
+        'Vendor-side autonomous minor-change handling is the strongest initial wedge.',
         'The right buyer will pay for faster rollout and lower support drag before they pay for AI by itself.',
-        'A workflow layer is more strategically interesting than a narrow point solution.',
+        'A workflow and context layer is more strategically interesting than a narrow point solution.',
       ],
     },
     {
@@ -1182,37 +1621,314 @@ export const LEAN_EXIT_CASE = {
   wedge: {
     evidence: 'Hypothesis',
     buyerOneLiner:
-      'FIXFriend turns venue change notices into rollout-ready change packs, certification workflows, and client-ready evidence for trading technology vendors.',
+      'FIXFriend turns venue change notices into autonomous minor-change execution, coordinated major-change projects, and audit-ready evidence for trading technology vendors.',
     acquirerOneLiner:
-      'FIXFriend is the missing workflow layer between venue change, product update, and client rollout.',
+      'FIXFriend is the workflow and context layer between venue change, UAT execution, and client rollout.',
     tenX:
-      'Same-day change assessment and certification prep instead of 1–2 weeks of PM, engineering, and QA coordination.',
+      'Same-day UAT-ready change bundles for minor venue updates instead of 1–2 weeks of PM, engineering, and QA coordination.',
     quantifiedFrom: '1–2 weeks',
     quantifiedTo: 'Same day',
-    quantifiedLabel: 'Time to a certification-ready change pack',
+    quantifiedLabel: 'Time to a UAT-ready change bundle',
   },
   scope: {
     evidence: 'Hypothesis',
     does: [
-      'Ingest venue changes from the channels teams already monitor.',
-      'Map impact across products, configurations, certification tasks, and client workflows.',
-      'Create change packs that engineering, QA, and rollout teams can use immediately.',
-      'Produce client-ready evidence and approval context as the work happens.',
+      'Monitor venue changes across existing channels and pursue missing documentation automatically.',
+      'Use Expoty as the shared context core for specs, prior decisions, code context, and test history.',
+      'Autonomously emit UAT branches, regression packs, update docs, Jira tickets, Slack summaries, and audit evidence for minor changes.',
+      'Escalate major changes into structured human projects with source provenance and decision lineage attached.',
     ],
     doesNot: [
       'Replace FIX engines or OMS / EMS infrastructure.',
       'Normalize every protocol dialect into one universal standard.',
       'Replace venue simulators or venue-side testing environments.',
-      'Auto-deploy production changes without human approval.',
+      'Deploy autonomously to production, write production config, or act in live environments.',
     ],
   },
   whyBought: {
     evidence: 'Hypothesis',
     points: [
-      'Reduces rollout friction and support drag around venue changes.',
-      'Turns a painful multi-team workflow into a differentiated attach product.',
-      'Improves client stickiness by making incumbent platforms easier to keep current.',
-      'Fits beside existing onboarding, testing, and compliance capabilities rather than replacing them.',
+      'Reduces rollout friction and support drag around venue changes by automating the minor cases that consume time constantly.',
+      'Turns a painful multi-team workflow into a differentiated attach product with provenance-backed execution.',
+      'Improves client stickiness by making incumbent platforms easier to keep current inside existing Jira, docs, Slack, and UAT workflows.',
+      'Expoty compounds strategic value by turning each resolved venue change into reusable context for the next one.',
     ],
   },
+}
+
+export const INTERVIEW_TRACKER = [
+  {
+    id: 'tom-bloomberg',
+    name: 'Tom',
+    role: 'Senior engineer, EMS / connectivity (Broadway → Bloomberg)',
+    company: 'Bloomberg',
+    date: '2026-02',
+    channel: 'Video call',
+    userType: 'Vendor engineer / workflow owner',
+    buyerInfluence: 'High — shapes estimates and feasibility, but not the contract signatory',
+    economicBuyerSignal: 'Indirect — Bloomberg is a potential long-range acquirer archetype',
+    painRatings: {
+      communication: 'High',
+      protocolFragmentation: 'High',
+      testingAndSimulation: 'High',
+      connectivityAndEnvironment: 'Medium',
+      planningUncertainty: 'Medium',
+      evidenceAndCertification: 'High',
+    },
+    currentSolutions: [
+      'Manual relationship-driven communication with venues and clients',
+      'Internal simulators for selected flows',
+      'Per-venue normalisation logic and ad-hoc buffers in project plans',
+    ],
+    budgetAuthority: 'Influencer',
+    workflowStages: ['trigger', 'triage', 'context', 'certification', 'rollout', 'evidence'],
+    keyQuotes: [
+      {
+        label: 'Flagship',
+        painPoint: 'protocolFragmentation',
+        workflowStage: 'context',
+        text:
+          'We would receive a spec and probably end up finding bugs in the venue implementation, especially in the D2C space, so our cycle is much longer.',
+      },
+      {
+        label: 'Communication drag',
+        painPoint: 'communication',
+        workflowStage: 'trigger',
+        text:
+          'Half the time the first real signal is a client forwarding a venue email that never came to us directly.',
+      },
+      {
+        label: 'API sprawl',
+        painPoint: 'protocolFragmentation',
+        workflowStage: 'context',
+        text:
+          'FIX is supposed to be standard, but in practice you are juggling a dozen flavours and hundreds of custom tags just to get to “hello world”.',
+      },
+      {
+        label: 'External QA',
+        painPoint: 'testingAndSimulation',
+        workflowStage: 'certification',
+        text:
+          'On some D2C integrations we effectively became the venue’s external QA team — we find the edge cases, they patch, and the clock keeps ticking.',
+      },
+      {
+        label: 'Time-to-market buffer',
+        painPoint: 'planningUncertainty',
+        workflowStage: 'rollout',
+        text:
+          'With some venues we automatically pad the plan by a couple of weeks just for communication and iteration. Everyone pays that tax.',
+      },
+    ],
+    followUp: [
+      'Quantify how often certification windows slip because of venue-side defects versus internal delays.',
+      'Understand how Bloomberg’s internal AI tools are starting to touch estimation and certification docs.',
+    ],
+  },
+  {
+    id: 'jim-nasdaq-vol-trader',
+    name: 'Jim',
+    role: 'Volatility trader & former Senior Director, European Equity Derivatives',
+    company: 'NASDAQ (then), current buy-side desk',
+    date: '2026-02',
+    channel: 'Video call',
+    userType: 'Desk-level user / risk owner',
+    buyerInfluence: 'High — sets urgency and pushes for fixes, but not platform budget owner',
+    economicBuyerSignal: 'Medium — reinforces why exchange groups and execution platforms care about rollout speed and reliability',
+    painRatings: {
+      communication: 'High',
+      protocolFragmentation: 'Medium',
+      testingAndSimulation: 'Medium',
+      connectivityAndEnvironment: 'Medium',
+      planningUncertainty: 'High',
+      evidenceAndCertification: 'Medium',
+    },
+    currentSolutions: [
+      'Over-provisioned buffers around major venue changes in risk and limits',
+      'Manual playbooks and runbooks for big release weekends',
+      'Escalation to senior venue and vendor contacts when slippage threatens P&L',
+    ],
+    budgetAuthority: 'Influencer',
+    workflowStages: ['certification', 'rollout', 'evidence'],
+    keyQuotes: [
+      {
+        label: 'Strategy delay',
+        painPoint: 'planningUncertainty',
+        workflowStage: 'rollout',
+        text:
+          'From the desk’s perspective, every month we wait for a new venue feature is a month we are running yesterday’s playbook against today’s market.',
+      },
+      {
+        label: 'Operational risk',
+        painPoint: 'communication',
+        workflowStage: 'trigger',
+        text:
+          'What scares me is not ugly tooling; it’s when a protocol change slips through late and we’re effectively trading with half the instrumentation we thought we had.',
+      },
+      {
+        label: 'Certification bottlenecks',
+        painPoint: 'testingAndSimulation',
+        workflowStage: 'certification',
+        text:
+          'Certification feels like a black box — we hear “waiting on venue” or “QA found something odd” and all we can do is push harder on the timeline.',
+      },
+      {
+        label: 'Exchange-side view',
+        painPoint: 'evidenceAndCertification',
+        workflowStage: 'evidence',
+        text:
+          'On the exchange side I saw how much energy goes into member certification, but we still struggled to get clean, comparable evidence from all our vendors.',
+      },
+    ],
+    followUp: [
+      'Quantify P&L impact of delayed feature rollouts on the volatility desk.',
+      'Clarify which parts of the certification flow traders would trust an agent system to touch.',
+    ],
+  },
+  {
+    id: 'arkady-squarepoint',
+    name: 'Arkady',
+    role: 'Business Analyst, electronic trading / quantitative strategies',
+    company: 'Squarepoint',
+    date: '2026-02',
+    channel: 'Video call',
+    userType: 'Workflow and requirements owner between quants, engineers, and trading',
+    buyerInfluence: 'High — defines workflows and owns the backlog, strong internal champion',
+    economicBuyerSignal: 'Indirect — confirms buy-side demand for better venue-change governance',
+    painRatings: {
+      communication: 'Medium',
+      protocolFragmentation: 'High',
+      testingAndSimulation: 'High',
+      connectivityAndEnvironment: 'Medium',
+      planningUncertainty: 'High',
+      evidenceAndCertification: 'High',
+    },
+    currentSolutions: [
+      'Jira/Confluence templates for venue-change epics and tasks',
+      'Spreadsheet-based matrices mapping venues, symbols, and strategy impact',
+      'Hand-built regression packs maintained per venue and per strategy family',
+    ],
+    budgetAuthority: 'Influencer',
+    workflowStages: ['triage', 'context', 'certification', 'evidence'],
+    keyQuotes: [
+      {
+        label: 'Requirements churn',
+        painPoint: 'protocolFragmentation',
+        workflowStage: 'context',
+        text:
+          'Most of my life is translating a dense spec into something quants and engineers can actually act on, and then re-translating it when the venue tweaks the behaviour mid-stream.',
+      },
+      {
+        label: 'Backlog impact',
+        painPoint: 'planningUncertainty',
+        workflowStage: 'triage',
+        text:
+          'A single venue change can spawn an entire mini-backlog: config, risk checks, strategy edge cases, regression coverage, client comms. None of that shows up in the original email.',
+      },
+      {
+        label: 'Evidence burden',
+        painPoint: 'evidenceAndCertification',
+        workflowStage: 'evidence',
+        text:
+          'When compliance ask “prove we tested this properly”, we are stitching together Jira, logs, and screenshots. It is never one place, and it is never fun.',
+      },
+      {
+        label: 'Ad-hoc tooling',
+        painPoint: 'testingAndSimulation',
+        workflowStage: 'certification',
+        text:
+          'For some venues we ended up with a parallel universe of internal test harnesses just to be confident we were still talking the same language.',
+      },
+    ],
+    followUp: [
+      'Test whether an agent-generated change pack would be trusted as the first draft of a Jira epic and regression scope.',
+      'Understand how much of the current evidence pack could be automated from existing logs and artifacts.',
+    ],
+  },
+]
+
+export const PAIN_MATRIX = {
+  axes: {
+    x: 'Frequency of occurrence',
+    y: 'Pain / impact on delivery',
+  },
+  items: [
+    {
+      id: 'communication',
+      label: 'Communication & change management',
+      frequency: 'High',
+      impact: 'High',
+      summary:
+        'Notices land in the wrong inboxes, internal handoff is slow, and deadlines arrive before teams share a single view of what changed.',
+      interviewSupport: ['tom-bloomberg', 'jim-nasdaq-vol-trader', 'arkady-squarepoint'],
+    },
+    {
+      id: 'protocolFragmentation',
+      label: 'API / protocol fragmentation',
+      frequency: 'High',
+      impact: 'High',
+      summary:
+        'Standard FIX hides venue- and asset-class-specific nuance behind custom tags and behaviours; each integration feels bespoke.',
+      interviewSupport: ['tom-bloomberg', 'arkady-squarepoint'],
+    },
+    {
+      id: 'testingAndCertification',
+      label: 'Testing & certification',
+      frequency: 'Medium–High',
+      impact: 'High',
+      summary:
+        'Vendors either build simulators or lean on venues for test credentials, then absorb external QA work and certification churn.',
+      interviewSupport: ['tom-bloomberg', 'jim-nasdaq-vol-trader', 'arkady-squarepoint'],
+    },
+    {
+      id: 'connectivityAndEnvironment',
+      label: 'Connectivity & environment setup',
+      frequency: 'Medium',
+      impact: 'Medium',
+      summary:
+        'Internet, VPN, cross-connects, and non-prod environments add latency and uncertainty to change windows, especially across many venues.',
+      interviewSupport: ['tom-bloomberg'],
+    },
+    {
+      id: 'planningUncertainty',
+      label: 'Planning uncertainty',
+      frequency: 'High',
+      impact: 'High',
+      summary:
+        'Short-notice venue changes collide with long product roadmaps; teams add buffer time and still miss windows.',
+      interviewSupport: ['tom-bloomberg', 'jim-nasdaq-vol-trader', 'arkady-squarepoint'],
+    },
+    {
+      id: 'evidenceAndCertification',
+      label: 'Evidence & audit trail',
+      frequency: 'Medium',
+      impact: 'High',
+      summary:
+        'Evidence for regulators, venues, and clients is reconstructed after the fact from scattered systems instead of created continuously.',
+      interviewSupport: ['tom-bloomberg', 'jim-nasdaq-vol-trader', 'arkady-squarepoint'],
+    },
+  ],
+  wedgeExplanation:
+    'FIXFriend focuses first on the intersection of high-frequency, high-impact pains: communication, protocol fragmentation, testing & certification, planning uncertainty, and evidence. Minor-change UAT bundles plus live evidence sit in that top-right corner.',
+}
+
+export const BUYER_DECISION_PROCESS = {
+  title: 'Product buyer decision flow',
+  steps: [
+    'Users (engineers, analysts, traders) feel repeated pain during venue-driven changes and raise incidents or post-mortems.',
+    'Workflow owners like Arkady and senior engineers like Tom turn incidents into patterns and articulate the recurring workflow gap.',
+    'A buyer — typically Head of Connectivity, Head of Product, or Head of Electronic Trading — sponsors an experiment or pilot to reduce drag and risk.',
+    'Risk, compliance, and legal review how the workflow, evidence trail, and autonomy boundaries interact with existing controls.',
+    'If the pilot proves faster change response and cleaner evidence without new risk, the buyer extends adoption across more venues, products, or desks.',
+  ],
+}
+
+export const ECONOMIC_BUYER_DECISION_PROCESS = {
+  title: 'Economic buyer (acquirer) decision flow',
+  steps: [
+    'Strategic and product leaders at incumbents observe recurring certification drag, support burden, and rollout friction across their installed base.',
+    'Corp-dev and business owners see that the gap sits between products they already own: connectivity, OMS/EMS, testing, and onboarding.',
+    'Operator interviews like Tom, Jim, and Arkady confirm that the pain is structural, not just a tooling preference.',
+    'Incumbents compare internal build versus buy, weighing time-to-market, access to workflow insight, and potential attach revenue.',
+    'If FIXFriend can prove adoption with relevant vendors and show attach value to an incumbent stack, buy-or-embed becomes more attractive than building yet another internal point tool.',
+  ],
 }

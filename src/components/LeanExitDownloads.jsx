@@ -6,6 +6,8 @@ import {
   BUSINESS_MODEL_CANVAS,
   VALIDATION_PLAN,
   MARKET_MODEL,
+  PRODUCT_OPERATING_MODEL,
+  PRODUCT_CONTEXT_CORE,
 } from '../data/content'
 
 async function generatePDF(el, filename) {
@@ -240,6 +242,19 @@ function LeanExitOnePagerDocument() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           <Panel>
+            <Label>Operating Model</Label>
+            <div style={{ fontSize: '11px', lineHeight: 1.6, color: '#c8c2b8' }}>
+              <strong style={{ color: '#f5f3ef' }}>{PRODUCT_OPERATING_MODEL.lanes.minor.label}:</strong> autonomous in sandbox / UAT
+              <br />
+              <strong style={{ color: '#f5f3ef' }}>{PRODUCT_OPERATING_MODEL.lanes.major.label}:</strong> coordinated human project
+              <br />
+              <strong style={{ color: '#f5f3ef' }}>Boundary:</strong> never prod
+              <br />
+              <strong style={{ color: '#f5f3ef' }}>Context core:</strong> {PRODUCT_CONTEXT_CORE.title}
+            </div>
+          </Panel>
+
+          <Panel>
             <Label>Business Logic</Label>
             <div style={{ fontSize: '11px', lineHeight: 1.6, color: '#c8c2b8' }}>
               <strong style={{ color: '#f5f3ef' }}>Buyer:</strong> Head of Product / Head of Connectivity / Head of Electronic Trading
@@ -254,7 +269,7 @@ function LeanExitOnePagerDocument() {
 
           <Panel>
             <Label>Market Model</Label>
-            {[MARKET_MODEL.beachhead, MARKET_MODEL.strategicAttach, MARKET_MODEL.expansion].map((item) => (
+            {[MARKET_MODEL.tam, MARKET_MODEL.sam, MARKET_MODEL.som, MARKET_MODEL.strategicAttach].map((item) => (
               <div key={item.label} style={{ marginBottom: '10px' }}>
                 <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#3b82f6' }}>{item.label}</div>
                 <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '20px', marginTop: '2px' }}>{item.value}</div>
@@ -263,12 +278,12 @@ function LeanExitOnePagerDocument() {
             ))}
           </Panel>
 
-          <Panel minHeight="292px">
+          <Panel minHeight="248px">
             <Label>Validation</Label>
             <div style={{ fontSize: '11px', color: '#c8c2b8', lineHeight: 1.55, marginBottom: '10px' }}>
               <strong style={{ color: '#f5f3ef' }}>Riskiest assumption:</strong> {VALIDATION_PLAN.riskiestAssumption}
             </div>
-            {VALIDATION_PLAN.timeline.slice(0, 3).map((item) => (
+            {VALIDATION_PLAN.timeline.slice(0, 2).map((item) => (
               <div key={item.label} style={{ marginBottom: '10px' }}>
                 <div style={{ fontSize: '10px', color: '#f97316', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{item.label}</div>
                 <div style={{ fontSize: '11px', color: '#f5f3ef', marginTop: '2px' }}>{item.focus}</div>
@@ -293,7 +308,7 @@ function BusinessModelCanvasDocument() {
   return (
     <BaseDocument
       title="Business Model Canvas"
-      subtitle="A compact operating view of the lean-exit wedge."
+      subtitle="A compact operating view of the wedge-first business."
     >
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', alignContent: 'start', flex: 1 }}>
         {[
@@ -322,7 +337,7 @@ function ValidationPlanDocument() {
   return (
     <BaseDocument
       title="Validation Experiment Plan"
-      subtitle="The first loop is acquirer-backwards discovery, not generic scale GTM."
+      subtitle="The first loop tests direct customer pull first, then strategic paths."
     >
       <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 0.95fr', gap: '14px', flex: 1 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>

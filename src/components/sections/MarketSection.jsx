@@ -2,7 +2,6 @@ import { useState } from 'react'
 import MarketMap from '../market/MarketMap'
 import MarketDetailPanel from '../market/MarketDetailPanel'
 import FullGraphView from '../market/FullGraphView'
-import SectionHeader from '../ui/SectionHeader'
 
 export default function MarketSection({ theme }) {
   const [activeNodeId, setActiveNodeId] = useState(null)
@@ -17,44 +16,43 @@ export default function MarketSection({ theme }) {
       className="flex flex-col h-full pt-14 lg:pt-0"
       style={{ minHeight: '100vh' }}
     >
-      {/* View toggle only (no 02/MARKET label). Compact bar to save mobile viewport. */}
-      <SectionHeader
-        right={(
-          <div className="flex items-center gap-2 justify-start sm:justify-end">
-            <span className="font-mono text-xs hidden sm:inline" style={{ color: 'var(--text-secondary)' }}>View:</span>
-            <button
-              type="button"
-              onClick={() => setViewMode('interactive')}
-              className="font-mono text-xs px-3 py-2 border transition-colors"
-              style={{
-                borderColor: viewMode === 'interactive' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
-                color: viewMode === 'interactive' ? 'var(--accent)' : 'var(--text-secondary)',
-                background: viewMode === 'interactive'
-                  ? 'linear-gradient(90deg, rgba(59,130,246,0.12), rgba(249,115,22,0.08) 80%, transparent)'
-                  : 'transparent',
-              }}
-            >
-              Interactive map
-            </button>
-            <button
-              type="button"
-              onClick={() => setViewMode('fullgraph')}
-              className="font-mono text-xs px-3 py-2 border transition-colors"
-              style={{
-                borderColor: viewMode === 'fullgraph' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
-                color: viewMode === 'fullgraph' ? 'var(--accent)' : 'var(--text-secondary)',
-                background: viewMode === 'fullgraph'
-                  ? 'linear-gradient(90deg, rgba(59,130,246,0.12), rgba(249,115,22,0.08) 80%, transparent)'
-                  : 'transparent',
-              }}
-            >
-              Full graph
-            </button>
-          </div>
-        )}
-        compact
-        hideOnMobile={false}
-      />
+      <div
+        className="px-6 py-3 border-b flex flex-wrap items-center gap-2 flex-shrink-0 backdrop-blur-sm"
+        style={{
+          borderColor: 'var(--border-subtle)',
+          background: 'linear-gradient(180deg, rgba(255,255,255,0.02), transparent), rgba(5,5,5,0.18)',
+        }}
+      >
+        <span className="font-mono text-xs hidden sm:inline" style={{ color: 'var(--text-secondary)' }}>View:</span>
+        <button
+          type="button"
+          onClick={() => setViewMode('interactive')}
+          className="font-mono text-xs px-3 py-2 border transition-colors"
+          style={{
+            borderColor: viewMode === 'interactive' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
+            color: viewMode === 'interactive' ? 'var(--accent)' : 'var(--text-secondary)',
+            background: viewMode === 'interactive'
+              ? 'linear-gradient(90deg, rgba(59,130,246,0.12), rgba(249,115,22,0.08) 80%, transparent)'
+              : 'transparent',
+          }}
+        >
+          Interactive map
+        </button>
+        <button
+          type="button"
+          onClick={() => setViewMode('fullgraph')}
+          className="font-mono text-xs px-3 py-2 border transition-colors"
+          style={{
+            borderColor: viewMode === 'fullgraph' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
+            color: viewMode === 'fullgraph' ? 'var(--accent)' : 'var(--text-secondary)',
+            background: viewMode === 'fullgraph'
+              ? 'linear-gradient(90deg, rgba(59,130,246,0.12), rgba(249,115,22,0.08) 80%, transparent)'
+              : 'transparent',
+          }}
+        >
+          Full graph
+        </button>
+      </div>
 
       {viewMode === 'interactive' && (
         <div
