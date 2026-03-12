@@ -27,6 +27,7 @@ import {
   PRODUCT_CONTEXT_CORE,
   PRODUCT_AUTONOMY_RULES,
   PRODUCT_MERMAID_DIAGRAMS,
+  UNIT_ECONOMICS,
 } from '../../data/content'
 import MermaidDiagram from '../ui/MermaidDiagram'
 
@@ -321,12 +322,12 @@ export default function LeanExitSection({ theme = 'dark' }) {
   return (
     <div className="flex flex-col h-full pt-14 lg:pt-0" style={{ minHeight: '100vh' }}>
       <SectionHeader
-        label="STRATEGIC FIT"
+        label="LEAN EXIT"
         hideOnMobile
         right={(
           <div className="flex flex-wrap items-center gap-2">
-            <StatusPill tone="success">Strategic fit</StatusPill>
-            <StatusPill tone="info">Acquirer-aware</StatusPill>
+            <StatusPill tone="success">Lean exit</StatusPill>
+            <StatusPill tone="info">Strategic-fit method</StatusPill>
             <StatusPill tone="warning">Vendor-side wedge</StatusPill>
           </div>
         )}
@@ -337,7 +338,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
           <Shell accent="var(--accent-border-soft)">
             <div>
               <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
-                Strategic Fit Thesis
+                Lean Exit Thesis
               </div>
               <h2 className="font-serif text-[2.5rem] leading-[0.92] mt-3 max-w-4xl" style={{ color: 'var(--text-primary)' }}>
                 A workflow-control wedge that proves value before it predicts the future.
@@ -530,6 +531,14 @@ export default function LeanExitSection({ theme = 'dark' }) {
 
               <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
                 <ArtifactHeader
+                  title="Market-model method"
+                  subtitle="Show the optimistic case, but keep the path from public-source inputs to headline numbers visible."
+                />
+                <BulletList items={MARKET_MODEL.methodology} bulletColor="var(--accent)" />
+              </div>
+
+              <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+                <ArtifactHeader
                   title="Business model canvas"
                   subtitle="Compact view of who pays, why they pay, and how this becomes strategically relevant."
                 />
@@ -584,6 +593,63 @@ export default function LeanExitSection({ theme = 'dark' }) {
                   ]}
                   rows={pricingRows}
                 />
+              </div>
+
+              <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+                <ArtifactHeader
+                  title={UNIT_ECONOMICS.title}
+                  subtitle="Anchor pricing and viability to documented labor cost before talking about strategic upside."
+                />
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  {UNIT_ECONOMICS.intro}
+                </p>
+
+                <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4 mt-4">
+                  {UNIT_ECONOMICS.roleWages.map((item) => (
+                    <div
+                      key={item.label}
+                      className="rounded-lg border p-4"
+                      style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}
+                    >
+                      <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+                        {item.label}
+                      </div>
+                      <div className="font-serif text-[1.6rem] leading-none mt-3" style={{ color: 'var(--text-primary)' }}>
+                        {item.value}
+                      </div>
+                      <div className="mt-3">
+                        <SourceLink label={item.sourceLabel} href={item.sourceUrl} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-3 mt-5">
+                  <div className="rounded-lg border p-4" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}>
+                    <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+                      Workflow model
+                    </div>
+                    <div className="mt-3">
+                      <BulletList items={UNIT_ECONOMICS.workflowModel} bulletColor="var(--accent)" />
+                    </div>
+                  </div>
+                  <div className="rounded-lg border p-4" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}>
+                    <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-success)' }}>
+                      Pricing logic
+                    </div>
+                    <div className="mt-3">
+                      <BulletList items={UNIT_ECONOMICS.pricingLogic} bulletColor="var(--status-success)" />
+                    </div>
+                  </div>
+                  <div className="rounded-lg border p-4" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}>
+                    <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+                      Path to viability
+                    </div>
+                    <div className="mt-3">
+                      <BulletList items={UNIT_ECONOMICS.viability} bulletColor="var(--amber)" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </Shell>

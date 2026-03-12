@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { Download, Loader } from 'lucide-react'
-import { THESIS, ACQUIRERS, PRODUCT_CONTENT } from '../data/content'
+import { THESIS, ACQUIRERS, PRODUCT_CONTENT, MARKET_MODEL } from '../data/content'
 
 // ─── Download trigger ────────────────────────────────────────────────────────
 async function generatePDF(el) {
@@ -23,7 +23,7 @@ async function generatePDF(el) {
   const pdfW = pdf.internal.pageSize.getWidth()
   const pdfH = pdf.internal.pageSize.getHeight()
   pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, pdfH)
-  pdf.save('FIXFriend-Strategic-Fit-VC-OnePager.pdf')
+  pdf.save('FIXFriend-Lean-Exit-VC-OnePager.pdf')
 }
 
 // ─── The actual one-pager layout ─────────────────────────────────────────────
@@ -209,7 +209,7 @@ function OnePagerDocument() {
               </svg>
               <div>
                 <div style={styles.productName}>FIXFriend</div>
-                <div style={styles.tagBadge}>STRATEGIC FIT BRIEF</div>
+                <div style={styles.tagBadge}>LEAN EXIT BRIEF</div>
               </div>
             </div>
           </div>
@@ -315,17 +315,17 @@ function OnePagerDocument() {
               <div style={styles.marketRow}>
                 <div style={styles.marketBox}>
                   <div style={styles.marketBoxLabel}>Entry TAM</div>
-                  <div style={styles.marketBoxVal}>€450M</div>
-                  <div style={styles.marketBoxSub}>6,000 orgs × €75k</div>
+                  <div style={styles.marketBoxVal}>{MARKET_MODEL.tam.value}</div>
+                  <div style={styles.marketBoxSub}>~9,000 operators × ~€100k</div>
                 </div>
                 <div style={styles.marketBox}>
                   <div style={styles.marketBoxLabel}>SAM</div>
-                  <div style={styles.marketBoxVal}>€112M</div>
-                  <div style={styles.marketBoxSub}>High-automation segment</div>
+                  <div style={styles.marketBoxVal}>{MARKET_MODEL.sam.value}</div>
+                  <div style={styles.marketBoxSub}>1,500–2,250 high-change operators</div>
                 </div>
               </div>
               <div style={{ fontSize: '9.5px', color: '#c8c2b8', lineHeight: 1.5 }}>
-                <strong style={{ color: '#f5f3ef' }}>Target SOM:</strong> 10–25 institutional customers, €1M–€2M ARR, strategic embed for acquisition. FIXFriend becomes operationally embedded in trading change-control workflows, creating high switching costs and acquisition relevance.
+                <strong style={{ color: '#f5f3ef' }}>Target SOM:</strong> 20–40 institutional customers, {MARKET_MODEL.som.value} ARR, with strategic embed upside for acquisition. FIXFriend becomes operationally embedded in trading change-control workflows, creating high switching costs and acquisition relevance.
               </div>
             </div>
 

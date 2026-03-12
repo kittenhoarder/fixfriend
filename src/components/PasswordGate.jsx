@@ -204,7 +204,7 @@ export default function PasswordGate({ children }) {
             className="font-mono mt-2 text-[11px]"
             style={{ color: 'var(--muted)', letterSpacing: '0.16em' }}
           >
-            STRATEGIC FIT SYSTEM
+            LEAN EXIT SYSTEM
           </p>
         </div>
 
