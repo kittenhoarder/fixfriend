@@ -38,7 +38,7 @@ export const THESIS = {
   tenXClaim:
     'Bounded cases move to days instead of several weeks or months because FIXFriend compresses coordination, context recovery, and evidence assembly before the cross-party loop stalls.',
   leanExitWhy:
-    'This is a discovery-led strategic-fit story: use venue change as the first wedge, learn where acquirers feel the deepest operational pain, and pivot the product boundary around that signal instead of forecasting too far ahead.',
+    'This is a lean-exit story built through strategic-fit discovery: use venue change as the first wedge, learn where acquirers feel the deepest operational pain, and pivot the product boundary around that signal instead of forecasting too far ahead.',
   evidenceTypes: [
     {
       label: 'Validated',
@@ -57,7 +57,7 @@ export const THESIS = {
     },
   ],
   vcTldr: {
-    title: 'STRATEGIC FIT IN ONE SCREEN',
+    title: 'LEAN EXIT IN ONE SCREEN',
     marketSummary:
       'Beachhead wedge: vendor-side change response and certification workflow. The broader category is automation around change in systems, but venue change stays the first concrete proof point.',
     highlights: [
@@ -198,7 +198,7 @@ export const MARKET_NODES = {
     label: 'Trading Tech\nVendors',
     band: 'intermediary',
     title: 'Trading Technology Vendors & Connectivity Providers',
-    count: '~150–250 likely beachhead operators globally',
+    count: '~150–250 direct vendor-side wedge accounts globally',
     includes:
       'OMS/EMS vendors, managed FIX providers, selected venues, testing/compliance adjacencies, and infrastructure teams that absorb venue changes for many downstream clients',
     body: 'This is where the initial wedge sits. Vendors receive short-notice venue changes, coordinate research across product, engineering, QA, and customer teams, then absorb reputation risk when certification drags or venue-side issues surface late.',
@@ -210,10 +210,10 @@ export const MARKET_NODES = {
     label: 'End Clients /\nConnected Firms',
     band: 'demand',
     title: 'End Clients & Connected Trading Firms',
-    count: '~1,500 multi-venue connected entities (sell-side focus)',
+    count: '~1,500–2,250 high-change operators in the first-sellable SAM',
     includes:
       'Investment banks, broker-dealers, market makers, proprietary trading firms, hedge funds with direct market access (DMA)',
-    body: 'Clients still feel the pain downstream: late rollouts, compressed certification windows, unclear communication, and support escalations when venue changes are misunderstood or venue-side defects surface in certification.',
+    body: 'This broader direct SAM includes broker-dealers, market makers, proprietary firms, and other connected operators that absorb recurring venue and system change. They still feel the pain downstream: late rollouts, compressed certification windows, unclear communication, and support escalations when venue changes are misunderstood or venue-side defects surface in certification.',
     today:
       'They care about speed, confidence, and evidence, but they often rely on vendors and venues to coordinate the response.',
   },
@@ -878,7 +878,7 @@ export const ABOUT = {
 
 export const NAV_TABS = [
   { id: 'thesis', label: 'THESIS', icon: 'Home' },
-  { id: 'leanExit', label: 'STRATEGIC FIT', icon: 'Briefcase' },
+  { id: 'leanExit', label: 'LEAN EXIT', icon: 'Briefcase' },
   { id: 'market', label: 'MARKET', icon: 'Globe' },
   { id: 'product', label: 'PRODUCT', icon: 'Package' },
   { id: 'definition', label: 'DEFINITION', icon: 'BookOpen' },
@@ -893,29 +893,29 @@ export const DEFINITION = {
   },
   marketDefinition: {
     title: 'Market Definition',
-    body: 'Modern market access depends on venue-driven change response: interpreting notices, understanding protocol nuance, coordinating certification, and getting clients through rollout safely.\n\nIncumbents already own key parts of the stack, including connectivity, onboarding, testing, and reporting. The gap is not generic FIX automation.\n\n**FIXFriend defines a narrower wedge: an agent-operated change-response control layer for trading technology vendors, starting with venue change.**\n\nIt handles bounded minor changes through UAT-ready outputs, escalates major changes into structured human work, lands outputs in existing tools and channels, and leaves evidence behind as the response happens.',
+    body: 'FIXFriend is a **B2B workflow-control layer for venue-driven and adjacent system change in electronic trading infrastructure across the US, UK, and Europe**, sold first into connectivity-heavy operators.\n\nModern market access depends on venue-driven change response: interpreting notices, understanding protocol nuance, coordinating certification, and getting clients through rollout safely.\n\nIncumbents already own key parts of the stack, including connectivity, onboarding, testing, and reporting. The gap is not generic FIX automation.\n\n**FIXFriend defines a narrower wedge: an agent-operated change-response control layer for trading technology vendors, brokers, market makers, and selected venue operators, starting with venue change.**\n\nIt handles bounded minor changes through UAT-ready outputs, escalates major changes into structured human work, lands outputs in existing tools and channels, and leaves evidence behind as the response happens.',
   },
   marketSize: {
     title: 'Market Size',
     entry: {
       label: 'Beachhead Market',
-      body: 'Target wedge: OMS/EMS vendors, managed FIX and connectivity providers, selected venues, and testing or compliance adjacencies that repeatedly absorb venue change-response work.\n\nWorking model: ~150–250 reachable operators globally at €100k–€200k ARR.\n\n**Beachhead market:** ≈ **€15M–€50M**.\n\nThis is deliberately narrower than the broader trading-firm TAM. It is the part FIXFriend can sell into first and the part most likely to matter in a strategic outcome.',
+      body: 'Week 3 shifts the model from a narrow vendor-only estimate to a proof-backed upper bound for the operator universe, then narrows into the first sellable segment.\n\nTop-down core market input: **3,249 FINRA-registered US broker-dealer firms + about 3,500 FCA MiFID investment firms + 2,290 EU investment firms** in the latest EBA / ESMA prudential report.\n\nThat yields a core regulated operator universe of **about 9,000 firms** across the US, UK, and Europe. At a directional **€100k ACV**, that supports a **TAM of about €900M**.\n\nThe first sellable segment is the higher-change-intensity slice: brokers, market makers, vendors, venues, and testing / compliance adjacencies with repeated multi-venue change burden.',
     },
     attach: {
       label: 'Strategic Attach View',
       body: 'The upside is not only direct ARR. If FIXFriend attaches to an incumbent platform, the value is attach revenue plus faster change handling, lower support load, and stronger client stickiness across the installed base.',
     },
     expansion: {
-      label: 'Broader Expansion',
-      body: 'Expansion should be discovered, not forecast. Venue change is the first wedge; adjacent change domains should only be pulled forward once acquirer conversations repeatedly point to the same broader operational pain.',
+      label: 'Direct SAM And First SOM',
+      body: 'Direct SAM is the high-change slice of roughly **1,500–2,250 operators** across brokers, market makers, vendors, venues, and workflow adjacencies where venue and system change is frequent enough to justify workflow-control spend. At **€150k–€200k ARR**, that supports a **SAM of about €225M–€450M**.\n\nNear-term SOM remains execution-focused rather than theoretical: **20–40 customers at €150k–€200k ARR**, or roughly **€3M–€8M ARR**, before any partner distribution or incumbent embed.',
     },
-    sam: 'Working wedge: **40–80 high-fit operators** in Europe and the US before channel expansion.',
-    som: 'Near-term objective: 5–10 design partners, 3–5 paid pilots, and €1M–€3M ARR potential before broader platform distribution.',
+    sam: 'Working SAM: **1,500–2,250 high-change operators** across the US, UK, and Europe.',
+    som: 'Near-term objective: **20–40 paying customers** at **€150k–€200k ARR**, or about **€3M–€8M ARR**.',
     methodology: [
-      'Start with the narrow beachhead, not the broadest possible end market.',
-      'Model direct ARR separately from strategic attach value inside incumbent installed bases.',
-      'Keep venue change as the proof wedge until discovery shows a stronger adjacent change domain.',
-      'Treat pricing as a hypothesis until discovery confirms the buyer, budget owner, and deployment scope.',
+      'Use a proof-backed upper bound for the regulated operator base: FINRA, FCA, and EBA / ESMA firm counts.',
+      'Price TAM at a conservative platform-style entry ACV of about €100k, not the long-run fully loaded enterprise price.',
+      'Concentrate SAM on the high-change operators where multi-venue change, certification, and evidence drag are structural.',
+      'Keep direct ARR separate from strategic attach value inside incumbent installed bases.',
     ],
   },
 }
@@ -1353,21 +1353,21 @@ export const PRODUCT_PANIC_SCENARIO = {
 export const MARKET_MODEL = {
   tam: {
     label: 'TAM',
-    value: '€450M',
+    value: '€900M',
     detail:
-      'Broader change-response and workflow-control opportunity if discovery repeatedly points beyond the initial venue-change wedge.',
+      'About 9,000 regulated operators across the US, UK, and Europe at a directional €100k platform ACV.',
   },
   sam: {
     label: 'SAM',
-    value: '€15M–€50M',
+    value: '€225M–€450M',
     detail:
-      'Beachhead wedge: ~150–250 reachable operators globally × €100k–€200k ARR for vendor-side change response.',
+      'High-change-intensity slice: roughly 1,500–2,250 operators at €150k–€200k ARR.',
   },
   som: {
     label: 'SOM',
-    value: '€1M–€3M',
+    value: '€3M–€8M',
     detail:
-      'Initial reachable objective before broader platform distribution: 5–10 design partners and 3–5 paid pilots.',
+      'Initial reachable objective before partner distribution: 20–40 customers at €150k–€200k ARR.',
   },
   strategicAttach: {
     label: 'Strategic Attach',
@@ -1376,16 +1376,48 @@ export const MARKET_MODEL = {
       'If FIXFriend plugs into incumbent platforms, strategic value comes from attach revenue plus faster client rollout, lower support load, and stronger stickiness.',
   },
   methodology: [
-    'Count the narrow beachhead first: vendors, managed connectivity providers, selected venues, and testing/compliance adjacencies.',
+    'TAM starts with proof-backed operator counts from FINRA, the FCA, and the EBA / ESMA prudential report.',
+    'Use a directional entry ACV of about €100k for TAM and a fuller €150k–€200k workflow ACV for SAM and SOM.',
+    'SAM narrows to the higher-change operators where venue and system change is constant enough to justify dedicated workflow-control spend.',
     'Separate direct ARR from strategic attach value; do not hide both inside one TAM number.',
-    'Treat pricing and reachable account count as hypotheses to be tightened through buyer and acquirer discovery.',
   ],
 }
 
+export const MARKET_SIZE_INPUTS = [
+  {
+    label: 'US broker-dealer firms',
+    value: '3,249',
+    detail: 'FINRA 2025 Industry Snapshot registered firms as of December 31, 2024.',
+    sourceLabel: 'FINRA 2025 Industry Snapshot',
+    sourceUrl: 'https://www.finra.org/rules-guidance/guidance/reports-studies/2025-industry-snapshot',
+  },
+  {
+    label: 'UK MiFID investment firms',
+    value: '~3,500',
+    detail: 'FCA says IFPR covers about 3,500 MiFID investment firms it prudentially regulates in the UK.',
+    sourceLabel: 'FCA IFPR implementation observations',
+    sourceUrl: 'https://www.fca.org.uk/news/news-stories/fca-publishes-final-report-ifpr-implementation-observations',
+  },
+  {
+    label: 'EU investment firms',
+    value: '2,290',
+    detail: 'EBA / ESMA annual prudential-framework report, table 2, as of December 31, 2023.',
+    sourceLabel: 'EBA / ESMA prudential framework report',
+    sourceUrl: 'https://www.eba.europa.eu/publications-and-media/press-releases/eba-and-esma-publish-annual-report-prudential-framework-investment-firms',
+  },
+  {
+    label: 'Core operator universe',
+    value: '~9,000',
+    detail: 'Proof-backed upper bound for the US, UK, and Europe core market before segment filtering.',
+    sourceLabel: 'Derived from FINRA + FCA + EBA / ESMA',
+    sourceUrl: '',
+  },
+]
+
 export const BUSINESS_MODEL_CANVAS = {
   customerSegments: [
-    'OMS / EMS vendors',
-    'Managed FIX and connectivity providers',
+    'OMS / EMS vendors and managed connectivity providers',
+    'Broker-dealers and market makers with heavy multi-venue change load',
     'Selected venue operators',
     'Testing and compliance adjacencies',
   ],
@@ -1398,8 +1430,8 @@ export const BUSINESS_MODEL_CANVAS = {
     'Partner and platform distribution after discovery confirms the first wedge',
   ],
   revenueStreams: [
-    'Paid design partner or pilot: €25k–€50k',
-    'Annual platform contract: €100k–€200k ARR',
+    'Paid design partner or pilot: €35k–€75k',
+    'Annual platform contract: €150k–€250k ARR',
     'Optional integration and professional services',
   ],
   costStructure: [
@@ -1465,6 +1497,38 @@ export const FEATURE_PRIORITIES = {
 
 export const PRICING_TRACKER = [
   {
+    name: 'BLS software developer wage',
+    signal: 'Median annual wage $133,080 in May 2024.',
+    logic: 'Anchors the engineering portion of the manual change-response cost base that FIXFriend is designed to compress.',
+    evidence: 'Validated',
+    sourceLabel: 'BLS Software Developers, QA Analysts, and Testers',
+    sourceUrl: 'https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm',
+  },
+  {
+    name: 'BLS software QA wage',
+    signal: 'Median annual wage $102,610 in May 2024.',
+    logic: 'Supports the claim that repeated regression and certification work already carries specialist labor cost before any venue-side delay is counted.',
+    evidence: 'Validated',
+    sourceLabel: 'BLS Software Developers, QA Analysts, and Testers',
+    sourceUrl: 'https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm',
+  },
+  {
+    name: 'BLS systems analyst wage',
+    signal: 'Median annual wage $103,790 in May 2024.',
+    logic: 'Supports the workflow-analysis and change-interpretation labor that sits between the venue notice and the engineering task.',
+    evidence: 'Validated',
+    sourceLabel: 'BLS Computer Systems Analysts',
+    sourceUrl: 'https://www.bls.gov/ooh/computer-and-information-technology/computer-systems-analysts.htm',
+  },
+  {
+    name: 'BLS technology manager wage',
+    signal: 'Median annual wage $171,200 in May 2024.',
+    logic: 'Supports the management and sign-off layer that buyers are already paying for in change, risk, and rollout coordination.',
+    evidence: 'Validated',
+    sourceLabel: 'BLS Computer and Information Systems Managers',
+    sourceUrl: 'https://www.bls.gov/ooh/management/computer-and-information-systems-managers.htm',
+  },
+  {
     name: 'Broadridge FIX / connectivity services',
     signal: 'Enterprise platform sale; public pricing not disclosed.',
     logic: 'Supports the view that buyers already accept large enterprise workflows when they remove operational burden.',
@@ -1498,13 +1562,60 @@ export const PRICING_TRACKER = [
   },
   {
     name: 'FIXFriend pricing hypothesis',
-    signal: 'Pilot €25k–€50k, then €100k–€200k ARR + optional services.',
-    logic: 'Matches a narrow enterprise wedge with design-partner and strategic-attach potential.',
+    signal: 'Pilot €35k–€75k, then €150k–€250k ARR + optional services.',
+    logic: 'Fits a workflow product priced as a fraction of recoverable engineering, QA, analysis, and management cost rather than as a lightweight seat tool.',
     evidence: 'Hypothesis',
     sourceLabel: 'Current operating hypothesis',
     sourceUrl: '',
   },
 ]
+
+export const UNIT_ECONOMICS = {
+  title: 'Proof-backed unit economics',
+  intro:
+    'The economic case is labor reallocation first, strategic attach upside second. Pricing should stay below the annual cost of the repeated manual workflow it removes.',
+  roleWages: [
+    {
+      label: 'Software developer',
+      value: '$133,080',
+      sourceLabel: 'BLS Software Developers',
+      sourceUrl: 'https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm',
+    },
+    {
+      label: 'Software QA analyst',
+      value: '$102,610',
+      sourceLabel: 'BLS QA Analysts and Testers',
+      sourceUrl: 'https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm',
+    },
+    {
+      label: 'Computer systems analyst',
+      value: '$103,790',
+      sourceLabel: 'BLS Computer Systems Analysts',
+      sourceUrl: 'https://www.bls.gov/ooh/computer-and-information-technology/computer-systems-analysts.htm',
+    },
+    {
+      label: 'Technology manager',
+      value: '$171,200',
+      sourceLabel: 'BLS CIS Managers',
+      sourceUrl: 'https://www.bls.gov/ooh/management/computer-and-information-systems-managers.htm',
+    },
+  ],
+  workflowModel: [
+    'Representative manual cycle: 2 weeks of analyst time, 2 weeks of developer time, 2 weeks of QA time, and 1 week of manager oversight.',
+    'Using BLS median wages, that is about $16k of direct labor per change cycle before overhead or venue-side delay.',
+    'At 25 cycles per year, the direct labor base is already about $400k; at 50 cycles, it is about $800k.',
+  ],
+  pricingLogic: [
+    'That labor base supports an enterprise workflow price of about €150k–€250k ARR while still leaving room for buyer ROI.',
+    'Pilot pricing of €35k–€75k keeps the first proof step below full-platform commitment and matches a design-partner motion.',
+    'If FIXFriend becomes an attach product inside an incumbent stack, strategic value expands beyond direct savings into stickiness, rollout speed, and lower support load.',
+  ],
+  viability: [
+    '20 customers at €150k ARR is about €3M ARR.',
+    '40 customers at €200k ARR is about €8M ARR.',
+    'The first 10 stay founder-led and high-touch; efficiency improves materially once partner or platform distribution exists.',
+  ],
+}
 
 export const VALIDATION_PLAN = {
   riskiestAssumption:
@@ -1603,7 +1714,7 @@ export const GTM_PLAYBOOK = {
   first10: [
     'Founder-led warm intros through Nasdaq, Itiviti, Broadridge, Bloomberg, and venue relationships.',
     'Use a sample historical venue-change teardown to prove insight before asking for a pilot.',
-    'Target design partners whose workflows also matter to likely acquirers.',
+    'Target design partners whose workflows also matter to likely acquirers, especially high-change brokers, market makers, and vendors.',
     'Prioritise accounts where communication and certification pain is already visible, not generic innovation interest.',
   ],
   next100: [
@@ -1629,7 +1740,7 @@ export const OPEN_QUESTIONS = [
 
 export const LEAN_EXIT_CASE = {
   intro:
-    'FIXFriend starts with operational value first: compress bounded change-response work from several weeks or months to days, while making long-running dependencies visible earlier. The real thesis is discovery-led strategic fit: learn where acquirers feel the deepest change pain, understand how they buy, and let that signal shape the wedge.',
+    'FIXFriend starts with operational value first: compress bounded change-response work from several weeks or months to days, while making long-running dependencies visible earlier. The lean-exit thesis is built through strategic-fit discovery: learn where acquirers feel the deepest change pain, understand how they buy, and let that signal shape the wedge.',
   evidenceOverview: [
     {
       label: 'Validated',
@@ -1645,7 +1756,7 @@ export const LEAN_EXIT_CASE = {
       label: 'Hypothesis',
       tone: 'warning',
       items: [
-        'Vendor-side autonomous minor-change handling is the strongest initial wedge.',
+        'Vendor-side motion is the cleanest opening wedge, but the commercial SAM is broader than vendors alone.',
         'The right buyer will pay for lower coordination drag, earlier impact clarity, and live evidence before they pay for AI by itself.',
         'A workflow and context layer for change in systems is more strategically interesting than a narrow point solution.',
       ],

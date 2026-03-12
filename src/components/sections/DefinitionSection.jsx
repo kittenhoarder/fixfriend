@@ -1,4 +1,4 @@
-import { DEFINITION, INTERVIEW_TRACKER } from '../../data/content'
+import { DEFINITION, INTERVIEW_TRACKER, MARKET_SIZE_INPUTS } from '../../data/content'
 
 function Block({ title, children, className = '' }) {
   return (
@@ -163,6 +163,56 @@ export default function DefinitionSection() {
           <span className="font-mono text-xs" style={{ color: 'var(--accent)' }}>SOM: </span>
           <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{d.marketSize.som}</span>
         </div>
+
+        {MARKET_SIZE_INPUTS?.length > 0 && (
+          <div
+            className="panel-shell rounded-lg px-4 py-4 mt-6"
+            style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
+          >
+            <div
+              className="font-mono text-xs tracking-widest mb-3"
+              style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
+            >
+              MARKET INPUTS
+            </div>
+            <div className="grid gap-3 md:grid-cols-2">
+              {MARKET_SIZE_INPUTS.map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-lg border p-4"
+                  style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}
+                >
+                  <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+                    {item.label}
+                  </div>
+                  <div className="font-serif text-[1.9rem] leading-none mt-3" style={{ color: 'var(--text-primary)' }}>
+                    {item.value}
+                  </div>
+                  <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+                    {item.detail}
+                  </p>
+                  <div className="mt-3">
+                    {item.sourceUrl ? (
+                      <a
+                        href={item.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-mono"
+                        style={{ color: 'var(--accent)' }}
+                      >
+                        {item.sourceLabel}
+                      </a>
+                    ) : (
+                      <span className="text-xs font-mono" style={{ color: 'var(--text-tertiary)' }}>
+                        {item.sourceLabel}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {d.marketSize.methodology && (
           <div

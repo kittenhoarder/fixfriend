@@ -141,7 +141,7 @@ function BaseDocument({ title, subtitle, children }) {
         <div style={styles.header}>
           <div>
             <div style={styles.brand}>FIXFriend</div>
-            <div style={styles.badge}>STRATEGIC FIT BRIEF</div>
+            <div style={styles.badge}>LEAN EXIT BRIEF</div>
           </div>
           <div style={styles.meta}>
             <div>{today}</div>
@@ -457,9 +457,9 @@ export default function LeanExitDownloads() {
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         <DownloadButton
-          label="DOWNLOAD STRATEGIC FIT ONE-PAGER · PDF"
+          label="DOWNLOAD LEAN EXIT ONE-PAGER · PDF"
           loading={activeDoc === 'lean-exit'}
-          onClick={() => handleDownload(leanExitRef, 'lean-exit', 'FIXFriend-Strategic-Fit-OnePager.pdf')}
+          onClick={() => handleDownload(leanExitRef, 'lean-exit', 'FIXFriend-Lean-Exit-OnePager.pdf')}
         />
         <DownloadButton
           label="DOWNLOAD BUSINESS MODEL CANVAS · PDF"

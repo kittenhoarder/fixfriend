@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { THESIS, GAP, DEFINITION, ACQUIRERS, DEALS } from '../data/content'
+import { THESIS, GAP, ACQUIRERS, DEALS, MARKET_MODEL } from '../data/content'
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const C = {
@@ -98,7 +98,7 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
           </svg>
           <span style={{ fontFamily: serif, fontSize: '16px', color: C.text, letterSpacing: '-0.01em' }}>FIXFriend</span>
           <span style={{ width: '1px', height: '12px', backgroundColor: C.border, display: 'inline-block' }} />
-          <span style={{ fontSize: '8px', fontWeight: 700, color: C.amber, letterSpacing: '0.15em', fontFamily: mono }}>STRATEGIC FIT BRIEF</span>
+          <span style={{ fontSize: '8px', fontWeight: 700, color: C.amber, letterSpacing: '0.15em', fontFamily: mono }}>LEAN EXIT BRIEF</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <span style={{ fontSize: '8px', color: C.text3, letterSpacing: '0.1em', fontFamily: mono }}>PREPARED FOR RAIDICAL</span>
@@ -130,7 +130,7 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
           {[
             { value: '3', label: 'REGULATORY FORCES', sub: 'DORA · MiFID 2 RTS 6 · EU AI Act' },
             { value: '9', label: 'VERIFIED M&A DEALS', sub: 'Trading infrastructure · 12 months' },
-            { value: '~1,500', label: 'TARGET FIRMS', sub: 'Multi-venue connected entities' },
+            { value: '~9,000', label: 'CORE OPERATORS', sub: 'US · UK · EU regulated base' },
           ].map((s, i) => (
             <div key={i} style={{
               backgroundColor: C.surface,
@@ -213,9 +213,9 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
             <EL>Market Opportunity</EL>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '7px', marginBottom: '8px' }}>
               {[
-                { val: '€450M', lbl: 'TAM', sub: '6,000 orgs' },
-                { val: '€112M', lbl: 'SAM', sub: '~1,500 firms' },
-                { val: '€1–2M', lbl: 'SOM ARR', sub: '10–25 clients' },
+                { val: MARKET_MODEL.tam.value, lbl: 'TAM', sub: '~9,000 operators' },
+                { val: MARKET_MODEL.sam.value, lbl: 'SAM', sub: '1,500–2,250 high-change operators' },
+                { val: MARKET_MODEL.som.value, lbl: 'SOM ARR', sub: '20–40 customers' },
               ].map((m, i) => (
                 <div key={i} style={{
                   backgroundColor: C.surface2, border: `1px solid ${C.border}`,

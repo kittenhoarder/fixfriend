@@ -39,7 +39,7 @@ export default function ThesisSection({ onNavigate }) {
             'linear-gradient(90deg, rgba(249,115,22,0.12), rgba(59,130,246,0.08) 70%, transparent)',
         }}
       >
-        STRATEGIC FIT BRIEF
+        LEAN EXIT BRIEF
       </span>
 
       <article
@@ -103,7 +103,7 @@ export default function ThesisSection({ onNavigate }) {
             <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>{THESIS.tenXClaim}</p>
           </article>
           <article className="rounded-lg border p-4" style={{ borderColor: 'var(--status-warning-border)', backgroundColor: 'var(--status-warning-soft)' }}>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-warning)' }}>Why strategic fit</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-warning)' }}>Why lean exit</p>
             <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>{THESIS.leanExitWhy}</p>
           </article>
         </div>
@@ -150,7 +150,7 @@ export default function ThesisSection({ onNavigate }) {
             onClick={() => onNavigate('leanExit')}
             className="button-accent inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold"
           >
-            Explore strategic fit
+            Explore lean exit
             <ArrowRight size={15} />
           </button>
           <button
