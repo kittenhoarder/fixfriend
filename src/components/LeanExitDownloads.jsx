@@ -33,7 +33,7 @@ async function generatePDF(el, filename) {
   pdf.save(filename)
 }
 
-function BaseDocument({ title, subtitle, children }) {
+function BaseDocument({ title, subtitle, children, compact = false }) {
   const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
 
   const styles = useMemo(() => ({
@@ -43,7 +43,7 @@ function BaseDocument({ title, subtitle, children }) {
       backgroundColor: '#0b0b0c',
       color: '#f5f3ef',
       fontFamily: "'Manrope', system-ui, sans-serif",
-      padding: '44px 48px 40px',
+      padding: compact ? '32px 40px 32px' : '44px 48px 40px',
       boxSizing: 'border-box',
       position: 'relative',
       overflow: 'hidden',
@@ -77,7 +77,7 @@ function BaseDocument({ title, subtitle, children }) {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'flex-start',
-      marginBottom: '20px',
+      marginBottom: compact ? '14px' : '20px',
     },
     brand: {
       fontFamily: "'Instrument Serif', Georgia, serif",
@@ -105,26 +105,26 @@ function BaseDocument({ title, subtitle, children }) {
     },
     title: {
       fontFamily: "'Instrument Serif', Georgia, serif",
-      fontSize: '28px',
+      fontSize: compact ? '24px' : '28px',
       lineHeight: 1.05,
-      marginBottom: '8px',
-      maxWidth: '620px',
+      marginBottom: compact ? '6px' : '8px',
+      maxWidth: compact ? '600px' : '620px',
     },
     subtitle: {
-      fontSize: '11px',
-      lineHeight: 1.6,
+      fontSize: compact ? '10px' : '11px',
+      lineHeight: 1.5,
       color: '#c8c2b8',
       maxWidth: '640px',
-      marginBottom: '18px',
+      marginBottom: compact ? '14px' : '18px',
     },
     divider: {
       height: '1px',
       background: 'linear-gradient(90deg, rgba(249,115,22,0.5), rgba(59,130,246,0.35), transparent)',
-      marginBottom: '18px',
+      marginBottom: compact ? '14px' : '18px',
     },
     footer: {
       marginTop: 'auto',
-      paddingTop: '16px',
+      paddingTop: compact ? '12px' : '16px',
       borderTop: '1px solid #20242a',
       fontSize: '9px',
       color: '#8e897f',
@@ -193,16 +193,30 @@ function Panel({ children, minHeight }) {
   )
 }
 
+function CompactPanel({ children }) {
+  return (
+    <div
+      style={{
+        borderTop: '1px solid #20242a',
+        padding: '10px 0 4px',
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
 function LeanExitOnePagerDocument() {
   return (
     <BaseDocument
       title="The workflow-control layer for continuous change"
       subtitle={THESIS.subheadline}
+      compact
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flex: 1 }}>
 
         {/* Panel 1: Wedge + 10x */}
-        <Panel>
+        <CompactPanel>
           <Label>The Wedge</Label>
           <div style={{ fontSize: '15px', lineHeight: 1.3, marginBottom: '6px' }}>
             {LEAN_EXIT_CASE.wedge.buyerOneLiner}
@@ -224,12 +238,12 @@ function LeanExitOnePagerDocument() {
               <div style={{ fontSize: '11px', lineHeight: 1.4, color: '#c8c2b8' }}>{LEAN_EXIT_CASE.wedge.quantifiedLabel}</div>
             </div>
           </div>
-        </Panel>
+        </CompactPanel>
 
         {/* Panel 2: Business logic + Operating model top row, Market model across bottom */}
-        <Panel>
+        <CompactPanel>
           <Label>Business, Operating & Market</Label>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '12px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '10px' }}>
             <div>
               <div style={{ fontSize: '9px', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Business Logic</div>
               {[
@@ -264,15 +278,15 @@ function LeanExitOnePagerDocument() {
                 <div key={item.label} style={{ borderTop: '1px solid #20242a', paddingTop: '6px' }}>
                   <div style={{ fontSize: '9px', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{item.label}</div>
                   <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '15px', lineHeight: 1.1 }}>{item.value}</div>
-                  <div style={{ fontSize: '8.5px', color: '#8e897f', lineHeight: 1.35 }}>{item.detail}</div>
+                  <div style={{ fontSize: '8.5px', color: '#8e897f', lineHeight: 1.3 }}>{item.detail}</div>
                 </div>
               ))}
             </div>
           </div>
-        </Panel>
+        </CompactPanel>
 
         {/* Panel 3: Why this could be bought — 2-column bullet grid */}
-        <Panel>
+        <CompactPanel>
           <Label>Why This Could Be Bought</Label>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
             {LEAN_EXIT_CASE.whyBought.points.map((point) => (
@@ -282,44 +296,44 @@ function LeanExitOnePagerDocument() {
               </div>
             ))}
           </div>
-        </Panel>
+        </CompactPanel>
 
         {/* Panel 4: Validation — assumption + timeline left, metrics + triggers right */}
-        <Panel>
+        <CompactPanel>
           <Label>Validation Plan</Label>
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.9fr 1.05fr 1.05fr', gap: '12px' }}>
             <div>
-              <div style={{ fontSize: '11px', lineHeight: 1.5, color: '#c8c2b8', marginBottom: '10px' }}>
+              <div style={{ fontSize: '10.5px', lineHeight: 1.4, color: '#c8c2b8', marginBottom: '8px' }}>
                 <strong style={{ color: '#f5f3ef' }}>Riskiest assumption:</strong> {VALIDATION_PLAN.riskiestAssumption}
               </div>
               {VALIDATION_PLAN.timeline.slice(0, 2).map((item) => (
-                <div key={item.label} style={{ marginBottom: '8px' }}>
+                <div key={item.label} style={{ marginBottom: '6px' }}>
                   <div style={{ fontSize: '9px', color: '#f97316', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{item.label}</div>
                   <div style={{ fontSize: '11px', color: '#f5f3ef', marginTop: '1px' }}>{item.focus}</div>
-                  <div style={{ fontSize: '10px', lineHeight: 1.4, color: '#c8c2b8' }}>{item.detail}</div>
+                  <div style={{ fontSize: '9.5px', lineHeight: 1.35, color: '#c8c2b8' }}>{item.detail}</div>
                 </div>
               ))}
             </div>
             <div>
               <div style={{ fontSize: '9px', color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Success Metrics</div>
               {VALIDATION_PLAN.successMetrics.map((item) => (
-                <div key={item} style={{ display: 'flex', gap: '6px', marginBottom: '5px' }}>
-                  <span style={{ color: '#22c55e', fontSize: '9px', flexShrink: 0 }}>•</span>
-                  <span style={{ fontSize: '9.5px', color: '#c8c2b8', lineHeight: 1.4 }}>{item}</span>
+                <div key={item} style={{ display: 'flex', gap: '6px', marginBottom: '4px' }}>
+                  <span style={{ color: '#22c55e', fontSize: '8.5px', flexShrink: 0 }}>•</span>
+                  <span style={{ fontSize: '9px', color: '#c8c2b8', lineHeight: 1.35 }}>{item}</span>
                 </div>
               ))}
             </div>
             <div>
               <div style={{ fontSize: '9px', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Pivot Triggers</div>
               {VALIDATION_PLAN.pivotTriggers.map((item) => (
-                <div key={item} style={{ display: 'flex', gap: '6px', marginBottom: '5px' }}>
-                  <span style={{ color: '#f97316', fontSize: '9px', flexShrink: 0 }}>•</span>
-                  <span style={{ fontSize: '9.5px', color: '#c8c2b8', lineHeight: 1.4 }}>{item}</span>
+                <div key={item} style={{ display: 'flex', gap: '6px', marginBottom: '4px' }}>
+                  <span style={{ color: '#f97316', fontSize: '8.5px', flexShrink: 0 }}>•</span>
+                  <span style={{ fontSize: '9px', color: '#c8c2b8', lineHeight: 1.35 }}>{item}</span>
                 </div>
               ))}
             </div>
           </div>
-        </Panel>
+        </CompactPanel>
 
       </div>
     </BaseDocument>
