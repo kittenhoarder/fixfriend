@@ -8,6 +8,9 @@ import {
   User,
   Sun,
   Moon,
+  Target,
+  LineChart,
+  Settings,
 } from 'lucide-react'
 import { NAV_TABS } from '../data/content'
 
@@ -18,6 +21,9 @@ const ICON_MAP = {
   BookOpen,
   Package,
   Crosshair,
+  Target,
+  LineChart,
+  Settings,
 }
 
 function NavButton({ isActive, children, ...props }) {
@@ -38,6 +44,9 @@ function NavButton({ isActive, children, ...props }) {
   )
 }
 
+const buyerTabs = NAV_TABS.filter((t) => t.group === 'buyer')
+const strategyTabs = NAV_TABS.filter((t) => t.group === 'strategy')
+
 export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, onThemeToggle }) {
   return (
     <>
@@ -51,8 +60,8 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
         }}
       >
         <div className="px-5 py-5 border-b" style={{ borderColor: 'var(--border-subtle)' }}>
-          <div className="eyebrow mb-3" style={{ color: 'var(--text-tertiary)' }}>
-            Investor Explorer
+          <div className="eyebrow mb-1" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.12em', fontSize: '10px' }}>
+            PRDCTV.WORK
           </div>
           <div className="flex items-center gap-3">
             <div
@@ -78,14 +87,57 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
                 />
               </svg>
             </div>
-            <div className="font-serif leading-none text-[1.7rem]" style={{ color: 'var(--text-primary)' }}>
-              FIXFriend
+            <div>
+              <div className="font-serif leading-none text-[1.45rem]" style={{ color: 'var(--text-primary)' }}>
+                SynthAgents
+              </div>
+              <div className="font-mono text-[9px] mt-0.5" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.1em' }}>
+                FIXFriend · DataRights · Declare
+              </div>
             </div>
           </div>
         </div>
 
-        <nav className="flex-1 py-4">
-          {NAV_TABS.map((tab) => {
+        <nav className="flex-1 py-3 overflow-y-auto">
+          {buyerTabs.map((tab) => {
+            const IconComponent = ICON_MAP[tab.icon]
+            const isActive = activeTab === tab.id
+            return (
+              <NavButton key={tab.id} isActive={isActive} onClick={() => onTabChange(tab.id)}>
+                <span
+                  className="flex h-8 w-8 items-center justify-center border transition-all duration-200"
+                  style={{
+                    borderColor: isActive ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
+                    backgroundColor: isActive ? 'var(--accent-softer)' : 'transparent',
+                    color: isActive ? 'var(--accent)' : 'var(--text-tertiary)',
+                    boxShadow: isActive ? 'inset 0 0 0 1px rgba(255,255,255,0.04)' : 'none',
+                  }}
+                >
+                  <IconComponent size={15} strokeWidth={1.8} />
+                </span>
+                <span
+                  className="min-w-0 font-mono font-medium tracking-[0.12em] text-sm"
+                  style={{ color: isActive ? 'var(--text-primary)' : 'inherit' }}
+                >
+                  {tab.label}
+                </span>
+              </NavButton>
+            )
+          })}
+
+          <div
+            className="mx-5 my-3 flex items-center gap-2"
+            style={{ borderTop: '1px solid var(--border-subtle)' }}
+          >
+            <span
+              className="pt-3 font-mono text-[9px] tracking-[0.2em] uppercase"
+              style={{ color: 'var(--text-tertiary)' }}
+            >
+              STRATEGY & RESEARCH
+            </span>
+          </div>
+
+          {strategyTabs.map((tab) => {
             const IconComponent = ICON_MAP[tab.icon]
             const isActive = activeTab === tab.id
             return (
@@ -148,6 +200,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
         </div>
       </aside>
 
+      {/* Mobile header */}
       <div
         className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center border-b backdrop-blur-md"
         style={{
@@ -181,8 +234,11 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
               </svg>
             </div>
             <div>
-              <div className="font-serif text-lg leading-none" style={{ color: 'var(--text-primary)' }}>
-                FIXFriend
+              <div className="font-serif text-base leading-none" style={{ color: 'var(--text-primary)' }}>
+                SynthAgents
+              </div>
+              <div className="font-mono text-[8px] mt-0.5" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.08em' }}>
+                PRDCTV.WORK
               </div>
             </div>
           </div>
@@ -203,11 +259,20 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
                 letterSpacing: '0.12em',
               }}
             >
-              {NAV_TABS.map((tab) => (
-                <option key={tab.id} value={tab.id}>
-                  {tab.label}
-                </option>
-              ))}
+              <optgroup label="PRODUCT">
+                {buyerTabs.map((tab) => (
+                  <option key={tab.id} value={tab.id}>
+                    {tab.label}
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="STRATEGY & RESEARCH">
+                {strategyTabs.map((tab) => (
+                  <option key={tab.id} value={tab.id}>
+                    {tab.label}
+                  </option>
+                ))}
+              </optgroup>
             </select>
           </div>
 

@@ -841,13 +841,297 @@ export const ABOUT = {
 }
 
 export const NAV_TABS = [
-  { id: 'thesis', label: 'THESIS', icon: 'Home' },
-  { id: 'leanExit', label: 'LEAN EXIT', icon: 'Briefcase' },
-  { id: 'market', label: 'MARKET', icon: 'Globe' },
-  { id: 'product', label: 'PRODUCT', icon: 'Package' },
-  { id: 'definition', label: 'DEFINITION', icon: 'BookOpen' },
-  { id: 'acquirers', label: 'ACQUIRERS', icon: 'Crosshair' },
+  { id: 'overview', label: 'OVERVIEW', icon: 'Home', group: 'buyer' },
+  { id: 'product', label: 'PRODUCT', icon: 'Package', group: 'buyer' },
+  { id: 'sales', label: 'SALES', icon: 'Target', group: 'buyer' },
+  { id: 'financials', label: 'FINANCIALS', icon: 'LineChart', group: 'buyer' },
+  { id: 'operations', label: 'OPERATIONS', icon: 'Settings', group: 'buyer' },
+  { id: 'market', label: 'MARKET', icon: 'Globe', group: 'strategy' },
+  { id: 'leanExit', label: 'LEAN EXIT', icon: 'Briefcase', group: 'strategy' },
+  { id: 'acquirers', label: 'ACQUIRERS', icon: 'Crosshair', group: 'strategy' },
+  { id: 'definition', label: 'DEFINITION', icon: 'BookOpen', group: 'strategy' },
 ]
+
+export const BRAND = {
+  studio: {
+    name: 'PRDCTV.WORK',
+    tagline: 'Builds focused software that turns complexity into clear action.',
+    about: 'prdctv.work started from a simple observation: most people and teams are not short on information, tools, or ambition. They are short on clarity — a clear view of what matters, what to do next, and what can be ignored.',
+  },
+  umbrella: {
+    name: 'SynthAgents',
+    tagline: 'Helps capital markets teams turn operational complexity into clear, reviewed action.',
+    description: 'SynthAgents is the product umbrella within PRDCTV.WORK focused on capital markets operational workflows. Each product does one job well: ingest a dense artifact, surface what matters, generate a reviewed output, and deliver it into the systems teams already use.',
+  },
+  mvpDefinition: 'We convert dense external and internal control artifacts into reviewed operational actions, evidence packs, and system-of-record updates for trading technology and market-data teams.',
+  positioningStatement: 'The workflow control layer between operational artifacts and governed execution in capital markets.',
+  products: [
+    {
+      id: 'fixfriend',
+      name: 'FIXFriend',
+      status: 'live',
+      statusTone: 'success',
+      tagline: 'Change-readiness workflow for trading technology teams.',
+      description: 'Turns external venue notices, FIX specs, and broker bulletins into reviewed impact briefs, readiness packs, and Jira/Slack delivery — with a full audit trail.',
+    },
+    {
+      id: 'datarights',
+      name: 'DataRights',
+      status: 'in development',
+      statusTone: 'info',
+      tagline: 'Market-data rights and cost-impact assessment.',
+      description: 'Before a team buys, reuses, or automates against market data, DataRights tells them what rights they need, what the incremental cost will be, and what questions still need answering.',
+    },
+    {
+      id: 'declare',
+      name: 'Declare',
+      status: 'roadmap',
+      statusTone: 'neutral',
+      tagline: 'Declaration, attestation, and audit-evidence workflows.',
+      description: 'The operating system for classifying, declaring, and defending market-data usage — turning declaration scramble and audit prep into a governed, repeatable workflow.',
+    },
+  ],
+}
+
+export const FINANCIAL_MODEL = {
+  currency: '€',
+  startingCash: 400000,
+  totalRevenue12M: 210000,
+  totalBurn12M: -118500,
+  endingCash: 281500,
+  avgMonthlyBurn: 2842,
+  breakEvenCustomers: 3,
+  breakEvenArr: 360000,
+  months: [
+    { label: 'Apr 26', pilotsNew: 0, pilotRev: 0, prodActive: 0, prodRev: 0, totalRev: 0, cogs: 0, grossProfit: 0, founder: 12000, engineering: 5000, aiCloud: 1500, travel: 1500, software: 500, ga: 1200, legal: 6000, misc: 500, totalOpex: 28200, ebitda: -28200, openingCash: 400000, closingCash: 371800 },
+    { label: 'May 26', pilotsNew: 0, pilotRev: 0, prodActive: 0, prodRev: 0, totalRev: 0, cogs: 0, grossProfit: 0, founder: 12000, engineering: 5000, aiCloud: 1600, travel: 1500, software: 500, ga: 1200, legal: 0, misc: 500, totalOpex: 22300, ebitda: -22300, openingCash: 371800, closingCash: 349500 },
+    { label: 'Jun 26', pilotsNew: 0, pilotRev: 0, prodActive: 0, prodRev: 0, totalRev: 0, cogs: 0, grossProfit: 0, founder: 12000, engineering: 5000, aiCloud: 1700, travel: 1500, software: 500, ga: 1200, legal: 0, misc: 500, totalOpex: 22400, ebitda: -22400, openingCash: 349500, closingCash: 327100 },
+    { label: 'Jul 26', pilotsNew: 1, pilotRev: 22500, prodActive: 0, prodRev: 0, totalRev: 22500, cogs: 3375, grossProfit: 19125, founder: 12000, engineering: 5000, aiCloud: 1800, travel: 1500, software: 500, ga: 1200, legal: 0, misc: 500, totalOpex: 22500, ebitda: -3375, openingCash: 327100, closingCash: 323725 },
+    { label: 'Aug 26', pilotsNew: 0, pilotRev: 0, prodActive: 0, prodRev: 0, totalRev: 0, cogs: 0, grossProfit: 0, founder: 12000, engineering: 5000, aiCloud: 1900, travel: 1500, software: 500, ga: 1200, legal: 0, misc: 500, totalOpex: 22600, ebitda: -22600, openingCash: 323725, closingCash: 301125 },
+    { label: 'Sep 26', pilotsNew: 1, pilotRev: 22500, prodActive: 0, prodRev: 0, totalRev: 22500, cogs: 3375, grossProfit: 19125, founder: 12000, engineering: 5000, aiCloud: 2000, travel: 1500, software: 500, ga: 1200, legal: 0, misc: 500, totalOpex: 22700, ebitda: -3575, openingCash: 301125, closingCash: 297550 },
+    { label: 'Oct 26', pilotsNew: 0, pilotRev: 0, prodActive: 1, prodRev: 10000, totalRev: 10000, cogs: 1500, grossProfit: 8500, founder: 12000, engineering: 7000, aiCloud: 2100, travel: 2500, software: 500, ga: 1200, legal: 0, misc: 500, totalOpex: 25800, ebitda: -17300, openingCash: 297550, closingCash: 280250 },
+    { label: 'Nov 26', pilotsNew: 1, pilotRev: 22500, prodActive: 1, prodRev: 10000, totalRev: 32500, cogs: 4875, grossProfit: 27625, founder: 12000, engineering: 7000, aiCloud: 2200, travel: 2500, software: 500, ga: 1200, legal: 0, misc: 500, totalOpex: 25900, ebitda: 1725, openingCash: 280250, closingCash: 281975 },
+    { label: 'Dec 26', pilotsNew: 0, pilotRev: 0, prodActive: 2, prodRev: 20000, totalRev: 20000, cogs: 3000, grossProfit: 17000, founder: 12000, engineering: 7000, aiCloud: 2300, travel: 2500, software: 500, ga: 1200, legal: 0, misc: 500, totalOpex: 26000, ebitda: -9000, openingCash: 281975, closingCash: 272975 },
+    { label: 'Jan 27', pilotsNew: 0, pilotRev: 0, prodActive: 2, prodRev: 20000, totalRev: 20000, cogs: 3000, grossProfit: 17000, founder: 12000, engineering: 7000, aiCloud: 2400, travel: 2500, software: 500, ga: 1200, legal: 0, misc: 500, totalOpex: 26100, ebitda: -9100, openingCash: 272975, closingCash: 263875 },
+    { label: 'Feb 27', pilotsNew: 1, pilotRev: 22500, prodActive: 3, prodRev: 30000, totalRev: 52500, cogs: 7875, grossProfit: 44625, founder: 12000, engineering: 7000, aiCloud: 2500, travel: 2500, software: 500, ga: 1200, legal: 0, misc: 500, totalOpex: 26200, ebitda: 18425, openingCash: 263875, closingCash: 282300 },
+    { label: 'Mar 27', pilotsNew: 0, pilotRev: 0, prodActive: 3, prodRev: 30000, totalRev: 30000, cogs: 4500, grossProfit: 25500, founder: 12000, engineering: 7000, aiCloud: 2600, travel: 2500, software: 500, ga: 1200, legal: 0, misc: 500, totalOpex: 26300, ebitda: -800, openingCash: 282300, closingCash: 281500 },
+  ],
+  pricing: [
+    {
+      tier: 'Pilot',
+      amount: '€22.5K',
+      rawAmount: 22500,
+      duration: '4–8 weeks',
+      detail: 'Fixed fee for one workflow and one team. No commitment beyond the pilot. Designed to prove value fast on a live artifact.',
+      budgetOwner: 'Head of Operations / Head of Connectivity',
+    },
+    {
+      tier: 'Production',
+      amount: '€120K ACV',
+      rawAmount: 120000,
+      duration: 'Annual contract',
+      detail: 'Departmental deployment at €10K/month equivalent. Covers recurring workflow delivery, evidence archive, and downstream system integrations.',
+      budgetOwner: 'COO / Trading Technology Product Owner',
+    },
+    {
+      tier: 'Expansion',
+      amount: '€150K–€250K+',
+      rawAmount: 200000,
+      duration: 'Multi-workflow',
+      detail: 'Add workflows (DataRights, Declare), additional sources, teams, or delivery channels. Land-and-expand path within a single account.',
+      budgetOwner: 'COO / CFO / Head of Market Data',
+    },
+  ],
+  costs: [
+    { label: 'Founder / leadership', monthly: '€12,000', note: 'Fixed across 12 months' },
+    { label: 'Engineering / product build', monthly: '€5K–€7K', note: 'Steps up in month 7 as production workload grows' },
+    { label: 'AI / cloud infrastructure', monthly: '€1.5K + €100/mo growth', note: 'Scales with usage as production customers onboard' },
+    { label: 'Travel / sales', monthly: '€1.5K–€2.5K', note: 'Increases in H2 as pipeline activity builds' },
+    { label: 'Software / tools', monthly: '€500', note: 'Fixed' },
+    { label: 'G&A / accounting / insurance', monthly: '€1,200', note: 'Fixed' },
+    { label: 'One-off legal / setup', monthly: '€6,000 in month 1', note: 'Non-recurring' },
+    { label: 'Misc. contingency', monthly: '€500', note: 'Fixed' },
+  ],
+  breakEven: {
+    fixedOpex: 297000,
+    avgAcv: 120000,
+    grossMargin: 0.85,
+    contributionPerCustomer: 102000,
+    customers: 3,
+    arr: 360000,
+    interpretation: 'If pilots validate the workflow and 4–5 production customers are attainable, the model supports a credible early commercial case.',
+  },
+  baseCase: [
+    'Model assumes 4 paid pilots and 3 production conversions inside 12 months.',
+    'Base case is intentionally lean; it supports validation before scaling headcount.',
+    'At €90K ACV and 85% gross margin, break-even is roughly 4 active production customers.',
+    'This is a venture screen model, not a GAAP forecast.',
+  ],
+}
+
+export const COMPETITOR_BENCHMARKS = [
+  {
+    name: 'Zapier',
+    category: 'Horizontal automation',
+    pricing: 'Professional $19.99/mo; Team $69/mo; Enterprise custom',
+    implication: 'Shows the low-end self-serve floor, not enterprise control software.',
+    gap: 'No domain intelligence, no evidence grounding, no audit trail for regulated workflows.',
+    sourceUrl: 'https://zapier.com/pricing',
+  },
+  {
+    name: 'Tines',
+    category: 'Workflow automation',
+    pricing: 'Community free; Starter / Business / Enterprise editions; AI credits at $0.01 each',
+    implication: 'Usage and edition packaging is relevant; enterprise pricing remains custom.',
+    gap: 'General-purpose; lacks capital-markets domain context and governed review workflow.',
+    sourceUrl: 'https://explained.tines.com/en/articles/9620399-understanding-tines-pricing-and-packaging',
+  },
+  {
+    name: 'Workato',
+    category: 'Enterprise automation',
+    pricing: 'Platform edition fee + usage fee + add-ons',
+    implication: 'Supports value-based enterprise pricing posture.',
+    gap: 'Integration layer only; no artifact interpretation, no human review loop, no evidence pack.',
+    sourceUrl: 'https://docs.workato.com/pricing.html',
+  },
+  {
+    name: 'ProcessUnity',
+    category: 'TPRM / control workflow',
+    pricing: 'Emerging enterprise pricing starts at $25,000',
+    implication: 'Useful lower bound for compliance / control workflow pricing.',
+    gap: 'Third-party risk focus; not built for trading tech change cycles or FIX/market-data artifacts.',
+    sourceUrl: 'https://info.processunity.com/third-party-risk-management-emerging-enterprises.html',
+  },
+  {
+    name: 'OneTrust',
+    category: 'Risk / compliance platform',
+    pricing: 'Custom; claims 227% 3-year ROI, 7-month payback',
+    implication: 'Supports value-based ROI-led enterprise sell.',
+    gap: 'Privacy and data governance focus; not designed for trading operations change readiness.',
+    sourceUrl: 'https://www.onetrust.com/pricing/',
+  },
+  {
+    name: 'Duco',
+    category: 'Financial data automation',
+    pricing: 'Two enterprise agreements totalled over $27M in total contract value',
+    implication: 'Budget signal that large financial-operations automation deals exist.',
+    gap: 'Data reconciliation focus; SynthAgents targets the change-readiness and governance workflow layer.',
+    sourceUrl: 'https://du.co/duco-announces-record-financial-year-and-two-major-new-enterprise-agreements/',
+  },
+]
+
+export const SALES_FUNNEL = {
+  stages: [
+    { label: 'Target accounts', count: 60, convRate: null, note: 'Warm intros + direct outreach' },
+    { label: 'Replies / engagement', count: 30, convRate: '50%', note: 'Response or engagement' },
+    { label: 'Discovery calls', count: 18, convRate: '60%', note: 'Calls with buyer or key user' },
+    { label: 'Qualified pain confirmed', count: 10, convRate: '56%', note: 'Problem is real and budget-adjacent' },
+    { label: 'Demos shown', count: 8, convRate: '80%', note: 'Presentation layer shown' },
+    { label: 'Pilot proposals', count: 5, convRate: '63%', note: 'Scoped proposal delivered' },
+    { label: 'Paid pilots', count: 4, convRate: '80%', note: 'Base case in forecast' },
+    { label: 'Production conversions', count: 3, convRate: '75%', note: 'Base case in forecast' },
+  ],
+  firstRevenue: {
+    pilotRevenue: 90000,
+    annualizedProductionRevenue: 360000,
+    implied12MRevenue: 210000,
+    note: 'Implied 12M revenue if all converted day 1',
+  },
+  strategy: [
+    {
+      label: 'Targeted outreach over wide net',
+      detail: 'High-signal warm introductions and direct outreach to named accounts in trading technology, market data, and adjacent fintech. Quality of conversation over volume of contacts.',
+    },
+    {
+      label: "Owen's network",
+      detail: '14 years of European electronic trading infrastructure relationships. Direct access to trading technology managers, FIX connectivity leads, and senior operational roles at Tier-1 firms.',
+    },
+    {
+      label: 'Industry events and conferences',
+      detail: 'On-sites with banks, brokers, trading firms, and venues. TradeTech, FIX Trading Community events, industry networking. Face-to-face builds trust faster than digital outreach alone.',
+    },
+    {
+      label: 'Awards and trend-riding',
+      detail: 'Pursue relevant fintech and trading technology awards early. Credibility signals matter in financial services. Ride the AI-in-trading-ops curiosity wave to shorten the trust-building cycle.',
+    },
+    {
+      label: 'Land and expand',
+      detail: 'Solve one high-value problem visibly. Trading firms have many problems; demonstrate rapid understanding and adaptation, then grow ARR through additional workflows and teams within the same account.',
+    },
+  ],
+  activeBuyers: [
+    {
+      name: 'Virtu Financial Europe',
+      contact: 'CEO',
+      type: 'Key buyer',
+      status: 'Discovery call completed',
+      statusTone: 'success',
+      note: 'Conversation on organisational problems and potential fit. Virtu Financial Europe is the European subsidiary, not the global entity.',
+    },
+    {
+      name: 'Bjorn Haggstrom',
+      contact: 'Former EMEA Manager, trading software',
+      type: 'Key user / advisor',
+      status: 'Discovery call completed',
+      statusTone: 'success',
+      note: 'Provided insights on product fit and go-to-market challenges from a trading software distribution perspective.',
+    },
+    {
+      name: 'LA-based Investment Manager',
+      contact: 'Chief of Staff',
+      type: 'Key user',
+      status: 'Call scheduled',
+      statusTone: 'warning',
+      note: '$100B AUM. Scheduled call pending — strong signal of institutional interest beyond European trading technology.',
+    },
+  ],
+  awareness: 'On-sites, events, network introductions, and awards to build early credibility.',
+  interest: 'Targeted discovery calls with buyers and key users to confirm pain and budget adjacency.',
+  conversion: 'Pilot proposal → paid pilot → production contract. Fast value proof, then annual commitment.',
+  retention: 'Land-and-expand: additional workflows, teams, and sources within the same account to grow ARR.',
+}
+
+export const OPERATIONS_MODEL = {
+  headline: 'Built to move fast, learn faster, and operate with discipline.',
+  subheadline: 'Revenue-ready infrastructure from day one. Lean team, rapid iteration, and a delivery model designed for the compliance expectations of financial services buyers.',
+  pillars: [
+    {
+      title: 'Rapid change and iteration',
+      icon: 'Zap',
+      items: [
+        'Weekly discovery cadence — buyer conversations, product validation, and pivot-readiness built into the operating rhythm.',
+        'Hypothesis-led development: ship the smallest version that tests the assumption, review evidence, decide next.',
+        'No feature roadmap longer than one cycle. If buyer signal changes, the plan changes.',
+        'Founder-led product and sales in parallel. Discovery informs product; product informs discovery.',
+        'Mermaid-diagram-first architecture review. Visualise before you build.',
+      ],
+    },
+    {
+      title: 'Revenue infrastructure',
+      icon: 'TrendingUp',
+      items: [
+        'Pilot-first commercial motion. €22.5K fixed fee for 4–8 weeks to prove value on a live artifact.',
+        'Production conversion path to €120K ACV. Departmental deployment with monthly equivalent of €10K.',
+        'Expansion to €150K–€250K+ through additional workflows (DataRights, Declare) and teams.',
+        'Jira and Slack delivery adapters in production. Evidence page and PDF export as standard.',
+        'Pricing logic anchored to value: one avoided change-cycle failure justifies the annual contract.',
+        'Target accounts tracked, pipeline staged, and conversion rate monitored from week one.',
+      ],
+    },
+    {
+      title: 'Governance and buyer trust',
+      icon: 'ShieldCheck',
+      items: [
+        'Every workflow run preserves a full audit trail: source artifacts, evidence sections, review state, delivery events.',
+        'Human review gate before any downstream delivery. No autonomous production action without approval.',
+        'Evidence page and PDF artifact generated on every completed run for governance and audit.',
+        'Designed for bank-friendly deployment postures: controlled environments, local processing where required.',
+        'Compliance-aware output language. The system identifies its confidence level and flags what is inferred.',
+        'GDPR and data-handling awareness built into artifact processing from the start.',
+      ],
+    },
+  ],
+}
 
 // Week 1 content: Market Definition & Market Size
 export const DEFINITION = {

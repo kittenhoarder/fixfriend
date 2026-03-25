@@ -1,27 +1,33 @@
 import { useState, useEffect, useRef } from 'react'
 import Sidebar from './components/Sidebar'
-import ThesisSection from './components/sections/ThesisSection'
+import OverviewSection from './components/sections/OverviewSection'
 import LeanExitSection from './components/sections/LeanExitSection'
 import MarketSection from './components/sections/MarketSection'
 import DefinitionSection from './components/sections/DefinitionSection'
 import ProductSection from './components/sections/ProductSection'
 import AcquirersSection from './components/sections/AcquirersSection'
+import FinancialSection from './components/sections/FinancialSection'
+import FunnelSection from './components/sections/FunnelSection'
+import OperationsSection from './components/sections/OperationsSection'
 import AboutModal from './components/AboutModal'
 
 const THEME_STORAGE_KEY = 'fixfriend-theme'
 
 const SECTIONS = {
-  thesis: ThesisSection,
-  leanExit: LeanExitSection,
-  market: MarketSection,
-  definition: DefinitionSection,
+  overview: OverviewSection,
   product: ProductSection,
+  sales: FunnelSection,
+  financials: FinancialSection,
+  operations: OperationsSection,
+  market: MarketSection,
+  leanExit: LeanExitSection,
+  definition: DefinitionSection,
   acquirers: AcquirersSection,
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('thesis')
-  const [visibleTab, setVisibleTab] = useState('thesis')
+  const [activeTab, setActiveTab] = useState('overview')
+  const [visibleTab, setVisibleTab] = useState('overview')
   const [transitionState, setTransitionState] = useState('idle') // 'idle' | 'exiting' | 'entering'
   const [aboutOpen, setAboutOpen] = useState(false)
   const [theme, setTheme] = useState(() => {
