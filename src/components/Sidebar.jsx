@@ -11,6 +11,7 @@ import {
   Target,
   LineChart,
   Settings,
+  ArrowRight,
 } from 'lucide-react'
 import { NAV_TABS } from '../data/content'
 
@@ -47,7 +48,7 @@ function NavButton({ isActive, children, ...props }) {
 const buyerTabs = NAV_TABS.filter((t) => t.group === 'buyer')
 const strategyTabs = NAV_TABS.filter((t) => t.group === 'strategy')
 
-export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, onThemeToggle }) {
+export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, onThemeToggle, onSwitchPortal }) {
   return (
     <>
       <aside
@@ -197,6 +198,23 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
             </span>
             <span className="font-mono text-[11px] font-medium tracking-[0.16em]">ABOUT</span>
           </NavButton>
+          {onSwitchPortal && (
+            <NavButton isActive={false} onClick={() => onSwitchPortal('acquirer')}>
+              <span
+                className="flex h-8 w-8 items-center justify-center border"
+                style={{
+                  borderColor: 'var(--border-subtle)',
+                  color: 'var(--accent)',
+                  backgroundColor: 'var(--accent-softer)',
+                }}
+              >
+                <ArrowRight size={15} strokeWidth={1.8} />
+              </span>
+              <span className="font-mono text-[11px] font-medium tracking-[0.16em]" style={{ color: 'var(--accent)' }}>
+                ACQUIRER PORTAL
+              </span>
+            </NavButton>
+          )}
         </div>
       </aside>
 
@@ -301,6 +319,20 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
           >
             <User size={14} strokeWidth={1.8} />
           </button>
+          {onSwitchPortal && (
+            <button
+              onClick={() => onSwitchPortal('acquirer')}
+              className="flex h-10 w-10 items-center justify-center border transition-colors"
+              style={{
+                borderColor: 'var(--border-subtle)',
+                color: 'var(--accent)',
+                backgroundColor: 'var(--accent-softer)',
+              }}
+              title="Acquirer Portal"
+            >
+              <ArrowRight size={14} strokeWidth={1.8} />
+            </button>
+          )}
         </div>
       </div>
     </>
