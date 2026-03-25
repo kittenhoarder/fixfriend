@@ -25,7 +25,7 @@ const SECTIONS = {
   acquirers: AcquirersSection,
 }
 
-export default function App() {
+export default function App({ onSwitchPortal }) {
   const [activeTab, setActiveTab] = useState('overview')
   const [visibleTab, setVisibleTab] = useState('overview')
   const [transitionState, setTransitionState] = useState('idle') // 'idle' | 'exiting' | 'entering'
@@ -68,6 +68,7 @@ export default function App() {
         onAboutOpen={() => setAboutOpen(true)}
         theme={theme}
         onThemeToggle={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+        onSwitchPortal={onSwitchPortal}
       />
 
       <main className="app-main-shell flex-1 overflow-y-auto overflow-x-hidden">
