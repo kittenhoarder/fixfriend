@@ -938,42 +938,6 @@ export const BRAND = {
   ],
 }
 
-export const CONTINUOUS_CHANGE_SIGNALS = {
-  title: 'CONTINUOUS CHANGE SIGNALS',
-  intro:
-    'Electronic trading operations are shaped by a steady stream of external and internal change. SynthAgents monitors the signal, turns it into reviewed actions, and keeps the evidence trail live.',
-  items: [
-    {
-      title: 'Venue and broker notices',
-      detail:
-        'Trading venues and brokers regularly publish release notes, onboarding guides, deprecations, and behavioral changes that affect FIX connectivity and operational readiness.',
-      sourceLabel: 'FIX Trading Community',
-      sourceUrl: 'https://www.fixtrading.org/',
-    },
-    {
-      title: 'Standards updates (FIX / FIXP)',
-      detail:
-        'Protocol standards evolve and interpretation differences appear in the real world. Teams need a controlled way to translate updates into impact, test plans, and delivery.',
-      sourceLabel: 'FIX Repository',
-      sourceUrl: 'https://fixrepository.org/',
-    },
-    {
-      title: 'Regulatory and control requirements',
-      detail:
-        'Compliance obligations and internal controls introduce documentation, attestation, and evidence requirements that need to be satisfied continuously, not retroactively.',
-      sourceLabel: 'ESMA',
-      sourceUrl: 'https://www.esma.europa.eu/',
-    },
-    {
-      title: 'Internal platform change cycles',
-      detail:
-        'Internal releases, migrations, and vendor upgrades create a constant queue of operational work. The difference is whether it is tracked, reviewed, and auditable end-to-end.',
-      sourceLabel: 'Change management (ITIL overview)',
-      sourceUrl: 'https://www.axelos.com/best-practice-solutions/itil',
-    },
-  ],
-}
-
 export const FINANCIAL_MODEL = {
   currency: '€',
   startingCash: 400000,
