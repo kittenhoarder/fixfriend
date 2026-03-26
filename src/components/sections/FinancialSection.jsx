@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { FINANCIAL_MODEL, COMPETITOR_BENCHMARKS } from '../../data/content'
-import SectionHeader from '../ui/SectionHeader'
+import SectionLayout from '../ui/SectionLayout'
 
 function fmt(n) {
   if (n === 0) return '—'
@@ -163,11 +163,8 @@ export default function FinancialSection() {
   const { months, pricing, costs, breakEven, baseCase, currency } = FINANCIAL_MODEL
 
   return (
-    <div className="flex flex-col h-full" style={{ paddingTop: '62px' }}>
-      <SectionHeader label="FINANCIALS" />
-
-      <div className="flex-1 overflow-y-auto">
-        <div className="content-rail px-6 py-8 max-w-6xl mx-auto space-y-10">
+    <SectionLayout label="FINANCIALS">
+      <div className="content-rail px-6 py-8 max-w-6xl mx-auto space-y-10">
 
           {/* Headline stats */}
           <div>
@@ -352,7 +349,6 @@ export default function FinancialSection() {
           </div>
 
         </div>
-      </div>
-    </div>
+    </SectionLayout>
   )
 }

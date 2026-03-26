@@ -16,6 +16,7 @@ import {
   PRODUCT_CONTEXT_CORE,
   PRODUCT_OPERATING_MODEL,
 } from '../../data/content'
+import { TONE_STYLES } from '../../data/toneStyles'
 
 const SCENARIOS = [
   { id: 'minor', label: 'Minor Change Autopilot' },
@@ -39,48 +40,22 @@ const OUTPUT_ICONS = {
 }
 
 function MetricCard({ label, value, tone = 'neutral' }) {
-  const toneStyles = {
-    neutral: {
-      borderColor: 'var(--border-subtle)',
-      valueColor: 'var(--text-primary)',
-      background: 'var(--surface)',
-    },
-    success: {
-      borderColor: 'var(--status-success-border)',
-      valueColor: 'var(--status-success)',
-      background: 'var(--status-success-soft)',
-    },
-    warning: {
-      borderColor: 'var(--status-warning-border)',
-      valueColor: 'var(--status-warning)',
-      background: 'var(--status-warning-soft)',
-    },
-    info: {
-      borderColor: 'var(--accent-border-soft)',
-      valueColor: 'var(--accent)',
-      background: 'var(--accent-softer)',
-    },
-    danger: {
-      borderColor: 'var(--status-danger-border)',
-      valueColor: 'var(--status-danger)',
-      background: 'var(--status-danger-soft)',
-    },
-  }
-
-  const styles = toneStyles[tone] || toneStyles.neutral
+  const styles = TONE_STYLES[tone] || TONE_STYLES.neutral
+  // neutral tone uses text-primary for the value to keep it prominent
+  const valueColor = tone === 'neutral' ? 'var(--text-primary)' : styles.color
 
   return (
     <div
       className="border px-3 py-3"
       style={{
         borderColor: styles.borderColor,
-        background: styles.background,
+        background: styles.backgroundColor,
       }}
     >
       <div className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: 'var(--muted)' }}>
         {label}
       </div>
-      <div className="font-serif text-[1.45rem] leading-none mt-2" style={{ color: styles.valueColor }}>
+      <div className="font-serif text-[1.45rem] leading-none mt-2" style={{ color: valueColor }}>
         {value}
       </div>
     </div>
