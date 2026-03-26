@@ -908,7 +908,7 @@ export const BRAND = {
     tagline: 'Turning trading tech ops complexity into clear action.',
     description: 'SynthAgents is the product umbrella within PRDCTV.WORK focused on capital markets operational workflows. Each product does one job well: ingest a dense artifact, surface what matters, generate a reviewed output, and deliver it into the systems teams already use.',
   },
-  mvpDefinition: 'Institutional trading firms operationalizing external trading-technology changes face slow, fragmented assessment, leading to delays and risk, caused by complex vendor artifacts handled through disconnected workflows, despite relying on SMEs and spreadsheets.',
+  mvpDefinition: 'Institutional trading firms must continuously update and manage software to enable ongoing operations and comply with strict regulations. This is a time consuming and complex manual process.',
   positioningStatement: 'The workflow control layer between operational artifacts and governed execution in capital markets.',
   products: [
     {
