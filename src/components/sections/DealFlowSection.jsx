@@ -21,6 +21,7 @@ export default function DealFlowSection() {
       <SectionHeader
         label="DEAL FLOW"
         hideOnMobile
+        compact
         right={(
           <div className="ml-auto hidden md:flex items-center gap-4">
             {[

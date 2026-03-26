@@ -158,6 +158,7 @@ export default function ProductSection({ theme = 'dark' }) {
       <SectionHeader
         label="PRODUCT"
         hideOnMobile
+        compact
         right={(
           <span
             className="font-mono text-xs px-2.5 py-1.5 rounded-sm"

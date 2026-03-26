@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
-import { X, Linkedin, ArrowRight } from 'lucide-react'
-import { ABOUT } from '../data/content'
+import { X } from 'lucide-react'
+import { THESIS } from '../data/content'
+import FoundingTeam from './ui/FoundingTeam'
 
 export default function AboutModal({ onClose }) {
   useEffect(() => {
@@ -24,7 +25,7 @@ export default function AboutModal({ onClose }) {
       }}
     >
       <div
-        className="w-full max-w-xl border animate-fade-in-section overflow-hidden"
+        className="w-full max-w-2xl border animate-fade-in-section overflow-hidden"
         style={{
           background:
             'linear-gradient(180deg, rgba(255,255,255,0.025), transparent), var(--surface3)',
@@ -38,16 +39,13 @@ export default function AboutModal({ onClose }) {
         >
           <div>
             <div className="eyebrow mb-2" style={{ color: 'var(--text-tertiary)' }}>
-              Founder
+              Founding team
             </div>
             <div className="font-serif text-[1.9rem] leading-none" style={{ color: 'var(--text-primary)' }}>
-              {ABOUT.name}
+              {THESIS.founderName}
             </div>
-            <div
-              className="text-xs mt-2"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              {ABOUT.title}
+            <div className="text-xs mt-2" style={{ color: 'var(--text-secondary)' }}>
+              {THESIS.founderSummary}
             </div>
           </div>
           <button
@@ -64,91 +62,11 @@ export default function AboutModal({ onClose }) {
         </div>
 
         <div className="px-6 py-5">
-          <div className="mb-5">
-            <div
-              className="font-mono text-xs tracking-widest mb-3 uppercase"
-              style={{ color: 'var(--text-secondary)', letterSpacing: '0.1em', fontSize: '10px' }}
-            >
-              Career
-            </div>
-            <div className="flex flex-wrap items-center gap-1">
-              {ABOUT.career.map((role, i) => (
-                <span key={role} className="flex items-center gap-1">
-                  <span
-                    className="font-mono text-xs px-2.5 py-1.5 rounded-sm border"
-                    style={{
-                      color: i === ABOUT.career.length - 1 ? 'var(--status-success)' : 'var(--text-secondary)',
-                      borderColor: i === ABOUT.career.length - 1 ? 'var(--status-success-border)' : 'var(--border-subtle)',
-                      backgroundColor: i === ABOUT.career.length - 1 ? 'var(--status-success-soft)' : 'var(--surface)',
-                    }}
-                  >
-                    {role}
-                  </span>
-                  {i < ABOUT.career.length - 1 && (
-                    <ArrowRight size={10} style={{ color: 'var(--text-secondary)' }} />
-                  )}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <p
-            className="text-sm leading-relaxed mb-5"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            {ABOUT.summary}
-          </p>
-
-          <div className="mb-5">
-            <div
-              className="font-mono text-xs tracking-widest mb-3 uppercase"
-              style={{ color: 'var(--accent)', letterSpacing: '0.1em', fontSize: '10px' }}
-            >
-              Direct Experience — Compliance Evidence Gap
-            </div>
-            <ul className="space-y-2">
-              {ABOUT.experience.map((item, i) => (
-                <li key={i} className="flex items-center gap-2">
-                  <span style={{ color: 'var(--accent)' }}>•</span>
-                  <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div
-            className="px-4 py-4 border mb-5"
-            style={{
-              borderColor: 'var(--accent-border-soft)',
-              background:
-                'linear-gradient(135deg, rgba(249,115,22,0.09), rgba(59,130,246,0.06) 58%, transparent), var(--surface)',
-            }}
-          >
-            <p
-              className="font-serif text-[1.35rem] leading-relaxed italic"
-              style={{ color: 'var(--text-primary)' }}
-            >
-              &ldquo;{ABOUT.closing}&rdquo;
-            </p>
-          </div>
-
-          <div className="flex gap-3">
-            <a
-              href={ABOUT.linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button-outline flex items-center gap-2 px-4 py-2.5 text-sm font-medium"
-              style={{
-                color: 'var(--accent)',
-                borderColor: 'var(--accent-border-soft)',
-              }}
-            >
-              <Linkedin size={14} />
-              LinkedIn
-            </a>
-          </div>
+          <FoundingTeam
+            compact
+            title={null}
+            intro="Owen brings the trading infrastructure depth, Chris brings venture strategy, and Varsha brings engineering execution."
+          />
         </div>
       </div>
     </div>

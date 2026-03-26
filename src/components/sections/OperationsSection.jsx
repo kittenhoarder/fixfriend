@@ -14,7 +14,7 @@ export default function OperationsSection() {
   const { headline, subheadline, pillars } = OPERATIONS_MODEL
 
   return (
-    <SectionLayout label="OPERATIONS">
+    <SectionLayout label="OPERATIONS" mobileNav headerProps={{ compact: true }}>
       <div className="content-rail px-6 py-8 max-w-4xl mx-auto">
 
           {/* Headline */}

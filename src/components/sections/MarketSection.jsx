@@ -18,17 +18,18 @@ export default function MarketSection({ theme }) {
       style={{ minHeight: '100vh' }}
     >
       <div
-        className="px-6 py-3 border-b flex flex-wrap items-center justify-center gap-2 flex-shrink-0 backdrop-blur-sm"
+        className="px-4 sm:px-6 py-2 border-b flex flex-wrap items-center gap-2 flex-shrink-0 backdrop-blur-sm"
         style={{
           borderColor: 'var(--border-subtle)',
           background: 'linear-gradient(180deg, rgba(255,255,255,0.02), transparent), rgba(5,5,5,0.18)',
         }}
       >
-        <span className="font-mono text-xs hidden sm:inline" style={{ color: 'var(--text-secondary)' }}>View:</span>
+        <span className="font-mono text-[11px] tracking-widest" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.14em' }}>MARKET</span>
+        <span className="font-mono text-[10px] hidden sm:inline" style={{ color: 'var(--text-secondary)' }}>View:</span>
         <button
           type="button"
           onClick={() => setViewMode('interactive')}
-          className="font-mono text-xs px-3 py-2 border transition-colors"
+          className="font-mono text-[11px] px-2.5 py-1.5 border transition-colors"
           style={{
             borderColor: viewMode === 'interactive' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
             color: viewMode === 'interactive' ? 'var(--accent)' : 'var(--text-secondary)',
@@ -42,7 +43,7 @@ export default function MarketSection({ theme }) {
         <button
           type="button"
           onClick={() => setViewMode('fullgraph')}
-          className="font-mono text-xs px-3 py-2 border transition-colors"
+          className="font-mono text-[11px] px-2.5 py-1.5 border transition-colors"
           style={{
             borderColor: viewMode === 'fullgraph' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
             color: viewMode === 'fullgraph' ? 'var(--accent)' : 'var(--text-secondary)',
@@ -56,36 +57,36 @@ export default function MarketSection({ theme }) {
       </div>
 
       <div
-        className="md:hidden px-4 py-2 border-b flex-shrink-0"
+        className="md:hidden px-4 py-1.5 border-b flex-shrink-0"
         style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}
       >
         <div className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
           {CONTINUOUS_CHANGE_SIGNALS.title}
         </div>
-        <p className="text-xs leading-relaxed mt-1" style={{ color: 'var(--text-secondary)' }}>
+        <p className="text-[11px] leading-snug mt-1" style={{ color: 'var(--text-secondary)' }}>
           Extended hours, longer clearing windows, and workflow automation increase the need for constant-change readiness.
         </p>
       </div>
 
       <div
-        className="hidden md:block px-6 py-3 border-b flex-shrink-0"
+        className="hidden md:block px-4 sm:px-6 py-2 border-b flex-shrink-0"
         style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+          <div className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
             {CONTINUOUS_CHANGE_SIGNALS.title}
           </div>
-          <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
+          <p className="text-xs leading-relaxed mt-1.5" style={{ color: 'var(--text-secondary)' }}>
             {CONTINUOUS_CHANGE_SIGNALS.intro}
           </p>
-          <div className="flex flex-wrap gap-2 mt-3">
+          <div className="flex flex-wrap gap-2 mt-2">
             {CONTINUOUS_CHANGE_SIGNALS.items.map((item) => (
               <a
                 key={item.title}
                 href={item.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-[11px] px-3 py-2 border"
+                className="font-mono text-[10px] px-2.5 py-1.5 border"
                 style={{
                   color: 'var(--text-secondary)',
                   borderColor: 'var(--border-subtle)',

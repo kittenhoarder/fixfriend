@@ -44,7 +44,7 @@ export default function FunnelSection() {
   const maxCount = stages[0].count
 
   return (
-    <SectionLayout label="SALES">
+    <SectionLayout label="SALES" mobileNav headerProps={{ compact: true }}>
       <div className="content-rail px-6 py-8 max-w-5xl mx-auto space-y-10">
 
           {/* Funnel */}
@@ -140,6 +140,10 @@ export default function FunnelSection() {
             <p className="font-mono text-[10px] tracking-widest mb-4" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.16em' }}>
               ACTIVE BUYER CONVERSATIONS
             </p>
+            <p className="text-sm leading-relaxed mb-4 max-w-4xl" style={{ color: 'var(--text-secondary)' }}>
+              Interview evidence from trading-tech operators, buyers, and product leaders shows the same recurring pattern:
+              fragmented context, certification drag, external dependency risk, and expensive evidence rebuilds.
+            </p>
             <div className="space-y-4">
               {activeBuyers.map((buyer, i) => (
                 <article
@@ -161,6 +165,21 @@ export default function FunnelSection() {
                   <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     {buyer.note}
                   </p>
+                  {buyer.quotes?.length ? (
+                    <div className="mt-4 space-y-3">
+                      {buyer.quotes.map((quote) => (
+                        <div
+                          key={quote}
+                          className="pl-3 border-l-2"
+                          style={{ borderColor: 'var(--border-subtle)' }}
+                        >
+                          <p className="text-sm italic leading-relaxed" style={{ color: 'var(--text-primary)' }}>
+                            &ldquo;{quote}&rdquo;
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
                 </article>
               ))}
             </div>

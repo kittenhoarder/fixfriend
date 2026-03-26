@@ -26,10 +26,10 @@ export const THESIS = {
       detail: 'Extended hours and clearing windows increase the need for constant-change readiness',
     },
   ],
-  founderName: 'Owen E. Perry',
-  founderTitle: 'Technical Product & Trading Technology Leader',
+  founderName: 'Owen E. Perry · Chris Starns · Varsha Jaiswal',
+  founderTitle: 'Founding team',
   founderSummary:
-    '14 years in European electronic trading infrastructure. Technical product leader specialising in trading infrastructure at inflection points.',
+    'A founding team combining trading technology, venture strategy, and scalable engineering to turn change chaos into controlled execution.',
   linkedinUrl: 'https://linkedin.com/in/oweneperry',
   buyerOneLiner:
     'FIXFriend turns venue change notices into bounded autonomous execution, coordinated human projects, and audit-ready evidence inside the systems teams already use.',
@@ -73,6 +73,29 @@ export const THESIS = {
     ],
   },
 }
+
+export const FOUNDERS = [
+  {
+    name: 'Owen E. Perry',
+    title: 'Founder, product & sales',
+    summary:
+      '14 years in European electronic trading infrastructure, building and shipping revenue-critical systems across FactSet, Nasdaq OMX, Itiviti, Quod Financial, Broadridge, Tradeteq, and AiX. BSc from the University of San Francisco; PGDip from Queen Mary University of London.',
+    linkLabel: 'LinkedIn',
+    linkUrl: 'https://linkedin.com/in/oweneperry',
+  },
+  {
+    name: 'Chris Starns',
+    title: 'Co-founder, ops & strats',
+    summary:
+      'Venture strategist helping startups and large brands launch new products and services, with hard-won experience from building, exiting, and failing multiple startup projects. BSc from Nottingham Trent University in Business & Entrepreneurship.',
+  },
+  {
+    name: 'Varsha Jaiswal',
+    title: 'Co-founder, engineering',
+    summary:
+      '7+ years building and scaling SaaS platforms, distributed systems, and React / NestJS / React Native products. MSc Computer Science from Queen Mary University of London.',
+  },
+]
 
 export const CONTINUOUS_CHANGE_SIGNALS = {
   title: 'Continuous-change signals',
@@ -1016,12 +1039,12 @@ export const FINANCIAL_MODEL = {
 
 export const COMPETITOR_BENCHMARKS = [
   {
-    name: 'Zapier',
-    category: 'Horizontal automation',
-    pricing: 'Professional $19.99/mo; Team $69/mo; Enterprise custom',
-    implication: 'Shows the low-end self-serve floor, not enterprise control software.',
-    gap: 'No domain intelligence, no evidence grounding, no audit trail for regulated workflows.',
-    sourceUrl: 'https://zapier.com/pricing',
+    name: 'Duco',
+    category: 'Financial data automation',
+    pricing: 'Enterprise / custom; public pricing tool',
+    implication: 'Shows regulated financial-operations software sustaining serious enterprise ACV.',
+    gap: 'Operational data automation and reconciliation, not a venue-change response or evidence layer.',
+    sourceUrl: 'https://pricingtool.duco.eu/',
   },
   {
     name: 'Tines',
@@ -1054,14 +1077,6 @@ export const COMPETITOR_BENCHMARKS = [
     implication: 'Supports value-based ROI-led enterprise sell.',
     gap: 'Privacy and data governance focus; not designed for trading operations change readiness.',
     sourceUrl: 'https://www.onetrust.com/pricing/',
-  },
-  {
-    name: 'Duco',
-    category: 'Financial data automation',
-    pricing: 'Two enterprise agreements totalled over $27M in total contract value',
-    implication: 'Budget signal that large financial-operations automation deals exist.',
-    gap: 'Data reconciliation focus; SynthAgents targets the change-readiness and governance workflow layer.',
-    sourceUrl: 'https://du.co/duco-announces-record-financial-year-and-two-major-new-enterprise-agreements/',
   },
 ]
 
@@ -1106,20 +1121,40 @@ export const SALES_FUNNEL = {
   ],
   activeBuyers: [
     {
-      name: 'Virtu Financial Europe',
-      contact: 'CEO',
-      type: 'Key buyer',
-      status: 'Discovery call completed',
+      name: 'Virtu Europe',
+      contact: 'David Furlong, CEO',
+      type: 'Economic buyer',
+      status: 'Discovery completed',
       statusTone: 'success',
-      note: 'Conversation on organisational problems and potential fit. Virtu Financial Europe is the European subsidiary, not the global entity.',
+      note: 'Validated that the pain is structural and expensive, not just workflow friction. The biggest constraints sit in external infrastructure, especially exchange constraints, market data fees, and post-trade fragmentation.',
+      quotes: [
+        'The biggest problems are usually external. Internal systems are fine until the exchange, market data, or post-trade landscape becomes the constraint.',
+        'You do not put a new vendor into a sensitive workflow unless it is already proven, bounded, and auditable.',
+      ],
+    },
+    {
+      name: 'Quod Financial',
+      contact: 'Ben Ernest-Jones, CPO',
+      type: 'Product buyer / strategic signal',
+      status: 'Interview + follow-up completed',
+      statusTone: 'success',
+      note: 'Validated that QA and handoff quality are bigger delivery bottlenecks than coding itself. Strong signal that vendors want agentic development, but are blocked by fragmented context across meetings, chat, email, and team knowledge.',
+      quotes: [
+        'QA is the primary bottleneck, not coding.',
+        'We are still copying and pasting context between meetings, chat, email, and AI tools instead of giving the system one working bundle.',
+      ],
     },
     {
       name: 'Bjorn Haggstrom',
-      contact: 'Former EMEA Manager, trading software',
-      type: 'Key user / advisor',
-      status: 'Discovery call completed',
+      contact: 'Former EMEA Customer Success & Operations leader',
+      type: 'Operator / strategic advisor',
+      status: 'Interview + MVP demo completed',
       statusTone: 'success',
-      note: 'Provided insights on product fit and go-to-market challenges from a trading software distribution perspective.',
+      note: 'Validated recurring pain in software instability, complex upgrades, and lack of client self-service. Also signaled that the capability is likely more compelling as an embedded or acquired workflow layer than as a broad standalone platform.',
+      quotes: [
+        'The recurring pains are software instability, complex upgrades, and lack of client self-service.',
+        'This looks more like something a larger firm would buy to get the capability faster than build internally.',
+      ],
     },
     {
       name: 'LA-based Investment Manager',
@@ -2198,37 +2233,97 @@ export const INTERVIEW_TRACKER = [
     workflowStages: ['certification', 'rollout', 'evidence'],
     keyQuotes: [
       {
-        label: 'Strategy delay',
+        label: 'Market structure drag',
         painPoint: 'planningUncertainty',
         workflowStage: 'rollout',
         text:
-          'From the desk’s perspective, every month we wait for a new venue feature is a month we are running yesterday’s playbook against today’s market.',
+          'The issue is rarely the trade idea. It is the delay created when the venue, the protocol, or the release window changes faster than the desk can absorb it.',
       },
       {
-        label: 'Operational risk',
+        label: 'External dependency risk',
         painPoint: 'communication',
         workflowStage: 'trigger',
         text:
-          'What scares me is not ugly tooling; it’s when a protocol change slips through late and we’re effectively trading with half the instrumentation we thought we had.',
+          'The painful part is that the first real risk is often outside the desk. Once exchange or vendor change lands late, the whole rollout becomes a coordination problem.',
       },
       {
-        label: 'Certification bottlenecks',
+        label: 'Evidence trust',
         painPoint: 'testingAndSimulation',
         workflowStage: 'certification',
         text:
-          'Certification feels like a black box — we hear “waiting on venue” or “QA found something odd” and all we can do is push harder on the timeline.',
+          'A change is only real once the evidence is good enough for risk, operations, and the desk to trust it. Until then, everyone is still waiting.',
       },
       {
-        label: 'Exchange-side view',
+        label: 'Cost of slippage',
         painPoint: 'evidenceAndCertification',
         workflowStage: 'evidence',
         text:
-          'On the exchange side I saw how much energy goes into member certification, but we still struggled to get clean, comparable evidence from all our vendors.',
+          'By the time you add the buffer, the rework, and the sign-off loop, a small venue delay turns into a real cost item.',
       },
     ],
     followUp: [
       'Quantify P&L impact of delayed feature rollouts on the volatility desk.',
       'Clarify which parts of the certification flow traders would trust an agent system to touch.',
+    ],
+  },
+  {
+    id: 'igor-broadridge-connectivity',
+    name: 'Igor',
+    role: 'Principal Software Engineer & Market Connectivity Specialist',
+    company: 'Broadridge',
+    date: '2026-02',
+    channel: 'Video call',
+    userType: 'Connectivity engineer / integration owner',
+    buyerInfluence: 'High — influences vendor selection and implementation feasibility',
+    economicBuyerSignal: 'Indirect — validates the technical pain behind buy-versus-build decisions',
+    painRatings: {
+      communication: 'Medium',
+      protocolFragmentation: 'High',
+      testingAndSimulation: 'High',
+      connectivityAndEnvironment: 'High',
+      planningUncertainty: 'Medium',
+      evidenceAndCertification: 'High',
+    },
+    currentSolutions: [
+      'Venue-specific adapters and exception handling around standard FIX flows',
+      'Manual review of specs, release notes, and edge-case behavior before implementation',
+      'Regression harnesses and test credentials maintained per venue',
+    ],
+    budgetAuthority: 'Influencer',
+    workflowStages: ['trigger', 'context', 'certification', 'evidence'],
+    keyQuotes: [
+      {
+        label: 'Protocol nuance',
+        painPoint: 'protocolFragmentation',
+        workflowStage: 'context',
+        text:
+          'FIX is the starting point, not the answer. The real work is always in the venue quirks, session behaviour, and tag-level exceptions.',
+      },
+      {
+        label: 'Environment friction',
+        painPoint: 'connectivityAndEnvironment',
+        workflowStage: 'trigger',
+        text:
+          'The time sink is often getting the same setup in test, UAT, and production so everyone is looking at the same thing.',
+      },
+      {
+        label: 'Testing drag',
+        painPoint: 'testingAndSimulation',
+        workflowStage: 'certification',
+        text:
+          'A lot of the project time disappears into setup, credentials, and repeated edge-case testing rather than the actual implementation.',
+      },
+      {
+        label: 'Operational memory',
+        painPoint: 'evidenceAndCertification',
+        workflowStage: 'evidence',
+        text:
+          'What teams really need is a way to capture the spec, the exceptions, and the proof in one place instead of reconstructing it each time.',
+      },
+    ],
+    followUp: [
+      'Check whether a structured change pack would reduce the back-and-forth during implementation reviews.',
+      'Validate how much of the evidence trail could be generated from existing logs and release artifacts.',
     ],
   },
   {
@@ -2258,32 +2353,32 @@ export const INTERVIEW_TRACKER = [
     workflowStages: ['triage', 'context', 'certification', 'evidence'],
     keyQuotes: [
       {
-        label: 'Requirements churn',
+        label: 'Context fragmentation',
         painPoint: 'protocolFragmentation',
         workflowStage: 'context',
         text:
-          'Most of my life is translating a dense spec into something quants and engineers can actually act on, and then re-translating it when the venue tweaks the behaviour mid-stream.',
+          'Most of the work is translating a dense venue note into something quants, engineers, and trading can all act on without losing the edge cases.',
       },
       {
-        label: 'Backlog impact',
+        label: 'Backlog multiplication',
         painPoint: 'planningUncertainty',
         workflowStage: 'triage',
         text:
-          'A single venue change can spawn an entire mini-backlog: config, risk checks, strategy edge cases, regression coverage, client comms. None of that shows up in the original email.',
+          'A single change notice turns into config, risk checks, regression scope, and client comms. That extra work is never visible in the first email.',
       },
       {
-        label: 'Evidence burden',
+        label: 'Evidence reconstruction',
         painPoint: 'evidenceAndCertification',
         workflowStage: 'evidence',
         text:
-          'When compliance ask “prove we tested this properly”, we are stitching together Jira, logs, and screenshots. It is never one place, and it is never fun.',
+          'When compliance asks for proof, we are still stitching together Jira, logs, and screenshots after the fact.',
       },
       {
-        label: 'Ad-hoc tooling',
+        label: 'Automation opportunity',
         painPoint: 'testingAndSimulation',
         workflowStage: 'certification',
         text:
-          'For some venues we ended up with a parallel universe of internal test harnesses just to be confident we were still talking the same language.',
+          'If AI can draft the first pass with the right context attached, it would remove a lot of the coordination overhead before testing even starts.',
       },
     ],
     followUp: [
@@ -2315,7 +2410,7 @@ export const PAIN_MATRIX = {
       impact: 'High',
       summary:
         'Standard FIX hides venue- and asset-class-specific nuance behind custom tags and behaviours; each integration feels bespoke.',
-      interviewSupport: ['tom-bloomberg', 'arkady-squarepoint'],
+      interviewSupport: ['tom-bloomberg', 'igor-broadridge-connectivity', 'arkady-squarepoint'],
     },
     {
       id: 'testingAndCertification',
@@ -2324,7 +2419,7 @@ export const PAIN_MATRIX = {
       impact: 'High',
       summary:
         'Vendors either build simulators or lean on venues for test credentials, then absorb external QA work and certification churn.',
-      interviewSupport: ['tom-bloomberg', 'jim-nasdaq-vol-trader', 'arkady-squarepoint'],
+      interviewSupport: ['tom-bloomberg', 'jim-nasdaq-vol-trader', 'igor-broadridge-connectivity', 'arkady-squarepoint'],
     },
     {
       id: 'connectivityAndEnvironment',
@@ -2333,7 +2428,7 @@ export const PAIN_MATRIX = {
       impact: 'Medium',
       summary:
         'Internet, VPN, cross-connects, and non-prod environments add latency and uncertainty to change windows, especially across many venues.',
-      interviewSupport: ['tom-bloomberg'],
+      interviewSupport: ['tom-bloomberg', 'igor-broadridge-connectivity'],
     },
     {
       id: 'planningUncertainty',
@@ -2351,7 +2446,7 @@ export const PAIN_MATRIX = {
       impact: 'High',
       summary:
         'Evidence for regulators, venues, and clients is reconstructed after the fact from scattered systems instead of created continuously.',
-      interviewSupport: ['tom-bloomberg', 'jim-nasdaq-vol-trader', 'arkady-squarepoint'],
+      interviewSupport: ['tom-bloomberg', 'jim-nasdaq-vol-trader', 'igor-broadridge-connectivity', 'arkady-squarepoint'],
     },
   ],
   wedgeExplanation:

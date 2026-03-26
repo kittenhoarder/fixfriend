@@ -31,7 +31,7 @@ const ICON_MAP = {
 function NavButton({ isActive, children, ...props }) {
   return (
     <button
-      className="group w-full flex items-center gap-3 px-5 py-3 text-left transition-all duration-200"
+      className="group w-full flex items-center gap-2.5 px-4 py-2 text-left transition-all duration-200"
       style={{
         borderLeft: isActive ? '2px solid var(--amber)' : '2px solid transparent',
         background: isActive
@@ -95,7 +95,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
             return (
               <NavButton key={tab.id} isActive={isActive} onClick={() => onTabChange(tab.id)}>
                 <span
-                  className="flex h-8 w-8 items-center justify-center border transition-all duration-200"
+                  className="flex h-7 w-7 items-center justify-center border transition-all duration-200"
                   style={{
                     borderColor: isActive ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
                     backgroundColor: isActive ? 'var(--accent-softer)' : 'transparent',
@@ -103,10 +103,10 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
                     boxShadow: isActive ? 'inset 0 0 0 1px rgba(255,255,255,0.04)' : 'none',
                   }}
                 >
-                  <IconComponent size={15} strokeWidth={1.8} />
+                  <IconComponent size={13} strokeWidth={1.8} />
                 </span>
                 <span
-                  className="min-w-0 font-mono font-medium tracking-[0.12em] text-sm"
+                  className="min-w-0 font-mono font-medium tracking-[0.1em] text-[11px]"
                   style={{ color: isActive ? 'var(--text-primary)' : 'inherit' }}
                 >
                   {tab.label}
@@ -116,11 +116,11 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
           })}
 
           <div
-            className="mx-5 my-3 flex items-center gap-2"
+            className="mx-4 my-2 flex items-center gap-2"
             style={{ borderTop: '1px solid var(--border-subtle)' }}
           >
             <span
-              className="pt-3 font-mono text-[9px] tracking-[0.2em] uppercase"
+              className="pt-2 font-mono text-[9px] tracking-[0.18em] uppercase"
               style={{ color: 'var(--text-tertiary)' }}
             >
               STRATEGY & RESEARCH
@@ -133,7 +133,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
             return (
               <NavButton key={tab.id} isActive={isActive} onClick={() => onTabChange(tab.id)}>
                 <span
-                  className="flex h-8 w-8 items-center justify-center border transition-all duration-200"
+                  className="flex h-7 w-7 items-center justify-center border transition-all duration-200"
                   style={{
                     borderColor: isActive ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
                     backgroundColor: isActive ? 'var(--accent-softer)' : 'transparent',
@@ -141,10 +141,10 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
                     boxShadow: isActive ? 'inset 0 0 0 1px rgba(255,255,255,0.04)' : 'none',
                   }}
                 >
-                  <IconComponent size={15} strokeWidth={1.8} />
+                  <IconComponent size={13} strokeWidth={1.8} />
                 </span>
                 <span
-                  className="min-w-0 font-mono font-medium tracking-[0.12em] text-sm"
+                  className="min-w-0 font-mono font-medium tracking-[0.1em] text-[11px]"
                   style={{ color: isActive ? 'var(--text-primary)' : 'inherit' }}
                 >
                   {tab.label}
@@ -154,56 +154,56 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
           })}
         </nav>
 
-        <div className="py-4 border-t" style={{ borderColor: 'var(--border-subtle)' }}>
-          <NavButton
-            isActive={false}
-            onClick={onThemeToggle}
-            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            <span
-              className="flex h-8 w-8 items-center justify-center border"
-              style={{
-                borderColor: 'var(--border-subtle)',
-                color: 'var(--text-secondary)',
-                backgroundColor: 'var(--surface)',
-              }}
-            >
-              {theme === 'dark' ? <Sun size={15} strokeWidth={1.8} /> : <Moon size={15} strokeWidth={1.8} />}
-            </span>
-            <span className="font-mono text-[11px] font-medium tracking-[0.16em]">
-              {theme === 'dark' ? 'LIGHT MODE' : 'DARK MODE'}
-            </span>
-          </NavButton>
-          <NavButton isActive={false} onClick={onAboutOpen}>
-            <span
-              className="flex h-8 w-8 items-center justify-center border"
-              style={{
-                borderColor: 'var(--border-subtle)',
-                color: 'var(--text-secondary)',
-                backgroundColor: 'var(--surface)',
-              }}
-            >
-              <User size={15} strokeWidth={1.8} />
-            </span>
-            <span className="font-mono text-[11px] font-medium tracking-[0.16em]">ABOUT</span>
-          </NavButton>
-          {onSwitchPortal && (
+        <div className="py-2.5 border-t" style={{ borderColor: 'var(--border-subtle)' }}>
+          {onSwitchPortal ? (
             <NavButton isActive={false} onClick={() => onSwitchPortal('acquirer')}>
               <span
-                className="flex h-8 w-8 items-center justify-center border"
+                className="flex h-7 w-7 items-center justify-center border"
                 style={{
                   borderColor: 'var(--border-subtle)',
                   color: 'var(--accent)',
                   backgroundColor: 'var(--accent-softer)',
                 }}
               >
-                <ArrowRight size={15} strokeWidth={1.8} />
+                <ArrowRight size={13} strokeWidth={1.8} />
               </span>
-              <span className="font-mono text-[11px] font-medium tracking-[0.16em]" style={{ color: 'var(--accent)' }}>
+              <span className="font-mono text-[10px] font-medium tracking-[0.18em]" style={{ color: 'var(--accent)' }}>
                 ACQUIRER PORTAL
               </span>
             </NavButton>
-          )}
+          ) : null}
+          <NavButton isActive={false} onClick={onAboutOpen}>
+            <span
+              className="flex h-7 w-7 items-center justify-center border"
+              style={{
+                borderColor: 'var(--border-subtle)',
+                color: 'var(--text-secondary)',
+                backgroundColor: 'var(--surface)',
+              }}
+            >
+              <User size={13} strokeWidth={1.8} />
+            </span>
+            <span className="font-mono text-[10px] font-medium tracking-[0.18em]">ABOUT</span>
+          </NavButton>
+          <NavButton
+            isActive={false}
+            onClick={onThemeToggle}
+            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            <span
+              className="flex h-7 w-7 items-center justify-center border"
+              style={{
+                borderColor: 'var(--border-subtle)',
+                color: 'var(--text-secondary)',
+                backgroundColor: 'var(--surface)',
+              }}
+            >
+              {theme === 'dark' ? <Sun size={13} strokeWidth={1.8} /> : <Moon size={13} strokeWidth={1.8} />}
+            </span>
+            <span className="font-mono text-[10px] font-medium tracking-[0.18em]">
+              {theme === 'dark' ? 'LIGHT MODE' : 'DARK MODE'}
+            </span>
+          </NavButton>
         </div>
       </aside>
 
@@ -213,20 +213,20 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
         style={{
           backgroundColor: 'var(--surface2)',
           borderColor: 'var(--border-subtle)',
-          minHeight: '62px',
+          minHeight: '56px',
         }}
       >
-        <div className="flex items-center gap-3 px-3 py-2 w-full">
-          <div className="flex items-center gap-2 pr-3 border-r" style={{ borderColor: 'var(--border-subtle)' }}>
+        <div className="flex items-center gap-2 px-2.5 py-1.5 w-full">
+          <div className="flex items-center gap-2 pr-2.5 border-r" style={{ borderColor: 'var(--border-subtle)' }}>
             <div
-              className="h-10 w-10 border flex items-center justify-center flex-shrink-0 overflow-hidden"
+              className="h-9 w-9 border flex items-center justify-center flex-shrink-0 overflow-hidden"
               style={{
                 borderColor: 'var(--accent-border-soft)',
                 background: 'linear-gradient(135deg, rgba(249,115,22,0.18), rgba(59,130,246,0.08))',
                 color: 'var(--amber)',
               }}
             >
-              <SynthAgentLogo size={32} />
+              <SynthAgentLogo size={28} />
             </div>
             <div>
               <div className="font-serif text-base leading-none" style={{ color: 'var(--text-primary)' }}>
@@ -246,12 +246,12 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
               id="mobile-section-select"
               value={activeTab}
               onChange={(e) => onTabChange(e.target.value)}
-              className="w-full font-mono text-[11px] px-3 py-2 border outline-none"
+              className="w-full font-mono text-[10px] px-2.5 py-1.5 border outline-none"
               style={{
                 backgroundColor: 'var(--surface)',
                 borderColor: 'var(--border-subtle)',
                 color: 'var(--text-secondary)',
-                letterSpacing: '0.12em',
+                letterSpacing: '0.1em',
               }}
             >
               <optgroup label="PRODUCT">
@@ -273,7 +273,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
 
           <button
             onClick={onThemeToggle}
-            className="flex h-10 w-10 items-center justify-center border transition-colors"
+            className="flex h-9 w-9 items-center justify-center border transition-colors"
             style={{
               borderColor: 'var(--border-subtle)',
               color: 'var(--text-secondary)',
@@ -281,12 +281,12 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
             }}
             title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
           >
-            {theme === 'dark' ? <Sun size={14} strokeWidth={1.8} /> : <Moon size={14} strokeWidth={1.8} />}
+            {theme === 'dark' ? <Sun size={13} strokeWidth={1.8} /> : <Moon size={13} strokeWidth={1.8} />}
           </button>
 
           <button
             onClick={onAboutOpen}
-            className="flex h-10 w-10 items-center justify-center border transition-colors"
+            className="flex h-9 w-9 items-center justify-center border transition-colors"
             style={{
               borderColor: 'var(--border-subtle)',
               color: 'var(--text-secondary)',
@@ -294,22 +294,8 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
             }}
             title="About"
           >
-            <User size={14} strokeWidth={1.8} />
+            <User size={13} strokeWidth={1.8} />
           </button>
-          {onSwitchPortal && (
-            <button
-              onClick={() => onSwitchPortal('acquirer')}
-              className="flex h-10 w-10 items-center justify-center border transition-colors"
-              style={{
-                borderColor: 'var(--border-subtle)',
-                color: 'var(--accent)',
-                backgroundColor: 'var(--accent-softer)',
-              }}
-              title="Acquirer Portal"
-            >
-              <ArrowRight size={14} strokeWidth={1.8} />
-            </button>
-          )}
         </div>
       </div>
     </>

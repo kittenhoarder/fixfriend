@@ -4,8 +4,8 @@ export default function SectionHeader({ index, label, right, hideOnMobile, compa
   return (
     <div
       className={[
-        'px-6 border-b flex flex-wrap items-center gap-3 flex-shrink-0 backdrop-blur-sm',
-        compact ? 'py-3' : 'py-4',
+        'px-4 sm:px-6 border-b flex flex-wrap items-center gap-2 flex-shrink-0 backdrop-blur-sm',
+        compact ? 'py-2.5' : 'py-3',
         hideOnMobile ? 'hidden lg:flex' : '',
       ].filter(Boolean).join(' ')}
       style={{
@@ -14,14 +14,14 @@ export default function SectionHeader({ index, label, right, hideOnMobile, compa
       }}
     >
       {showLeft ? (
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <span
-            className="inline-block h-px w-5"
+            className="inline-block h-px w-4"
             style={{ background: 'linear-gradient(90deg, var(--amber), transparent)' }}
           />
           {index ? (
             <span
-              className="font-mono text-xs tracking-widest"
+              className="font-mono text-[11px] tracking-widest"
               style={{ color: 'var(--muted)', letterSpacing: '0.12em' }}
             >
               {index}
@@ -29,7 +29,7 @@ export default function SectionHeader({ index, label, right, hideOnMobile, compa
           ) : null}
           {label != null && label !== '' ? (
             <span
-              className={`font-mono text-xs tracking-widest ${index ? 'ml-2' : ''}`}
+              className={`font-mono text-[11px] tracking-widest ${index ? 'ml-1.5' : ''}`}
               style={{ color: 'var(--text-secondary)', letterSpacing: '0.16em' }}
             >
               {label}

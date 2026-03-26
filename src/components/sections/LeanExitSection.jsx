@@ -289,8 +289,9 @@ export default function LeanExitSection({ theme = 'dark' }) {
       <SectionHeader
         label="LEAN EXIT"
         hideOnMobile
+        compact
         right={(
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5">
             <StatusPill tone="success">Lean exit</StatusPill>
             <StatusPill tone="info">Strategic-fit method</StatusPill>
             <StatusPill tone="warning">Vendor-side wedge</StatusPill>

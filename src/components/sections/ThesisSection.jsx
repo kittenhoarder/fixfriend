@@ -3,6 +3,7 @@ import { CONTINUOUS_CHANGE_SIGNALS, THESIS } from '../../data/content'
 import StatusPill from '../ui/StatusPill'
 import SynthAgentLogo from '../ui/SynthAgentLogo'
 import LeanExitDownloads from '../LeanExitDownloads'
+import FoundingTeam from '../ui/FoundingTeam'
 
 const panelShell = {
   background:
@@ -164,7 +165,7 @@ export default function ThesisSection({ onNavigate }) {
             style={{ color: 'var(--text-secondary)' }}
           >
             <Linkedin size={14} />
-            Founder profile
+            Lead founder
           </a>
         </div>
 
@@ -224,34 +225,10 @@ export default function ThesisSection({ onNavigate }) {
 
       <hr className="border-t mb-8" style={{ borderColor: 'var(--border-subtle)' }} />
 
-      <section>
-        <span className="font-mono text-xs font-medium tracking-wider block mb-4" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.1em' }}>
-          ABOUT THE FOUNDER
-        </span>
-        <article className="panel-shell p-5 flex flex-col sm:flex-row sm:items-start gap-4" style={{ borderColor: 'var(--border-subtle)' }}>
-          <div className="flex-1">
-            <p className="font-serif text-[1.7rem] leading-none mb-2" style={{ color: 'var(--text-primary)' }}>
-              {THESIS.founderName}
-            </p>
-            <p className="text-xs mb-3" style={{ color: 'var(--text-tertiary)' }}>
-              {THESIS.founderTitle}
-            </p>
-            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              {THESIS.founderSummary}
-            </p>
-          </div>
-          <a
-            href={THESIS.linkedinUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button-outline flex items-center gap-1.5 px-3 py-2 text-xs shrink-0"
-            style={{ color: 'var(--accent)', borderColor: 'var(--accent-border-soft)' }}
-          >
-            <Linkedin size={12} />
-            LinkedIn
-          </a>
-        </article>
-      </section>
+      <FoundingTeam
+        className="w-full"
+        intro="FIXFriend is built by a founding trio combining deep trading infrastructure context with venture strategy and scalable engineering."
+      />
     </section>
   )
 }
