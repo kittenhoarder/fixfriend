@@ -239,7 +239,7 @@ export const MARKET_DEFAULT_DETAIL = {
 export const GAP = {
   today: {
     title: 'TODAY',
-    subtitle: 'The manual venue-change scramble',
+    subtitle: 'Manual coordination and evidence rebuilds',
     tint: 'red',
     steps: [
       {
@@ -900,15 +900,15 @@ export const NAV_TABS = [
 export const BRAND = {
   studio: {
     name: 'PRDCTV.WORK',
-    tagline: 'Builds focused software that turns complexity into clear action.',
+    tagline: 'Builds software that transforms complexity into clear action.',
     about: 'prdctv.work started from a simple observation: most people and teams are not short on information, tools, or ambition. They are short on clarity — a clear view of what matters, what to do next, and what can be ignored.',
   },
   umbrella: {
     name: 'SynthAgents',
-    tagline: 'Helps capital markets teams turn operational complexity into clear, reviewed action.',
+    tagline: 'Turning trading technology operations complexity into clear, reviewed action.',
     description: 'SynthAgents is the product umbrella within PRDCTV.WORK focused on capital markets operational workflows. Each product does one job well: ingest a dense artifact, surface what matters, generate a reviewed output, and deliver it into the systems teams already use.',
   },
-  mvpDefinition: 'We convert dense external and internal control artifacts into reviewed operational actions, evidence packs, and system-of-record updates for trading technology and market-data teams.',
+  mvpDefinition: 'Institutional trading firms operationalizing external trading-technology changes face slow, fragmented assessment, leading to delays and risk, caused by complex vendor artifacts handled through disconnected workflows, despite relying on SMEs and spreadsheets.',
   positioningStatement: 'The workflow control layer between operational artifacts and governed execution in capital markets.',
   products: [
     {

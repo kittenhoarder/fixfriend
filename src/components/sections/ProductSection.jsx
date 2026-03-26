@@ -294,12 +294,14 @@ export default function ProductSection({ theme = 'dark' }) {
           </ProductSectionBlock>
 
           <ProductSectionBlock eyebrow="System" title="Autonomy, context, outputs, and agents">
-            <SemanticCallout
-              icon={Database}
-              label={PRODUCT_CONTEXT_CORE.title}
-              body={PRODUCT_CONTEXT_CORE.summary}
-              tone="accent"
-            />
+            <div className="border-t pt-4" style={{ borderColor: 'var(--border-subtle)' }}>
+              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+                {PRODUCT_CONTEXT_CORE.title}
+              </div>
+              <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+                {PRODUCT_CONTEXT_CORE.summary}
+              </p>
+            </div>
 
             <SemanticCallout
               icon={ShieldCheck}
