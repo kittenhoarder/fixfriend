@@ -79,7 +79,7 @@ export const FOUNDERS = [
     name: 'Owen E. Perry',
     title: 'Founder, product & sales',
     summary:
-      '14 years in European electronic trading infrastructure, building and shipping revenue-critical systems across FactSet, Nasdaq OMX, Itiviti, Quod Financial, Broadridge, Tradeteq, and AiX. BSc from the University of San Francisco; PGDip from Queen Mary University of London.',
+      '14 years in European electronic trading infrastructure, building and shipping revenue-critical systems at ISVs, fintechs, and trading participants. BSc from the University of San Francisco; PGDip from Queen Mary University of London.',
     linkLabel: 'LinkedIn',
     linkUrl: 'https://linkedin.com/in/oweneperry',
   },
@@ -87,13 +87,17 @@ export const FOUNDERS = [
     name: 'Chris Starns',
     title: 'Co-founder, ops & strats',
     summary:
-      'Venture strategist helping startups and large brands launch new products and services, with hard-won experience from building, exiting, and failing multiple startup projects. BSc from Nottingham Trent University in Business & Entrepreneurship.',
+      'Venture strategist helping startups and large brands launch new products and services, with hard-won experience from building, exiting, and shipping multiple startup projects. BSc from Nottingham Trent University in Business & Entrepreneurship.',
+    linkLabel: 'LinkedIn',
+    linkUrl: 'https://www.linkedin.com/in/chris-starns/',
   },
   {
     name: 'Varsha Jaiswal',
     title: 'Co-founder, engineering',
     summary:
-      '7+ years building and scaling SaaS platforms, distributed systems, and React / NestJS / React Native products. MSc Computer Science from Queen Mary University of London.',
+      '7+ years building and scaling SaaS platforms and distributed systems, with a focus on reliable delivery and pragmatic engineering execution. MSc Computer Science from Queen Mary University of London.',
+    linkLabel: 'LinkedIn',
+    linkUrl: 'https://www.linkedin.com/in/varshajaiswal/',
   },
 ]
 
