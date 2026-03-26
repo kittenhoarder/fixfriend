@@ -1,5 +1,5 @@
 import { SALES_FUNNEL } from '../../data/content'
-import SectionHeader from '../ui/SectionHeader'
+import SectionLayout from '../ui/SectionLayout'
 import StatusPill from '../ui/StatusPill'
 
 function FunnelBar({ stage, maxCount }) {
@@ -44,11 +44,8 @@ export default function FunnelSection() {
   const maxCount = stages[0].count
 
   return (
-    <div className="flex flex-col h-full" style={{ paddingTop: '62px' }}>
-      <SectionHeader label="SALES" />
-
-      <div className="flex-1 overflow-y-auto">
-        <div className="content-rail px-6 py-8 max-w-5xl mx-auto space-y-10">
+    <SectionLayout label="SALES">
+      <div className="content-rail px-6 py-8 max-w-5xl mx-auto space-y-10">
 
           {/* Funnel */}
           <div>
@@ -170,7 +167,6 @@ export default function FunnelSection() {
           </div>
 
         </div>
-      </div>
-    </div>
+    </SectionLayout>
   )
 }

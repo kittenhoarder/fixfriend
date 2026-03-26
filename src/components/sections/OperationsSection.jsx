@@ -1,6 +1,6 @@
 import { Zap, TrendingUp, ShieldCheck } from 'lucide-react'
 import { OPERATIONS_MODEL } from '../../data/content'
-import SectionHeader from '../ui/SectionHeader'
+import SectionLayout from '../ui/SectionLayout'
 
 const ICON_MAP = { Zap, TrendingUp, ShieldCheck }
 
@@ -14,11 +14,8 @@ export default function OperationsSection() {
   const { headline, subheadline, pillars } = OPERATIONS_MODEL
 
   return (
-    <div className="flex flex-col h-full" style={{ paddingTop: '62px' }}>
-      <SectionHeader label="OPERATIONS" />
-
-      <div className="flex-1 overflow-y-auto">
-        <div className="content-rail px-6 py-8 max-w-4xl mx-auto">
+    <SectionLayout label="OPERATIONS">
+      <div className="content-rail px-6 py-8 max-w-4xl mx-auto">
 
           {/* Headline */}
           <div className="mb-10">
@@ -85,7 +82,6 @@ export default function OperationsSection() {
           </div>
 
         </div>
-      </div>
-    </div>
+    </SectionLayout>
   )
 }

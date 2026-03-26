@@ -1,11 +1,11 @@
 import {
   AlertTriangle,
-  Check,
   Database,
   ShieldCheck,
 } from 'lucide-react'
 import SectionHeader from '../ui/SectionHeader'
 import MermaidDiagram from '../ui/MermaidDiagram'
+import BulletList from '../ui/BulletList'
 import {
   PRODUCT_WORKFLOW_STAGES,
   PRODUCT_CONTENT,
@@ -17,35 +17,10 @@ import {
   PRODUCT_MERMAID_DIAGRAMS,
   INTERVIEW_TRACKER,
 } from '../../data/content'
-
-function BulletList({ items, color = 'var(--accent)' }) {
-  return (
-    <ul className="space-y-2">
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-2">
-          <Check size={14} className="mt-0.5 flex-shrink-0" style={{ color }} />
-          <span className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{item}</span>
-        </li>
-      ))}
-    </ul>
-  )
-}
+import { TONE_STYLES } from '../../data/toneStyles'
 
 function SemanticCallout({ icon: Icon, label, body, tone = 'accent' }) {
-  const tones = {
-    accent: {
-      borderColor: 'var(--accent-border-soft)',
-      backgroundColor: 'var(--accent-softer)',
-      color: 'var(--accent)',
-    },
-    danger: {
-      borderColor: 'var(--status-danger-border)',
-      backgroundColor: 'var(--status-danger-soft)',
-      color: 'var(--status-danger)',
-    },
-  }
-
-  const style = tones[tone]
+  const style = TONE_STYLES[tone]
 
   return (
     <div

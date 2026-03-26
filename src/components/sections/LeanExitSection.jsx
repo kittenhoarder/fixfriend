@@ -30,6 +30,8 @@ import {
   UNIT_ECONOMICS,
 } from '../../data/content'
 import MermaidDiagram from '../ui/MermaidDiagram'
+import BulletList from '../ui/BulletList'
+import { TONE_STYLES } from '../../data/toneStyles'
 
 const EVIDENCE_TONES = {
   Validated: 'success',
@@ -77,34 +79,11 @@ function PainMatrixPlot({ items }) {
     },
   ]
 
-  const toneStyles = {
-    success: {
-      borderColor: 'var(--status-success-border)',
-      backgroundColor: 'var(--status-success-soft)',
-      chipColor: 'var(--status-success)',
-    },
-    warning: {
-      borderColor: 'var(--status-warning-border)',
-      backgroundColor: 'var(--status-warning-soft)',
-      chipColor: 'var(--status-warning)',
-    },
-    info: {
-      borderColor: 'var(--accent-border-soft)',
-      backgroundColor: 'var(--accent-softer)',
-      chipColor: 'var(--accent)',
-    },
-    neutral: {
-      borderColor: 'var(--border-subtle)',
-      backgroundColor: 'var(--surface3)',
-      chipColor: 'var(--text-secondary)',
-    },
-  }
-
   return (
     <div className="space-y-3">
       <div className="pain-matrix-grid">
         {cells.map((cell) => {
-          const style = toneStyles[cell.tone]
+          const style = TONE_STYLES[cell.tone]
           const cellItems = items.filter((item) => getPainMatrixCell(item) === cell.id)
 
           return (
@@ -113,7 +92,7 @@ function PainMatrixPlot({ items }) {
               className="rounded-lg border p-4"
               style={{ borderColor: style.borderColor, backgroundColor: style.backgroundColor }}
             >
-              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: style.chipColor }}>
+              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: style.color }}>
                 {cell.title}
               </div>
               <p className="text-xs leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
@@ -201,20 +180,6 @@ function Shell({ children, accent = 'var(--border-subtle)', className = '' }) {
   )
 }
 
-function BulletList({ items, bulletColor = 'var(--accent)' }) {
-  return (
-    <ul className="space-y-3">
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-3">
-          <span className="mt-1.5 inline-block h-2 w-2 flex-shrink-0" style={{ backgroundColor: bulletColor }} />
-          <span className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            {item}
-          </span>
-        </li>
-      ))}
-    </ul>
-  )
-}
 
 function SourceLink({ label, href }) {
   if (!href) return <span style={{ color: 'var(--text-tertiary)' }}>{label}</span>
@@ -373,7 +338,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                   </div>
                   <BulletList
                     items={item.items}
-                    bulletColor={
+                    color={
                       item.label === 'Validated'
                         ? 'var(--status-success)'
                         : item.label === 'Hypothesis'
@@ -465,7 +430,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                   It does
                 </div>
                 <div className="mt-4">
-                  <BulletList items={LEAN_EXIT_CASE.scope.does} bulletColor="var(--status-success)" />
+                  <BulletList items={LEAN_EXIT_CASE.scope.does} color="var(--status-success)" />
                 </div>
               </div>
               <div className="rounded-lg border p-5" style={{ borderColor: 'var(--status-warning-border)', backgroundColor: 'var(--status-warning-soft)' }}>
@@ -473,7 +438,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                   It does not
                 </div>
                 <div className="mt-4">
-                  <BulletList items={LEAN_EXIT_CASE.scope.doesNot} bulletColor="var(--status-warning)" />
+                  <BulletList items={LEAN_EXIT_CASE.scope.doesNot} color="var(--status-warning)" />
                 </div>
               </div>
             </div>
@@ -534,7 +499,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                   title="Market-model method"
                   subtitle="Show the optimistic case, but keep the path from public-source inputs to headline numbers visible."
                 />
-                <BulletList items={MARKET_MODEL.methodology} bulletColor="var(--accent)" />
+                <BulletList items={MARKET_MODEL.methodology} color="var(--accent)" />
               </div>
 
               <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
@@ -630,7 +595,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                       Workflow model
                     </div>
                     <div className="mt-3">
-                      <BulletList items={UNIT_ECONOMICS.workflowModel} bulletColor="var(--accent)" />
+                      <BulletList items={UNIT_ECONOMICS.workflowModel} color="var(--accent)" />
                     </div>
                   </div>
                   <div className="rounded-lg border p-4" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}>
@@ -638,7 +603,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                       Pricing logic
                     </div>
                     <div className="mt-3">
-                      <BulletList items={UNIT_ECONOMICS.pricingLogic} bulletColor="var(--status-success)" />
+                      <BulletList items={UNIT_ECONOMICS.pricingLogic} color="var(--status-success)" />
                     </div>
                   </div>
                   <div className="rounded-lg border p-4" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}>
@@ -646,7 +611,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                       Path to viability
                     </div>
                     <div className="mt-3">
-                      <BulletList items={UNIT_ECONOMICS.viability} bulletColor="var(--amber)" />
+                      <BulletList items={UNIT_ECONOMICS.viability} color="var(--amber)" />
                     </div>
                   </div>
                 </div>
@@ -707,7 +672,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                     Success metrics
                   </div>
                   <div className="mt-3">
-                    <BulletList items={VALIDATION_PLAN.successMetrics} bulletColor="var(--status-success)" />
+                    <BulletList items={VALIDATION_PLAN.successMetrics} color="var(--status-success)" />
                   </div>
                 </div>
                 <div>
@@ -715,7 +680,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                     Pivot triggers
                   </div>
                   <div className="mt-3">
-                    <BulletList items={VALIDATION_PLAN.pivotTriggers} bulletColor="var(--status-danger)" />
+                    <BulletList items={VALIDATION_PLAN.pivotTriggers} color="var(--status-danger)" />
                   </div>
                 </div>
               </div>
@@ -806,7 +771,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                       Next 100
                     </div>
                     <div className="mt-3">
-                      <BulletList items={GTM_PLAYBOOK.next100} bulletColor="var(--accent)" />
+                      <BulletList items={GTM_PLAYBOOK.next100} color="var(--accent)" />
                     </div>
                   </div>
                 </div>
@@ -815,7 +780,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                     Cost logic
                   </div>
                   <div className="mt-3">
-                    <BulletList items={GTM_PLAYBOOK.costs} bulletColor="var(--amber)" />
+                    <BulletList items={GTM_PLAYBOOK.costs} color="var(--amber)" />
                   </div>
                 </div>
               </div>
@@ -825,7 +790,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                   title="Open questions"
                   subtitle="Disciplined uncertainty around the next discovery loop."
                 />
-                <BulletList items={OPEN_QUESTIONS} bulletColor="var(--status-info)" />
+                <BulletList items={OPEN_QUESTIONS} color="var(--status-info)" />
               </div>
 
               <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
