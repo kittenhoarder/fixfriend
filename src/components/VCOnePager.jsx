@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { Download, Loader } from 'lucide-react'
 import { THESIS, ACQUIRERS, PRODUCT_CONTENT, MARKET_MODEL } from '../data/content'
 import SynthAgentLogo from './ui/SynthAgentLogo'
+import FoundingTeam from './ui/FoundingTeam'
 
 // ─── Download trigger ────────────────────────────────────────────────────────
 async function generatePDF(el) {
@@ -342,16 +343,11 @@ function OnePagerDocument() {
               ))}
             </div>
 
-            {/* Founder */}
-            <div style={styles.founderBox}>
-              <div style={styles.panelLabel}>Founder</div>
-              <div style={styles.founderName}>Owen E. Perry</div>
-              <div style={styles.founderTitle}>Technical Product &amp; Trading Technology Leader</div>
-              <div style={styles.founderText}>{THESIS.founderSummary}</div>
-              <div style={styles.founderCareer}>
-                FactSet · Nasdaq OMX · Itiviti · Quod Financial · Broadridge · AiX (acq.) · Tradeteq (acq.)
-              </div>
-            </div>
+            <FoundingTeam
+              compact
+              title="FOUNDING TEAM"
+              intro="Trading technology, venture strategy, and scalable engineering."
+            />
 
             {/* Deal flow signal */}
             <div style={styles.panel}>

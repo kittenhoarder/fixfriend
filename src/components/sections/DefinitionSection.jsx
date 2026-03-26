@@ -65,15 +65,15 @@ export default function DefinitionSection() {
   return (
     <div className="flex flex-col h-full pt-14 lg:pt-0" style={{ minHeight: '100vh' }}>
       <div
-        className="hidden lg:flex px-6 py-4 border-b flex-shrink-0"
+        className="hidden lg:flex px-4 sm:px-6 py-2.5 border-b flex-shrink-0"
         style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--bg-base)' }}
       >
-        <span className="font-mono text-xs tracking-widest" style={{ color: 'var(--muted)', letterSpacing: '0.12em' }}>
+        <span className="font-mono text-[11px] tracking-widest" style={{ color: 'var(--muted)', letterSpacing: '0.12em' }}>
           MARKET DEFINITION & SIZE
         </span>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className="flex-1 overflow-y-auto p-4 lg:p-5">
         <div className="content-rail">
         <Block title={d.origin.title}>
           <Paragraphs text={d.origin.body} />

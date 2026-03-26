@@ -163,7 +163,7 @@ export default function FinancialSection() {
   const { months, pricing, costs, breakEven, baseCase, currency } = FINANCIAL_MODEL
 
   return (
-    <SectionLayout label="FINANCIALS">
+    <SectionLayout label="FINANCIALS" mobileNav headerProps={{ compact: true }}>
       <div className="content-rail px-6 py-8 max-w-6xl mx-auto space-y-10">
 
           {/* Headline stats */}

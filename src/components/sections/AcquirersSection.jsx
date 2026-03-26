@@ -8,6 +8,7 @@ export default function AcquirersSection() {
       <SectionHeader
         label="ACQUIRERS"
         hideOnMobile
+        compact
         right={(
           <div className="ml-auto hidden md:flex items-center gap-4">
             {[

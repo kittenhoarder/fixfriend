@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { THESIS, GAP, ACQUIRERS, DEALS, MARKET_MODEL } from '../data/content'
 import SynthAgentLogo from './ui/SynthAgentLogo'
+import FoundingTeam from './ui/FoundingTeam'
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const C = {
@@ -321,32 +322,11 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
 
         <Hr m="0 0 11px" />
 
-        {/* ── Founder ── */}
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
-          <div style={{ flex: 1 }}>
-            <EL mb="5px">Founder</EL>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: '4px' }}>
-              <span style={{ fontFamily: serif, fontSize: '16px', color: C.text }}>Owen E. Perry</span>
-              <span style={{ fontSize: '9px', color: C.text3 }}>Technical Product &amp; Trading Technology Leader</span>
-            </div>
-            <p style={{ fontSize: '9px', color: C.text2, lineHeight: 1.5, margin: 0 }}>
-              14 years in European electronic trading infrastructure. FactSet · Nasdaq OMX · Itiviti · Quod Financial · Broadridge · Tradeteq (acq.) · AiX (acq. Blockchain.com). Delivered Tier-1 trading programmes and contributed to acquisition outcomes. FIXFriend exists because I have spent a career watching this problem compound — and I know it can be solved by an agent that does what engineers currently do manually.
-            </p>
-          </div>
-          <div style={{
-            backgroundColor: C.surface,
-            border: `1px solid ${C.border}`,
-            borderLeft: `2px solid ${C.amber}`,
-            borderRadius: '3px',
-            padding: '9px 13px',
-            flexShrink: 0,
-            minWidth: '155px',
-          }}>
-            <div style={{ fontSize: '7.5px', color: C.text3, marginBottom: '5px', fontFamily: mono, letterSpacing: '0.1em' }}>CONNECT</div>
-            <div style={{ fontSize: '9.5px', color: C.blue, fontWeight: 600, marginBottom: '3px' }}>linkedin.com/in/oweneperry</div>
-            <div style={{ fontSize: '8px', color: C.text3 }}>Open to VC, strategic, and M&amp;A conversations.</div>
-          </div>
-        </div>
+        <FoundingTeam
+          compact
+          title="FOUNDING TEAM"
+          intro="Trading technology, venture strategy, and scalable engineering."
+        />
       </div>
 
       {/* ── Footer ── */}
