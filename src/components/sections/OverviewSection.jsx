@@ -106,7 +106,7 @@ export default function OverviewSection({ onNavigate }) {
           }}
         >
           <p className="font-mono text-[10px] tracking-widest mb-2" style={{ color: 'var(--amber)', letterSpacing: '0.14em' }}>
-            WHAT WE DO
+            PROBLEM WE SOLVE
           </p>
           <p className="text-base leading-relaxed" style={{ color: 'var(--text-primary)' }}>
             {BRAND.mvpDefinition}

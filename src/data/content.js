@@ -900,12 +900,12 @@ export const NAV_TABS = [
 export const BRAND = {
   studio: {
     name: 'PRDCTV.WORK',
-    tagline: 'Builds software that transforms complexity into clear action.',
+    tagline: 'Builds software to transform complexity into action.',
     about: 'prdctv.work started from a simple observation: most people and teams are not short on information, tools, or ambition. They are short on clarity — a clear view of what matters, what to do next, and what can be ignored.',
   },
   umbrella: {
     name: 'SynthAgents',
-    tagline: 'Turning trading technology operations complexity into clear, reviewed action.',
+    tagline: 'Turning trading tech ops complexity into clear action.',
     description: 'SynthAgents is the product umbrella within PRDCTV.WORK focused on capital markets operational workflows. Each product does one job well: ingest a dense artifact, surface what matters, generate a reviewed output, and deliver it into the systems teams already use.',
   },
   mvpDefinition: 'Institutional trading firms operationalizing external trading-technology changes face slow, fragmented assessment, leading to delays and risk, caused by complex vendor artifacts handled through disconnected workflows, despite relying on SMEs and spreadsheets.',
