@@ -54,7 +54,7 @@ function Paragraphs({ text }) {
 export default function DefinitionSection() {
   const d = DEFINITION
   const workflowVoices = INTERVIEW_TRACKER.map((entry) => {
-    const firstQuote = entry.keyQuotes[0]
+    const firstQuote = entry.keyQuotes?.[0]
     return {
       id: entry.id,
       quote: firstQuote?.text,

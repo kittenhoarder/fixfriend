@@ -51,7 +51,7 @@ export default function MermaidDiagram({ diagram, theme = 'dark', minHeight = 26
     return () => {
       cancelled = true
     }
-  }, [diagram, theme])
+  }, [diagram, theme, uniqueId])
 
   if (error) {
     return (

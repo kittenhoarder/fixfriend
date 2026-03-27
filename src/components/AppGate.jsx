@@ -36,13 +36,26 @@ async function hashGateToken(password) {
 }
 
 function ssGet(key, fallback = '0') {
-  try { return window.sessionStorage.getItem(key) ?? fallback } catch { return fallback }
+  try {
+    return window.sessionStorage.getItem(key) ?? fallback
+  } catch (error) {
+    void error
+    return fallback
+  }
 }
 function ssSet(key, value) {
-  try { window.sessionStorage.setItem(key, value) } catch {}
+  try {
+    window.sessionStorage.setItem(key, value)
+  } catch (error) {
+    void error
+  }
 }
 function ssRemove(key) {
-  try { window.sessionStorage.removeItem(key) } catch {}
+  try {
+    window.sessionStorage.removeItem(key)
+  } catch (error) {
+    void error
+  }
 }
 
 function getFailCount(portal) {
@@ -86,14 +99,15 @@ export default function AppGate({ raidicalApp, acquirerApp }) {
 
   const raidicalGated = typeof raidicalPassword === 'string' && raidicalPassword.trim().length > 0
   const acquirerGated = typeof acquirerPassword === 'string' && acquirerPassword.trim().length > 0
-  const anyGated = raidicalGated || acquirerGated
 
   // Which portal is active
   const [activePortal, setActivePortalState] = useState(() => {
     try {
       const stored = window.sessionStorage.getItem(PORTAL_STORAGE_KEY)
       if (stored === 'acquirer') return 'acquirer'
-    } catch {}
+    } catch (error) {
+      void error
+    }
     return 'raidical'
   })
 
@@ -126,7 +140,9 @@ export default function AppGate({ raidicalApp, acquirerApp }) {
       if (saved === 'light' || saved === 'dark') {
         document.documentElement.setAttribute('data-theme', saved)
       }
-    } catch {}
+    } catch (error) {
+      void error
+    }
   }, [])
 
   // Verify stored tokens on mount

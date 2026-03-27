@@ -131,7 +131,7 @@ function BaseDocument({ title, subtitle, children, compact = false }) {
       display: 'flex',
       justifyContent: 'space-between',
     },
-  }), [])
+  }), [compact])
 
   return (
     <div style={styles.page}>

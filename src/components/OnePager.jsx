@@ -34,13 +34,6 @@ const Hr = ({ m = '11px 0' }) => (
   <div style={{ borderTop: `1px solid ${C.border}`, margin: m }} />
 )
 
-const Bullet = ({ children, color = C.amber }) => (
-  <div style={{ display: 'flex', gap: '7px', marginBottom: '4px', alignItems: 'flex-start' }}>
-    <span style={{ color, fontSize: '9px', flexShrink: 0, marginTop: '2px', fontFamily: mono }}>→</span>
-    <span style={{ fontSize: '9.5px', color: C.text2, lineHeight: 1.45 }}>{children}</span>
-  </div>
-)
-
 // ─── The A4 document ─────────────────────────────────────────────────────────
 export const OnePager = forwardRef(function OnePager(_, ref) {
   const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })

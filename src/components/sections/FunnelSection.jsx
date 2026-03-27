@@ -40,7 +40,7 @@ function FunnelBar({ stage, maxCount }) {
 }
 
 export default function FunnelSection() {
-  const { stages, strategy, activeBuyers, firstRevenue, awareness, interest, conversion, retention } = SALES_FUNNEL
+  const { stages, strategy, activeBuyers, awareness, interest, conversion, retention } = SALES_FUNNEL
   const maxCount = stages[0].count
 
   return (

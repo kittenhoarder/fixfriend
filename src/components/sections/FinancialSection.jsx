@@ -90,7 +90,7 @@ function CashFlowTable({ months }) {
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, ri) => {
+          {rows.map((row) => {
             const isFirstInSection = sectionHeaders[row.section]?.first === row.key
             const bgColor = sectionColors[row.section]
             return (
@@ -160,7 +160,7 @@ function CashFlowTable({ months }) {
 }
 
 export default function FinancialSection() {
-  const { months, pricing, costs, breakEven, baseCase, currency } = FINANCIAL_MODEL
+  const { months, pricing, costs, breakEven, baseCase } = FINANCIAL_MODEL
 
   return (
     <SectionLayout label="FINANCIALS" mobileNav headerProps={{ compact: true }}>
