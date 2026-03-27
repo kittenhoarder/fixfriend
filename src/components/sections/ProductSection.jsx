@@ -1,6 +1,5 @@
 import {
   AlertTriangle,
-  Database,
   ShieldCheck,
 } from 'lucide-react'
 import SectionHeader from '../ui/SectionHeader'
@@ -146,7 +145,7 @@ export default function ProductSection({ theme = 'dark' }) {
   const t = PRODUCT_CONTENT.targetBuyer
 
   const productQuotes = INTERVIEW_TRACKER.flatMap((entry) => {
-    return entry.keyQuotes.slice(0, 1).map((quote) => ({
+    return (entry.keyQuotes?.slice(0, 1) ?? []).map((quote) => ({
       id: `${entry.id}-${quote.label}`,
       text: quote.text,
       attribution: `${entry.name}, ${entry.role}`,

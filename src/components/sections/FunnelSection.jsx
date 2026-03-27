@@ -40,7 +40,7 @@ function FunnelBar({ stage, maxCount }) {
 }
 
 export default function FunnelSection() {
-  const { stages, strategy, activeBuyers, firstRevenue, awareness, interest, conversion, retention } = SALES_FUNNEL
+  const { stages, strategy, activeBuyers, awareness, interest, conversion, retention } = SALES_FUNNEL
   const maxCount = stages[0].count
 
   return (
@@ -50,7 +50,7 @@ export default function FunnelSection() {
           {/* Funnel */}
           <div>
             <p className="font-mono text-[10px] tracking-widest mb-6" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.16em' }}>
-              PIPELINE FUNNEL — BASE CASE
+              PIPELINE FUNNEL — FORECAST BASE CASE
             </p>
             <div
               className="p-6 border space-y-3"
