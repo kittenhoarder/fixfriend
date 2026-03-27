@@ -2,11 +2,12 @@ import { useState } from 'react'
 import MarketMap from '../market/MarketMap'
 import MarketDetailPanel from '../market/MarketDetailPanel'
 import FullGraphView from '../market/FullGraphView'
+import InterviewsPanel from '../market/InterviewsPanel'
 import { CONTINUOUS_CHANGE_SIGNALS } from '../../data/content'
 
 export default function MarketSection({ theme }) {
   const [activeNodeId, setActiveNodeId] = useState(null)
-  const [viewMode, setViewMode] = useState('interactive') // 'interactive' | 'fullgraph'
+  const [viewMode, setViewMode] = useState('interactive') // 'interactive' | 'fullgraph' | 'interviews'
 
   function handleNodeClick(id) {
     setActiveNodeId((prev) => (prev === id ? null : id))
@@ -53,6 +54,20 @@ export default function MarketSection({ theme }) {
           }}
         >
           Full graph
+        </button>
+        <button
+          type="button"
+          onClick={() => setViewMode('interviews')}
+          className="font-mono text-[11px] px-2.5 py-1.5 border transition-colors"
+          style={{
+            borderColor: viewMode === 'interviews' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
+            color: viewMode === 'interviews' ? 'var(--accent)' : 'var(--text-secondary)',
+            background: viewMode === 'interviews'
+              ? 'linear-gradient(90deg, rgba(59,130,246,0.12), rgba(249,115,22,0.08) 80%, transparent)'
+              : 'transparent',
+          }}
+        >
+          Interviews
         </button>
       </div>
 
@@ -113,6 +128,10 @@ export default function MarketSection({ theme }) {
       {viewMode === 'fullgraph' ? (
         <div className="flex-1 p-4 lg:p-6 overflow-hidden min-h-0">
           <FullGraphView theme={theme} />
+        </div>
+      ) : viewMode === 'interviews' ? (
+        <div className="flex-1 overflow-hidden min-h-0">
+          <InterviewsPanel />
         </div>
       ) : (
         <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
