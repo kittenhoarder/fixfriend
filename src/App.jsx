@@ -9,7 +9,6 @@ import AcquirersSection from './components/sections/AcquirersSection'
 import FinancialSection from './components/sections/FinancialSection'
 import FunnelSection from './components/sections/FunnelSection'
 import OperationsSection from './components/sections/OperationsSection'
-import AboutModal from './components/AboutModal'
 
 const THEME_STORAGE_KEY = 'fixfriend-theme'
 
@@ -29,7 +28,7 @@ export default function App({ onSwitchPortal }) {
   const [activeTab, setActiveTab] = useState('overview')
   const [visibleTab, setVisibleTab] = useState('overview')
   const [transitionState, setTransitionState] = useState('idle') // 'idle' | 'exiting' | 'entering'
-  const [aboutOpen, setAboutOpen] = useState(false)
+  const [pendingAnchor, setPendingAnchor] = useState(null)
   const [theme, setTheme] = useState(() => {
     if (typeof window === 'undefined') return 'dark'
     return (window.localStorage.getItem(THEME_STORAGE_KEY) || 'dark')
@@ -48,6 +47,17 @@ export default function App({ onSwitchPortal }) {
     }
   }, [activeTab, visibleTab, transitionState])
 
+  useEffect(() => {
+    if (!pendingAnchor || visibleTab !== 'overview' || transitionState !== 'idle') return
+    requestAnimationFrame(() => {
+      const target = document.getElementById(pendingAnchor)
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+      setPendingAnchor(null)
+    })
+  }, [pendingAnchor, visibleTab, transitionState])
+
   const handleTransitionEnd = (e) => {
     if (e.target !== transitionRef.current) return
     if (transitionState === 'exiting') {
@@ -65,7 +75,10 @@ export default function App({ onSwitchPortal }) {
       <Sidebar
         activeTab={activeTab}
         onTabChange={(tab) => setActiveTab(tab)}
-        onAboutOpen={() => setAboutOpen(true)}
+        onAboutNavigate={() => {
+          setActiveTab('overview')
+          setPendingAnchor('about')
+        }}
         theme={theme}
         onThemeToggle={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
         onSwitchPortal={onSwitchPortal}
@@ -80,8 +93,6 @@ export default function App({ onSwitchPortal }) {
           <ActiveSection onNavigate={(tab) => setActiveTab(tab)} theme={theme} />
         </div>
       </main>
-
-      {aboutOpen && <AboutModal onClose={() => setAboutOpen(false)} />}
     </div>
   )
 }

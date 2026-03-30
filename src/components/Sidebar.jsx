@@ -49,7 +49,7 @@ function NavButton({ isActive, children, ...props }) {
 const buyerTabs = NAV_TABS.filter((t) => t.group === 'buyer')
 const strategyTabs = NAV_TABS.filter((t) => t.group === 'strategy')
 
-export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, onThemeToggle, onSwitchPortal }) {
+export default function Sidebar({ activeTab, onTabChange, onAboutNavigate, theme, onThemeToggle, onSwitchPortal }) {
   return (
     <>
       <aside
@@ -79,9 +79,6 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
             </div>
             <div className="flex min-h-10 flex-col justify-center">
               <div className="font-serif leading-none text-[1.45rem]" style={{ color: 'var(--text-primary)' }}>
-                FIXFriend
-              </div>
-              <div className="font-mono text-[9px] mt-0.5" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.1em' }}>
                 FIXFriend
               </div>
             </div>
@@ -172,7 +169,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
               </span>
             </NavButton>
           ) : null}
-          <NavButton isActive={false} onClick={onAboutOpen}>
+          <NavButton isActive={false} onClick={onAboutNavigate}>
             <span
               className="flex h-7 w-7 items-center justify-center border"
               style={{
@@ -285,7 +282,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
           </button>
 
           <button
-            onClick={onAboutOpen}
+            onClick={onAboutNavigate}
             className="flex h-9 w-9 items-center justify-center border transition-colors"
             style={{
               borderColor: 'var(--border-subtle)',

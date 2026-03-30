@@ -245,10 +245,12 @@ export default function OverviewSection({ onNavigate }) {
         ))}
       </div>
 
-      <FoundingTeam
-        className="w-full mb-8"
-        intro="FIXFriend is built by a founding trio combining deep trading infrastructure context with venture strategy and scalable engineering."
-      />
+      <div id="about">
+        <FoundingTeam
+          className="w-full mb-8"
+          intro="FIXFriend is built by a founding trio combining deep trading infrastructure context with venture strategy and scalable engineering."
+        />
+      </div>
 
       {/* Strategy nav */}
       <div className="w-full flex flex-wrap items-center gap-3 pb-4">
