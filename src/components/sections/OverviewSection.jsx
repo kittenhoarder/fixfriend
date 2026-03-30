@@ -81,7 +81,7 @@ export default function OverviewSection({ onNavigate }) {
             className="font-serif leading-[0.94] col-start-2"
             style={{ fontSize: 'clamp(2.4rem, 7vw, 4.6rem)', color: 'var(--text-primary)' }}
           >
-            SynthAgents
+            FIXFriend
           </h1>
           <p
             className="font-serif leading-snug col-span-full"

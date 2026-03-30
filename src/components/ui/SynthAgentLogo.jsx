@@ -47,7 +47,7 @@ export default function SynthAgentLogo({ size, className = '', style: styleProp 
       {...sizeAttrs}
       viewBox="0 0 512 512"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="SynthAgents logo"
+      aria-label="FIXFriend logo"
       className={className}
       style={{ ...sizeStyle, ...styleProp }}
       {...rest}

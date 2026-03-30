@@ -931,9 +931,9 @@ export const BRAND = {
     about: 'prdctv.work started from a simple observation: most people and teams are not short on information, tools, or ambition. They are short on clarity — a clear view of what matters, what to do next, and what can be ignored.',
   },
   umbrella: {
-    name: 'SynthAgents',
+    name: 'FIXFriend',
     tagline: 'Turning trading tech ops complexity into clear action.',
-    description: 'SynthAgents is the product umbrella within PRDCTV.WORK focused on capital markets operational workflows. Each product does one job well: ingest a dense artifact, surface what matters, generate a reviewed output, and deliver it into the systems teams already use.',
+    description: 'FIXFriend is the product within PRDCTV.WORK focused on capital markets operational workflows. Proactively surfaces context, classifies impact, and executes change in a controlled, auditable way — delivering into the systems teams already use.',
   },
   mvpDefinition: 'Institutional trading firms must continuously update and manage software to enable ongoing operations and comply with strict regulations. This is a time consuming and complex manual process.',
   positioningStatement: 'The workflow control layer between operational artifacts and governed execution in capital markets.',

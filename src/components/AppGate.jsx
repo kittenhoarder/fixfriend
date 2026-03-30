@@ -281,7 +281,7 @@ export default function AppGate({ raidicalApp, acquirerApp }) {
             PRDCTV.WORK
           </div>
           <h1 className="font-serif text-[1.9rem] leading-none" style={{ color: 'var(--text-primary)' }}>
-            {isAcqForm ? 'SynthAgents' : 'FIXFriend'}
+            FIXFriend
           </h1>
           <p
             className="font-mono mt-2 text-[11px]"

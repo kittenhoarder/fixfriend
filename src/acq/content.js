@@ -90,7 +90,7 @@ export const THESIS = {
       icon: 'Lock',
       stat: 'Proprietary venue-notice corpus + Expoty context core = 18-month head start on any greenfield build, compounding with every change processed.',
       detail:
-        'The structural advantage is not the agent orchestration — it is the indexed, normalised corpus of venue notices, FIX specs, and change history that makes the impact and planning agents domain-accurate from day one. Every change processed adds to institutional memory. A new entrant starts cold; SynthAgents starts with every prior change already indexed and retrievable. General-purpose agent platforms (Tines, Workato) lack the domain schema, autonomy rules, and evidence-chain architecture required for regulated capital markets environments.',
+        'The structural advantage is not the agent orchestration — it is the indexed, normalised corpus of venue notices, FIX specs, and change history that makes the impact and planning agents domain-accurate from day one. Every change processed adds to institutional memory. A new entrant starts cold; FIXFriend starts with every prior change already indexed and retrievable. General-purpose agent platforms (Tines, Workato) lack the domain schema, autonomy rules, and evidence-chain architecture required for regulated capital markets environments.',
     },
   ],
 }
