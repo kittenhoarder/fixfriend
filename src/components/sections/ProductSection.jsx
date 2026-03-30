@@ -210,7 +210,11 @@ export default function ProductSection({ theme = 'dark' }) {
                     <p className="text-sm leading-relaxed mt-2 mb-3" style={{ color: 'var(--text-secondary)' }}>
                       {item.subtitle}
                     </p>
-                    <MermaidDiagram diagram={item.diagram} theme={theme} minHeight={340} />
+                    <MermaidDiagram
+                      diagram={item.diagram}
+                      theme={theme}
+                      minHeight={item.title === 'Minor Change Autopilot' ? 340 : 340}
+                    />
                   </div>
                 ))}
               </div>

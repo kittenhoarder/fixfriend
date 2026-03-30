@@ -318,8 +318,9 @@ export const GAP = {
     steps: [
       {
         number: '01',
-        title: 'SPEC UPDATE DETECTED',
-        detail: 'FIXFriend ingests venue notices, specs, and deadlines from the channels teams already monitor.',
+        title: 'CHANGE SIGNALS DETECTED EARLY',
+        detail:
+          'FIXFriend continuously polls connected workspaces and external sources, fuses weak signals, and opens one canonical change record before teams start inbox hunting.',
         time: null,
       },
       {
@@ -1243,15 +1244,17 @@ export const PRODUCT_WORKFLOW_STAGES = [
     label: 'Trigger',
     today: 'A venue notice lands through email, portal, PDF, or a relationship channel. Teams start from an inconsistent source pack.',
     todayDrag: 'Drag: source sprawl starts immediately.',
-    fixfriend: 'FIXFriend watches the same channels, captures the notice, timestamps the source, and opens one canonical change record.',
-    fixfriendImpact: 'Outcome: one entry point instead of inbox hunting.',
+    fixfriend:
+      'FIXFriend continuously polls connected workspaces and external sources, hunts for context and weak signals, timestamps what it finds, and opens one canonical change record from fragmented evidence.',
+    fixfriendImpact: 'Outcome: change is surfaced before humans have to assemble the source pack by hand.',
   },
   {
     id: 'triage',
     label: 'Triage',
     today: 'Product, engineering, QA, and client teams all need different answers. Owners hand work across functions before anyone knows the full impact.',
     todayDrag: 'Drag: context switching and owner handoff latency.',
-    fixfriend: 'FIXFriend maps the notice to impacted products, configurations, tests, and downstream workflows before routing owners.',
+    fixfriend:
+      'FIXFriend correlates the detected signal with impacted products, configurations, tests, and downstream workflows before routing owners.',
     fixfriendImpact: 'Outcome: teams start with scoped impact, not guesswork.',
   },
   {
@@ -1294,7 +1297,7 @@ export const PRODUCT_CONTENT = {
     title: 'FIXFriend, In Product Terms',
     intro: 'FIXFriend is an agent-operated change-response system for trading technology vendors, starting with venue change as the first wedge.\n\nIt is built to:',
     bullets: [
-      'monitor venue notices, portals, and digests for change signals',
+      'continuously poll connected workspaces and external sources for change signals',
       'retrieve specs and related context through Expoty, then pursue missing documentation when needed',
       'classify changes with rules-first gates into autonomous minor work or coordinated major work',
       'generate UAT branches, regression packs, update notes, workflow tickets, and owner routing for bounded minor changes',
@@ -1492,9 +1495,10 @@ export const PRODUCT_MERMAID_DIAGRAMS = {
   minor: {
     title: 'Minor Change Autopilot',
     subtitle:
-      'Sequence from venue notice to Expoty retrieval to UAT-ready outputs and live audit evidence.',
+      'Sequence from continuous polling and context hunting to UAT-ready outputs and live audit evidence.',
     diagram: `sequenceDiagram
       autonumber
+      participant Spaces as Slack, Jira, Teams, Email, Portals, Docs
       participant Venue as Venue / Spec Publisher
       participant Monitor as Monitor Agent
       participant Source as Source Agent
@@ -1505,11 +1509,14 @@ export const PRODUCT_MERMAID_DIAGRAMS = {
       participant Comms as Comms Agent
       participant Audit as Audit Agent
 
-      Venue->>Monitor: Notice, portal update, or website change
-      Monitor->>Source: Fetch source bundle
+      loop Continuous polling
+        Spaces->>Monitor: Workspace activity, tickets, messages, docs, digests
+        Venue->>Monitor: Notice, portal update, website delta, spec change
+      end
+      Monitor->>Source: Correlate weak signals and open canonical change record
       Source->>Expoty: Retrieve related specs, tickets, code, tests, decisions
       Source-->>Audit: Source IDs, timestamps, hashes
-      Source->>Impact: Canonical source bundle
+      Source->>Impact: Canonical source bundle + recovered context
       Note over Impact: Minor if no data-model or workflow change<br/>and source confidence is high
       Impact->>Plan: Minor classification + rationale
       Plan->>Exec: UAT branch plan, regression pack, update tasks
@@ -1517,39 +1524,41 @@ export const PRODUCT_MERMAID_DIAGRAMS = {
       Exec-->>Audit: Test outputs and execution evidence
       Plan->>Comms: Jira, docs, and channel bundle
       Comms-->>Audit: Links, owner tags, explanation
-      Audit-->>Venue: Provenance-backed decision trail ready
+      Audit-->>Spaces: Provenance-backed decision trail ready
     `,
   },
   major: {
     title: 'Major Change Escalation',
     subtitle:
-      'Rules-first gate that halts autonomous execution and opens a structured human project.',
+      'Proactive discovery feeds a rules-first gate that halts autonomy early and opens a structured human project.',
     diagram: `flowchart TD
-      A[Venue notice captured] --> B[Source agent fetches spec bundle]
-      B --> C{Rules-first autonomy gate}
-      C -->|Missing spec or low confidence| D[Publisher outreach opened and logged]
-      C -->|Data-model change| E[Escalate]
-      C -->|Business-workflow change| E
-      C -->|New connectivity dependency| E
-      C -->|Regression fails in UAT| E
-      D --> E
-      E --> F[Create Jira epic and owner routing]
-      E --> G[Publish Confluence or Notion brief]
-      E --> H[Send blocked-state channel summary]
-      E --> I[Attach source provenance and decision log]
-      I --> J[Human-led project in sandbox / UAT only]
-      J --> K[Never prod without separate human release path]
+      A[Continuous polling across Slack, Jira, Teams, email, portals, docs, websites] --> B[Signals fused into one canonical change record]
+      B --> C[Source agent assembles spec and context bundle]
+      C --> D{Rules-first autonomy gate}
+      D -->|Missing spec or low confidence| E[Publisher outreach opened and logged]
+      D -->|Data-model change| F[Escalate]
+      D -->|Business-workflow change| F
+      D -->|New connectivity dependency| F
+      D -->|Risky delta surfaced early| F
+      E --> F
+      F --> G[Create Jira epic and owner routing]
+      F --> H[Publish Confluence or Notion brief]
+      F --> I[Send blocked-state channel summary]
+      F --> J[Attach source provenance and decision log]
+      J --> K[Human-led project in sandbox / UAT only]
+      K --> L[Never prod without separate human release path]
     `,
   },
   architecture: {
     title: 'Agent System + Expoty Core',
     subtitle:
-      'Specialist agents stay narrow while Expoty carries the shared semantic context across the workflow.',
+      'Specialist agents stay narrow while FIXFriend continuously polls connected systems and Expoty carries the shared semantic context across the workflow.',
     diagram: `graph LR
-      V[Venues, portals, websites, email] --> M[Monitor agent]
-      M --> S[Source agent]
+      V[Slack, Jira, Teams, Email, Portals, Websites, Docs] --> M[Monitor agent]
+      M --> R[Signal fusion and context hunting]
+      R --> S[Source agent]
       S --> X[(Expoty context core)]
-      D[(Canonical sources and snapshots)] --> S
+      D[(Canonical sources, snapshots, prior decisions)] --> S
       X --> I[Impact agent]
       X --> P[Planning agent]
       X --> E[Execution agent]

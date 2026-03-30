@@ -1,4 +1,4 @@
-import { ArrowRight, Linkedin } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import {
   BRAND,
   CONTINUOUS_CHANGE_SIGNALS,
@@ -144,18 +144,7 @@ export default function OverviewSection({ onNavigate }) {
               <StatusPill tone="warning">Vendor-side wedge</StatusPill>
             </div>
 
-            <header className="grid gap-6 md:grid-cols-[auto,1fr] md:items-start">
-              <div
-                className="flex h-16 w-16 items-center justify-center border"
-                style={{
-                  borderColor: 'var(--accent-border-soft)',
-                  background: 'linear-gradient(135deg, rgba(249,115,22,0.18), rgba(59,130,246,0.08))',
-                  color: 'var(--amber)',
-                }}
-              >
-                <FIXFriendLogo size={44} />
-              </div>
-
+            <header className="space-y-4">
               <div className="space-y-4">
                 <div
                   className="font-mono text-xs uppercase tracking-[0.18em]"
@@ -164,9 +153,13 @@ export default function OverviewSection({ onNavigate }) {
                   SynthAgents / PRDCTV.WORK
                 </div>
                 <h1
-                  className="font-serif leading-[0.9]"
+                  className="flex flex-wrap items-center gap-4 font-serif leading-[0.9]"
                   style={{ fontSize: 'clamp(3rem, 8vw, 5.2rem)', color: 'var(--text-primary)' }}
                 >
+                  <FIXFriendLogo
+                    size={88}
+                    style={{ color: 'var(--amber)', flex: '0 0 auto' }}
+                  />
                   FIXFriend
                 </h1>
                 <p
@@ -205,16 +198,6 @@ export default function OverviewSection({ onNavigate }) {
               >
                 Review financials
               </button>
-              <a
-                href={THESIS.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button-outline inline-flex items-center gap-2 px-4 py-3 text-sm font-medium"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                <Linkedin size={14} />
-                Owen on LinkedIn
-              </a>
             </div>
           </div>
         </article>
