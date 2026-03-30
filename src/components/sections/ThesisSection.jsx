@@ -1,7 +1,7 @@
 import { Linkedin, ArrowRight } from 'lucide-react'
 import { CONTINUOUS_CHANGE_SIGNALS, THESIS } from '../../data/content'
 import StatusPill from '../ui/StatusPill'
-import SynthAgentLogo from '../ui/SynthAgentLogo'
+import FIXFriendLogo from '../ui/FIXFriendLogo'
 import LeanExitDownloads from '../LeanExitDownloads'
 import FoundingTeam from '../ui/FoundingTeam'
 
@@ -55,7 +55,7 @@ export default function ThesisSection({ onNavigate }) {
             alignItems: 'start',
           }}
         >
-          <SynthAgentLogo
+          <FIXFriendLogo
             className="mt-0.5 w-full h-auto"
             style={{
               width: 'clamp(4.5rem, 14vw, 8.5rem)',

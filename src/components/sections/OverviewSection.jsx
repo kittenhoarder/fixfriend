@@ -1,7 +1,7 @@
 import { Linkedin, ArrowRight, ChevronRight } from 'lucide-react'
 import { BRAND, CONTINUOUS_CHANGE_SIGNALS, THESIS } from '../../data/content'
 import StatusPill from '../ui/StatusPill'
-import SynthAgentLogo from '../ui/SynthAgentLogo'
+import FIXFriendLogo from '../ui/FIXFriendLogo'
 import LeanExitDownloads from '../LeanExitDownloads'
 import FoundingTeam from '../ui/FoundingTeam'
 
@@ -72,7 +72,7 @@ export default function OverviewSection({ onNavigate }) {
         style={panelShell}
       >
         <header className="mb-6 grid gap-5 md:gap-6" style={{ gridTemplateColumns: 'clamp(4rem, 12vw, 7.5rem) 1fr', alignItems: 'start' }}>
-          <SynthAgentLogo
+          <FIXFriendLogo
             className="mt-0.5 w-full h-auto"
             style={{ width: 'clamp(4rem, 12vw, 7.5rem)', height: 'clamp(4rem, 12vw, 7.5rem)', color: 'var(--amber)' }}
             aria-hidden

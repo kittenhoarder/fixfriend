@@ -32,7 +32,7 @@ const PARTICLES = [
   { x: 285, y: 452, s: 14 },
 ]
 
-export default function SynthAgentLogo({ size, className = '', style: styleProp = {}, ...rest }) {
+export default function FIXFriendLogo({ size, className = '', style: styleProp = {}, ...rest }) {
   const uid = useId().replace(/:/g, '')
   const clawGrad = `sa-cg-${uid}`
   const particleGrad = `sa-pg-${uid}`

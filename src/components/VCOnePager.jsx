@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { Download, Loader } from 'lucide-react'
 import { THESIS, ACQUIRERS, PRODUCT_CONTENT, MARKET_MODEL } from '../data/content'
-import SynthAgentLogo from './ui/SynthAgentLogo'
+import FIXFriendLogo from './ui/FIXFriendLogo'
 import FoundingTeam from './ui/FoundingTeam'
 
 // ─── Download trigger ────────────────────────────────────────────────────────
@@ -206,7 +206,7 @@ function OnePagerDocument() {
           <div>
             <div style={styles.logoRow}>
               {/* FIXFriend insect icon */}
-              <SynthAgentLogo style={styles.logoIcon} />
+              <FIXFriendLogo style={styles.logoIcon} />
               <div>
                 <div style={styles.productName}>FIXFriend</div>
                 <div style={styles.tagBadge}>LEAN EXIT BRIEF</div>
