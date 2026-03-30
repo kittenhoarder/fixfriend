@@ -77,7 +77,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
             >
               <FIXFriendLogo size={32} />
             </div>
-            <div>
+            <div className="flex min-h-10 flex-col justify-center">
               <div className="font-serif leading-none text-[1.45rem]" style={{ color: 'var(--text-primary)' }}>
                 FIXFriend
               </div>
@@ -228,7 +228,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
             >
               <FIXFriendLogo size={28} />
             </div>
-            <div>
+            <div className="flex min-h-9 flex-col justify-center">
               <div className="font-serif text-base leading-none" style={{ color: 'var(--text-primary)' }}>
                 FIXFriend
               </div>
