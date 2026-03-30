@@ -116,7 +116,7 @@ function Table({ columns, rows }) {
         ))}
       </div>
 
-      <div className="hidden md:block overflow-x-auto rounded-lg border" style={{ borderColor: 'var(--border-subtle)' }}>
+      <div className="hidden md:block overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
             <tr>
@@ -441,11 +441,11 @@ export default function LeanExitSection({ theme = 'dark' }) {
                 <MetricCard label="Cycle-time compression" value="Days" detail={LEAN_EXIT_CASE.wedge.tenX} tone="success" />
               </div>
 
-              <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+              <div className="space-y-4">
                 <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--text-tertiary)' }}>
                   Documents
                 </div>
-                <p className="text-sm leading-relaxed mt-3 mb-4" style={{ color: 'var(--text-secondary)' }}>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   Keep the source documents close to the argument, but let the page itself carry the narrative and proof.
                 </p>
                 <LeanExitDownloads />
@@ -473,22 +473,22 @@ export default function LeanExitSection({ theme = 'dark' }) {
                 intro="The strongest proof in the first chapter combines interview evidence with public market signals. The narrative claim and the research should sit in the same reading lane."
               />
 
-              <div className="grid gap-5 lg:grid-cols-[1.1fr,0.9fr]">
-                <article className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+              <div className="space-y-8">
+                <div className="space-y-4">
                   <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--accent)' }}>
                     Pain matrix
                   </div>
-                  <p className="text-sm leading-relaxed mt-3 mb-4" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     {PAIN_MATRIX.wedgeExplanation}
                   </p>
                   <PainMatrixPlot items={PAIN_MATRIX.items} />
-                </article>
+                </div>
 
-                <article className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+                <div className="space-y-4">
                   <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--amber)' }}>
                     Wedge signals
                   </div>
-                  <div className="space-y-4 mt-4">
+                  <div className="space-y-4">
                     {PAIN_MATRIX.items
                       .filter((item) => item.frequency.includes('High') || item.impact.includes('High'))
                       .slice(0, 4)
@@ -506,7 +506,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                         </div>
                       ))}
                   </div>
-                </article>
+                </div>
               </div>
             </NarrativeSection>
           </Shell>
@@ -542,12 +542,12 @@ export default function LeanExitSection({ theme = 'dark' }) {
                 intro="The product boundary only becomes persuasive when the page makes the proof explicit: named workflow pain, named trust barriers, and a clearly bounded autonomy model."
               />
 
-              <div className="grid gap-5 lg:grid-cols-[1.05fr,0.95fr]">
-                <article className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+              <div className="space-y-8">
+                <div className="space-y-4">
                   <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--accent)' }}>
                     Competitive reading
                   </div>
-                  <p className="text-sm leading-relaxed mt-3 mb-4" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     Public incumbents already cover onboarding, testing, connectivity, or adjacent assurance. The whitespace is the cross-party workflow and evidence layer that sits between those systems.
                   </p>
                   <Table
@@ -558,16 +558,16 @@ export default function LeanExitSection({ theme = 'dark' }) {
                     ]}
                     rows={COMPETITION_MATRIX.filter((item) => ['Manual status quo', 'Broadridge', 'FIXFriend'].includes(item.name))}
                   />
-                </article>
+                </div>
 
-                <article className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+                <div className="space-y-4">
                   <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--amber)' }}>
                     Technical moat claim
                   </div>
-                  <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     {PRODUCT_CONTEXT_CORE.summary}
                   </p>
-                  <div className="rounded-lg border p-4 mt-4" style={{ borderColor: 'var(--status-danger-border)', backgroundColor: 'var(--status-danger-soft)' }}>
+                  <div className="rounded-lg border p-4" style={{ borderColor: 'var(--status-danger-border)', backgroundColor: 'var(--status-danger-soft)' }}>
                     <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-danger)' }}>
                       Hard boundary
                     </div>
@@ -575,11 +575,11 @@ export default function LeanExitSection({ theme = 'dark' }) {
                       {PRODUCT_AUTONOMY_RULES.hardBoundary}
                     </p>
                   </div>
-                  <div className="mt-5">
-                    <div className="font-mono text-[11px] uppercase tracking-[0.14em] mb-2" style={{ color: 'var(--accent)' }}>
+                  <div className="space-y-3">
+                    <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
                       {PRODUCT_MERMAID_DIAGRAMS.architecture.title}
                     </div>
-                    <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
+                    <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                       {PRODUCT_MERMAID_DIAGRAMS.architecture.subtitle}
                     </p>
                     <MermaidDiagram
@@ -588,7 +588,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                       minHeight={420}
                     />
                   </div>
-                </article>
+                </div>
               </div>
             </NarrativeSection>
           </Shell>
@@ -599,13 +599,11 @@ export default function LeanExitSection({ theme = 'dark' }) {
               title="The company becomes strategically interesting if the wedge compounds into attach revenue, rollout speed, and client stickiness."
               lead="This chapter should connect the product shape to the business case: why an incumbent would care, how the economics work, and what evidence supports the pricing posture."
             >
-              <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+              <div className="space-y-4">
                 <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--amber)' }}>
                   Why this could be bought
                 </div>
-                <div className="mt-4">
-                  <BulletList items={LEAN_EXIT_CASE.whyBought.points} color="var(--amber)" />
-                </div>
+                <BulletList items={LEAN_EXIT_CASE.whyBought.points} color="var(--amber)" />
               </div>
 
               <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
@@ -625,12 +623,12 @@ export default function LeanExitSection({ theme = 'dark' }) {
                 intro="The economic story is stronger when interview-led strategic signals sit beside pricing and market logic, not in different parts of the page."
               />
 
-              <div className="grid gap-5 lg:grid-cols-[1.05fr,0.95fr]">
-                <article className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+              <div className="space-y-8">
+                <div className="space-y-4">
                   <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--accent)' }}>
                     Pricing research tracker
                   </div>
-                  <p className="text-sm leading-relaxed mt-3 mb-4" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     Public pricing signals belong inside the story because they reinforce how buyers already think about workflow, control, and enterprise automation spend.
                   </p>
                   <Table
@@ -645,16 +643,16 @@ export default function LeanExitSection({ theme = 'dark' }) {
                     ]}
                     rows={PRICING_TRACKER.slice(0, 5)}
                   />
-                </article>
+                </div>
 
-                <article className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+                <div className="space-y-4">
                   <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--amber)' }}>
                     Unit economics
                   </div>
-                  <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     {UNIT_ECONOMICS.intro}
                   </p>
-                  <div className="grid gap-3 sm:grid-cols-2 mt-4">
+                  <div className="grid gap-3 sm:grid-cols-2">
                     {UNIT_ECONOMICS.roleWages.map((item) => (
                       <article
                         key={item.label}
@@ -674,7 +672,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                     ))}
                   </div>
 
-                  <div className="grid gap-4 md:grid-cols-2 mt-5">
+                  <div className="grid gap-4 md:grid-cols-2">
                     <article className="rounded-lg border p-4" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}>
                       <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
                         Pricing logic
@@ -692,7 +690,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                       </div>
                     </article>
                   </div>
-                </article>
+                </div>
               </div>
             </NarrativeSection>
           </Shell>
@@ -704,11 +702,11 @@ export default function LeanExitSection({ theme = 'dark' }) {
               lead="This chapter should close the lean-exit case by showing that the team knows what must be tested next, what counts as success, and how the wedge connects to broader strategic relevance."
             >
               <div className="grid gap-4 lg:grid-cols-[1.05fr,0.95fr]">
-                <article className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+                <div className="space-y-4">
                   <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--amber)' }}>
                     Validation loop
                   </div>
-                  <div className="space-y-4 mt-4">
+                  <div className="space-y-4">
                     <div>
                       <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-warning)' }}>
                         Riskiest assumption
@@ -741,7 +739,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                       ))}
                     </div>
                   </div>
-                </article>
+                </div>
 
                 <div className="space-y-4">
                   <article className="rounded-lg border p-5" style={{ borderColor: 'var(--status-success-border)', backgroundColor: 'var(--status-success-soft)' }}>
@@ -774,12 +772,12 @@ export default function LeanExitSection({ theme = 'dark' }) {
                 <StepList title={ECONOMIC_BUYER_DECISION_PROCESS.title} steps={ECONOMIC_BUYER_DECISION_PROCESS.steps} tone="accent" />
               </div>
 
-              <div className="grid gap-4 lg:grid-cols-[1.05fr,0.95fr]">
-                <article className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+              <div className="space-y-8">
+                <div className="space-y-4">
                   <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--amber)' }}>
                     GTM playbook
                   </div>
-                  <div className="grid gap-4 md:grid-cols-2 mt-4">
+                  <div className="grid gap-4 md:grid-cols-2">
                     <article className="rounded-lg border p-4" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface3)' }}>
                       <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
                         First 10
@@ -797,18 +795,18 @@ export default function LeanExitSection({ theme = 'dark' }) {
                       </div>
                     </article>
                   </div>
-                </article>
+                </div>
 
-                <article className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
+                <div className="space-y-4">
                   <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--accent)' }}>
                     What gets built first
                   </div>
-                  <div className="grid gap-4 md:grid-cols-3 mt-4">
+                  <div className="grid gap-4 md:grid-cols-3">
                     <PriorityColumn label="MVP" items={FEATURE_PRIORITIES.mvp} tone="success" />
                     <PriorityColumn label="V2" items={FEATURE_PRIORITIES.v2} tone="accent" />
                     <PriorityColumn label="Future" items={FEATURE_PRIORITIES.future} tone="warning" />
                   </div>
-                </article>
+                </div>
               </div>
             </NarrativeSection>
           </Shell>
