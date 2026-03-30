@@ -62,7 +62,7 @@ export default function OverviewSection({ onNavigate }) {
             background: 'linear-gradient(90deg, rgba(249,115,22,0.12), rgba(59,130,246,0.08) 70%, transparent)',
           }}
         >
-          SYNTHAGENTS
+          FIXFRIEND
         </span>
       </div>
 
