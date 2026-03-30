@@ -21,16 +21,16 @@ export default function SectionHeader({ index, label, right, hideOnMobile, compa
           />
           {index ? (
             <span
-              className="font-mono text-[11px] tracking-widest"
-              style={{ color: 'var(--muted)', letterSpacing: '0.12em' }}
+              className="font-mono text-xs tracking-[0.14em]"
+              style={{ color: 'var(--muted)' }}
             >
               {index}
             </span>
           ) : null}
           {label != null && label !== '' ? (
             <span
-              className={`font-mono text-[11px] tracking-widest ${index ? 'ml-1.5' : ''}`}
-              style={{ color: 'var(--text-secondary)', letterSpacing: '0.16em' }}
+              className={`font-mono text-[13px] uppercase tracking-[0.18em] ${index ? 'ml-1.5' : ''}`}
+              style={{ color: 'var(--text-secondary)' }}
             >
               {label}
             </span>
