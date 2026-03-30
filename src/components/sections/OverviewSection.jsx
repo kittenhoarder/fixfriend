@@ -42,7 +42,7 @@ function ProductCard({ product }) {
 export default function OverviewSection({ onNavigate }) {
   return (
     <section
-      className="flex flex-col items-center justify-center min-h-full px-6 py-16 lg:py-20 w-full max-w-3xl mx-auto"
+      className="flex flex-col items-center justify-center min-h-full px-6 py-16 lg:py-20 w-full mx-auto"
       style={{ paddingTop: '72px' }}
     >
       {/* Brand hierarchy eyebrow */}
