@@ -14,7 +14,7 @@ import {
   ArrowRight,
 } from 'lucide-react'
 import { NAV_TABS } from '../data/content'
-import SynthAgentLogo from './ui/SynthAgentLogo'
+import FIXFriendLogo from './ui/FIXFriendLogo'
 
 const ICON_MAP = {
   Home,
@@ -75,14 +75,14 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
                 color: 'var(--amber)',
               }}
             >
-              <SynthAgentLogo size={32} />
+              <FIXFriendLogo size={32} />
             </div>
             <div>
               <div className="font-serif leading-none text-[1.45rem]" style={{ color: 'var(--text-primary)' }}>
-                SynthAgents
+                FIXFriend
               </div>
               <div className="font-mono text-[9px] mt-0.5" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.1em' }}>
-                FIXFriend · DataRights · Declare
+                FIXFriend
               </div>
             </div>
           </div>
@@ -226,11 +226,11 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
                 color: 'var(--amber)',
               }}
             >
-              <SynthAgentLogo size={28} />
+              <FIXFriendLogo size={28} />
             </div>
             <div>
               <div className="font-serif text-base leading-none" style={{ color: 'var(--text-primary)' }}>
-                SynthAgents
+                FIXFriend
               </div>
               <div className="font-mono text-[8px] mt-0.5" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.08em' }}>
                 PRDCTV.WORK

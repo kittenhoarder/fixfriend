@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import { THESIS, GAP, ACQUIRERS, DEALS, MARKET_MODEL } from '../data/content'
-import SynthAgentLogo from './ui/SynthAgentLogo'
+import FIXFriendLogo from './ui/FIXFriendLogo'
 import FoundingTeam from './ui/FoundingTeam'
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
@@ -86,7 +86,7 @@ export const OnePager = forwardRef(function OnePager(_, ref) {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           {/* Insect icon */}
-          <SynthAgentLogo style={{ width: '20px', height: '20px', color: C.amber }} />
+          <FIXFriendLogo style={{ width: '20px', height: '20px', color: C.amber }} />
           <span style={{ fontFamily: serif, fontSize: '16px', color: C.text, letterSpacing: '-0.01em' }}>FIXFriend</span>
           <span style={{ width: '1px', height: '12px', backgroundColor: C.border, display: 'inline-block' }} />
           <span style={{ fontSize: '8px', fontWeight: 700, color: C.amber, letterSpacing: '0.15em', fontFamily: mono }}>LEAN EXIT BRIEF</span>

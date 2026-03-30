@@ -15,7 +15,7 @@ export default function OperationsSection() {
 
   return (
     <SectionLayout label="OPERATIONS" mobileNav headerProps={{ compact: true }}>
-      <div className="content-rail px-6 py-8 max-w-4xl mx-auto">
+      <div className="content-rail px-6 py-8 max-w-6xl mx-auto">
 
           {/* Headline */}
           <div className="mb-10">

@@ -9,9 +9,9 @@
 
 export const HERO = {
   eyebrow: 'CONFIDENTIAL — STRATEGIC ACQUISITION BRIEF',
-  headline: 'The Workflow Control Layer for Change in Capital Markets',
+  headline: 'FIXFriend — Agentic Change Layer for Electronic Trading Infrastructure',
   subheadline:
-    'SynthAgents automates the change-response loop that incumbent vendors have built workarounds for, but never productised — compressing weeks of manual coordination into bounded autonomous execution with a continuous audit trail.',
+    'FIXFriend proactively surfaces context and executes change in a controlled, sandboxed, auditable way — compressing the 2–4 week manual venue-change cycle into bounded autonomous execution with a continuous evidence chain that incumbent vendors have built workarounds for, but never productised.',
   ctaLabel: 'Request Data Room Access',
   ctaEmail: '',
   confidentialityNote:
@@ -21,59 +21,43 @@ export const HERO = {
 // ── Suite Overview Section ────────────────────────────────────────────────────
 
 export const SUITE = {
-  eyebrow: 'PRODUCT SUITE',
+  eyebrow: 'PRODUCT',
   narrativeParagraph:
-    'FIXFriend, DataRights, and Declare are three focused workflow products built on a shared agent runtime — SynthAgents. Each product does one job well: ingest a dense operational artifact, surface what matters, generate a reviewed output, and deliver it into the systems teams already use. Together they own the full change-intelligence loop for trading technology and market-data operations: detect a change, assess its impact and cost, execute a response, then attest compliance. No single incumbent owns all four steps. That gap is the acquisition thesis.',
+    'FIXFriend operates in two modes: proactively surfacing the context teams need before they know they need it, and then executing change in a controlled, sandboxed way with a continuous evidence chain built in. The gap incumbents have never closed is not the execution tooling — it is the layer that proactively organises context from scattered systems, classifies what matters, and then works on it in a governed, auditable way. FIXFriend is that layer.',
   synergyCallout:
-    'Detect change → Assess impact & cost → Execute response → Attest compliance. The suite closes the loop that every trading technology team currently closes manually.',
+    'Discover context → Classify impact → Execute change → Govern evidence. One product. Continuous control.',
+  futuresNote:
+    'DataRights (market-data rights assessment) and Declare (attestation workflows) are expansion modules in development.',
   products: [
     {
-      id: 'fixfriend',
-      name: 'FIXFriend',
+      id: 'discover',
+      name: 'Discover',
       status: 'live',
-      tagline: 'Venue change response & certification workflow',
+      tagline: 'Proactive context sourcing and impact classification',
       ipSummary:
-        'Proprietary venue-notice extraction pipeline; structured change-pack schema normalising FIX specs, broker bulletins, and venue portals into a single reviewed artifact format; Expoty context core that compounds institutional memory across every change processed.',
+        'Monitor agent continuously watches venue portals, email digests, and regulatory feeds. Source agent fetches specs; Expoty context core retrieves prior decisions, code context, and test artifacts into a shared working bundle before teams know they need it. Impact agent classifies minor vs. major with deterministic gates and model reasoning.',
       revenueLever:
-        '€22.5K pilot → €120K ACV production → €150K–€250K+ expansion. Attaches to any connectivity or OMS install as a workflow upsell. At target account density under acquirer distribution: €500K–€1.5M ARR within 24 months without new sales infrastructure.',
-      integrationAngle:
-        'Delivers outputs into Jira, Confluence, Slack, Teams, Git, and email — no new toolchain required. Designed to slot directly onto Broadridge/BTCS, ION/Fidessa, or TT connectivity installs as a bounded workflow layer above existing FIX infrastructure.',
+        'Eliminates 2–4 weeks of manual context assembly per change event across 25–60 venue changes per year per firm. The earlier in the cycle a team knows what a change means for them, the lower the remediation cost.',
     },
     {
-      id: 'datarights',
-      name: 'DataRights',
-      status: 'in-development',
-      tagline: 'Market-data rights & cost-impact assessment',
-      ipSummary:
-        'Licensed-entitlement graph model mapping data usage to required rights; incremental cost delta engine that prices the gap between current and required entitlements; structured open-question audit trail for vendor negotiation and internal sign-off.',
-      revenueLever:
-        'Natural compliance upsell to any acquirer in the market-data billing, reporting, or OMS space. Every firm consuming market data faces recurring entitlement review cycles — DataRights converts ad-hoc manual assessment into a governed annual workflow.',
-      integrationAngle:
-        'Feeds entitlement snapshots directly into the Declare attestation layer, creating a closed evidence chain from data usage to signed declaration. Augments existing MDM and DROIT-adjacent platforms without replacing them.',
-    },
-    {
-      id: 'declare',
-      name: 'Declare',
-      status: 'roadmap',
-      tagline: 'Declaration, attestation & audit-evidence workflows',
-      ipSummary:
-        'Structured evidence schema for regulatory declaration and attestation; automated workflow engine routing declarations to the correct internal signatory; continuous audit-trail export in machine-readable format for regulatory submission and internal governance.',
-      revenueLever:
-        'DORA (in force January 2025) and MiFID II RTS 6 mandate continuous, evidenced control over ICT changes and trading systems. Declare converts a retroactive scramble into a recurring SaaS workflow — recurring evidence-storage and audit-export fees on top of workflow licence.',
-      integrationAngle:
-        'Receives structured inputs from FIXFriend change packs and DataRights entitlement snapshots, closing the compliance loop from change detection to signed attestation in a single governed pipeline.',
-    },
-    {
-      id: 'synthagent',
-      name: 'SynthAgent Platform',
+      id: 'execute',
+      name: 'Execute',
       status: 'live',
-      tagline: 'Bounded agentic execution for structured change domains',
+      tagline: 'Controlled, sandboxed change execution',
       ipSummary:
-        'Seven-agent orchestration architecture (Monitor, Source, Impact, Planning, Execution, Comms, Audit) with domain-scoped execution rules; sandboxed execution with a hard UAT gate — never writes to production; Expoty context core providing semantic retrieval with immutable source IDs and timestamps.',
+        'Minor changes run autonomously inside UAT: requirements, branch plan, regression pack, Jira tickets, Slack summaries, audit evidence — generated and delivered without manual intervention. Major changes escalate as structured project bundles with source evidence and decision logs. Hard UAT boundary — never writes to production.',
       revenueLever:
-        'Platform licence for an acquirer to embed agent primitives across their product portfolio. Each new workflow domain — connectivity change, data rights, attestation, regulatory reporting — is a new SKU on the same runtime, expanding TAM without rebuilding infrastructure.',
-      integrationAngle:
-        "Deployable on-prem, in a managed cloud environment, or as an embedded agent runtime within an acquirer's existing platform. Model routing is configurable and auditable; no dependency on a single external AI provider.",
+        '60–70% of venue changes qualify as minor and run fully automated. Major changes surface early as structured projects rather than late as certification failures. Either way, weeks of coordination compress to days.',
+    },
+    {
+      id: 'govern',
+      name: 'Govern',
+      status: 'live',
+      tagline: 'Continuous, immutable audit trail',
+      ipSummary:
+        'Every source, decision, test result, environment boundary, and escalation reason is logged with immutable timestamps and provenance IDs via Expoty. DORA (in force January 2025) and MiFID II RTS 6 require continuous evidenced control over ICT changes — FIXFriend creates that evidence live, not retroactively.',
+      revenueLever:
+        'Audit evidence is a by-product of execution, not a separate project. Eliminates the retroactive stitching that delays every regulatory review and turns a personal-liability exposure (DORA: up to €1M for senior management) into a closed, continuous record.',
     },
   ],
 }
@@ -106,7 +90,7 @@ export const THESIS = {
       icon: 'Lock',
       stat: 'Proprietary venue-notice corpus + Expoty context core = 18-month head start on any greenfield build, compounding with every change processed.',
       detail:
-        'The structural advantage is not the agent orchestration — it is the indexed, normalised corpus of venue notices, FIX specs, and change history that makes the impact and planning agents domain-accurate from day one. Every change processed adds to institutional memory. A new entrant starts cold; SynthAgents starts with every prior change already indexed and retrievable. General-purpose agent platforms (Tines, Workato) lack the domain schema, autonomy rules, and evidence-chain architecture required for regulated capital markets environments.',
+        'The structural advantage is not the agent orchestration — it is the indexed, normalised corpus of venue notices, FIX specs, and change history that makes the impact and planning agents domain-accurate from day one. Every change processed adds to institutional memory. A new entrant starts cold; FIXFriend starts with every prior change already indexed and retrievable. General-purpose agent platforms (Tines, Workato) lack the domain schema, autonomy rules, and evidence-chain architecture required for regulated capital markets environments.',
     },
   ],
 }
@@ -116,28 +100,24 @@ export const THESIS = {
 export const PRODUCTS_DEEP_DIVE = {
   eyebrow: 'PRODUCT DETAIL',
   intro:
-    'Four products, one shared runtime. The strategic value is not any single product in isolation — it is the closed loop they form together, and the agent platform that powers them. An acquirer embedding SynthAgents gains the runtime, the corpus, and three production-ready workflow SKUs with a combined compliance footprint no point solution can match.',
+    'FIXFriend is one product with three interlocking capabilities. The strategic value for an acquirer is not the agent orchestration — it is the normalised venue-notice corpus, the Expoty context core, and the domain-scoped execution rules that make FIXFriend accurate from day one and compound with every change processed. A new entrant starts cold; FIXFriend starts with every prior change already indexed.',
   defensibilityLabels: {
     high: 'High defensibility',
     medium: 'Medium defensibility',
     low: 'Early-stage moat',
   },
   defensibility: {
-    fixfriend: {
+    discover: {
       score: 4,
-      note: 'Driven by the Expoty context core and normalised venue-notice corpus. Change classification accuracy compounds with volume — a new entrant starts cold; FIXFriend starts with every prior change already indexed.',
+      note: 'Driven by the Expoty context core and normalised venue-notice corpus. Context retrieval accuracy compounds with volume — a new entrant starts with no indexed history; FIXFriend starts with every prior change, decision, and test artifact already retrievable.',
     },
-    datarights: {
-      score: 3,
-      note: 'Entitlement graph model is structurally sound but data network effects build more slowly than change-response corpus effects. Defensibility increases as more entitlement reviews are processed and benchmarked.',
-    },
-    declare: {
-      score: 3,
-      note: 'Schema and workflow architecture are differentiated; regulatory enforcement deepening (DORA, MiFID II RTS 6) creates structural demand. Moat strengthens when downstream from FIXFriend and DataRights — the closed loop is harder to replicate than any single attestation product.',
-    },
-    synthagent: {
+    execute: {
       score: 4,
-      note: 'Purpose-built for regulated capital markets: hard UAT boundary, domain-scoped autonomy rules, immutable audit chain. General-purpose orchestration platforms cannot satisfy these constraints without significant custom build.',
+      note: 'Domain-scoped autonomy rules (no data-model change, no workflow change, high source confidence, tests pass) and the hard UAT boundary are purpose-built for regulated capital markets. General-purpose orchestration platforms cannot satisfy these constraints without significant custom build.',
+    },
+    govern: {
+      score: 5,
+      note: 'Immutable source provenance and continuous evidence creation are structural requirements under DORA (in force January 2025) and MiFID II RTS 6. FIXFriend creates this evidence as a by-product of execution — no retroactive stitching, no separate project. Hardest capability to replicate at the same governance standard.',
     },
   },
 }
@@ -262,9 +242,9 @@ export const LANDSCAPE = {
 
 export const ACQ_NAV_TABS = [
   { id: 'hero', label: 'OVERVIEW' },
-  { id: 'suite', label: 'SUITE' },
+  { id: 'suite', label: 'PRODUCT' },
   { id: 'thesis', label: 'WHY NOW' },
-  { id: 'products', label: 'PRODUCTS' },
+  { id: 'products', label: 'HOW IT WORKS' },
   { id: 'financials', label: 'FINANCIALS' },
   { id: 'landscape', label: 'LANDSCAPE' },
 ]

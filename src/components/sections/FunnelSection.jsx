@@ -45,7 +45,7 @@ export default function FunnelSection() {
 
   return (
     <SectionLayout label="SALES" mobileNav headerProps={{ compact: true }}>
-      <div className="content-rail px-6 py-8 max-w-5xl mx-auto space-y-10">
+      <div className="content-rail px-6 py-8 max-w-6xl mx-auto space-y-10">
 
           {/* Funnel */}
           <div>

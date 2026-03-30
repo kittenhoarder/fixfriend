@@ -931,9 +931,9 @@ export const BRAND = {
     about: 'prdctv.work started from a simple observation: most people and teams are not short on information, tools, or ambition. They are short on clarity — a clear view of what matters, what to do next, and what can be ignored.',
   },
   umbrella: {
-    name: 'SynthAgents',
+    name: 'FIXFriend',
     tagline: 'Turning trading tech ops complexity into clear action.',
-    description: 'SynthAgents is the product umbrella within PRDCTV.WORK focused on capital markets operational workflows. Each product does one job well: ingest a dense artifact, surface what matters, generate a reviewed output, and deliver it into the systems teams already use.',
+    description: 'FIXFriend is the product within PRDCTV.WORK focused on capital markets operational workflows. Proactively surfaces context, classifies impact, and executes change in a controlled, auditable way — delivering into the systems teams already use.',
   },
   mvpDefinition: 'Institutional trading firms must continuously update and manage software to enable ongoing operations and comply with strict regulations. This is a time consuming and complex manual process.',
   positioningStatement: 'The workflow control layer between operational artifacts and governed execution in capital markets.',
@@ -946,23 +946,8 @@ export const BRAND = {
       tagline: 'Change-readiness workflow for trading technology teams.',
       description: 'Turns external venue notices, FIX specs, and broker bulletins into reviewed impact briefs, readiness packs, and Jira/Slack delivery — with a full audit trail.',
     },
-    {
-      id: 'datarights',
-      name: 'DataRights',
-      status: 'in development',
-      statusTone: 'info',
-      tagline: 'Market-data rights and cost-impact assessment.',
-      description: 'Before a team buys, reuses, or automates against market data, DataRights tells them what rights they need, what the incremental cost will be, and what questions still need answering.',
-    },
-    {
-      id: 'declare',
-      name: 'Declare',
-      status: 'roadmap',
-      statusTone: 'neutral',
-      tagline: 'Declaration, attestation, and audit-evidence workflows.',
-      description: 'The operating system for classifying, declaring, and defending market-data usage — turning declaration scramble and audit prep into a governed, repeatable workflow.',
-    },
   ],
+  expansionNote: 'DataRights and Declare are expansion modules in development.',
 }
 
 export const FINANCIAL_MODEL = {
@@ -1010,7 +995,7 @@ export const FINANCIAL_MODEL = {
       amount: '€150K–€250K+',
       rawAmount: 200000,
       duration: 'Multi-workflow',
-      detail: 'Add workflows (DataRights, Declare), additional sources, teams, or delivery channels. Land-and-expand path within a single account.',
+      detail: 'Add additional sources, teams, or delivery channels. Land-and-expand path within a single account.',
       budgetOwner: 'COO / CFO / Head of Market Data',
     },
   ],
@@ -1196,7 +1181,7 @@ export const OPERATIONS_MODEL = {
       items: [
         'Pilot-first commercial motion. €22.5K fixed fee for 4–8 weeks to prove value on a live artifact.',
         'Production conversion path to €120K ACV. Departmental deployment with monthly equivalent of €10K.',
-        'Expansion to €150K–€250K+ through additional workflows (DataRights, Declare) and teams.',
+        'Expansion to €150K–€250K+ through additional teams, sources, and delivery channels.',
         'Jira and Slack delivery adapters in production. Evidence page and PDF export as standard.',
         'Pricing logic anchored to value: one avoided change-cycle failure justifies the annual contract.',
         'Target accounts tracked, pipeline staged, and conversion rate monitored from week one.',

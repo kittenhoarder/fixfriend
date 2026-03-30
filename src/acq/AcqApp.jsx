@@ -79,7 +79,7 @@ export default function AcqApp({ onSwitchPortal }) {
               className="font-serif text-base leading-tight"
               style={{ color: 'var(--text-primary)' }}
             >
-              SynthAgents
+              FIXFriend
             </div>
           </div>
 

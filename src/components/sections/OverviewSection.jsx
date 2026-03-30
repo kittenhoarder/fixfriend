@@ -1,7 +1,7 @@
 import { Linkedin, ArrowRight, ChevronRight } from 'lucide-react'
 import { BRAND, CONTINUOUS_CHANGE_SIGNALS, THESIS } from '../../data/content'
 import StatusPill from '../ui/StatusPill'
-import SynthAgentLogo from '../ui/SynthAgentLogo'
+import FIXFriendLogo from '../ui/FIXFriendLogo'
 import LeanExitDownloads from '../LeanExitDownloads'
 import FoundingTeam from '../ui/FoundingTeam'
 
@@ -42,7 +42,7 @@ function ProductCard({ product }) {
 export default function OverviewSection({ onNavigate }) {
   return (
     <section
-      className="flex flex-col items-center justify-center min-h-full px-6 py-16 lg:py-20 w-full max-w-3xl mx-auto"
+      className="flex flex-col items-center justify-center min-h-full px-6 py-16 lg:py-20 w-full mx-auto"
       style={{ paddingTop: '72px' }}
     >
       {/* Brand hierarchy eyebrow */}
@@ -62,7 +62,7 @@ export default function OverviewSection({ onNavigate }) {
             background: 'linear-gradient(90deg, rgba(249,115,22,0.12), rgba(59,130,246,0.08) 70%, transparent)',
           }}
         >
-          SYNTHAGENTS
+          FIXFRIEND
         </span>
       </div>
 
@@ -72,7 +72,7 @@ export default function OverviewSection({ onNavigate }) {
         style={panelShell}
       >
         <header className="mb-6 grid gap-5 md:gap-6" style={{ gridTemplateColumns: 'clamp(4rem, 12vw, 7.5rem) 1fr', alignItems: 'start' }}>
-          <SynthAgentLogo
+          <FIXFriendLogo
             className="mt-0.5 w-full h-auto"
             style={{ width: 'clamp(4rem, 12vw, 7.5rem)', height: 'clamp(4rem, 12vw, 7.5rem)', color: 'var(--amber)' }}
             aria-hidden
@@ -81,7 +81,7 @@ export default function OverviewSection({ onNavigate }) {
             className="font-serif leading-[0.94] col-start-2"
             style={{ fontSize: 'clamp(2.4rem, 7vw, 4.6rem)', color: 'var(--text-primary)' }}
           >
-            SynthAgents
+            FIXFriend
           </h1>
           <p
             className="font-serif leading-snug col-span-full"
@@ -110,16 +110,21 @@ export default function OverviewSection({ onNavigate }) {
           </p>
         </div>
 
-        {/* Product suite */}
+        {/* Product */}
         <div className="mb-6">
           <p className="font-mono text-[10px] tracking-widest mb-3" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.14em' }}>
-            PRODUCT SUITE
+            PRODUCT
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 gap-3">
             {BRAND.products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
+          {BRAND.expansionNote && (
+            <p className="font-mono mt-3 text-[11px] tracking-[0.1em]" style={{ color: 'var(--muted)' }}>
+              {BRAND.expansionNote}
+            </p>
+          )}
         </div>
 
         {/* About PRDCTV.WORK */}
