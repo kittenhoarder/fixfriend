@@ -1,5 +1,7 @@
 import { Fragment } from 'react'
-import { FINANCIAL_MODEL, COMPETITOR_BENCHMARKS } from '../../data/content'
+import { COMPETITOR_BENCHMARKS, FINANCIAL_MODEL } from '../../data/content'
+import NarrativeSection from '../ui/NarrativeSection'
+import ProofStack from '../ui/ProofStack'
 import SectionLayout from '../ui/SectionLayout'
 
 function fmt(n) {
@@ -15,14 +17,14 @@ function fmtSigned(n) {
 function StatCallout({ label, value, tone = 'default' }) {
   const colors = {
     default: { border: 'var(--border-subtle)', label: 'var(--text-tertiary)', value: 'var(--text-primary)' },
-    positive: { border: 'var(--status-success)', label: 'var(--status-success)', value: 'var(--text-primary)' },
-    negative: { border: 'var(--status-warning)', label: 'var(--status-warning)', value: 'var(--text-primary)' },
+    positive: { border: 'var(--status-success-border)', label: 'var(--status-success)', value: 'var(--text-primary)' },
     accent: { border: 'var(--accent-border-soft)', label: 'var(--accent)', value: 'var(--text-primary)' },
   }
-  const c = colors[tone]
+  const c = colors[tone] || colors.default
+
   return (
-    <div className="p-4 border flex flex-col gap-2" style={{ borderColor: c.border, backgroundColor: 'var(--surface)' }}>
-      <span className="font-mono text-[10px] tracking-widest uppercase" style={{ color: c.label, letterSpacing: '0.14em' }}>
+    <div className="rounded-lg border p-4 flex flex-col gap-2" style={{ borderColor: c.border, backgroundColor: 'var(--surface)' }}>
+      <span className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: c.label }}>
         {label}
       </span>
       <span className="font-serif text-[1.9rem] leading-none" style={{ color: c.value }}>
@@ -68,13 +70,13 @@ function CashFlowTable({ months }) {
   }
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto rounded-lg border" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface2)' }}>
       <table className="w-full text-xs border-collapse" style={{ minWidth: '900px' }}>
         <thead>
           <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
             <th
               className="text-left py-3 px-4 font-mono tracking-wider sticky left-0 z-10"
-              style={{ color: 'var(--text-tertiary)', backgroundColor: 'var(--surface2)', width: '200px', minWidth: '200px', letterSpacing: '0.12em', fontSize: '9px' }}
+              style={{ color: 'var(--text-tertiary)', backgroundColor: 'var(--surface2)', width: '200px', minWidth: '200px', letterSpacing: '0.12em', fontSize: '10px' }}
             >
               LINE ITEM
             </th>
@@ -82,7 +84,7 @@ function CashFlowTable({ months }) {
               <th
                 key={m.label}
                 className="text-right py-3 px-3 font-mono tracking-wider"
-                style={{ color: 'var(--text-tertiary)', backgroundColor: 'var(--surface2)', whiteSpace: 'nowrap', letterSpacing: '0.1em', fontSize: '9px' }}
+                style={{ color: 'var(--text-tertiary)', backgroundColor: 'var(--surface2)', whiteSpace: 'nowrap', letterSpacing: '0.1em', fontSize: '10px' }}
               >
                 {m.label}
               </th>
@@ -93,19 +95,20 @@ function CashFlowTable({ months }) {
           {rows.map((row) => {
             const isFirstInSection = sectionHeaders[row.section]?.first === row.key
             const bgColor = sectionColors[row.section]
+
             return (
               <Fragment key={row.key}>
-                {isFirstInSection && (
+                {isFirstInSection ? (
                   <tr>
                     <td
                       colSpan={months.length + 1}
                       className="pt-4 pb-1 px-4 font-mono"
-                      style={{ color: 'var(--text-tertiary)', backgroundColor: 'var(--surface2)', fontSize: '9px', letterSpacing: '0.18em' }}
+                      style={{ color: 'var(--text-tertiary)', backgroundColor: 'var(--surface2)', fontSize: '10px', letterSpacing: '0.18em' }}
                     >
                       {sectionHeaders[row.section].label}
                     </td>
                   </tr>
-                )}
+                ) : null}
                 <tr
                   style={{
                     borderBottom: '1px solid var(--border-subtle)',
@@ -136,10 +139,10 @@ function CashFlowTable({ months }) {
                           color: isNegOrParen
                             ? 'var(--status-warning)'
                             : row.key === 'ebitda' && val > 0
-                            ? 'var(--status-success)'
-                            : row.isBold
-                            ? 'var(--text-primary)'
-                            : 'var(--text-secondary)',
+                              ? 'var(--status-success)'
+                              : row.isBold
+                                ? 'var(--text-primary)'
+                                : 'var(--text-secondary)',
                           fontWeight: row.isBold ? '600' : '400',
                           fontSize: '11px',
                           whiteSpace: 'nowrap',
@@ -159,196 +162,178 @@ function CashFlowTable({ months }) {
   )
 }
 
+function PricingCard({ tier, tone }) {
+  const styles = {
+    default: { borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)', label: 'var(--text-tertiary)' },
+    accent: { borderColor: 'var(--accent-border-soft)', backgroundColor: 'var(--accent-softer)', label: 'var(--accent)' },
+    success: { borderColor: 'var(--status-success-border)', backgroundColor: 'var(--status-success-soft)', label: 'var(--status-success)' },
+  }
+  const style = styles[tone]
+
+  return (
+    <article className="rounded-lg border p-5 flex flex-col gap-3" style={{ borderColor: style.borderColor, backgroundColor: style.backgroundColor }}>
+      <div className="flex items-start justify-between gap-2">
+        <span className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: style.label }}>
+          {tier.tier}
+        </span>
+        <span className="font-mono text-[11px]" style={{ color: 'var(--text-tertiary)' }}>
+          {tier.duration}
+        </span>
+      </div>
+      <p className="font-serif text-[2rem] leading-none" style={{ color: 'var(--text-primary)' }}>
+        {tier.amount}
+      </p>
+      <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+        {tier.detail}
+      </p>
+      <p className="text-sm leading-relaxed pt-3 border-t" style={{ color: 'var(--text-tertiary)', borderColor: 'var(--border-subtle)' }}>
+        Budget owner: {tier.budgetOwner}
+      </p>
+    </article>
+  )
+}
+
 export default function FinancialSection() {
   const { months, pricing, costs, breakEven, baseCase } = FINANCIAL_MODEL
 
+  const modelProof = [
+    {
+      status: 'Validated',
+      kind: 'Model assumption',
+      title: 'The base case is intentionally lean, not an aggressive growth story.',
+      points: baseCase.slice(0, 2),
+      sourceLabel: 'Internal model',
+      why: 'The model stays disciplined and credible by keeping the team narrow, hiring measured, and the path to viability dependent on only a handful of real customers.',
+    },
+    {
+      status: 'Validated',
+      kind: 'Break-even logic',
+      title: 'The operating model works if a small number of production accounts convert.',
+      detail: breakEven.interpretation,
+      points: [
+        `Annualised fixed OpEx: €${breakEven.fixedOpex.toLocaleString()}`,
+        `Average production ACV: €${breakEven.avgAcv.toLocaleString()}`,
+        `Contribution per customer: €${breakEven.contributionPerCustomer.toLocaleString()}`,
+      ],
+      sourceLabel: 'Internal model',
+      why: 'The commercial logic stays focused: validate the wedge first, then earn the right to scale.',
+    },
+  ]
+
+  const benchmarkProof = COMPETITOR_BENCHMARKS.slice(0, 2).map((vendor) => ({
+    status: 'Validated',
+    kind: 'Pricing benchmark',
+    title: vendor.name,
+    detail: `${vendor.pricing}. ${vendor.implication}`,
+    sourceLabel: vendor.name,
+    sourceUrl: vendor.sourceUrl,
+    why: vendor.gap,
+  }))
+
+  const runwayProof = [
+    {
+      status: 'Validated',
+      kind: 'Cost discipline',
+      title: 'Headcount and infrastructure costs step up only as the model converts into production usage.',
+      points: costs.slice(0, 4).map((cost) => `${cost.label}: ${cost.monthly}`),
+      sourceLabel: 'Cost structure',
+      why: 'Spend follows proof. The model is built to learn first and scale only after the wedge is validated.',
+    },
+    {
+      status: 'Validated',
+      kind: 'Cash signal',
+      title: 'The 12-month plan preserves runway while still funding discovery, pilots, and production readiness.',
+      detail: 'This is a venture screen model with a clear conversion dependency: pilots have to turn into a small set of real production accounts.',
+      points: [
+        'Starting cash: €400K',
+        '12M total revenue: €210K',
+        'Ending cash: €281.5K',
+      ],
+      sourceLabel: 'Cash flow forecast',
+      why: 'The model is credible because it can test the thesis seriously without pretending the company already has scale economics.',
+    },
+  ]
+
   return (
     <SectionLayout label="FINANCIALS" mobileNav headerProps={{ compact: true }}>
-      <div className="content-rail px-6 py-8 max-w-6xl mx-auto space-y-10">
-
-          {/* Headline stats */}
-          <div>
-            <p className="font-mono text-[10px] tracking-widest mb-4" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.16em' }}>
-              BASE CASE — 12 MONTHS (APR 2026 – MAR 2027)
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <StatCallout label="Starting cash" value="€400K" tone="default" />
-              <StatCallout label="12M total revenue" value="€210K" tone="positive" />
-              <StatCallout label="Break-even customers" value="~3" tone="accent" />
-              <StatCallout label="Ending cash" value="€281.5K" tone="default" />
-            </div>
+      <div className="content-rail px-6 py-8 max-w-6xl mx-auto space-y-14">
+        <NarrativeSection
+          eyebrow="Model summary"
+          title="A lean commercial model built to prove the wedge before scaling the company."
+          lead="The financial model mirrors the product strategy: narrow initial scope, a credible pilot-to-production path, and enough runway to learn without pretending the business is already mature."
+        >
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            <StatCallout label="Starting cash" value="€400K" tone="default" />
+            <StatCallout label="12M total revenue" value="€210K" tone="positive" />
+            <StatCallout label="Break-even customers" value="~3" tone="accent" />
+            <StatCallout label="Ending cash" value="€281.5K" tone="default" />
           </div>
 
-          {/* Base case interpretation */}
-          <div className="p-5 border" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
-            <p className="font-mono text-[10px] tracking-widest mb-3" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.16em' }}>
-              BASE CASE INTERPRETATION
-            </p>
-            <ul className="space-y-2">
-              {baseCase.map((point, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-                  <span style={{ color: 'var(--amber)', flexShrink: 0 }}>•</span>
-                  {point}
-                </li>
-              ))}
-            </ul>
+          <ProofStack
+            items={modelProof}
+            intro="The model needs to communicate that the team understands what has to be true commercially, and what still needs to be validated."
+          />
+        </NarrativeSection>
+
+        <NarrativeSection
+          eyebrow="Pricing logic"
+          title="Pricing is anchored to workflow value, budget ownership, and comparable enterprise software posture."
+          lead="Pricing is structured to show why the pilot is easy to buy, why production sits at meaningful enterprise ACV, and why expansion grows from proven workflow trust."
+        >
+          <div className="grid gap-4 lg:grid-cols-3">
+            <PricingCard tier={pricing[0]} tone="default" />
+            <PricingCard tier={pricing[1]} tone="accent" />
+            <PricingCard tier={pricing[2]} tone="success" />
           </div>
 
-          {/* 12-month cash flow table */}
-          <div>
-            <p className="font-mono text-[10px] tracking-widest mb-4" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.16em' }}>
-              12-MONTH CASH FLOW FORECAST
-            </p>
-            <div className="border" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface2)' }}>
-              <CashFlowTable months={months} />
-            </div>
-            <p className="text-[11px] mt-2" style={{ color: 'var(--text-tertiary)' }}>
-              Parentheses indicate negative / outflow. VAT excluded. This is a venture screen model, not a GAAP forecast.
-            </p>
-          </div>
+          <ProofStack
+            items={benchmarkProof}
+            intro="Public benchmarks belong inside the argument: they reinforce that regulated workflow software can command serious pricing even before FIXFriend proves its exact final shape."
+          />
+        </NarrativeSection>
 
-          {/* Pricing tiers */}
-          <div>
-            <p className="font-mono text-[10px] tracking-widest mb-4" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.16em' }}>
-              PRICING LOGIC
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {pricing.map((tier, i) => (
-                <article
-                  key={tier.tier}
-                  className="p-5 border flex flex-col gap-3"
-                  style={{
-                    borderColor: i === 0 ? 'var(--border-subtle)' : i === 1 ? 'var(--accent-border-soft)' : 'var(--status-success)',
-                    backgroundColor: i === 0 ? 'var(--surface)' : i === 1 ? 'var(--accent-softer)' : 'rgba(34,197,94,0.05)',
-                  }}
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="font-mono text-[10px] tracking-widest uppercase" style={{ color: i === 0 ? 'var(--text-tertiary)' : i === 1 ? 'var(--accent)' : 'var(--status-success)', letterSpacing: '0.16em' }}>
-                      {tier.tier}
-                    </span>
-                    <span className="font-mono text-[10px]" style={{ color: 'var(--text-tertiary)' }}>{tier.duration}</span>
-                  </div>
-                  <p className="font-serif text-2xl leading-none" style={{ color: 'var(--text-primary)' }}>
-                    {tier.amount}
-                  </p>
-                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                    {tier.detail}
-                  </p>
-                  <p className="text-[11px] pt-2 border-t" style={{ color: 'var(--text-tertiary)', borderColor: 'var(--border-subtle)' }}>
-                    Budget owner: {tier.budgetOwner}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          {/* Cost structure */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <p className="font-mono text-[10px] tracking-widest mb-4" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.16em' }}>
-                COST STRUCTURE
-              </p>
-              <div className="border divide-y" style={{ borderColor: 'var(--border-subtle)', '--divide-color': 'var(--border-subtle)' }}>
-                {costs.map((cost, i) => (
-                  <div key={i} className="flex items-start gap-4 p-3" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{cost.label}</p>
-                      <p className="text-xs mt-0.5" style={{ color: 'var(--text-tertiary)' }}>{cost.note}</p>
-                    </div>
-                    <p className="text-sm font-mono text-right shrink-0" style={{ color: 'var(--amber)' }}>{cost.monthly}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Break-even */}
-            <div>
-              <p className="font-mono text-[10px] tracking-widest mb-4" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.16em' }}>
-                BREAK-EVEN ANALYSIS
-              </p>
-              <div className="p-5 border h-fit" style={{ borderColor: 'var(--accent-border-soft)', backgroundColor: 'var(--accent-softer)' }}>
-                <div className="space-y-3 mb-4">
-                  {[
-                    { label: 'Annualised fixed OpEx', value: '€297,000' },
-                    { label: 'Average production ACV', value: '€120,000' },
-                    { label: 'Gross margin', value: '85%' },
-                    { label: 'Contribution per customer', value: '€102,000' },
-                    { label: 'Break-even ARR needed', value: '€360,000' },
-                  ].map((row) => (
-                    <div key={row.label} className="flex items-center justify-between gap-4">
-                      <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{row.label}</span>
-                      <span className="font-mono text-sm" style={{ color: 'var(--text-primary)' }}>{row.value}</span>
-                    </div>
-                  ))}
+        <NarrativeSection
+          eyebrow="Runway and conversion"
+          title="The model only works if pilots convert into a small number of real production accounts."
+          lead="The table matters, but the interpretation should land first: the company can fund the discovery loop, carry early implementation cost, and still preserve runway if the wedge translates into paid production usage."
+        >
+          <div className="rounded-lg border p-5" style={{ borderColor: 'var(--accent-border-soft)', backgroundColor: 'var(--accent-softer)' }}>
+            <div className="space-y-3 mb-4">
+              {[
+                { label: 'Annualised fixed OpEx', value: '€297,000' },
+                { label: 'Average production ACV', value: '€120,000' },
+                { label: 'Gross margin', value: '85%' },
+                { label: 'Contribution per customer', value: '€102,000' },
+                { label: 'Break-even ARR needed', value: '€360,000' },
+              ].map((row) => (
+                <div key={row.label} className="flex items-center justify-between gap-4">
+                  <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{row.label}</span>
+                  <span className="font-mono text-sm" style={{ color: 'var(--text-primary)' }}>{row.value}</span>
                 </div>
-                <div
-                  className="p-4 border text-center"
-                  style={{ borderColor: 'var(--accent-border-soft)', backgroundColor: 'rgba(59,130,246,0.1)' }}
-                >
-                  <p className="font-mono text-[10px] tracking-widest mb-1" style={{ color: 'var(--accent)', letterSpacing: '0.14em' }}>RULE OF THUMB</p>
-                  <p className="font-serif text-xl" style={{ color: 'var(--text-primary)' }}>
-                    ~3 active production customers at €120K ACV
-                  </p>
-                </div>
-                <p className="text-sm leading-relaxed mt-4" style={{ color: 'var(--text-secondary)' }}>
-                  {breakEven.interpretation}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Competitor benchmarks */}
-          <div>
-            <p className="font-mono text-[10px] tracking-widest mb-4" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.16em' }}>
-              COMPETITOR / ADJACENT PRICING BENCHMARKS
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {COMPETITOR_BENCHMARKS.map((vendor) => (
-                <article
-                  key={vendor.name}
-                  className="p-4 border flex flex-col gap-3"
-                  style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="font-serif text-lg leading-none" style={{ color: 'var(--text-primary)' }}>
-                      {vendor.name}
-                    </span>
-                    <span
-                      className="font-mono text-[9px] px-2 py-1 border shrink-0"
-                      style={{ color: 'var(--text-tertiary)', borderColor: 'var(--border-subtle)', letterSpacing: '0.1em' }}
-                    >
-                      {vendor.category}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10px] tracking-wider mb-1" style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}>PRICING SIGNAL</p>
-                    <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{vendor.pricing}</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10px] tracking-wider mb-1" style={{ color: 'var(--accent)', letterSpacing: '0.12em' }}>IMPLICATION</p>
-                    <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{vendor.implication}</p>
-                  </div>
-                  <div className="pt-2 border-t" style={{ borderColor: 'var(--border-subtle)' }}>
-                    <p className="font-mono text-[10px] tracking-wider mb-1" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.12em' }}>OUR DIFFERENTIATION</p>
-                    <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>{vendor.gap}</p>
-                  </div>
-                  {vendor.sourceUrl && (
-                    <a
-                      href={vendor.sourceUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[10px] font-mono"
-                      style={{ color: 'var(--accent)' }}
-                    >
-                      Source →
-                    </a>
-                  )}
-                </article>
               ))}
             </div>
+            <div className="rounded-lg border p-4 text-center" style={{ borderColor: 'var(--accent-border-soft)', backgroundColor: 'rgba(59,130,246,0.1)' }}>
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] mb-1" style={{ color: 'var(--accent)' }}>
+                Rule of thumb
+              </p>
+              <p className="font-serif text-xl" style={{ color: 'var(--text-primary)' }}>
+                ~3 active production customers at €120K ACV
+              </p>
+            </div>
           </div>
 
-        </div>
+          <CashFlowTable months={months} />
+
+          <p className="text-xs mt-2" style={{ color: 'var(--text-tertiary)' }}>
+            Parentheses indicate negative / outflow. VAT excluded. This is a venture screen model, not a GAAP forecast.
+          </p>
+
+          <ProofStack
+            items={runwayProof}
+            intro="The supporting detail clarifies the shape of the model without burying the main takeaway under labels and mechanics."
+          />
+        </NarrativeSection>
+      </div>
     </SectionLayout>
   )
 }

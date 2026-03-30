@@ -11,8 +11,8 @@ export default function FoundingTeam({
     <section className={className}>
       {title ? (
         <div
-          className="font-mono text-xs font-medium tracking-wider block mb-4"
-          style={{ color: 'var(--text-tertiary)', letterSpacing: '0.1em' }}
+          className="font-mono text-xs font-medium uppercase tracking-[0.16em] block mb-4"
+          style={{ color: 'var(--amber)' }}
         >
           {title}
         </div>
@@ -24,7 +24,7 @@ export default function FoundingTeam({
         </p>
       ) : null}
 
-      <div className={`grid gap-3 ${compact ? 'md:grid-cols-3' : 'lg:grid-cols-3'}`}>
+      <div className={`grid gap-4 ${compact ? 'lg:grid-cols-2' : 'md:grid-cols-2 xl:grid-cols-3'}`}>
         {FOUNDERS.map((founder) => (
           <article
             key={founder.name}
@@ -42,7 +42,7 @@ export default function FoundingTeam({
                 {founder.name}
               </p>
               <p
-                className="font-mono text-[10px] uppercase tracking-[0.16em] mt-2"
+                className="font-mono text-[11px] uppercase tracking-[0.14em] mt-2"
                 style={{ color: 'var(--text-tertiary)' }}
               >
                 {founder.title}
