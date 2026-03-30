@@ -42,7 +42,7 @@ function ProductCard({ product }) {
 export default function OverviewSection({ onNavigate }) {
   return (
     <section
-      className="flex flex-col items-center justify-center min-h-full px-6 py-16 lg:py-20 w-full mx-auto"
+      className="flex flex-col items-center justify-center min-h-full px-6 py-16 lg:py-20 w-full max-w-6xl mx-auto"
       style={{ paddingTop: '72px' }}
     >
       {/* Brand hierarchy eyebrow */}
@@ -71,20 +71,23 @@ export default function OverviewSection({ onNavigate }) {
         className="panel-shell relative overflow-hidden p-7 md:p-9 mb-8 w-full"
         style={panelShell}
       >
-        <header className="mb-6 grid gap-5 md:gap-6" style={{ gridTemplateColumns: 'clamp(4rem, 12vw, 7.5rem) 1fr', alignItems: 'start' }}>
+        <header
+          className="mb-6 grid gap-5 md:gap-6 w-fit mx-auto"
+          style={{ gridTemplateColumns: 'clamp(4rem, 12vw, 7.5rem) 1fr', alignItems: 'center' }}
+        >
           <FIXFriendLogo
-            className="mt-0.5 w-full h-auto"
+            className="w-full h-auto self-center"
             style={{ width: 'clamp(4rem, 12vw, 7.5rem)', height: 'clamp(4rem, 12vw, 7.5rem)', color: 'var(--amber)' }}
             aria-hidden
           />
           <h1
             className="font-serif leading-[0.94] col-start-2"
-            style={{ fontSize: 'clamp(2.4rem, 7vw, 4.6rem)', color: 'var(--text-primary)' }}
+            style={{ fontSize: 'clamp(3.1rem, 9.1vw, 6rem)', color: 'var(--text-primary)' }}
           >
             FIXFriend
           </h1>
           <p
-            className="font-serif leading-snug col-span-full"
+            className="font-serif leading-snug col-span-full text-center max-w-[46rem] mx-auto"
             style={{ fontSize: 'clamp(1.1rem, 3vw, 1.55rem)', color: 'var(--accent)' }}
           >
             {BRAND.umbrella.tagline}
@@ -242,10 +245,12 @@ export default function OverviewSection({ onNavigate }) {
         ))}
       </div>
 
-      <FoundingTeam
-        className="w-full mb-8"
-        intro="FIXFriend is built by a founding trio combining deep trading infrastructure context with venture strategy and scalable engineering."
-      />
+      <div id="about">
+        <FoundingTeam
+          className="w-full mb-8"
+          intro="FIXFriend is built by a founding trio combining deep trading infrastructure context with venture strategy and scalable engineering."
+        />
+      </div>
 
       {/* Strategy nav */}
       <div className="w-full flex flex-wrap items-center gap-3 pb-4">
