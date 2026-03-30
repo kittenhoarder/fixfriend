@@ -142,7 +142,7 @@ export default function AcqProductsSection() {
             className="font-serif mb-4 text-3xl leading-tight lg:text-4xl"
             style={{ color: 'var(--text-primary)', maxWidth: '600px' }}
           >
-            What you are acquiring
+            How FIXFriend works
           </h2>
           <p
             className="text-base leading-relaxed"

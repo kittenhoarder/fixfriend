@@ -110,16 +110,21 @@ export default function OverviewSection({ onNavigate }) {
           </p>
         </div>
 
-        {/* Product suite */}
+        {/* Product */}
         <div className="mb-6">
           <p className="font-mono text-[10px] tracking-widest mb-3" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.14em' }}>
-            PRODUCT SUITE
+            PRODUCT
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 gap-3">
             {BRAND.products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
+          {BRAND.expansionNote && (
+            <p className="font-mono mt-3 text-[11px] tracking-[0.1em]" style={{ color: 'var(--muted)' }}>
+              {BRAND.expansionNote}
+            </p>
+          )}
         </div>
 
         {/* About PRDCTV.WORK */}

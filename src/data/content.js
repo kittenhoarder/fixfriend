@@ -946,23 +946,8 @@ export const BRAND = {
       tagline: 'Change-readiness workflow for trading technology teams.',
       description: 'Turns external venue notices, FIX specs, and broker bulletins into reviewed impact briefs, readiness packs, and Jira/Slack delivery — with a full audit trail.',
     },
-    {
-      id: 'datarights',
-      name: 'DataRights',
-      status: 'in development',
-      statusTone: 'info',
-      tagline: 'Market-data rights and cost-impact assessment.',
-      description: 'Before a team buys, reuses, or automates against market data, DataRights tells them what rights they need, what the incremental cost will be, and what questions still need answering.',
-    },
-    {
-      id: 'declare',
-      name: 'Declare',
-      status: 'roadmap',
-      statusTone: 'neutral',
-      tagline: 'Declaration, attestation, and audit-evidence workflows.',
-      description: 'The operating system for classifying, declaring, and defending market-data usage — turning declaration scramble and audit prep into a governed, repeatable workflow.',
-    },
   ],
+  expansionNote: 'DataRights and Declare are expansion modules in development.',
 }
 
 export const FINANCIAL_MODEL = {
@@ -1010,7 +995,7 @@ export const FINANCIAL_MODEL = {
       amount: '€150K–€250K+',
       rawAmount: 200000,
       duration: 'Multi-workflow',
-      detail: 'Add workflows (DataRights, Declare), additional sources, teams, or delivery channels. Land-and-expand path within a single account.',
+      detail: 'Add additional sources, teams, or delivery channels. Land-and-expand path within a single account.',
       budgetOwner: 'COO / CFO / Head of Market Data',
     },
   ],
@@ -1196,7 +1181,7 @@ export const OPERATIONS_MODEL = {
       items: [
         'Pilot-first commercial motion. €22.5K fixed fee for 4–8 weeks to prove value on a live artifact.',
         'Production conversion path to €120K ACV. Departmental deployment with monthly equivalent of €10K.',
-        'Expansion to €150K–€250K+ through additional workflows (DataRights, Declare) and teams.',
+        'Expansion to €150K–€250K+ through additional teams, sources, and delivery channels.',
         'Jira and Slack delivery adapters in production. Evidence page and PDF export as standard.',
         'Pricing logic anchored to value: one avoided change-cycle failure justifies the annual contract.',
         'Target accounts tracked, pipeline staged, and conversion rate monitored from week one.',

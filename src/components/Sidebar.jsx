@@ -82,7 +82,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutOpen, theme, on
                 SynthAgents
               </div>
               <div className="font-mono text-[9px] mt-0.5" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.1em' }}>
-                FIXFriend · DataRights · Declare
+                FIXFriend
               </div>
             </div>
           </div>

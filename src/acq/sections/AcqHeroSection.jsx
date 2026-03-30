@@ -62,7 +62,7 @@ export default function AcqHeroSection({ onNavigate }) {
             className="font-mono inline-flex items-center gap-2 text-[11px] tracking-[0.14em] uppercase transition-opacity hover:opacity-80"
             style={{ color: 'var(--text-tertiary)' }}
           >
-            View product suite
+            See how it works
             <ArrowRight size={11} strokeWidth={2} />
           </button>
         </div>

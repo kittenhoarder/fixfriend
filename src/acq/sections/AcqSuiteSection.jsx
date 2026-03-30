@@ -1,5 +1,7 @@
 import { SUITE } from '../content'
 
+// Reuse STATUS_CONFIG shape but Discover/Execute/Govern are always 'live'
+
 const STATUS_CONFIG = {
   live: { label: 'Live', color: 'var(--status-success)' },
   'in-development': { label: 'In Development', color: 'var(--status-warning)' },
@@ -88,7 +90,7 @@ export default function AcqSuiteSection() {
             className="font-serif mb-4 text-3xl leading-tight lg:text-4xl"
             style={{ color: 'var(--text-primary)', maxWidth: '600px' }}
           >
-            Four products. One data moat.
+            Two modes. One product.
           </h2>
           <p
             className="text-base leading-relaxed"
@@ -115,11 +117,21 @@ export default function AcqSuiteSection() {
         </div>
 
         {/* Product grid */}
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-3">
           {SUITE.products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
+
+        {/* Futures note */}
+        {SUITE.futuresNote && (
+          <p
+            className="font-mono mt-6 text-[11px] tracking-[0.1em]"
+            style={{ color: 'var(--muted)' }}
+          >
+            {SUITE.futuresNote}
+          </p>
+        )}
       </div>
     </section>
   )
