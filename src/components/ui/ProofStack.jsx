@@ -1,4 +1,3 @@
-import StatusPill from './StatusPill'
 import { TONE_STYLES } from '../../data/toneStyles'
 
 function resolveTone(item) {
@@ -46,15 +45,6 @@ function ProofCard({ item }) {
       className="rounded-lg border p-5 h-full"
       style={{ borderColor: style.borderColor, backgroundColor: style.backgroundColor }}
     >
-      <div className="flex flex-wrap items-center gap-3 mb-4">
-        {item.status ? <StatusPill tone={tone}>{item.status}</StatusPill> : null}
-        {item.kind ? (
-          <span className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: style.color }}>
-            {item.kind}
-          </span>
-        ) : null}
-      </div>
-
       {item.title ? (
         <h3 className="font-serif text-[1.4rem] leading-[1.02]" style={{ color: 'var(--text-primary)' }}>
           {item.title}
@@ -86,33 +76,20 @@ function ProofCard({ item }) {
         </ul>
       ) : null}
 
-      {item.why ? (
+      {(item.attribution || item.sourceLabel) ? (
         <div className="mt-4 pt-4 border-t" style={{ borderColor: 'var(--border-subtle)' }}>
-          <div
-            className="font-mono text-[10px] uppercase tracking-[0.14em]"
-            style={{ color: 'var(--text-tertiary)' }}
-          >
-            Why it matters
-          </div>
-          <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
-            {item.why}
-          </p>
+          <SourceLine
+            attribution={item.attribution}
+            sourceLabel={item.sourceLabel}
+            sourceUrl={item.sourceUrl}
+          />
         </div>
       ) : null}
-
-      <div className="mt-4 pt-4 border-t" style={{ borderColor: 'var(--border-subtle)' }}>
-        <SourceLine
-          attribution={item.attribution}
-          sourceLabel={item.sourceLabel}
-          sourceUrl={item.sourceUrl}
-        />
-      </div>
     </article>
   )
 }
 
 export default function ProofStack({
-  label = 'Proof',
   title,
   intro,
   items,
@@ -123,24 +100,20 @@ export default function ProofStack({
 
   return (
     <div className={`space-y-4 ${className}`.trim()}>
-      <div className="space-y-2">
-        <div
-          className="font-mono text-xs uppercase tracking-[0.16em]"
-          style={{ color: 'var(--text-tertiary)' }}
-        >
-          {label}
+      {(title || intro) ? (
+        <div className="space-y-2">
+          {title ? (
+            <h3 className="font-serif text-[1.6rem] leading-[1.02]" style={{ color: 'var(--text-primary)' }}>
+              {title}
+            </h3>
+          ) : null}
+          {intro ? (
+            <p className="text-sm leading-relaxed max-w-3xl" style={{ color: 'var(--text-secondary)' }}>
+              {intro}
+            </p>
+          ) : null}
         </div>
-        {title ? (
-          <h3 className="font-serif text-[1.6rem] leading-[1.02]" style={{ color: 'var(--text-primary)' }}>
-            {title}
-          </h3>
-        ) : null}
-        {intro ? (
-          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: 'var(--text-secondary)' }}>
-            {intro}
-          </p>
-        ) : null}
-      </div>
+      ) : null}
 
       <div className={`grid gap-4 ${gridClass}`}>
         {items.map((item) => (

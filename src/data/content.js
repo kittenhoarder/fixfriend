@@ -10,19 +10,19 @@ export const THESIS = {
     {
       id: 'cycle',
       value: 'Days',
-      label: 'TIME TO BOUNDED CHANGE PACK',
+      label: 'Time to bounded change pack',
       detail: 'Not several weeks or months of cross-party coordination for bounded cases',
     },
     {
       id: 'discovery',
       value: '6',
-      label: 'WEEK ACQUIRER DISCOVERY LOOP',
+      label: 'Week acquirer discovery loop',
       detail: 'Product, corp-dev, advisor, and operator interviews shape the wedge and any pivot',
     },
     {
       id: 'markets',
       value: '24/5+',
-      label: 'CONTINUOUS-MARKET SIGNAL',
+      label: 'Continuous-market signal',
       detail: 'Extended hours and clearing windows increase the need for constant-change readiness',
     },
   ],

@@ -30,10 +30,7 @@ function ProductRow({ product }) {
           <h3 className="font-serif text-[1.4rem] leading-none" style={{ color: 'var(--text-primary)' }}>
             {product.name}
           </h3>
-          <p
-            className="font-mono text-[11px] uppercase tracking-[0.14em] mt-2"
-            style={{ color: 'var(--text-tertiary)' }}
-          >
+          <p className="text-sm mt-1" style={{ color: 'var(--text-tertiary)' }}>
             {product.tagline}
           </p>
         </div>
@@ -59,13 +56,10 @@ function StatStrip() {
           <div className="font-serif text-[2rem] leading-none" style={{ color: 'var(--text-primary)' }}>
             {stat.value}
           </div>
-          <div
-            className="font-mono text-[11px] uppercase tracking-[0.14em] mt-3"
-            style={{ color: 'var(--amber)' }}
-          >
+          <p className="text-sm font-medium mt-2" style={{ color: 'var(--text-primary)' }}>
             {stat.label}
-          </div>
-          <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
+          </p>
+          <p className="text-sm leading-relaxed mt-1" style={{ color: 'var(--text-secondary)' }}>
             {stat.detail}
           </p>
         </article>
@@ -139,40 +133,26 @@ export default function OverviewSection({ onNavigate, onOpenInvestorStory }) {
       <div className="content-rail max-w-5xl mx-auto space-y-14">
         <article className="panel-shell overflow-hidden p-6 md:p-8" style={panelShell}>
           <div className="flex flex-col gap-6">
-            <div className="flex flex-wrap items-center gap-3">
-              <StatusPill tone="success">Internal VC brief</StatusPill>
-              <StatusPill tone="info">Research-led narrative</StatusPill>
-              <StatusPill tone="warning">Vendor-side wedge</StatusPill>
-            </div>
-
             <header className="space-y-4">
-              <div className="space-y-4">
-                <div
-                  className="font-mono text-xs uppercase tracking-[0.18em]"
-                  style={{ color: 'var(--text-tertiary)' }}
-                >
-                  SynthAgents / PRDCTV.WORK
-                </div>
-                <h1
-                  className="flex flex-wrap items-center gap-4 font-serif leading-[0.9]"
-                  style={{ fontSize: 'clamp(3rem, 8vw, 5.2rem)', color: 'var(--text-primary)' }}
-                >
-                  <FIXFriendLogo
-                    size={88}
-                    style={{ color: 'var(--amber)', flex: '0 0 auto' }}
-                  />
-                  FIXFriend
-                </h1>
-                <p
-                  className="font-serif text-[1.25rem] sm:text-[1.5rem] leading-snug"
-                  style={{ color: 'var(--accent)' }}
-                >
-                  {THESIS.headline.replace('\n', ' ')}
-                </p>
-                <p className="text-base sm:text-[1.05rem] leading-relaxed max-w-4xl" style={{ color: 'var(--text-secondary)' }}>
-                  {THESIS.subheadline}
-                </p>
-              </div>
+              <h1
+                className="flex flex-wrap items-center gap-4 font-serif leading-[0.9]"
+                style={{ fontSize: 'clamp(3rem, 8vw, 5.2rem)', color: 'var(--text-primary)' }}
+              >
+                <FIXFriendLogo
+                  size={88}
+                  style={{ color: 'var(--amber)', flex: '0 0 auto' }}
+                />
+                FIXFriend
+              </h1>
+              <p
+                className="font-serif text-[1.25rem] sm:text-[1.5rem] leading-snug"
+                style={{ color: 'var(--accent)' }}
+              >
+                {THESIS.headline.replace('\n', ' ')}
+              </p>
+              <p className="text-base sm:text-[1.05rem] leading-relaxed max-w-4xl" style={{ color: 'var(--text-secondary)' }}>
+                {THESIS.subheadline}
+              </p>
             </header>
 
             <StatStrip />
@@ -269,11 +249,7 @@ export default function OverviewSection({ onNavigate, onOpenInvestorStory }) {
             />
           </NarrativeSection>
 
-          <NarrativeSection
-            eyebrow="Where to go next"
-            title="Follow the argument in detail without losing the thread."
-            lead="The deeper pages should now read as one connected case: product, research, economics, and strategic fit."
-          >
+          <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={() => onNavigate('leanExit')}
@@ -299,12 +275,6 @@ export default function OverviewSection({ onNavigate, onOpenInvestorStory }) {
             </div>
 
             <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
-              <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--text-tertiary)' }}>
-                Documents
-              </div>
-              <p className="text-sm leading-relaxed mt-3 mb-4" style={{ color: 'var(--text-secondary)' }}>
-                Keep the documents available, but let them support the narrative instead of competing with it.
-              </p>
               <LeanExitDownloads />
             </div>
 
@@ -313,7 +283,7 @@ export default function OverviewSection({ onNavigate, onOpenInvestorStory }) {
               className="pt-2"
               intro="Team credibility matters here because the incubator and VC audience is judging whether the wedge, the market read, and the execution path are grounded in real operator context."
             />
-          </NarrativeSection>
+          </div>
         </div>
       </div>
     </section>

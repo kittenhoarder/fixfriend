@@ -2,7 +2,6 @@ import BulletList from '../ui/BulletList'
 import MermaidDiagram from '../ui/MermaidDiagram'
 import NarrativeSection from '../ui/NarrativeSection'
 import ProofStack from '../ui/ProofStack'
-import SectionHeader from '../ui/SectionHeader'
 import StatusPill from '../ui/StatusPill'
 import LeanExitDownloads from '../LeanExitDownloads'
 import {
@@ -375,27 +374,11 @@ export default function LeanExitSection({ theme = 'dark' }) {
 
   return (
     <div className="flex flex-col h-full pt-14 lg:pt-0" style={{ minHeight: '100vh' }}>
-      <SectionHeader
-        label="LEAN EXIT"
-        hideOnMobile
-        compact
-        right={(
-          <div className="flex flex-wrap items-center gap-1.5">
-            <StatusPill tone="success">Lean exit</StatusPill>
-            <StatusPill tone="info">Interview-led proof</StatusPill>
-            <StatusPill tone="warning">Strategic-fit method</StatusPill>
-          </div>
-        )}
-      />
-
       <div className="flex-1 overflow-y-auto p-4 lg:p-6">
         <div className="content-rail max-w-6xl mx-auto space-y-8">
           <Shell>
             <div className="space-y-6">
               <div className="space-y-4">
-                <div className="font-mono text-xs uppercase tracking-[0.16em]" style={{ color: 'var(--amber)' }}>
-                  Lean exit thesis
-                </div>
                 <h1 className="font-serif text-[2.6rem] sm:text-[3.3rem] leading-[0.92] max-w-5xl" style={{ color: 'var(--text-primary)' }}>
                   A workflow-control wedge that proves value before it predicts the future.
                 </h1>

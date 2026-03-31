@@ -2,7 +2,6 @@ import {
   AlertTriangle,
   ShieldCheck,
 } from 'lucide-react'
-import SectionHeader from '../ui/SectionHeader'
 import MermaidDiagram from '../ui/MermaidDiagram'
 import BulletList from '../ui/BulletList'
 import {
@@ -28,14 +27,9 @@ function SemanticCallout({ icon: Icon, label, body, tone = 'accent' }) {
     >
       <div className="flex items-start gap-3">
         <Icon size={16} style={{ color: style.color, marginTop: '2px' }} />
-        <div>
-          <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: style.color }}>
-            {label}
-          </div>
-          <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
-            {body}
-          </p>
-        </div>
+        <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+          {body}
+        </p>
       </div>
     </div>
   )
@@ -46,12 +40,12 @@ function MetricStrip({ items }) {
     <div className="product-metric-strip">
       {items.map((item) => (
         <div key={item.label} className="product-metric-cell">
-          <div className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: 'var(--text-tertiary)' }}>
-            {item.label}
-          </div>
-          <div className="font-serif text-[1.35rem] leading-none mt-2" style={{ color: item.color }}>
+          <div className="font-serif text-[1.35rem] leading-none" style={{ color: item.color }}>
             {item.value}
           </div>
+          <p className="text-xs mt-1" style={{ color: 'var(--text-tertiary)' }}>
+            {item.label}
+          </p>
         </div>
       ))}
     </div>
@@ -75,16 +69,16 @@ function WorkflowStageCard({ stage, index }) {
         >
           <span className="font-mono text-[11px]">{String(index + 1).padStart(2, '0')}</span>
         </span>
-        <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+        <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
           {stage.label}
-        </div>
+        </span>
       </div>
 
       <div className="product-stage-compare mt-4">
         <div className="product-stage-pane">
-          <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-danger)' }}>
+          <p className="text-xs font-medium" style={{ color: 'var(--status-danger)' }}>
             Today
-          </div>
+          </p>
           <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
             {stage.today}
           </p>
@@ -94,9 +88,9 @@ function WorkflowStageCard({ stage, index }) {
         </div>
 
         <div className="product-stage-pane">
-          <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--status-success)' }}>
+          <p className="text-xs font-medium" style={{ color: 'var(--status-success)' }}>
             With FIXFriend
-          </div>
+          </p>
           <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
             {stage.fixfriend}
           </p>
@@ -109,15 +103,10 @@ function WorkflowStageCard({ stage, index }) {
   )
 }
 
-function ProductSectionBlock({ eyebrow, title, children }) {
+function ProductSectionBlock({ title, children }) {
   return (
     <section className="product-flat-section">
-      {eyebrow ? (
-        <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
-          {eyebrow}
-        </div>
-      ) : null}
-      <h2 className="font-serif text-[2rem] leading-[0.95] mt-2" style={{ color: 'var(--text-primary)' }}>
+      <h2 className="font-serif text-[2rem] leading-[0.95]" style={{ color: 'var(--text-primary)' }}>
         {title}
       </h2>
       <div className="mt-4 space-y-4">
@@ -154,24 +143,6 @@ export default function ProductSection({ theme = 'dark' }) {
 
   return (
     <div className="flex flex-col h-full pt-14 lg:pt-0" style={{ minHeight: '100vh' }}>
-      <SectionHeader
-        label="PRODUCT"
-        hideOnMobile
-        compact
-        right={(
-          <span
-            className="font-mono text-xs px-2.5 py-1.5 rounded-sm"
-            style={{
-              color: 'var(--accent)',
-              backgroundColor: 'var(--accent-softer)',
-              border: '1px solid var(--accent-border-soft)',
-            }}
-          >
-            GAP + PRODUCT in one flow
-          </span>
-        )}
-      />
-
       <div className="flex-1 overflow-y-auto p-4 lg:p-6">
         <div className="content-rail space-y-0">
           <ProductSectionBlock eyebrow="Product" title="From venue-change scramble to days-scale response">
@@ -195,19 +166,19 @@ export default function ProductSection({ theme = 'dark' }) {
             />
 
             <div className="border-t pt-4" style={{ borderColor: 'var(--border-subtle)' }}>
-              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+              <h3 className="font-serif text-[1.2rem] leading-snug" style={{ color: 'var(--text-primary)' }}>
                 Visual walkthrough
-              </div>
+              </h3>
               <p className="text-sm leading-relaxed mt-2 max-w-4xl" style={{ color: 'var(--text-secondary)' }}>
                 Start with the operating flow before the detailed copy: minor changes stay autonomous to UAT, major changes escalate into a structured human project, and Expoty holds the shared context across both paths.
               </p>
               <div className="space-y-5 mt-4">
                 {[PRODUCT_MERMAID_DIAGRAMS.minor, PRODUCT_MERMAID_DIAGRAMS.major].map((item) => (
                   <div key={item.title}>
-                    <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+                    <h3 className="font-serif text-[1.2rem] leading-snug" style={{ color: 'var(--text-primary)' }}>
                       {item.title}
-                    </div>
-                    <p className="text-sm leading-relaxed mt-2 mb-3" style={{ color: 'var(--text-secondary)' }}>
+                    </h3>
+                    <p className="text-sm leading-relaxed mt-1 mb-3" style={{ color: 'var(--text-secondary)' }}>
                       {item.subtitle}
                     </p>
                     <MermaidDiagram
@@ -219,10 +190,10 @@ export default function ProductSection({ theme = 'dark' }) {
                 ))}
               </div>
               <div className="mt-5">
-                <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+                <h3 className="font-serif text-[1.2rem] leading-snug" style={{ color: 'var(--text-primary)' }}>
                   {PRODUCT_MERMAID_DIAGRAMS.architecture.title}
-                </div>
-                <p className="text-sm leading-relaxed mt-2 mb-3" style={{ color: 'var(--text-secondary)' }}>
+                </h3>
+                <p className="text-sm leading-relaxed mt-1 mb-3" style={{ color: 'var(--text-secondary)' }}>
                   {PRODUCT_MERMAID_DIAGRAMS.architecture.subtitle}
                 </p>
                 <MermaidDiagram
@@ -283,9 +254,9 @@ export default function ProductSection({ theme = 'dark' }) {
                 {t.budget}
               </p>
               <div className="mt-3">
-                <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--text-tertiary)' }}>
+                <p className="text-sm font-medium mt-3" style={{ color: 'var(--text-primary)' }}>
                   Buying triggers
-                </div>
+                </p>
                 <ul className="mt-2 space-y-1.5">
                   {t.triggers.map((trigger) => (
                     <li key={trigger} className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
@@ -299,10 +270,10 @@ export default function ProductSection({ theme = 'dark' }) {
 
           <ProductSectionBlock eyebrow="System" title="Autonomy, context, outputs, and agents">
             <div className="border-t pt-4" style={{ borderColor: 'var(--border-subtle)' }}>
-              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+              <h3 className="font-serif text-[1.2rem] leading-snug" style={{ color: 'var(--text-primary)' }}>
                 {PRODUCT_CONTEXT_CORE.title}
-              </div>
-              <p className="text-sm leading-relaxed mt-3" style={{ color: 'var(--text-secondary)' }}>
+              </h3>
+              <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>
                 {PRODUCT_CONTEXT_CORE.summary}
               </p>
             </div>
@@ -315,18 +286,18 @@ export default function ProductSection({ theme = 'dark' }) {
             />
 
             <div className="border-t pt-4" style={{ borderColor: 'var(--border-subtle)' }}>
-              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+              <h3 className="font-serif text-[1.2rem] leading-snug" style={{ color: 'var(--text-primary)' }}>
                 Operating principles
-              </div>
+              </h3>
               <div className="mt-3">
                 <BulletList items={PRODUCT_OPERATING_MODEL.principles} />
               </div>
             </div>
 
             <div className="border-t pt-4" style={{ borderColor: 'var(--border-subtle)' }}>
-              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+              <h3 className="font-serif text-[1.2rem] leading-snug" style={{ color: 'var(--text-primary)' }}>
                 Interview-backed pain points
-              </div>
+              </h3>
               <div className="mt-3">
                 <BulletList items={PRODUCT_CONTENT.painPoints} color="var(--amber)" />
               </div>
@@ -334,9 +305,9 @@ export default function ProductSection({ theme = 'dark' }) {
 
             {productQuotes.length > 0 && (
               <div className="border-t pt-4" style={{ borderColor: 'var(--border-subtle)' }}>
-                <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+                <h3 className="font-serif text-[1.2rem] leading-snug" style={{ color: 'var(--text-primary)' }}>
                   In their words
-                </div>
+                </h3>
                 <FlatRows
                   items={productQuotes}
                   renderItem={(item) => (
@@ -354,9 +325,9 @@ export default function ProductSection({ theme = 'dark' }) {
             )}
 
             <div className="border-t pt-4" style={{ borderColor: 'var(--border-subtle)' }}>
-              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+              <h3 className="font-serif text-[1.2rem] leading-snug" style={{ color: 'var(--text-primary)' }}>
                 Workflow outputs
-              </div>
+              </h3>
               <FlatRows
                 items={PRODUCT_OUTPUTS}
                 className="product-inline-list"
@@ -370,9 +341,9 @@ export default function ProductSection({ theme = 'dark' }) {
             </div>
 
             <div className="border-t pt-4" style={{ borderColor: 'var(--border-subtle)' }}>
-              <div className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: 'var(--amber)' }}>
+              <h3 className="font-serif text-[1.2rem] leading-snug" style={{ color: 'var(--text-primary)' }}>
                 Agent system
-              </div>
+              </h3>
               <FlatRows
                 items={PRODUCT_AGENT_SYSTEM}
                 className="product-inline-list"
