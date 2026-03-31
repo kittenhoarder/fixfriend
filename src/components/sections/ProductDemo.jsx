@@ -15,7 +15,7 @@ import {
 import {
   PRODUCT_CONTEXT_CORE,
   PRODUCT_OPERATING_MODEL,
-} from '../../data/content'
+} from '../../content/raidical/product'
 import { TONE_STYLES } from '../../data/toneStyles'
 
 const SCENARIOS = [

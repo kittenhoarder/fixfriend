@@ -1,10 +1,10 @@
 import { Lock, ArrowRight } from 'lucide-react'
-import { HERO } from '../content'
+import { HERO } from '../../content/acquirer/hero'
 
 export default function AcqHeroSection({ onNavigate }) {
   return (
     <section
-      className="relative flex min-h-screen flex-col justify-center px-8 py-16 lg:px-16"
+      className="relative flex min-h-[calc(100vh-4.5rem)] flex-col justify-center px-6 py-10 sm:px-8 lg:px-16 lg:py-16"
       style={{ background: 'var(--bg-base)' }}
     >
       {/* Background gradient */}
@@ -16,9 +16,9 @@ export default function AcqHeroSection({ onNavigate }) {
         }}
       />
 
-      <div className="relative mx-auto w-full max-w-4xl">
+      <div className="relative mx-auto w-full max-w-5xl">
         {/* Confidentiality badge */}
-        <div className="mb-10 flex items-center gap-2">
+        <div className="mb-8 flex items-center gap-2">
           <span
             className="font-mono flex items-center gap-1.5 border px-3 py-1 text-[11px] tracking-[0.2em] uppercase"
             style={{
@@ -34,7 +34,7 @@ export default function AcqHeroSection({ onNavigate }) {
 
         {/* Headline */}
         <h1
-          className="font-serif mb-6 text-4xl leading-tight lg:text-5xl xl:text-6xl"
+          className="font-serif mb-5 max-w-[16ch] text-4xl leading-[0.95] lg:text-5xl xl:text-[4.5rem]"
           style={{ color: 'var(--text-primary)' }}
         >
           {HERO.headline}
@@ -42,7 +42,7 @@ export default function AcqHeroSection({ onNavigate }) {
 
         {/* Subheadline */}
         <p
-          className="mb-10 text-base leading-relaxed lg:text-lg"
+          className="mb-8 max-w-4xl text-base leading-relaxed lg:text-lg"
           style={{ color: 'var(--text-secondary)' }}
         >
           {HERO.subheadline}
@@ -51,13 +51,15 @@ export default function AcqHeroSection({ onNavigate }) {
         {/* CTA row */}
         <div className="flex flex-wrap items-center gap-4">
           <a
-            href={`mailto:${HERO.ctaEmail}`}
+            href={HERO.ctaEmail ? `mailto:${HERO.ctaEmail}` : '#'}
             className="button-accent inline-flex items-center gap-2 rounded px-6 py-3 text-sm font-medium"
+            aria-label={HERO.ctaLabel}
           >
             {HERO.ctaLabel}
             <ArrowRight size={14} strokeWidth={2} />
           </a>
           <button
+            type="button"
             onClick={() => onNavigate('suite')}
             className="font-mono inline-flex items-center gap-2 text-[11px] tracking-[0.14em] uppercase transition-opacity hover:opacity-80"
             style={{ color: 'var(--text-tertiary)' }}
@@ -69,7 +71,7 @@ export default function AcqHeroSection({ onNavigate }) {
 
         {/* Confidentiality footnote */}
         <p
-          className="font-mono mt-16 text-[11px] leading-relaxed tracking-[0.08em]"
+          className="font-mono mt-12 text-[11px] leading-relaxed tracking-[0.08em]"
           style={{ color: 'var(--muted)', maxWidth: '520px' }}
         >
           {HERO.confidentialityNote}

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ChevronDown, ChevronRight } from 'lucide-react'
-import { LANDSCAPE } from '../content'
+import { LANDSCAPE } from '../../content/acquirer/landscape'
 
 function AcquirerCard({ acquirer }) {
   const [expanded, setExpanded] = useState(false)

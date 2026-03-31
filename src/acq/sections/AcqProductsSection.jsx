@@ -1,4 +1,5 @@
-import { SUITE, PRODUCTS_DEEP_DIVE } from '../content'
+import { SUITE } from '../../content/acquirer/suite'
+import { PRODUCTS_DEEP_DIVE } from '../../content/acquirer/products'
 
 const STATUS_CONFIG = {
   live: { label: 'Live', color: 'var(--status-success)' },

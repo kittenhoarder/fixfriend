@@ -1,4 +1,4 @@
-import { INTERVIEW_TRACKER } from '../../data/content'
+import { INTERVIEW_TRACKER } from '../../content/raidical/market'
 
 function InterviewCard({ entry }) {
   const primaryQuote = entry.keyQuotes?.[0]

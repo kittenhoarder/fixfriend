@@ -3,7 +3,7 @@ import MermaidDiagram from '../ui/MermaidDiagram'
 import NarrativeSection from '../ui/NarrativeSection'
 import ProofStack from '../ui/ProofStack'
 import StatusPill from '../ui/StatusPill'
-import LeanExitDownloads from '../LeanExitDownloads'
+import LazyLeanExitDownloads from '../../shared/ui/LazyLeanExitDownloads'
 import {
   BUYER_DECISION_PROCESS,
   COMPETITION_MATRIX,
@@ -23,7 +23,7 @@ import {
   SALES_FUNNEL,
   UNIT_ECONOMICS,
   VALIDATION_PLAN,
-} from '../../data/content'
+} from '../../content/raidical/leanExit'
 import { TONE_STYLES } from '../../data/toneStyles'
 
 function getPainBucket(level) {
@@ -281,7 +281,6 @@ function PriorityColumn({ label, items, tone }) {
 
 export default function LeanExitSection({ theme = 'dark' }) {
   const tomCommunication = quoteFor('tom-bloomberg', 'Communication drag')
-  const tomBuffer = quoteFor('tom-bloomberg', 'Time-to-market buffer')
   const igorMemory = quoteFor('igor-broadridge-connectivity', 'Operational memory')
   const quodBuyer = SALES_FUNNEL.activeBuyers.find((buyer) => buyer.name === 'Quod Financial')
   const virtuBuyer = SALES_FUNNEL.activeBuyers.find((buyer) => buyer.name === 'Virtu Europe')
@@ -431,7 +430,7 @@ export default function LeanExitSection({ theme = 'dark' }) {
                 <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   Keep the source documents close to the argument, but let the page itself carry the narrative and proof.
                 </p>
-                <LeanExitDownloads />
+                <LazyLeanExitDownloads />
               </div>
             </div>
           </Shell>

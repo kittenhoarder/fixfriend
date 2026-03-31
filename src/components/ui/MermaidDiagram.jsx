@@ -1,5 +1,4 @@
 import { useEffect, useId, useState } from 'react'
-import mermaid from 'mermaid'
 import DiagramCanvas from './DiagramCanvas'
 
 export default function MermaidDiagram({ diagram, theme = 'dark', minHeight = 260 }) {
@@ -12,46 +11,54 @@ export default function MermaidDiagram({ diagram, theme = 'dark', minHeight = 26
     setSvg(null)
     setError(null)
 
-    const isLight = theme === 'light'
+    async function renderDiagram() {
+      try {
+        const { default: mermaid } = await import('mermaid')
+        const isLight = theme === 'light'
 
-    mermaid.initialize({
-      startOnLoad: false,
-      securityLevel: 'loose',
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true,
-      },
-      sequence: {
-        useMaxWidth: true,
-      },
-      theme: 'base',
-      themeVariables: {
-        primaryColor: isLight ? '#ffffff' : '#0f172a',
-        primaryTextColor: isLight ? '#111827' : '#e2e8f0',
-        primaryBorderColor: isLight ? '#94a3b8' : '#334155',
-        lineColor: isLight ? '#64748b' : '#64748b',
-        secondaryColor: isLight ? '#f8fafc' : '#111827',
-        tertiaryColor: isLight ? '#e2e8f0' : '#1e293b',
-        fontFamily: '"DM Sans", system-ui, sans-serif',
-        fontSize: '14px',
-        edgeLabelBackground: isLight ? '#ffffff' : '#0f172a',
-      },
-    })
+        mermaid.initialize({
+          startOnLoad: false,
+          securityLevel: 'loose',
+          flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+          },
+          sequence: {
+            useMaxWidth: true,
+          },
+          theme: 'base',
+          themeVariables: {
+            primaryColor: isLight ? '#ffffff' : '#0f172a',
+            primaryTextColor: isLight ? '#111827' : '#e2e8f0',
+            primaryBorderColor: isLight ? '#94a3b8' : '#334155',
+            lineColor: isLight ? '#64748b' : '#64748b',
+            secondaryColor: isLight ? '#f8fafc' : '#111827',
+            tertiaryColor: isLight ? '#e2e8f0' : '#1e293b',
+            fontFamily: '"DM Sans", system-ui, sans-serif',
+            fontSize: '14px',
+            edgeLabelBackground: isLight ? '#ffffff' : '#0f172a',
+          },
+        })
 
-    const id = `mermaid-${uniqueId.replace(/:/g, '-')}`
-    mermaid
-      .render(id, diagram.trim())
-      .then(({ svg: rendered }) => {
-        if (!cancelled) setSvg(rendered)
-      })
-      .catch((err) => {
-        if (!cancelled) setError(err?.message || 'Failed to render diagram')
-      })
+        const id = `mermaid-${uniqueId.replace(/:/g, '-')}`
+        const { svg: rendered } = await mermaid.render(id, diagram.trim())
+
+        if (!cancelled) {
+          setSvg(rendered)
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setError(error?.message || 'Failed to render diagram')
+        }
+      }
+    }
+
+    void renderDiagram()
 
     return () => {
       cancelled = true
     }
-  }, [diagram, theme, uniqueId])
+}, [diagram, theme, uniqueId])
 
   if (error) {
     return (

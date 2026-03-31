@@ -1,5 +1,5 @@
 import { Scale, TrendingUp, Lock } from 'lucide-react'
-import { THESIS } from '../content'
+import { THESIS } from '../../content/acquirer/thesis'
 
 const ICON_MAP = { Scale, TrendingUp, Lock }
 

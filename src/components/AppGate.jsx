@@ -1,266 +1,163 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import {
+  getCooldownMs,
+  getFailCount,
+  getInitialGatePortalId,
+  getInitialPortalId,
+  getLastAttempt,
+  getPortalPassword,
+  getRemainingCooldown,
+  hasUnlockedPortal,
+  hashGateToken,
+  isPortalGated,
+  PORTAL_STORAGE_KEY,
+  removeSessionValue,
+  writeSessionValue,
+} from '../shared/gate/portalGate'
+import { syncStoredTheme } from '../shared/theme/useTheme'
 
-// ── Shared crypto helpers ──────────────────────────────────────────────────────
-
-const GATE_SALT = 'fixfriend-gate-v1'
-
-const STORAGE_KEY = {
-  raidical: {
-    token: 'fixfriend-gate-token',
-    failCount: 'fixfriend-gate-fail-count',
-    lastAttempt: 'fixfriend-gate-last-attempt',
-  },
-  acquirer: {
-    token: 'acquirer-gate-token',
-    failCount: 'acquirer-gate-fail-count',
-    lastAttempt: 'acquirer-gate-last-attempt',
-  },
+function getPortalLabel(portal) {
+  return portal.id === 'acquirer' ? 'Acquirer access code' : 'Enter password'
 }
 
-const PORTAL_STORAGE_KEY = 'active-portal'
-
-const COOLDOWN_MS = { LOW: 5_000, MID: 15_000, HIGH: 30_000 }
-
-function getCooldownMs(failCount) {
-  if (failCount >= 10) return COOLDOWN_MS.HIGH
-  if (failCount >= 5) return COOLDOWN_MS.MID
-  return COOLDOWN_MS.LOW
+function getPortalModeLabel(portal) {
+  return portal.id === 'acquirer' ? 'ACQUIRER PORTAL' : 'LEAN EXIT SYSTEM'
 }
 
-async function hashGateToken(password) {
-  const data = new globalThis.TextEncoder().encode(password + GATE_SALT)
-  const buf = await globalThis.crypto.subtle.digest('SHA-256', data)
-  return Array.from(new Uint8Array(buf))
-    .map((b) => b.toString(16).padStart(2, '0'))
-    .join('')
-}
+export default function AppGate({ portals, renderPortal }) {
+  const portalsById = useMemo(
+    () => Object.fromEntries(portals.map((portal) => [portal.id, portal])),
+    [portals],
+  )
 
-function ssGet(key, fallback = '0') {
-  try {
-    return window.sessionStorage.getItem(key) ?? fallback
-  } catch (error) {
-    void error
-    return fallback
-  }
-}
-function ssSet(key, value) {
-  try {
-    window.sessionStorage.setItem(key, value)
-  } catch (error) {
-    void error
-  }
-}
-function ssRemove(key) {
-  try {
-    window.sessionStorage.removeItem(key)
-  } catch (error) {
-    void error
-  }
-}
+  const defaultPortalStatuses = useMemo(
+    () => Object.fromEntries(portals.map((portal) => [portal.id, isPortalGated(portal) ? 'checking' : 'unlocked'])),
+    [portals],
+  )
 
-function getFailCount(portal) {
-  const n = parseInt(ssGet(STORAGE_KEY[portal].failCount), 10)
-  return Number.isFinite(n) ? Math.max(0, n) : 0
-}
-function getLastAttempt(portal) {
-  const t = parseInt(ssGet(STORAGE_KEY[portal].lastAttempt), 10)
-  return Number.isFinite(t) ? t : 0
-}
-
-async function checkToken(portal, password) {
-  if (!password) return false
-  const stored = ssGet(STORAGE_KEY[portal].token, null)
-  if (!stored) return false
-  const expected = await hashGateToken(password.trim())
-  return stored === expected
-}
-
-// ── AppGate ────────────────────────────────────────────────────────────────────
-
-/**
- * AppGate manages two portals — "raidical" and "acquirer" — each with their
- * own optional password gate.
- *
- * Password env vars:
- *   VITE_GATE_PASSWORD          → gates the Raidical (main) portal
- *   VITE_GATE_PASSWORD_ACQUIRER → gates the Acquirer portal
- *
- * Gate behaviour matrix:
- *   Neither set → free switcher, no gate shown
- *   Only main   → gate for main + "Enter Acquirer Site" button (no auth)
- *   Only acq    → gate for acquirer + "Enter Raidical Site" button (no auth)
- *   Both set    → single gate screen, toggle between password forms
- *
- * Children receive: { portal, onSwitchPortal }
- */
-export default function AppGate({ raidicalApp, acquirerApp }) {
-  const raidicalPassword = import.meta.env.VITE_GATE_PASSWORD
-  const acquirerPassword = import.meta.env.VITE_GATE_PASSWORD_ACQUIRER
-
-  const raidicalGated = typeof raidicalPassword === 'string' && raidicalPassword.trim().length > 0
-  const acquirerGated = typeof acquirerPassword === 'string' && acquirerPassword.trim().length > 0
-
-  // Which portal is active
-  const [activePortal, setActivePortalState] = useState(() => {
-    try {
-      const stored = window.sessionStorage.getItem(PORTAL_STORAGE_KEY)
-      if (stored === 'acquirer') return 'acquirer'
-    } catch (error) {
-      void error
-    }
-    return 'raidical'
-  })
-
-  function setActivePortal(portal) {
-    ssSet(PORTAL_STORAGE_KEY, portal)
-    setActivePortalState(portal)
-  }
-
-  // Gate status per portal: 'checking' | 'locked' | 'unlocked'
-  const [raidicalStatus, setRaidicalStatus] = useState(raidicalGated ? 'checking' : 'unlocked')
-  const [acquirerStatus, setAcquirerStatus] = useState(acquirerGated ? 'checking' : 'unlocked')
-
-  // Which portal's password form is shown on the gate screen
-  const [gatePortal, setGatePortal] = useState(() => {
-    // Show whichever is gated; prefer the active portal if it's gated
-    if (raidicalGated && !acquirerGated) return 'raidical'
-    if (acquirerGated && !raidicalGated) return 'acquirer'
-    return 'raidical'
-  })
-
-  // Password form state (shared for both)
+  const [activePortalId, setActivePortalId] = useState(() => getInitialPortalId(portals))
+  const [gatePortalId, setGatePortalId] = useState(() => getInitialGatePortalId(portals, getInitialPortalId(portals)))
+  const [portalStatuses, setPortalStatuses] = useState(defaultPortalStatuses)
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [cooldownRemaining, setCooldownRemaining] = useState(0)
 
-  // Apply theme from localStorage on first render
+  const gatePortal = portalsById[gatePortalId]
+  const activeStatus = portalStatuses[activePortalId]
+
   useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem('fixfriend-theme')
-      if (saved === 'light' || saved === 'dark') {
-        document.documentElement.setAttribute('data-theme', saved)
-      }
-    } catch (error) {
-      void error
-    }
+    syncStoredTheme()
   }, [])
 
-  // Verify stored tokens on mount
-  const verifyTokens = useCallback(async () => {
-    if (raidicalGated) {
-      const ok = await checkToken('raidical', raidicalPassword)
-      setRaidicalStatus(ok ? 'unlocked' : 'locked')
-    }
-    if (acquirerGated) {
-      const ok = await checkToken('acquirer', acquirerPassword)
-      setAcquirerStatus(ok ? 'unlocked' : 'locked')
-    }
-  }, [raidicalGated, acquirerGated, raidicalPassword, acquirerPassword])
-
-  useEffect(() => { verifyTokens() }, [verifyTokens])
-
-  // Recalculate cooldown when gate portal changes or status changes
   useEffect(() => {
-    const count = getFailCount(gatePortal)
-    const last = getLastAttempt(gatePortal)
-    const cooldownMs = getCooldownMs(count)
-    const elapsed = Date.now() - last
-    const remaining = elapsed < cooldownMs ? Math.ceil((cooldownMs - elapsed) / 1000) : 0
-    setCooldownRemaining(remaining)
-    setError('')
+    setPortalStatuses(defaultPortalStatuses)
+  }, [defaultPortalStatuses])
+
+  const verifyTokens = useCallback(async () => {
+    const statuses = {}
+
+    for (const portal of portals) {
+      if (!isPortalGated(portal)) {
+        statuses[portal.id] = 'unlocked'
+        continue
+      }
+
+      statuses[portal.id] = await hasUnlockedPortal(portal) ? 'unlocked' : 'locked'
+    }
+
+    setPortalStatuses(statuses)
+  }, [portals])
+
+  useEffect(() => {
+    verifyTokens()
+  }, [verifyTokens])
+
+  useEffect(() => {
+    if (!gatePortal) return
+
+    setCooldownRemaining(getRemainingCooldown(gatePortal))
     setPassword('')
+    setError('')
   }, [gatePortal])
 
-  // Cooldown ticker
   useEffect(() => {
-    if (cooldownRemaining <= 0) return
-    const interval = window.setInterval(() => {
-      const last = getLastAttempt(gatePortal)
-      const count = getFailCount(gatePortal)
-      const cooldownMs = getCooldownMs(count)
-      const elapsed = Date.now() - last
-      const remaining = Math.max(0, Math.ceil((cooldownMs - elapsed) / 1000))
-      setCooldownRemaining(remaining)
-      if (remaining <= 0) window.clearInterval(interval)
-    }, 1000)
-    return () => window.clearInterval(interval)
-  }, [gatePortal, cooldownRemaining])
+    if (!gatePortal || cooldownRemaining <= 0) return
 
-  // Handle password submission
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+    const interval = window.setInterval(() => {
+      const remaining = getRemainingCooldown(gatePortal)
+      setCooldownRemaining(remaining)
+
+      if (remaining <= 0) {
+        window.clearInterval(interval)
+      }
+    }, 1000)
+
+    return () => window.clearInterval(interval)
+  }, [cooldownRemaining, gatePortal])
+
+  const switchPortal = (portalId) => {
+    writeSessionValue(PORTAL_STORAGE_KEY, portalId)
+    setActivePortalId(portalId)
+    setGatePortalId(portalId)
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault()
     setError('')
 
-    const count = getFailCount(gatePortal)
-    const last = getLastAttempt(gatePortal)
-    const cooldownMs = getCooldownMs(count)
-    if (Date.now() - last < cooldownMs) {
-      const remaining = Math.ceil((cooldownMs - (Date.now() - last)) / 1000)
-      setCooldownRemaining(remaining)
+    if (!gatePortal) return
+
+    const failCount = getFailCount(gatePortal)
+    const lastAttempt = getLastAttempt(gatePortal)
+    const cooldownMs = getCooldownMs(failCount)
+    const elapsed = Date.now() - lastAttempt
+
+    if (elapsed < cooldownMs) {
+      setCooldownRemaining(Math.ceil((cooldownMs - elapsed) / 1000))
       return
     }
 
-    const envPassword = gatePortal === 'raidical' ? raidicalPassword : acquirerPassword
-    const trimmed = password.trim()
-    const expected = await hashGateToken(envPassword.trim())
-    const actual = await hashGateToken(trimmed)
+    const expectedPassword = getPortalPassword(gatePortal)
+    const expectedToken = await hashGateToken(expectedPassword)
+    const actualToken = await hashGateToken(password.trim())
 
-    if (actual === expected) {
-      ssSet(STORAGE_KEY[gatePortal].token, expected)
-      ssRemove(STORAGE_KEY[gatePortal].failCount)
-      ssRemove(STORAGE_KEY[gatePortal].lastAttempt)
+    if (expectedToken === actualToken) {
+      writeSessionValue(gatePortal.gate.storage.token, expectedToken)
+      removeSessionValue(gatePortal.gate.storage.failCount)
+      removeSessionValue(gatePortal.gate.storage.lastAttempt)
+      setPortalStatuses((currentStatuses) => ({
+        ...currentStatuses,
+        [gatePortal.id]: 'unlocked',
+      }))
       setCooldownRemaining(0)
       setPassword('')
       setError('')
-      if (gatePortal === 'raidical') setRaidicalStatus('unlocked')
-      else setAcquirerStatus('unlocked')
-      setActivePortal(gatePortal)
+      switchPortal(gatePortal.id)
       return
     }
 
-    const newCount = count + 1
-    const now = Date.now()
-    ssSet(STORAGE_KEY[gatePortal].failCount, String(newCount))
-    ssSet(STORAGE_KEY[gatePortal].lastAttempt, String(now))
-    setCooldownRemaining(Math.ceil(getCooldownMs(newCount) / 1000))
+    const nextFailCount = failCount + 1
+    const timestamp = Date.now()
+    writeSessionValue(gatePortal.gate.storage.failCount, String(nextFailCount))
+    writeSessionValue(gatePortal.gate.storage.lastAttempt, String(timestamp))
+    setCooldownRemaining(Math.ceil(getCooldownMs(nextFailCount) / 1000))
     setError('Incorrect password.')
   }
 
-  // ── Determine what to render ─────────────────────────────────────────────────
-
-  const switchPortal = (portal) => {
-    setActivePortal(portal)
-  }
-
-  const activeStatus = activePortal === 'raidical' ? raidicalStatus : acquirerStatus
-
-  // Still checking tokens — show spinner
-  if (raidicalStatus === 'checking' || acquirerStatus === 'checking') {
+  if (Object.values(portalStatuses).includes('checking')) {
     return <LoadingScreen />
   }
 
-  // Active portal is unlocked — render it
   if (activeStatus === 'unlocked') {
-    if (activePortal === 'raidical') {
-      return raidicalApp({ onSwitchPortal: switchPortal, acquirerAvailable: true })
-    } else {
-      return acquirerApp({ onSwitchPortal: switchPortal })
-    }
+    return renderPortal(activePortalId, { onSwitchPortal: switchPortal })
   }
 
-  // Need to show gate
-  // Determine the "other" portal for the bypass button
-  const otherPortal = gatePortal === 'raidical' ? 'acquirer' : 'raidical'
-  const otherGated = otherPortal === 'raidical' ? raidicalGated : acquirerGated
-  const otherStatus = otherPortal === 'raidical' ? raidicalStatus : acquirerStatus
-  const canSkipToOther = !otherGated || otherStatus === 'unlocked'
-
-  const count = getFailCount(gatePortal)
-  const last = getLastAttempt(gatePortal)
-  const cooldownMs = getCooldownMs(count)
-  const inCooldown = Date.now() - last < cooldownMs
-
-  const isAcqForm = gatePortal === 'acquirer'
+  const otherPortal = portals.find((portal) => portal.id !== gatePortalId) ?? null
+  const canSkipToOther = otherPortal
+    ? !isPortalGated(otherPortal) || portalStatuses[otherPortal.id] === 'unlocked'
+    : false
+  const inCooldown = gatePortal ? Date.now() - getLastAttempt(gatePortal) < getCooldownMs(getFailCount(gatePortal)) : false
+  const showPortalTabs = portals.filter((portal) => isPortalGated(portal)).length > 1
 
   return (
     <div
@@ -272,7 +169,6 @@ export default function AppGate({ raidicalApp, acquirerApp }) {
       }}
     >
       <div className="w-full max-w-sm">
-        {/* Branding */}
         <div className="mb-8 text-center">
           <div
             className="font-mono mb-2 text-[9px] uppercase tracking-[0.2em]"
@@ -287,31 +183,30 @@ export default function AppGate({ raidicalApp, acquirerApp }) {
             className="font-mono mt-2 text-[11px]"
             style={{ color: 'var(--muted)', letterSpacing: '0.16em' }}
           >
-            {isAcqForm ? 'ACQUIRER PORTAL' : 'LEAN EXIT SYSTEM'}
+            {gatePortal ? getPortalModeLabel(gatePortal) : 'ACCESS PORTAL'}
           </p>
         </div>
 
-        {/* Portal toggle tabs — shown when both are gated */}
-        {raidicalGated && acquirerGated && (
+        {showPortalTabs ? (
           <div className="mb-6 flex border" style={{ borderColor: 'var(--border-subtle)' }}>
-            {['raidical', 'acquirer'].map((p) => (
+            {portals.map((portal, index) => (
               <button
-                key={p}
-                onClick={() => setGatePortal(p)}
+                key={portal.id}
+                type="button"
+                onClick={() => setGatePortalId(portal.id)}
                 className="flex-1 py-2 font-mono text-[10px] tracking-[0.14em] uppercase transition-colors"
                 style={{
-                  background: gatePortal === p ? 'var(--accent-softer)' : 'transparent',
-                  color: gatePortal === p ? 'var(--accent)' : 'var(--text-tertiary)',
-                  borderRight: p === 'raidical' ? '1px solid var(--border-subtle)' : 'none',
+                  background: gatePortalId === portal.id ? 'var(--accent-softer)' : 'transparent',
+                  color: gatePortalId === portal.id ? 'var(--accent)' : 'var(--text-tertiary)',
+                  borderRight: index === 0 ? '1px solid var(--border-subtle)' : 'none',
                 }}
               >
-                {p === 'raidical' ? 'Raidical' : 'Acquirer'}
+                {portal.label}
               </button>
             ))}
           </div>
-        )}
+        ) : null}
 
-        {/* Password form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label
@@ -319,27 +214,27 @@ export default function AppGate({ raidicalApp, acquirerApp }) {
               className="font-mono mb-2 block text-[11px] uppercase tracking-widest"
               style={{ color: 'var(--text-secondary)', letterSpacing: '0.1em' }}
             >
-              {isAcqForm ? 'Acquirer access code' : 'Enter password'}
+              {gatePortal ? getPortalLabel(gatePortal) : 'Enter password'}
             </label>
             <input
               id="gate-password"
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(event) => setPassword(event.target.value)}
               disabled={inCooldown}
               autoComplete="current-password"
               autoFocus
               className="font-mono w-full rounded border bg-transparent px-3 py-2.5 text-sm outline-none transition-colors placeholder:opacity-50 focus:ring-2 focus:ring-[color:var(--accent)] focus:ring-offset-2 focus:ring-offset-[var(--bg-base)]"
               style={{ borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
               placeholder="Password"
-              aria-invalid={!!error}
+              aria-invalid={Boolean(error)}
               aria-describedby={error ? 'gate-error' : undefined}
             />
-            {error && (
+            {error ? (
               <p id="gate-error" className="mt-2 font-mono text-xs" style={{ color: 'var(--status-danger)' }}>
                 {error}
               </p>
-            )}
+            ) : null}
           </div>
 
           <button
@@ -351,24 +246,22 @@ export default function AppGate({ raidicalApp, acquirerApp }) {
           </button>
         </form>
 
-        {/* Bypass to ungated portal — shown when only one is gated, or other is already unlocked */}
-        {canSkipToOther && (
+        {canSkipToOther && otherPortal ? (
           <div className="mt-6 text-center">
             <div
               className="mb-4 border-t"
               style={{ borderColor: 'var(--border-subtle)' }}
             />
             <button
-              onClick={() => {
-                setActivePortal(otherPortal)
-              }}
+              type="button"
+              onClick={() => switchPortal(otherPortal.id)}
               className="font-mono text-[11px] tracking-[0.12em] uppercase transition-opacity hover:opacity-80"
               style={{ color: 'var(--text-tertiary)' }}
             >
-              {otherPortal === 'acquirer' ? '→ Enter Acquirer Site' : '← Enter Raidical Site'}
+              {otherPortal.id === 'acquirer' ? '→ Enter Acquirer Site' : '← Enter Raidical Site'}
             </button>
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   )

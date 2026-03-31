@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import mermaid from 'mermaid'
 import { FULL_GRAPH_MERMAID } from '../../data/fullGraphMermaid'
 import DiagramCanvas from '../ui/DiagramCanvas'
 
@@ -12,42 +11,46 @@ export default function FullGraphView({ theme = 'dark' }) {
     setError(null)
     setSvg(null)
 
-    const isLight = theme === 'light'
+    async function renderGraph() {
+      try {
+        const { default: mermaid } = await import('mermaid')
+        const isLight = theme === 'light'
 
-    mermaid.initialize({
-      startOnLoad: false,
-      securityLevel: 'loose',
-      flowchart: {
-        useMaxWidth: false,
-        htmlLabels: true,
-      },
-      theme: 'base',
-      themeVariables: {
-        primaryColor: isLight ? '#ffffff' : '#0f172a',
-        primaryTextColor: isLight ? '#111827' : '#e2e8f0',
-        primaryBorderColor: isLight ? '#94a3b8' : '#334155',
-        lineColor: isLight ? '#64748b' : '#64748b',
-        secondaryColor: isLight ? '#f1f5f9' : '#111827',
-        tertiaryColor: isLight ? '#e2e8f0' : '#1e293b',
-        fontFamily: '"DM Sans", system-ui, sans-serif',
-        fontSize: '14px',
-        edgeLabelBackground: isLight ? '#ffffff' : '#0f172a',
-      },
-    })
+        mermaid.initialize({
+          startOnLoad: false,
+          securityLevel: 'loose',
+          flowchart: {
+            useMaxWidth: false,
+            htmlLabels: true,
+          },
+          theme: 'base',
+          themeVariables: {
+            primaryColor: isLight ? '#ffffff' : '#0f172a',
+            primaryTextColor: isLight ? '#111827' : '#e2e8f0',
+            primaryBorderColor: isLight ? '#94a3b8' : '#334155',
+            lineColor: isLight ? '#64748b' : '#64748b',
+            secondaryColor: isLight ? '#f1f5f9' : '#111827',
+            tertiaryColor: isLight ? '#e2e8f0' : '#1e293b',
+            fontFamily: '"DM Sans", system-ui, sans-serif',
+            fontSize: '14px',
+            edgeLabelBackground: isLight ? '#ffffff' : '#0f172a',
+          },
+        })
 
-    const id = `mermaid-full-graph-${Date.now()}`
-    mermaid
-      .render(id, FULL_GRAPH_MERMAID.trim())
-      .then(({ svg: rendered }) => {
+        const id = `mermaid-full-graph-${Date.now()}`
+        const { svg: rendered } = await mermaid.render(id, FULL_GRAPH_MERMAID.trim())
+
         if (!cancelled) {
           setSvg(rendered)
         }
-      })
-      .catch((err) => {
+      } catch (error) {
         if (!cancelled) {
-          setError(err?.message || 'Failed to render diagram')
+          setError(error?.message || 'Failed to render diagram')
         }
-      })
+      }
+    }
+
+    void renderGraph()
 
     return () => {
       cancelled = true

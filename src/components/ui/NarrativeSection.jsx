@@ -9,6 +9,11 @@ export default function NarrativeSection({
   return (
     <section className={`space-y-5 ${className}`.trim()}>
       <div className="space-y-4">
+        {eyebrow ? (
+          <div className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+            {eyebrow}
+          </div>
+        ) : null}
         <h2
           className={`font-serif text-[2rem] sm:text-[2.35rem] leading-[0.96] ${titleClassName}`.trim()}
           style={{ color: 'var(--text-primary)' }}

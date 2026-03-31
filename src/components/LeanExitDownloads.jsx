@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Download, Loader } from 'lucide-react'
 import {
   THESIS,
@@ -8,7 +8,7 @@ import {
   MARKET_MODEL,
   PRODUCT_OPERATING_MODEL,
   PRODUCT_CONTEXT_CORE,
-} from '../data/content'
+} from '../content/raidical/downloads'
 
 async function generatePDF(el, filename) {
   const { default: html2canvas } = await import('html2canvas')
@@ -457,15 +457,37 @@ export default function LeanExitDownloads() {
   const validationRef = useRef(null)
   const [activeDoc, setActiveDoc] = useState(null)
 
-  async function handleDownload(ref, key, filename) {
-    if (!ref.current || activeDoc) return
+  const documentMap = useMemo(() => ({
+    'lean-exit': { ref: leanExitRef, filename: 'FIXFriend-Lean-Exit-OnePager.pdf', Component: LeanExitOnePagerDocument },
+    canvas: { ref: canvasRef, filename: 'FIXFriend-Business-Model-Canvas.pdf', Component: BusinessModelCanvasDocument },
+    validation: { ref: validationRef, filename: 'FIXFriend-Validation-Plan.pdf', Component: ValidationPlanDocument },
+  }), [])
+
+  function handleDownload(key) {
+    if (activeDoc) return
     setActiveDoc(key)
-    try {
-      await generatePDF(ref.current, filename)
-    } finally {
-      setActiveDoc(null)
-    }
   }
+
+  const activeDocument = activeDoc ? documentMap[activeDoc] : null
+
+  useEffect(() => {
+    if (!activeDocument?.ref.current) return
+
+    let cancelled = false
+    const frame = window.requestAnimationFrame(() => {
+      void generatePDF(activeDocument.ref.current, activeDocument.filename)
+        .finally(() => {
+          if (!cancelled) {
+            setActiveDoc(null)
+          }
+        })
+    })
+
+    return () => {
+      cancelled = true
+      window.cancelAnimationFrame(frame)
+    }
+  }, [activeDocument])
 
   return (
     <>
@@ -473,42 +495,38 @@ export default function LeanExitDownloads() {
         <DownloadButton
           label="DOWNLOAD LEAN EXIT ONE-PAGER · PDF"
           loading={activeDoc === 'lean-exit'}
-          onClick={() => handleDownload(leanExitRef, 'lean-exit', 'FIXFriend-Lean-Exit-OnePager.pdf')}
+          onClick={() => handleDownload('lean-exit')}
         />
         <DownloadButton
           label="DOWNLOAD BUSINESS MODEL CANVAS · PDF"
           loading={activeDoc === 'canvas'}
-          onClick={() => handleDownload(canvasRef, 'canvas', 'FIXFriend-Business-Model-Canvas.pdf')}
+          onClick={() => handleDownload('canvas')}
           accent="var(--accent)"
         />
         <DownloadButton
           label="DOWNLOAD VALIDATION PLAN · PDF"
           loading={activeDoc === 'validation'}
-          onClick={() => handleDownload(validationRef, 'validation', 'FIXFriend-Validation-Plan.pdf')}
+          onClick={() => handleDownload('validation')}
           accent="var(--status-success)"
         />
       </div>
 
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'fixed',
-          top: '-9999px',
-          left: '-9999px',
-          zIndex: -1,
-          pointerEvents: 'none',
-        }}
-      >
-        <div ref={leanExitRef}>
-          <LeanExitOnePagerDocument />
+      {activeDocument ? (
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'fixed',
+            top: '-9999px',
+            left: '-9999px',
+            zIndex: -1,
+            pointerEvents: 'none',
+          }}
+        >
+          <div ref={activeDocument.ref}>
+            <activeDocument.Component />
+          </div>
         </div>
-        <div ref={canvasRef}>
-          <BusinessModelCanvasDocument />
-        </div>
-        <div ref={validationRef}>
-          <ValidationPlanDocument />
-        </div>
-      </div>
+      ) : null}
     </>
   )
 }

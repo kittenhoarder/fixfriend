@@ -1,4 +1,4 @@
-import { DEALS } from '../../data/content'
+import { DEALS } from '../../content/raidical/acquirers'
 
 const SORTED_DEALS = [...DEALS].sort((a, b) => a.dateSort.localeCompare(b.dateSort))
 const N = SORTED_DEALS.length

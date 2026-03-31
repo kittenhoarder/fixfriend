@@ -34,14 +34,30 @@ npm run preview    # preview production build
 
 ### Optional password gate
 
-To require a password before entering the app, set `VITE_GATE_PASSWORD` in a **`.env`** file in the project root (Vite does not load `.env.example`). Copy the variable from `.env.example` into `.env` and set your password. Restart the dev server after changing `.env`.
+The site supports separate passwords for the two portals:
 
-## Content Integrity
+- `VITE_GATE_PASSWORD` for the Raidical / main portal
+- `VITE_GATE_PASSWORD_ACQUIRER` for the acquirer portal
+
+Set either or both in a **`.env`** file in the project root. Restart the dev server after changing `.env`.
+
+## Content Flow
 
 All factual content (dates, figures, company details, regulatory language) is
-sourced from `fixfriend_artifacts.md` and encoded in `src/data/content.js`.
-Do not modify content in components directly — update `content.js` and verify
-against `fixfriend_artifacts.md`.
+sourced from `fixfriend_artifacts.md`.
+
+The component import surface and content source of truth are now portal-scoped:
+
+- `src/content/raidical/*`
+- `src/content/acquirer/*`
+
+Do not add new component imports directly from the legacy aggregate files:
+
+- `src/data/content.js`
+- `src/acq/content.js`
+
+Those aggregate files are now compatibility barrels only. Keep new content edits
+and section wiring in `src/content/*`.
 
 ### Critical rules
 
@@ -68,24 +84,61 @@ against `fixfriend_artifacts.md`.
 
 ## Architecture
 
-Single-page app with tab-based navigation (no router). State managed with
-`useState` hooks in each section. All content is static — no API calls,
-no backend. SessionStorage is used only for the optional password gate (see above).
+Single-page app with tab-based navigation (no router). All content is static:
+no API calls and no backend.
+
+The app is now organized into three layers:
+
+- `src/features/*` for portal-specific app shells and section registries
+- `src/shared/*` for gate/theme/transition logic and reusable UI glue
+- `src/content/*` for portal-scoped content imports
+
+Section loading is lazy by registry, and the heaviest walkthrough / graph /
+download flows are split out of the initial main bundle.
 
 ```
 src/
-  App.jsx               # Root layout: sidebar + content area + modal
-  data/
-    content.js          # Single source of truth for all displayed content
+  main.jsx
+  App.jsx                       # Compatibility re-export to features/raidical
+  features/
+    raidical/
+      RaidicalApp.jsx
+      registry.js
+    acquirer/
+      AcquirerApp.jsx
+      AcquirerHeader.jsx
+      registry.js
+  shared/
+    gate/                       # Dual-portal password helpers
+    navigation/                 # Section transition hook
+    portal/                     # Portal config + lazy section renderer
+    theme/                      # Shared persisted theme hook
+    ui/                         # Shared lazy wrappers and loading states
+  content/
+    raidical/                   # Portal-scoped source-of-truth content
+    acquirer/
   components/
-    PasswordGate.jsx    # Optional env-gated password screen (when VITE_GATE_PASSWORD set)
     Sidebar.jsx
-    AboutModal.jsx
-    sections/           # One file per tab
-    market/             # MarketMap + MarketDetailPanel
-    acquirers/          # TierGroup + AcquirerCard
-    dealflow/           # Timeline + DealDetail
+    sections/                   # Raidical section implementations
+    market/
+    acquirers/
+  acq/
+    sections/                   # Acquirer portal sections
 ```
+
+## Testing
+
+```bash
+npm run lint
+npm run test:run
+npm run build
+```
+
+Current automated coverage focuses on:
+
+- dual-portal gate behavior
+- shared theme and transition utilities
+- registry smoke renders for both portals
 
 ## Rollback
 

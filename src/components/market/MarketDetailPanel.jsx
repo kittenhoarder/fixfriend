@@ -1,4 +1,4 @@
-import { MARKET_NODES, MARKET_DEFAULT_DETAIL, DEFINITION } from '../../data/content'
+import { MARKET_NODES, MARKET_DEFAULT_DETAIL, DEFINITION } from '../../content/raidical/market'
 import StatusPill from '../ui/StatusPill'
 import BrandLogo from '../ui/BrandLogo'
 

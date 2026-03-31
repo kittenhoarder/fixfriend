@@ -1,5 +1,5 @@
 import { Linkedin } from 'lucide-react'
-import { FOUNDERS } from '../../data/content'
+import { FOUNDERS } from '../../content/raidical/navigation'
 
 export default function FoundingTeam({
   title = 'FOUNDING TEAM',

@@ -14,10 +14,10 @@ import {
   PRODUCT_AUTONOMY_RULES,
   PRODUCT_MERMAID_DIAGRAMS,
   INTERVIEW_TRACKER,
-} from '../../data/content'
+} from '../../content/raidical/product'
 import { TONE_STYLES } from '../../data/toneStyles'
 
-function SemanticCallout({ icon: Icon, label, body, tone = 'accent' }) {
+function SemanticCallout({ icon: Icon, body, tone = 'accent' }) {
   const style = TONE_STYLES[tone]
 
   return (
@@ -103,9 +103,14 @@ function WorkflowStageCard({ stage, index }) {
   )
 }
 
-function ProductSectionBlock({ title, children }) {
+function ProductSectionBlock({ eyebrow, title, children }) {
   return (
     <section className="product-flat-section">
+      {eyebrow ? (
+        <div className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+          {eyebrow}
+        </div>
+      ) : null}
       <h2 className="font-serif text-[2rem] leading-[0.95]" style={{ color: 'var(--text-primary)' }}>
         {title}
       </h2>
@@ -160,7 +165,6 @@ export default function ProductSection({ theme = 'dark' }) {
 
             <SemanticCallout
               icon={AlertTriangle}
-              label="Production boundary"
               body="FIXFriend never deploys to production, never writes production config, and never acts in live production environments. The autonomy model stops at sandbox, test, and UAT."
               tone="danger"
             />

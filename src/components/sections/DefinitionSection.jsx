@@ -1,4 +1,4 @@
-import { DEFINITION, INTERVIEW_TRACKER, MARKET_SIZE_INPUTS } from '../../data/content'
+import { DEFINITION, INTERVIEW_TRACKER, MARKET_SIZE_INPUTS } from '../../content/raidical/definition'
 
 function Block({ title, children, className = '' }) {
   return (

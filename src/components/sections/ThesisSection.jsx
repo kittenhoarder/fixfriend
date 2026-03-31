@@ -1,5 +1,5 @@
 import { Linkedin, ArrowRight } from 'lucide-react'
-import { CONTINUOUS_CHANGE_SIGNALS, THESIS } from '../../data/content'
+import { CONTINUOUS_CHANGE_SIGNALS, THESIS } from '../../content/raidical/overview'
 import StatusPill from '../ui/StatusPill'
 import FIXFriendLogo from '../ui/FIXFriendLogo'
 import LeanExitDownloads from '../LeanExitDownloads'
