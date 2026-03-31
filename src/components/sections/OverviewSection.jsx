@@ -3,6 +3,7 @@ import {
   BRAND,
   CONTINUOUS_CHANGE_SIGNALS,
   INTERVIEW_TRACKER,
+  INVESTOR_STORY,
   SALES_FUNNEL,
   THESIS,
 } from '../../data/content'
@@ -73,7 +74,7 @@ function StatStrip() {
   )
 }
 
-export default function OverviewSection({ onNavigate }) {
+export default function OverviewSection({ onNavigate, onOpenInvestorStory }) {
   const quodBuyer = SALES_FUNNEL.activeBuyers.find((buyer) => buyer.name === 'Quod Financial')
   const virtuBuyer = SALES_FUNNEL.activeBuyers.find((buyer) => buyer.name === 'Virtu Europe')
   const tomInterview = INTERVIEW_TRACKER.find((entry) => entry.id === 'tom-bloomberg')
@@ -178,8 +179,16 @@ export default function OverviewSection({ onNavigate }) {
 
             <div className="flex flex-wrap items-center gap-3">
               <button
-                onClick={() => onNavigate('leanExit')}
+                onClick={onOpenInvestorStory}
                 className="button-accent inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold"
+              >
+                {INVESTOR_STORY.cta.title}
+                <ArrowRight size={15} />
+              </button>
+              <button
+                onClick={() => onNavigate('leanExit')}
+                className="button-outline inline-flex items-center gap-2 px-4 py-3 text-sm font-medium"
+                style={{ color: 'var(--text-secondary)' }}
               >
                 Read the lean-exit case
                 <ArrowRight size={15} />

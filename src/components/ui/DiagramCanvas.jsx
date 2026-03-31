@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useEffect } from 'react'
+import { forwardRef, useRef, useState, useCallback, useEffect, useImperativeHandle } from 'react'
 
 const ZOOM_MIN = 0.12
 const ZOOM_MAX = 2.5
@@ -20,30 +20,48 @@ function getMidpoint(p1, p2) {
   }
 }
 
+function prefersReducedMotion() {
+  return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
 const buttonStyle = {
   borderColor: 'var(--border-subtle)',
   color: 'var(--text-secondary)',
   backgroundColor: 'var(--surface)',
 }
 
+const DEFAULT_EASING = 'cubic-bezier(0.22, 1, 0.36, 1)'
+
 /**
- * Wraps diagram content (e.g. Mermaid SVG) with zoom, pan, and toolbar controls.
- * Default initial view matches the Reset state.
+ * Wraps diagram content (e.g. Mermaid SVG) with zoom, pan, and optional toolbar controls.
+ * Supports manual interactions plus imperative fit/viewport transitions.
  */
-export default function DiagramCanvas({ children, minHeight = 460, className = '' }) {
+const DiagramCanvas = forwardRef(function DiagramCanvas(
+  {
+    children,
+    minHeight = 460,
+    className = '',
+    showToolbar = true,
+    initialView = 'origin',
+    contentVersion = 0,
+    onViewportChange,
+  },
+  ref
+) {
   const containerRef = useRef(null)
   const innerRef = useRef(null)
+  const transitionTimeoutRef = useRef(null)
 
   const [zoom, setZoom] = useState(1)
   const [pan, setPan] = useState({ x: 0, y: 0 })
   const [dragging, setDragging] = useState(false)
+  const [transformTransition, setTransformTransition] = useState('none')
 
   const zoomRef = useRef(1)
   const panRef = useRef({ x: 0, y: 0 })
   const pointersRef = useRef(new Map())
   const dragRef = useRef(null)
   const pinchRef = useRef(null)
-  const svgSizeRef = useRef({ w: 0, h: 0 })
   const hasFitRef = useRef(false)
   const userAdjustedViewRef = useRef(false)
 
@@ -55,32 +73,120 @@ export default function DiagramCanvas({ children, minHeight = 460, className = '
     panRef.current = pan
   }, [pan])
 
-  const setViewport = useCallback((nextZoom, nextPan) => {
-    const safeZoom = clampZoom(nextZoom)
-    zoomRef.current = safeZoom
-    panRef.current = nextPan
-    setZoom(safeZoom)
-    setPan(nextPan)
+  useEffect(() => {
+    onViewportChange?.({ zoom, pan })
+  }, [onViewportChange, pan, zoom])
+
+  useEffect(() => {
+    return () => {
+      if (transitionTimeoutRef.current) {
+        window.clearTimeout(transitionTimeoutRef.current)
+      }
+    }
   }, [])
 
-  const getSvgDimensions = useCallback(() => {
-    const svgEl = innerRef.current?.querySelector('svg')
-    if (!svgEl) return null
+  const applyTransition = useCallback((duration = 0, easing = DEFAULT_EASING) => {
+    if (transitionTimeoutRef.current) {
+      window.clearTimeout(transitionTimeoutRef.current)
+      transitionTimeoutRef.current = null
+    }
 
-    const vb = svgEl.viewBox?.baseVal
-    const w = vb?.width || svgEl.getBBox?.().width || svgEl.clientWidth
-    const h = vb?.height || svgEl.getBBox?.().height || svgEl.clientHeight
-    if (!w || !h) return null
+    if (!duration || prefersReducedMotion()) {
+      setTransformTransition('none')
+      return
+    }
 
-    svgSizeRef.current = { w, h }
-    return svgSizeRef.current
+    setTransformTransition(`transform ${duration}ms ${easing}`)
+    transitionTimeoutRef.current = window.setTimeout(() => {
+      setTransformTransition('none')
+      transitionTimeoutRef.current = null
+    }, duration)
   }, [])
 
-  const resetToOrigin = useCallback(() => {
-    setViewport(1, { x: 0, y: 0 })
-    hasFitRef.current = true
-    userAdjustedViewRef.current = false
-  }, [setViewport])
+  const setViewport = useCallback(
+    (nextZoom, nextPan, options = {}) => {
+      const {
+        duration = 0,
+        easing = DEFAULT_EASING,
+        userAdjusted = false,
+      } = options
+
+      applyTransition(duration, easing)
+
+      const safeZoom = clampZoom(nextZoom)
+      zoomRef.current = safeZoom
+      panRef.current = nextPan
+      setZoom(safeZoom)
+      setPan(nextPan)
+      userAdjustedViewRef.current = userAdjusted
+      hasFitRef.current = true
+    },
+    [applyTransition]
+  )
+
+  const getSvgElement = useCallback(() => innerRef.current?.querySelector('svg') || null, [])
+
+  const getContentBounds = useCallback(() => {
+    const svgEl = getSvgElement()
+    if (!svgEl?.getBBox) return null
+
+    const bounds = svgEl.getBBox()
+    if (!bounds.width || !bounds.height) return null
+
+    return {
+      x: bounds.x,
+      y: bounds.y,
+      width: bounds.width,
+      height: bounds.height,
+    }
+  }, [getSvgElement])
+
+  const fitToBounds = useCallback(
+    (bounds, options = {}) => {
+      const container = containerRef.current
+      if (!container || !bounds?.width || !bounds?.height) return
+
+      const { padding = 32, duration = 0, easing = DEFAULT_EASING } = options
+      const normalizedPadding = typeof padding === 'number'
+        ? { x: padding, y: padding }
+        : { x: padding?.x ?? 32, y: padding?.y ?? 32 }
+
+      const availableWidth = Math.max(1, container.clientWidth - normalizedPadding.x * 2)
+      const availableHeight = Math.max(1, container.clientHeight - normalizedPadding.y * 2)
+      const targetZoom = clampZoom(
+        Math.min(availableWidth / bounds.width, availableHeight / bounds.height)
+      )
+
+      const nextPan = {
+        x: normalizedPadding.x + (availableWidth - bounds.width * targetZoom) / 2 - bounds.x * targetZoom,
+        y: normalizedPadding.y + (availableHeight - bounds.height * targetZoom) / 2 - bounds.y * targetZoom,
+      }
+
+      setViewport(targetZoom, nextPan, { duration, easing, userAdjusted: false })
+    },
+    [setViewport]
+  )
+
+  const resetToOrigin = useCallback(
+    (options = {}) => {
+      setViewport(1, { x: 0, y: 0 }, { ...options, userAdjusted: false })
+      hasFitRef.current = true
+    },
+    [setViewport]
+  )
+
+  const fitToContent = useCallback(
+    (options = {}) => {
+      const bounds = getContentBounds()
+      if (!bounds) {
+        resetToOrigin(options)
+        return
+      }
+
+      fitToBounds(bounds, options)
+    },
+    [fitToBounds, getContentBounds, resetToOrigin]
+  )
 
   const zoomAroundPoint = useCallback(
     (nextZoom, point) => {
@@ -94,7 +200,7 @@ export default function DiagramCanvas({ children, minHeight = 460, className = '
         y: point.y - (point.y - p0.y) * ratio,
       }
 
-      setViewport(z1, nextPan)
+      setViewport(z1, nextPan, { userAdjusted: true })
     },
     [setViewport]
   )
@@ -110,13 +216,21 @@ export default function DiagramCanvas({ children, minHeight = 460, className = '
   }, [])
 
   useEffect(() => {
-    if (!children) return
+    if (!contentVersion) return
+
+    hasFitRef.current = false
+    userAdjustedViewRef.current = false
+
     const timerId = window.setTimeout(() => {
-      getSvgDimensions()
-      resetToOrigin()
+      if (initialView === 'fit') {
+        fitToContent()
+      } else {
+        resetToOrigin()
+      }
     }, 60)
+
     return () => window.clearTimeout(timerId)
-  }, [children, getSvgDimensions, resetToOrigin])
+  }, [contentVersion, fitToContent, initialView, resetToOrigin])
 
   useEffect(() => {
     const container = containerRef.current
@@ -124,14 +238,17 @@ export default function DiagramCanvas({ children, minHeight = 460, className = '
 
     const observer = new ResizeObserver(() => {
       if (!hasFitRef.current || !userAdjustedViewRef.current) {
-        getSvgDimensions()
-        resetToOrigin()
+        if (initialView === 'fit') {
+          fitToContent()
+        } else {
+          resetToOrigin()
+        }
       }
     })
 
     observer.observe(container)
     return () => observer.disconnect()
-  }, [getSvgDimensions, resetToOrigin])
+  }, [fitToContent, initialView, resetToOrigin])
 
   const handleWheel = useCallback(
     (event) => {
@@ -205,7 +322,7 @@ export default function DiagramCanvas({ children, minHeight = 460, className = '
           y: pinch.startMid.y - (pinch.startMid.y - pinch.startPan.y) * ratio,
         }
 
-        setViewport(safeZoom, nextPan)
+        setViewport(safeZoom, nextPan, { userAdjusted: true })
         userAdjustedViewRef.current = true
         return
       }
@@ -217,7 +334,7 @@ export default function DiagramCanvas({ children, minHeight = 460, className = '
           y: drag.startPan.y + (point.y - drag.startPoint.y),
         }
 
-        setViewport(zoomRef.current, nextPan)
+        setViewport(zoomRef.current, nextPan, { userAdjusted: true })
         userAdjustedViewRef.current = true
       }
     },
@@ -259,6 +376,22 @@ export default function DiagramCanvas({ children, minHeight = 460, className = '
     [zoomAroundPoint]
   )
 
+  useImperativeHandle(
+    ref,
+    () => ({
+      fitToBounds,
+      fitToContent,
+      resetToOrigin,
+      setViewport,
+      getViewport: () => ({ zoom: zoomRef.current, pan: { ...panRef.current } }),
+      getContainerElement: () => containerRef.current,
+      getInnerElement: () => innerRef.current,
+      getSvgElement,
+      getContentBounds,
+    }),
+    [fitToBounds, fitToContent, getContentBounds, getSvgElement, resetToOrigin, setViewport]
+  )
+
   return (
     <div
       className={`relative w-full overflow-hidden rounded-lg border ${className}`.trim()}
@@ -283,6 +416,7 @@ export default function DiagramCanvas({ children, minHeight = 460, className = '
           style={{
             transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
             transformOrigin: '0 0',
+            transition: transformTransition,
             display: 'inline-block',
             minWidth: '100%',
             minHeight: '100%',
@@ -292,42 +426,52 @@ export default function DiagramCanvas({ children, minHeight = 460, className = '
         </div>
       </div>
 
-      <div className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center gap-2">
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => zoomWithStep('in')}
-            className="font-mono text-xs px-3 py-1.5 rounded border transition-colors"
-            style={buttonStyle}
-          >
-            +
-          </button>
-          <button
-            type="button"
-            onClick={() => zoomWithStep('out')}
-            className="font-mono text-xs px-3 py-1.5 rounded border transition-colors"
-            style={buttonStyle}
-          >
-            -
-          </button>
-          <button
-            type="button"
-            onClick={resetToOrigin}
-            className="font-mono text-xs px-3 py-1.5 rounded border transition-colors"
-            style={buttonStyle}
-          >
-            Reset
-          </button>
-        </div>
+      {showToolbar ? (
+        <div className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => zoomWithStep('in')}
+              className="font-mono text-xs px-3 py-1.5 rounded border transition-colors"
+              style={buttonStyle}
+            >
+              +
+            </button>
+            <button
+              type="button"
+              onClick={() => zoomWithStep('out')}
+              className="font-mono text-xs px-3 py-1.5 rounded border transition-colors"
+              style={buttonStyle}
+            >
+              -
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (initialView === 'fit') {
+                  fitToContent()
+                } else {
+                  resetToOrigin()
+                }
+              }}
+              className="font-mono text-xs px-3 py-1.5 rounded border transition-colors"
+              style={buttonStyle}
+            >
+              Reset
+            </button>
+          </div>
 
-        <span
-          className="font-mono text-[10px] sm:text-xs ml-auto"
-          style={{ color: 'var(--text-tertiary)' }}
-        >
-          <span className="hidden sm:inline">Drag to pan · Scroll to zoom</span>
-          <span className="sm:hidden">Pinch to zoom · Drag to pan</span>
-        </span>
-      </div>
+          <span
+            className="font-mono text-[10px] sm:text-xs ml-auto"
+            style={{ color: 'var(--text-tertiary)' }}
+          >
+            <span className="hidden sm:inline">Drag to pan · Scroll to zoom</span>
+            <span className="sm:hidden">Pinch to zoom · Drag to pan</span>
+          </span>
+        </div>
+      ) : null}
     </div>
   )
-}
+})
+
+export default DiagramCanvas
