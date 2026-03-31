@@ -1,4 +1,4 @@
-import { SUITE } from '../content'
+import { SUITE } from '../../content/acquirer/suite'
 
 // Reuse STATUS_CONFIG shape but Discover/Execute/Govern are always 'live'
 

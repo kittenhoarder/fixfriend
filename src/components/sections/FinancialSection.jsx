@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { COMPETITOR_BENCHMARKS, FINANCIAL_MODEL } from '../../data/content'
+import { COMPETITOR_BENCHMARKS, FINANCIAL_MODEL } from '../../content/raidical/financials'
 import NarrativeSection from '../ui/NarrativeSection'
 import ProofStack from '../ui/ProofStack'
 import SectionLayout from '../ui/SectionLayout'

@@ -1,5 +1,5 @@
 import { Zap, TrendingUp, ShieldCheck } from 'lucide-react'
-import { OPERATIONS_MODEL } from '../../data/content'
+import { OPERATIONS_MODEL } from '../../content/raidical/operations'
 import SectionLayout from '../ui/SectionLayout'
 
 const ICON_MAP = { Zap, TrendingUp, ShieldCheck }

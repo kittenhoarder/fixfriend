@@ -1,4 +1,4 @@
-import { SALES_FUNNEL } from '../../data/content'
+import { SALES_FUNNEL } from '../../content/raidical/sales'
 import NarrativeSection from '../ui/NarrativeSection'
 import ProofStack from '../ui/ProofStack'
 import SectionLayout from '../ui/SectionLayout'

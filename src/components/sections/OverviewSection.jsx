@@ -6,10 +6,10 @@ import {
   INVESTOR_STORY,
   SALES_FUNNEL,
   THESIS,
-} from '../../data/content'
-import LeanExitDownloads from '../LeanExitDownloads'
+} from '../../content/raidical/overview'
 import FoundingTeam from '../ui/FoundingTeam'
 import FIXFriendLogo from '../ui/FIXFriendLogo'
+import LazyLeanExitDownloads from '../../shared/ui/LazyLeanExitDownloads'
 import NarrativeSection from '../ui/NarrativeSection'
 import ProofStack from '../ui/ProofStack'
 import StatusPill from '../ui/StatusPill'
@@ -275,7 +275,7 @@ export default function OverviewSection({ onNavigate, onOpenInvestorStory }) {
             </div>
 
             <div className="rounded-lg border p-5" style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--surface)' }}>
-              <LeanExitDownloads />
+              <LazyLeanExitDownloads />
             </div>
 
             <FoundingTeam

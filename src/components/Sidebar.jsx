@@ -13,7 +13,6 @@ import {
   Settings,
   ArrowRight,
 } from 'lucide-react'
-import { NAV_TABS } from '../data/content'
 import FIXFriendLogo from './ui/FIXFriendLogo'
 
 const ICON_MAP = {
@@ -46,10 +45,10 @@ function NavButton({ isActive, children, ...props }) {
   )
 }
 
-const buyerTabs = NAV_TABS.filter((t) => t.group === 'buyer')
-const strategyTabs = NAV_TABS.filter((t) => t.group === 'strategy')
+export default function Sidebar({ tabs, activeTab, onTabChange, onAboutNavigate, theme, onThemeToggle, onSwitchPortal }) {
+  const buyerTabs = tabs.filter((tab) => tab.group === 'buyer')
+  const strategyTabs = tabs.filter((tab) => tab.group === 'strategy')
 
-export default function Sidebar({ activeTab, onTabChange, onAboutNavigate, theme, onThemeToggle, onSwitchPortal }) {
   return (
     <>
       <aside
@@ -186,6 +185,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutNavigate, theme
             isActive={false}
             onClick={onThemeToggle}
             title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             <span
               className="flex h-7 w-7 items-center justify-center border"
@@ -269,6 +269,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutNavigate, theme
           </div>
 
           <button
+            type="button"
             onClick={onThemeToggle}
             className="flex h-9 w-9 items-center justify-center border transition-colors"
             style={{
@@ -277,11 +278,13 @@ export default function Sidebar({ activeTab, onTabChange, onAboutNavigate, theme
               backgroundColor: 'var(--surface)',
             }}
             title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {theme === 'dark' ? <Sun size={13} strokeWidth={1.8} /> : <Moon size={13} strokeWidth={1.8} />}
           </button>
 
           <button
+            type="button"
             onClick={onAboutNavigate}
             className="flex h-9 w-9 items-center justify-center border transition-colors"
             style={{
@@ -290,6 +293,7 @@ export default function Sidebar({ activeTab, onTabChange, onAboutNavigate, theme
               backgroundColor: 'var(--surface)',
             }}
             title="About"
+            aria-label="Jump to about section"
           >
             <User size={13} strokeWidth={1.8} />
           </button>

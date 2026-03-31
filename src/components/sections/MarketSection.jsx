@@ -1,9 +1,15 @@
 import { useState } from 'react'
 import MarketMap from '../market/MarketMap'
 import MarketDetailPanel from '../market/MarketDetailPanel'
-import FullGraphView from '../market/FullGraphView'
 import InterviewsPanel from '../market/InterviewsPanel'
-import { CONTINUOUS_CHANGE_SIGNALS } from '../../data/content'
+import { CONTINUOUS_CHANGE_SIGNALS } from '../../content/raidical/market'
+import LazyFullGraphView from '../../shared/ui/LazyFullGraphView'
+
+const VIEW_OPTIONS = [
+  { id: 'interactive', label: 'Interactive map' },
+  { id: 'fullgraph', label: 'Full graph' },
+  { id: 'interviews', label: 'Interviews' },
+]
 
 export default function MarketSection({ theme }) {
   const [activeNodeId, setActiveNodeId] = useState(null)
@@ -27,48 +33,28 @@ export default function MarketSection({ theme }) {
       >
         <span className="font-mono text-[11px] tracking-widest" style={{ color: 'var(--text-tertiary)', letterSpacing: '0.14em' }}>MARKET</span>
         <span className="font-mono text-[10px] hidden sm:inline" style={{ color: 'var(--text-secondary)' }}>View:</span>
-        <button
-          type="button"
-          onClick={() => setViewMode('interactive')}
-          className="font-mono text-[11px] px-2.5 py-1.5 border transition-colors"
-          style={{
-            borderColor: viewMode === 'interactive' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
-            color: viewMode === 'interactive' ? 'var(--accent)' : 'var(--text-secondary)',
-            background: viewMode === 'interactive'
-              ? 'linear-gradient(90deg, rgba(59,130,246,0.12), rgba(249,115,22,0.08) 80%, transparent)'
-              : 'transparent',
-          }}
-        >
-          Interactive map
-        </button>
-        <button
-          type="button"
-          onClick={() => setViewMode('fullgraph')}
-          className="font-mono text-[11px] px-2.5 py-1.5 border transition-colors"
-          style={{
-            borderColor: viewMode === 'fullgraph' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
-            color: viewMode === 'fullgraph' ? 'var(--accent)' : 'var(--text-secondary)',
-            background: viewMode === 'fullgraph'
-              ? 'linear-gradient(90deg, rgba(59,130,246,0.12), rgba(249,115,22,0.08) 80%, transparent)'
-              : 'transparent',
-          }}
-        >
-          Full graph
-        </button>
-        <button
-          type="button"
-          onClick={() => setViewMode('interviews')}
-          className="font-mono text-[11px] px-2.5 py-1.5 border transition-colors"
-          style={{
-            borderColor: viewMode === 'interviews' ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
-            color: viewMode === 'interviews' ? 'var(--accent)' : 'var(--text-secondary)',
-            background: viewMode === 'interviews'
-              ? 'linear-gradient(90deg, rgba(59,130,246,0.12), rgba(249,115,22,0.08) 80%, transparent)'
-              : 'transparent',
-          }}
-        >
-          Interviews
-        </button>
+        {VIEW_OPTIONS.map((option) => {
+          const isActive = viewMode === option.id
+
+          return (
+            <button
+              key={option.id}
+              type="button"
+              onClick={() => setViewMode(option.id)}
+              aria-pressed={isActive}
+              className="font-mono text-[11px] px-2.5 py-1.5 border transition-colors"
+              style={{
+                borderColor: isActive ? 'var(--accent-border-soft)' : 'var(--border-subtle)',
+                color: isActive ? 'var(--accent)' : 'var(--text-secondary)',
+                background: isActive
+                  ? 'linear-gradient(90deg, rgba(59,130,246,0.12), rgba(249,115,22,0.08) 80%, transparent)'
+                  : 'transparent',
+              }}
+            >
+              {option.label}
+            </button>
+          )
+        })}
       </div>
 
       <div
@@ -127,7 +113,7 @@ export default function MarketSection({ theme }) {
 
       {viewMode === 'fullgraph' ? (
         <div className="flex-1 p-4 lg:p-6 overflow-hidden min-h-0">
-          <FullGraphView theme={theme} />
+          <LazyFullGraphView theme={theme} />
         </div>
       ) : viewMode === 'interviews' ? (
         <div className="flex-1 overflow-hidden min-h-0">

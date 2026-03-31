@@ -1,5 +1,5 @@
 import { Clock, Zap } from 'lucide-react'
-import { GAP } from '../../data/content'
+import { GAP } from '../../content/raidical/gap'
 import SectionHeader from '../ui/SectionHeader'
 
 function ProcessStep({ step, tint, isLast }) {

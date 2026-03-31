@@ -267,35 +267,6 @@ export default function GuidedStoryGraph({
   const [svg, setSvg] = useState(null)
   const [error, setError] = useState(null)
   const [contentVersion, setContentVersion] = useState(0)
-  const [viewport, setViewport] = useState({ zoom: 1, pan: { x: 0, y: 0 } })
-  const [copyState, setCopyState] = useState('idle')
-
-  const viewportLabel = `z ${viewport.zoom.toFixed(3)} | x ${viewport.pan.x.toFixed(2)} | y ${viewport.pan.y.toFixed(2)}`
-
-  const handleCopyViewport = async () => {
-    const payload = JSON.stringify(
-      {
-        zoom: Number(viewport.zoom.toFixed(4)),
-        x: Number(viewport.pan.x.toFixed(2)),
-        y: Number(viewport.pan.y.toFixed(2)),
-      },
-      null,
-      2
-    )
-
-    try {
-      if (typeof window !== 'undefined' && window.navigator?.clipboard?.writeText) {
-        await window.navigator.clipboard.writeText(payload)
-        setCopyState('copied')
-      } else {
-        setCopyState('unsupported')
-      }
-    } catch {
-      setCopyState('error')
-    }
-
-    window.setTimeout(() => setCopyState('idle'), 1400)
-  }
 
   useEffect(() => {
     let cancelled = false
@@ -454,7 +425,6 @@ export default function GuidedStoryGraph({
           showToolbar={showToolbar}
           initialView="fit"
           contentVersion={contentVersion}
-          onViewportChange={setViewport}
         >
           <div
             ref={graphRef}
@@ -464,32 +434,6 @@ export default function GuidedStoryGraph({
           />
         </DiagramCanvas>
 
-        {mode === 'guided' ? (
-          <div
-            className="absolute left-2 top-2 z-10 flex items-center gap-2 border px-2.5 py-1.5"
-            style={{
-              borderColor: 'var(--border-subtle)',
-              backgroundColor: 'rgba(11, 11, 12, 0.86)',
-              backdropFilter: 'blur(8px)',
-            }}
-          >
-            <span className="font-mono text-[10px] tracking-[0.12em]" style={{ color: 'var(--text-secondary)' }}>
-              {viewportLabel}
-            </span>
-            <button
-              type="button"
-              onClick={handleCopyViewport}
-              className="border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em]"
-              style={{
-                borderColor: 'var(--border-subtle)',
-                color: copyState === 'copied' ? 'var(--status-success)' : 'var(--text-secondary)',
-                backgroundColor: 'var(--surface3)',
-              }}
-            >
-              {copyState === 'copied' ? 'Copied' : copyState === 'unsupported' ? 'No clip' : copyState === 'error' ? 'Retry' : 'Copy'}
-            </button>
-          </div>
-        ) : null}
       </div>
 
       {showCallouts && mode === 'guided' && focus?.callouts?.length ? (

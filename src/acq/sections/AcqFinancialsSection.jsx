@@ -1,4 +1,4 @@
-import { FINANCIALS } from '../content'
+import { FINANCIALS } from '../../content/acquirer/financials'
 
 function MetricCard({ label, value, note }) {
   return (

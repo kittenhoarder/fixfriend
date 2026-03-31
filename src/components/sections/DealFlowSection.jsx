@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Timeline from '../dealflow/Timeline'
 import DealDetail from '../dealflow/DealDetail'
-import { DEALS } from '../../data/content'
+import { DEALS } from '../../content/raidical/acquirers'
 import SectionHeader from '../ui/SectionHeader'
 import BrandLogo from '../ui/BrandLogo'
 

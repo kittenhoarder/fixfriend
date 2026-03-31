@@ -1,5 +1,5 @@
 import TierGroup from '../acquirers/TierGroup'
-import { ACQUIRERS, ACQUIRER_PAGE_OVERVIEW, INTERVIEW_TRACKER } from '../../data/content'
+import { ACQUIRERS, ACQUIRER_PAGE_OVERVIEW, INTERVIEW_TRACKER } from '../../content/raidical/acquirers'
 import SectionHeader from '../ui/SectionHeader'
 
 export default function AcquirersSection() {
