@@ -733,6 +733,98 @@
     height: 100%;
     background: linear-gradient(to bottom, var(--border), transparent);
   }
+
+  .guided-story-graph {
+    position: relative;
+  }
+
+  .guided-story-graph svg {
+    overflow: visible;
+    max-width: none;
+    height: auto;
+  }
+
+  .guided-story-graph svg g.node,
+  .guided-story-graph svg g.cluster,
+  .guided-story-graph svg path[id^='L_'] {
+    transition:
+      opacity var(--motion-slow) var(--ease-standard),
+      filter var(--motion-slow) var(--ease-standard),
+      transform var(--motion-slow) var(--ease-standard);
+  }
+
+  .guided-story-graph svg g.node rect,
+  .guided-story-graph svg g.node polygon,
+  .guided-story-graph svg g.node path,
+  .guided-story-graph svg g.cluster rect,
+  .guided-story-graph svg g.cluster polygon,
+  .guided-story-graph svg g.cluster path,
+  .guided-story-graph svg g.node text,
+  .guided-story-graph svg g.cluster text,
+  .guided-story-graph svg path[id^='L_'] {
+    transition:
+      fill var(--motion-slow) var(--ease-standard),
+      stroke var(--motion-slow) var(--ease-standard),
+      stroke-width var(--motion-slow) var(--ease-standard),
+      opacity var(--motion-slow) var(--ease-standard),
+      filter var(--motion-slow) var(--ease-standard);
+  }
+
+  .guided-story-graph .story-graph-dim {
+    opacity: 0.14;
+    filter: saturate(0.72);
+  }
+
+  .guided-story-graph .story-graph-related {
+    opacity: 0.52;
+    filter: saturate(0.98);
+  }
+
+  .guided-story-graph .story-graph-focus {
+    opacity: 1;
+    filter: drop-shadow(0 0 18px rgba(249, 115, 22, 0.16));
+  }
+
+  .guided-story-graph svg g.story-graph-focus rect,
+  .guided-story-graph svg g.story-graph-focus polygon,
+  .guided-story-graph svg g.story-graph-focus path:not([id^='L_']) {
+    stroke: var(--amber) !important;
+    stroke-width: 2.35px !important;
+  }
+
+  .guided-story-graph svg g.story-graph-focus text {
+    fill: var(--text-primary) !important;
+  }
+
+  .guided-story-graph svg g.story-graph-related rect,
+  .guided-story-graph svg g.story-graph-related polygon,
+  .guided-story-graph svg g.story-graph-related path:not([id^='L_']) {
+    stroke: var(--accent) !important;
+    stroke-width: 2px !important;
+  }
+
+  .guided-story-graph svg g.story-graph-related text {
+    fill: var(--text-secondary) !important;
+  }
+
+  .guided-story-graph svg path.story-graph-focus[id^='L_'] {
+    stroke: var(--amber) !important;
+    stroke-width: 3.2px !important;
+    opacity: 1 !important;
+  }
+
+  .guided-story-graph svg path.story-graph-related[id^='L_'] {
+    stroke: var(--accent) !important;
+    stroke-width: 2.3px !important;
+    opacity: 0.76 !important;
+  }
+
+  .guided-story-graph--explore svg g.node,
+  .guided-story-graph--explore svg g.cluster,
+  .guided-story-graph--explore svg path[id^='L_'] {
+    opacity: 1;
+    filter: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
