@@ -4,8 +4,8 @@ function Block({ title, children, className = '' }) {
   return (
     <div className={`mb-8 ${className}`}>
       <h2
-        className="font-mono font-bold text-sm tracking-wider mb-3"
-        style={{ color: 'var(--amber)', letterSpacing: '0.12em' }}
+        className="font-serif text-[1.5rem] leading-snug mb-3"
+        style={{ color: 'var(--text-primary)' }}
       >
         {title}
       </h2>
@@ -64,15 +64,6 @@ export default function DefinitionSection() {
 
   return (
     <div className="flex flex-col h-full pt-14 lg:pt-0" style={{ minHeight: '100vh' }}>
-      <div
-        className="hidden lg:flex px-4 sm:px-6 py-2.5 border-b flex-shrink-0"
-        style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--bg-base)' }}
-      >
-        <span className="font-mono text-[11px] tracking-widest" style={{ color: 'var(--muted)', letterSpacing: '0.12em' }}>
-          MARKET DEFINITION & SIZE
-        </span>
-      </div>
-
       <div className="flex-1 overflow-y-auto p-4 lg:p-5">
         <div className="content-rail">
         <Block title={d.origin.title}>
